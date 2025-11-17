@@ -1,11 +1,5 @@
 # Set Theory and Probability 
 
-In the course of research, behavioral scientists will often take samples of human behavior, e.g.:
+In the course of research, behavioral scientists will often take samples of human behavior, e.g. a survey of a group of people or an experiment on a randomly sampled group of people. The examples are numerous and frequent, and throughout the course of your career you will take many samples. In each of these circumstances you will not have absolute certainty about the content of your sample. That is to say, you might take the exact same sample in a carefully controlled circumstance and get different results every time.
 
-1. A researcher might survey a group of people about their happiness level - with their happiness level characterized on a 10 point scale.
-
-2. A cognitive researcher may measure how much time a person takes to recall something.
-
-3. An educational researcher might take a sample of course grades.
-
-The examples are numerous and frequent, and throughout the course of your career, you will take many samples. All of these researchers have the intent to infer something about an entire population of interest. To get to a deeper understanding of statistics, it is helpful 
+If every possible outcome of our sample can be described, and the outcome of our sample changes within the same sampling conditions, then we call this a **random experiment**. The purpose of this chapter is two fold. First, we'll learn a more concrete way of defining the set of all possible outcomes of a random experiment - referred to as a **sample space**. Then we'll more concretely define the randomness or our experiment by talking about **probability** - the quantification of randomness.
