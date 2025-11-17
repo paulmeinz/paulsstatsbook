@@ -1,0 +1,11 @@
+# Set Theory and Probability 
+
+In the course of research, behavioral scientists will often take samples of human behavior, e.g.:
+
+1. A researcher might survey a group of people about their happiness level - with their happiness level characterized on a 10 point scale.
+
+2. A cognitive researcher may measure how much time a person takes to recall something.
+
+3. An educational researcher might take a sample of course grades.
+
+The examples are numerous and frequent, and throughout the course of your career, you will take many samples. All of these researchers have the intent to infer something about an entire population of interest. To get to a deeper understanding of statistics, it is helpful 
