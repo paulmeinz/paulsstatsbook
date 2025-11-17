@@ -1,0 +1,33 @@
+--- 
+title: "Advanced Behavioral Statistics"
+author: "Paul Meinz"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a behavioral statistics textbook with additional mathematical depth
+  that I wish I had had prior to enrolling in my first graduate level behavior 
+  statistics course.
+link-citations: yes
+---
+
+# Preface
+
+## You can learn statistics
+
+Many textbooks in mathematics begin with a useful high level overview of the content of book. However, reflecting on my time as a graduate student (and the anxiety therein), I want to start this book off a little differently. _You can learn statistics!_ I believe that you can learn statistics and I'm happy you have opened this book to do it. Statistics is a wonderful field, and I am excited for you to learn it. I believe in you.
+
+## Why I wrote this book
+
+First an foremost, I wrote this book because I'm excited about statistics, and because I want to share this excitement with you. 
+
+Second - and most importantly - the reason I wrote this textbook is because I would have appreciated a book like this as a behavioral scientist learning statistics. Over the years, I became very comfortable with the applied end of statistics, but as a graduate student I found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. Over the course of my studies and career, I picked up "explanations" for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. And, as an undergraduate, I would have appreciated a deeper understanding of _why_ in the concrete mathematical sense. 
+
+As I studied mathematics and mathematical statistics throughout my career, I came to realize that a deeper understanding is within the reach of the graduate student in the behavioral sciences. I decided to write a book that takes a student - perhaps with an okay memory of algebra and maybe with some experience withe calculus (not at all required) - to a deeper understanding of statistics.
+
+## What content to expect in this book
+
+
