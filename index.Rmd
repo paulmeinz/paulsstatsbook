@@ -21,7 +21,7 @@ Many textbooks in mathematics begin with a useful high level overview of the con
 
 ## Why I wrote this book
 
-First an foremost, I wrote this book because I'm excited about statistics, and because I want to share this excitement with you! 
+First an foremost, I wrote this book because I'm excited about statistics, and I want other people to be excited about statistics too. 
 
 Second - and most importantly - the reason I wrote this textbook is because I would have appreciated a book like this as a behavioral scientist learning statistics. Over the years, I became very comfortable with the applied end of statistics, but as a graduate student I found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. Over the course of my studies and career, I picked up "explanations" for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. And, as a young graduate student, I would have appreciated a deeper understanding of _why_ in the concrete mathematical sense. 
 
@@ -29,12 +29,12 @@ As I studied mathematics and mathematical statistics throughout my career, I cam
 
 ## What content to expect in this book
 
-To that end, this book will review many concepts learned in an undergraduate bevavioraly statistics course, but with more mathematical emphasis. This book can be categorized into three parts:
+To that end, this book will review many concepts learned in an undergraduate behavioral statistics course, but with more mathematical emphasis. This book can be categorized into three parts:
 
-1. Chapters 1, 2, and 3 give a background on probability and probability distributions. Within behavioral statistics courses, we often discuss a vaguely defined "population" of study. These three chapters define more concretely what we mean by populations. Hint: Populations can be thought of as random variables and their corresponding **probability distributions**. We'll dig into this later.
+1. Chapters 1, 2, and 3 give a background on probability and probability distributions. Within behavioral statistics courses, we often discuss a vaguely defined "population" of study. These three chapters define more concretely what we mean when we refer to a population or populations. Hint: Populations can be thought of as random variables and their corresponding **probability distributions**. We'll dig into this later.
 
 2. Chapter 4 is our first foray into statistical inference. While Chapters 1, 2, and 3 tell us about populations, this chapter will begin our journey of **inferring** some basic things about these probability distributions. We will learn about the **Law of Large Numbers** and the amazing **Central Limit Theorem**. 
 
-3. Chapter 5 (and the chapters thereafter) will introduce us to hypothesis testing - the cornerstone of statistical inference in the behavioral sciences. We will cover several statistical techniques such as **z**-tests, **t**-tests, correlation, chi-square tests, and ANOVA.
+3. Chapter 5 (and the chapters thereafter) will introduce us to hypothesis testing - the cornerstone of statistical inference in the behavioral sciences. We will cover several statistical techniques such as _z_-tests, _t_-tests, correlation, chi-square tests, and ANOVA.
 
 Thank you for reading!
