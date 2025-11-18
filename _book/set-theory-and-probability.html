@@ -86,8 +86,12 @@ statistics course.</p>" />
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#you-can-learn-statistics"><i class="fa fa-check"></i><b>1.1</b> You can learn statistics</a></li>
 <li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-i-wrote-this-book"><i class="fa fa-check"></i><b>1.2</b> Why I wrote this book</a></li>
 <li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#what-content-to-expect-in-this-book"><i class="fa fa-check"></i><b>1.3</b> What content to expect in this book</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#future-editions-of-this-book"><i class="fa fa-check"></i><b>1.4</b> Future editions of this book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html"><i class="fa fa-check"></i><b>2</b> Set Theory and Probability</a></li>
+<li class="chapter" data-level="2" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html"><i class="fa fa-check"></i><b>2</b> Set Theory and Probability</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#sets-and-basic-set-theory"><i class="fa fa-check"></i><b>2.1</b> Sets and Basic Set Theory</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -110,9 +114,16 @@ statistics course.</p>" />
             <section class="normal" id="section-">
 <div id="set-theory-and-probability" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Set Theory and Probability<a href="set-theory-and-probability.html#set-theory-and-probability" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the course of research, behavioral scientists will often take samples of human behavior, e.g. a survey of a group of people, measurements of reaction time, etc. Most researchers in the behavioral sciences understand the inherent randomness of this act. That is to say, you might take the exact same sample in a carefully controlled circumstance and get different results every time.</p>
-<p>Suppose we have a circumstance where we can exactly describe every possible outcome of our sampling procedure. Then we repeatedly sample from this set of outcomes - careful to replicate the exact circumstances every time. In the field of probability and statistics this is called a <strong>random experiment</strong>. If done correctly, the samples that behavioral researchers take are analogous to this situation. One might describe a measurement they want to take (describing the outcomes), and then take a sample of humans (or other creatures) to measure it (randomly sample). With this in mind, the purpose of this chapter is to provide a more concrete and mathematical description of this procedure. First, we’ll start by learning about sets and set theory in order to describe our <strong>sample space</strong> and the form that samples may take. Then we’ll more concretely define the randomness of our experiment by talking about <strong>probability</strong> - the quantification of randomness.</p>
+<p>In the course of research, behavioral scientists will often take samples of human behavior, e.g. a survey of a group of people, measurements of reaction time, etc. We (us researchers) take samples which have some <em>outcome</em>, but most of us understand and have observed the inherent randomness of this act. That is to say, you might take the exact same sample in a carefully controlled circumstance and get different results every time.</p>
+<p>Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstances and study the result. This is referred to as a <strong>random experiment</strong>. In order to familiarize you with some introductory concepts around probability, we’re going to start in the context of a random experiment. First, we’ll learn about sets and set theory in order to describe our <strong>sample space</strong> and the form that outcomes may take. Then we’ll more concretely define the randomness of our experiment by talking about <strong>probability</strong> - the quantification of randomness.</p>
+<div id="sets-and-basic-set-theory" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Sets and Basic Set Theory<a href="set-theory-and-probability.html#sets-and-basic-set-theory" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before we get into it, we aren’t going to learn set theory completely in this section. That would be overly ambitious. What we are going to learn will make understanding later sections easier, and maybe it’ll make it a bit easier in the wild when you see sets referenced in other contexts. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the <strong>sample space</strong>. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let’s call our sample space S. Then we would describe our sample space like this:</p>
+<p><span class="math display">\[\begin{equation*}
+$\{1, 2, 3\}$
+\end{equation*}\]</span></p>
 
+</div>
 </div>
             </section>
 
@@ -174,6 +185,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

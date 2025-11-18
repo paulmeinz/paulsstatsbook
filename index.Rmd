@@ -17,15 +17,15 @@ link-citations: yes
 
 ## You can learn statistics
 
-Many textbooks in mathematics begin with a useful high level overview of the content of book. We'll get to that in a moment, but I want to start this book off a little differently. _You can learn statistics!_ I believe that you can learn statistics and I'm happy you have opened this book to do it. Statistics is a wonderful field, and I am excited for you to learn it. I believe in you.
+Many textbooks in mathematics begin with a useful high level overview of the content of book. We'll get to that in a moment, but I want to start this book off a little differently. _You can learn statistics._ I believe that you can learn statistics and I'm happy you have opened this book to do it. Statistics is a wonderful field, and I am excited for you to learn it. I believe in you.
 
 ## Why I wrote this book
 
-First an foremost, I wrote this book because I'm excited about statistics, and I want other people to be excited about statistics too. 
+First and foremost, I wrote this book because I'm excited about statistics (really excited; who writes a textbook for fun?), and I want other people to be excited about statistics too. 
 
 Second - and most importantly - the reason I wrote this textbook is because I would have appreciated a book like this as a behavioral scientist learning statistics. Over the years, I became very comfortable with the applied end of statistics, but as a graduate student I found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. Over the course of my studies and career, I picked up "explanations" for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. And, as a young graduate student, I would have appreciated a deeper understanding of _why_ in the concrete mathematical sense. 
 
-As I studied mathematics and mathematical statistics throughout my career, I came to realize that a deeper understanding is within the reach of the graduate student in the behavioral sciences. I decided to write a book that takes a student - perhaps with an okay memory of algebra and maybe with some experience withe calculus (not at all required) - to a more mathematical understanding of statistics.
+As I studied mathematics and mathematical statistics throughout my career, I came to realize that a deeper understanding is within the reach of the graduate student in the behavioral sciences. I decided to write a book that takes a student - perhaps with an okay memory of algebra and maybe with some calculus calculus (not at all required) - to a more mathematical understanding of statistics.
 
 ## What content to expect in this book
 
@@ -38,3 +38,7 @@ To that end, this book will review many concepts learned in an undergraduate beh
 3. Chapter 5 (and the chapters thereafter) will introduce us to hypothesis testing - the cornerstone of statistical inference in the behavioral sciences. We will cover several statistical techniques such as _z_-tests, _t_-tests, correlation, chi-square tests, and ANOVA.
 
 Thank you for reading!
+
+## Future editions of this book
+
+This book is a working document. I plan to work in practice problems and tutorials on R sometime in the future. Stay tuned.

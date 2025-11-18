@@ -2,4 +2,6 @@ preface
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
+future-editions-of-this-book
 set-theory-and-probability
+sets-and-basic-set-theory
