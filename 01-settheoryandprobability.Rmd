@@ -6,9 +6,17 @@ Statisticians often refer to an analogous circumstance when talking about probab
 
 ## Sets and Basic Set Theory
 
-Before we get into it, we aren't going to learn set theory in it's entirety.  That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, and maybe it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call our sample space $S$. Then we would describe our sample space like this:
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, and maybe it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call our sample space $S$. Then we would describe our sample space like this:
 
-$$S = \{A, B, C, D, E\}
+$$
+S = \{A, B, C, D, E\}
 (\#eq:binom)
 $$
-That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. 
+That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is **discrete** - meaning it contains a finite number of elements. A discrete sample space may also be infinite - e.g. contain an infinite number of elements - so long as those elements can be lined up with the natural numbers (e.g. 1, 2, 3, 4, ...). This is probably not the most intuitive definition for people who don't think about mathematics every (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B.
+
+With that side point out of the way, we may also find ourselves sampling from a **continuous** sample space, e.g. all the values between and including 0 and 1. Since you can't enumerate all the values of a continuous sample space as we did $S$ (people of "tried"; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space $R$, then we would specify it
+
+$$
+T = \{x| inculsion\ \ criteria\}
+(\#eq:binom)
+$$
