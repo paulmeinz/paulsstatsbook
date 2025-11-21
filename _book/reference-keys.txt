@@ -1,4 +1,7 @@
-eq:binom
+eq:discreteset
+eq:continuousset
+eq:subset
+eq:intersect
 preface
 you-can-learn-statistics
 why-i-wrote-this-book

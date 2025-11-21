@@ -10,13 +10,33 @@ Before we get into it, we aren't going to learn set theory in it's entirety. Tha
 
 $$
 S = \{A, B, C, D, E\}
-(\#eq:binom)
+(\#eq:discreteset)
 $$
-That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is **discrete** - meaning it contains a finite number of elements. A discrete sample space may also be infinite - e.g. contain an infinite number of elements - so long as those elements can be lined up with the natural numbers (e.g. 1, 2, 3, 4, ...). This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example.
+That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is **discrete** - meaning it either contains a finite number of elements or it is _countable_. The definition of countable can be tricky to grasp at first, and if you don't understand it here, my hope is you have some intuition of it. Specifically, a discrete sample space can also be infinite - e.g. contain an infinite number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g. 1, 2, 3, 4, ...). This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example. If you can line up your set with the infinity of the natural numbers, then you couldn't find anything between members of that set either.
 
-With that side point out of the way, we may also find ourselves sampling from a **continuous** sample space, e.g. all the values between and including 0 and 1. Since you can't enumerate all the values of a continuous sample space as we did $S$ (people of "tried"; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space $R$, then we would specify it
+With that side point out of the way, we may also find ourselves sampling from a **continuous** sample space, e.g. all the values between and including 0 and 1 (e.g $0 \leq x \leq 1$). Since you can't enumerate all the values of a continuous sample space as we did $S$ (people have "tried"; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space $R$, then we would specify it as
 
 $$
-T = \{x| inculsion\ \ criteria\}
-(\#eq:binom)
+T = \{x\, | \, 0 \leq x \leq 1 \}
+(\#eq:continuousset)
 $$
+
+The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1.
+
+Now that we have discussed some more concrete ways of describing our sample space, let's talk about sampling from it. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we here I shall say that event was a success (congratulations all around!). You can indicate a set is a subset of another set by:
+
+$$ C \subset S 
+(\#eq:subset) $$
+
+We might also, for example say that our event is a single element $C_1 = \{A\}$ or the entire sample space $C_2 = \{A,B,C,D,E\}$. We can be as creative as we would like to be, so long as the event is in our sample space. Speaking of creativity, suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our randomly sampled element lands in $C_1$ or $C_2$. Well, it's helpful here to consider the circumstances where this joint event occurs. Namely, If our realized element was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique elements of either set and combined them into a new set. There's a handy symbol that indicates this operation:
+
+$$ C_1 \cup C_1 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
+(\#eq:intersect) $$
+
+The *union operator* takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymous with *or*. If the event of interest is our sample landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g. all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into $ C_1 = \{A\} $ or $ C_2 = \{B\} $. Then our event would occur if the element was A or B:
+
+$$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
+
+The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
+
+$$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$
