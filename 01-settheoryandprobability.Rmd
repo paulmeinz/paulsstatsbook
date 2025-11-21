@@ -59,7 +59,6 @@ A set unioned with the null set is itself. Indeed, this is similar to multiplyin
 
 To this point we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how these operators work in the continuous case.
 
-
 The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 
 $$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$

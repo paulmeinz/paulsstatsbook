@@ -1,0 +1,13 @@
+eq:discreteset
+eq:continuousset
+eq:subset
+eq:union
+eq:intersect
+preface
+you-can-learn-statistics
+why-i-wrote-this-book
+what-content-to-expect-in-this-book
+what-youll-need-to-know-to-get-the-most-out-of-this-book
+future-editions-of-this-book
+set-theory-and-probability
+sets-and-basic-set-theory
