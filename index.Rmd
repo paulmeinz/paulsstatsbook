@@ -45,4 +45,4 @@ The most important "thing" you need to read this book is excitement. I would not
 
 ## Future editions of this book
 
-This book is a working document. I plan to work in practice problems and tutorials on R sometime in the future. Stay tuned.
+This book is a working document. It was created based on some hand written notes I developed whilst teaching my colleagues. I am _still_ teaching my colleagues and I shall try to add chapters in pace with that endeavor. I also plan to work in practice problems and tutorials on R sometime in the future. Stay tuned. 
