@@ -1,6 +1,7 @@
 eq:discreteset
 eq:continuousset
 eq:subset
+eq:union
 eq:intersect
 preface
 you-can-learn-statistics

@@ -6,13 +6,15 @@ Statisticians often refer to an analogous circumstance when talking about probab
 
 ## Sets and Basic Set Theory
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, and maybe it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call our sample space $S$. Then we would describe our sample space like this:
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, and maybe it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call it $S$. Then we would describe it like this:
 
 $$
 S = \{A, B, C, D, E\}
 (\#eq:discreteset)
 $$
-That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is **discrete** - meaning it either contains a finite number of elements or it is _countable_. The definition of countable can be tricky to grasp at first, and if you don't understand it here, my hope is you have some intuition of it. Specifically, a discrete sample space can also be infinite - e.g. contain an infinite number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g. 1, 2, 3, 4, ...). This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example. If you can line up your set with the infinity of the natural numbers, then you couldn't find anything between members of that set either.
+That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is **discrete** - meaning it either contains a finite number of elements or it is _countable_. Here the sample space is finite (it has five elements). That's pretty straight forward. 
+
+On the other hand, the definition of countable can be tricky to grasp at first, and if you don't understand it here, my hope is you can gain a small intuition for it. Specifically, a discrete sample space can also contain an _infinite_ number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g. 1, 2, 3, 4, ...). This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example. If your discrete set had an infinite number of elements, you could also find nothing between the first and second elements (or any given sequential pair).
 
 With that side point out of the way, we may also find ourselves sampling from a **continuous** sample space, e.g. all the values between and including 0 and 1 (e.g $0 \leq x \leq 1$). Since you can't enumerate all the values of a continuous sample space as we did $S$ (people have "tried"; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space $R$, then we would specify it as
 
@@ -23,19 +25,40 @@ $$
 
 The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1.
 
-Now that we have discussed some more concrete ways of describing our sample space, let's talk about sampling from it. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we here I shall say that event was a success (congratulations all around!). You can indicate a set is a subset of another set by:
+Now that we have discussed some more concrete ways of describing our sample space, let's talk about sampling from it. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will referred to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset of another set by:
 
 $$ C \subset S 
 (\#eq:subset) $$
 
-We might also, for example say that our event is a single element $C_1 = \{A\}$ or the entire sample space $C_2 = \{A,B,C,D,E\}$. We can be as creative as we would like to be, so long as the event is in our sample space. Speaking of creativity, suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our randomly sampled element lands in $C_1$ or $C_2$. Well, it's helpful here to consider the circumstances where this joint event occurs. Namely, If our realized element was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique elements of either set and combined them into a new set. There's a handy symbol that indicates this operation:
+We might also, for example say that our event is a single element $C_1 = \{A\}$ or the entire sample space $C_2 = \{A,B,C,D,E\}$. We can be as creative as we would like to be, so long as the event is in our sample space. Speaking of creativity, suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our randomly sampled element lands in $C_1$ or $C_2$. It's helpful here to consider the circumstances where this event occurs. Namely, If our realized element was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique elements of either set and combined them into a new set. If our sample lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
 
 $$ C_1 \cup C_1 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
-(\#eq:intersect) $$
+(\#eq:union) $$
 
-The *union operator* takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymous with *or*. If the event of interest is our sample landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g. all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into $ C_1 = \{A\} $ or $ C_2 = \{B\} $. Then our event would occur if the element was A or B:
+This *union operator* ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymous with *or*. If the event of interest is our sample landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g. all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into $ C_1 = \{A\} $ or $ C_2 = \{B\} $. Then our event would occur if the element was A or B:
 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
+Since we're being creative, let's consider another scenario (and a new operator!). Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Lets further say that we are interested in whether or both events occur when we sample our element. That is, we shall be successful if our element falls in both $C_1$ and $C_2$. We are therefore interested in the _shared_ elements of our two events. If we draw a B or C, then we would be successful, but an A or D would be bad news for us because each is unique to a set! The *intersect operator* will help us signify this process:
+
+$$ C_1 \cap C_2 = \{A,B,C\} \cap \{B,C,D\} = \{B,C\} 
+(\#eq:intersect)$$
+
+Unlike $\cup$, the intersect operator represents **and**. That is to say, if we are interested in the occurrence of one event AND another (a.k.a., our sample landing in both events), then the intersect is used. This operator can create some interesting conundrums, so it's worthwhile to do another example. This time let's define our sets to be $C_1 = {A,B}$ and $C_2 = {C,D}$. Now we're interested in whether or not our sample falls in $C_1$ and $C_2$.
+
+$$ C_1 \cap C_2 = \{A, B\} \cap \{C, D\} = \{\} $$
+
+Wow, wait a second, what happened there? The answer is our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets. As a result, we get a very special set - the *null set* - $\{\}$. The null set is a subset of every set, and is a set with no elements. It's fun and interesting to see how it works with our operators. For example:
+
+$$ \{A,B,C,D,E\} \cap \{\} = \{\} $$ 
+
+The null set intersected with any other set is itself. In a way, intersecting the empty set with any other set is like multiplying something by zero. The null set intersected with another set is the null set, zero multiplied by another number is zero. Next, what do you suppose happens when we union the null set with something else? Let's try it out:
+
+$$ \{A,B,C,D,E\} \cup \{\} = \{A,B,C,D,E\} $$
+
+A set unioned with the null set is itself. Indeed, this is similar to multiplying another number by 1.
+
+To this point we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how these operators work in the continuous case.
+
 
 The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 
