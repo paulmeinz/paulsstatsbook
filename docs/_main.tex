@@ -123,7 +123,7 @@ The most important ``thing'' you need to read this book is excitement. I would n
 
 \section{Future editions of this book}\label{future-editions-of-this-book}
 
-This book is a working document. I plan to work in practice problems and tutorials on R sometime in the future. Stay tuned.
+This book is a working document. It was created based on some hand written notes I developed whilst teaching my colleagues. I am \emph{still} teaching my colleagues and I shall try to add chapters in pace with that endeavor. I also plan to work in practice problems and tutorials on R sometime in the future. Stay tuned.
 
 \chapter{Set Theory and Probability}\label{set-theory-and-probability}
 
@@ -133,7 +133,7 @@ Statisticians often refer to an analogous circumstance when talking about probab
 
 \section{Sets and Basic Set Theory}\label{sets-and-basic-set-theory}
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, and it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the \textbf{sample space}. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call this sample space \(S\). Then we would describe it like this:
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the \textbf{sample space}. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call this sample space \(S\). Then we would describe it like this:
 
 \[
 S = \{A, B, C, D, E\}
@@ -159,7 +159,7 @@ Now that we have discussed some more concrete ways of describing our sample spac
 
 We might also, for example say that our event is a single element \(C_1 = \{A\}\) or the entire sample space \(C_2 = \{A,B,C,D,E\}\). We can be as creative as we would like to be, so long as the event is in our sample space. Speaking of creativity, suppose we have two events \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\), and we are interested in whether or not our randomly sampled element lands in \(C_1\) or \(C_2\). It's helpful here to consider the circumstances where this event occurs. Namely, If our realized element was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique elements of either set and combined them into a new set. If our sample lands in that new subset, we can be confident that \(C_1\) or \(C_2\) occurred. There's a handy symbol that indicates this operation:
 
-\[ C_1 \cup C_1 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
+\[ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
 \label{eq:union} \]
 
 This \emph{union operator} (\(\cup\)) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymous with \emph{or}. If the event of interest is our sample landing in \(C_1\) OR \(C_2\), then we would be successful if the event landed in the union of the two sets, e.g.~all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into \$ C\_1 = \{A\} \$ or \$ C\_2 = \{B\} \$. Then our event would occur if the element was A or B:
@@ -186,9 +186,12 @@ A set unioned with the null set is itself. Indeed, this is similar to multiplyin
 
 To this point we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the \emph{complement} of a subset and a brief treatment of how these operators work in the continuous case.
 
-The complement of a subset describes all the elements of a sample space \emph{not} in that subset. For the sake of consistency, we'll keep using our sample space \(S\), and let's work with the subset \$Y = \{\{A,B,C\} \$. The complement of that subset in the sample space would be \(\{D, E\}\). The operation of taking the complement of a subset is indicated by:
+The complement of a subset describes all the elements of a sample space \emph{not} in that subset. For the sake of consistency, we'll keep using our sample space \(S\), and let's work with \$Y = \{A,B,C\} \$ and \(Y\subset S\) . The complement of that subset in the sample space would be \(\{D, E\}\). The operation of taking the complement of a subset is indicated by:
 
-\[ Y^c \]
+\[ Y^c = \{A,B,C\}^c = \{D,E\} 
+\label{eq:complement}\]
+
+The complement allows for slightly more complicated operations.
 
 The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space \(S = \{x\,|\,0 \leq x \leq 10 \}\) and we are interested in if the event lands in \(C_1 = \{x\,|\,0 \leq x \leq 2 \}\) OR \(C_2 = \{x\,|\,2 \leq x \leq 5 \}\). A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 

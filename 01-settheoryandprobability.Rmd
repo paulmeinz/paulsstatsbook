@@ -61,7 +61,7 @@ To this point we've learned how to describe our sample space, the concept of an 
 
 The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$, and let's work with $Y = \{A,B,C\} $ and $Y\subset S$ . The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
 
-$$ Y^c = \{D,E\} 
+$$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
 The complement allows for slightly more complicated operations. 

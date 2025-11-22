@@ -3,6 +3,7 @@ eq:continuousset
 eq:subset
 eq:union
 eq:intersect
+eq:complement
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
