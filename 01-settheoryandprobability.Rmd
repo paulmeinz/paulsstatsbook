@@ -79,7 +79,7 @@ $$ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} $$
 
 Notice how we do the operation in the parentheses before taking the complement. Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful sample as all the things NOT in C_1 and C_2. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
 
-$$ (C_1 \cup C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
+$$ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
 
 The two sets have no overlap, so their intersect is the null set, and the complement of the null set is all the elements in our sample space. Fun!
 
