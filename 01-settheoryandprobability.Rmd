@@ -45,28 +45,30 @@ Since we're being creative, let's consider another scenario (and a new operator!
 $$ C_1 \cap C_2 = \{A,B,C\} \cap \{B,C,D\} = \{B,C\} 
 (\#eq:intersect)$$
 
-Unlike $\cup$, the intersect operator represents **and**. That is to say, if we are interested in the occurrence of one event AND another (a.k.a., our sample landing in both events), then the intersect is used. This operator can create some interesting conundrums, so it's worthwhile to do another example. This time let's define our sets to be $C_1 = \{A,B\}$ and $C_2 = \{C,D\}$. Now we're interested in whether or not our sample falls in $C_1$ and $C_2$.
+Unlike $\cup$, the intersect operator represents **and**. That is to say, if we are interested in the occurrence of one event AND another (a.k.a., our sample landing in both events), then the intersect is used. This operator can create some interesting conundrums, so it's worthwhile to do another example or two. This time let's define our sets to be $C_1 = \{A,B\}$ and $C_2 = \{C,D\}$. Now we're interested in whether or not our sample falls in $C_1$ and $C_2$ (What do you think is going to happen here?):
 
 $$ C_1 \cap C_2 = \{A, B\} \cap \{C, D\} = \{\} $$
 
-Wow, wait a second, what happened there? The answer is our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets. As a result, we get a very special set - the *null set* - $\{\}$. The null set is a subset of every set, and is a set with no elements. It's fun and interesting to see how it works with our operators. For example:
+Wow, that was an interesting result! Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets, and as a result, we get a very special set - the *null set* - $\{\}$. The null set is the set with zero elements, and it is a member of every set. It's fun and interesting to see how it works with our operators. For example:
 
 $$ \{A,B,C,D,E\} \cap \{\} = \{\} $$ 
 
-The null set intersected with any other set is itself. In a way, intersecting the empty set with any other set is like multiplying something by zero. The null set intersected with another set is the null set, zero multiplied by another number is zero. Next, what do you suppose happens when we union the null set with something else? Let's try it out:
+The null set intersected with any other set is itself. A set with something in it can share nothing with a set that has no elements at all. In a way, intersecting the empty set with any other set is like multiplying a number by zero. Next, what do you suppose happens when we union the null set with something else? Let's try it out:
 
 $$ \{A,B,C,D,E\} \cup \{\} = \{A,B,C,D,E\} $$
 
-A set unioned with the null set is itself. Indeed, this is similar to multiplying another number by 1.
+A set unioned with the null set is itself. The null set has nothing unique to add to our something set. Although the null set is really cool (in my opinion; and I hope your opinion too), working with it is (metaphorically speaking) like talking to the most boring person in the world. You have nothing in common with them ($\cap$), and they have nothing to add ($\cup$). And, with that, you have learned your first set theory insult.
 
-To this point we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how these operators work in the continuous case.
+Up to this point, we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how the previously mentioned operators work in the continuous case.
 
 The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$, and let's work with $Y = \{A,B,C\} $ and $Y\subset S$ . The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
 
 $$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
-The complement allows for slightly more complicated operations. 
+The complement allows for a wider breadth of operations. Let's again consider our sample space $S$ \@ref(eq:discreteset). Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 ={C,D}$. The first thing we would do in this circumstance is maybe consider all the ways our sample could be unsuccessful (we won't us "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $/cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
+
+$$ C_1 \cup C_2 = \{A,B,C,D\} = X $$
 
 The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 
