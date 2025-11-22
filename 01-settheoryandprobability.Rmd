@@ -23,9 +23,9 @@ R = \{x\, | \, 0 \leq x \leq 1 \}
 (\#eq:continuousset)
 $$
 
-The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1.
+The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless discuss these spaces with slightly less mathematical depth. 
 
-Now that we have discussed some more concrete ways of describing our sample space, let's talk about sampling from it. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will referred to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset by:
+Having discussed discrete and continuous sample spaces, it is now time to turn our attention towards sampling. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will referred to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset by:
 
 $$ C \subset S 
 (\#eq:subset) $$
@@ -37,7 +37,7 @@ Indeed, in practice we might want to get a little more creative in terms of the 
 $$ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
 (\#eq:union) $$
 
-This *union operator* ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymous with *or*. If the event of interest is our sample landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g. all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the element was A or B:
+This *union operator* ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with *or*. If the event of interest is our sample landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g., all the unique elements from both sets. Here's another example, suppose we are interested in if our sample falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the element was A or B:
 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
 Since we're being creative, let's consider another scenario (and a new operator!). Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Lets further say that we are interested in whether or both events occur when we sample our element. That is, we shall be successful if our element falls in both $C_1$ and $C_2$. We are therefore interested in the _shared_ elements of our two events. If we draw a B or C, then we would be successful, but an A or D would be bad news for us because each is unique to a set! The *intersect operator* will help us signify this process:
