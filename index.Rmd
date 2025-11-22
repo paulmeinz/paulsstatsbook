@@ -9,7 +9,7 @@ bibliography: [book.bib, packages.bib]
 description: |
   This is a behavioral statistics textbook with additional mathematical depth
   that I wish I had had prior to enrolling in my first graduate level behavior 
-  statistics course.
+  statistics course.|
 link-citations: yes
 ---
 
