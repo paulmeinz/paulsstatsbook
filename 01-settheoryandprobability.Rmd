@@ -14,7 +14,7 @@ S = \{A, B, C, D, E\}
 $$
 That is to say we'll describe the set $S$ with curly braces, and on the inside of the curly braces, there shall be a list of _distinct_ elements of our set. The sample space above is an example of a **discrete** sample space - meaning it either contains a finite number of elements or it is _countable_. In this case, the sample space has a finite number of elements (five to be exact), so we can call it discrete.
 
-On the other hand, describing a countable, but not necessarily finite, sample space can be tricky. My hope is you can gain a small sense for it from my explanation here. We'll see examples of it later. Specifically, a discrete sample space can also contain an _infinite_ number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g. 1, 2, 3, 4, ...). That is, the elements can be "counted", albeit infinitely and forever. This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example. If your discrete set had an infinite number of elements, you could also find nothing between the first and second elements (or any given sequential pair).
+On the other hand, describing a countable, but not necessarily finite, sample space can be tricky. My hope is you can gain a small sense for it from my explanation here. We'll see examples of it later. Specifically, a discrete sample space can also contain an _infinite_ number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g. 1, 2, 3, 4, ...). That is, the elements can be "counted", albeit infinitely and forever. This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In another, more intuitive sense, a discrete sample space - finite or infinite - has elements with nothing in between them. In $S$ above, there is nothing in between A and B, for example. If your discrete set had an infinite number of elements, you could line them up (arbitrarily) with the natural numbers. And, after this alignment, you could find nothing between the first and second elements (or any given sequential pair for that matter).
 
 With that point out of the way, we may also find ourselves sampling from a **continuous** sample space, e.g. all the values between and including 0 and 1 (e.g $0 \leq x \leq 1$). Since you can't enumerate all the values of a continuous sample space as we did $S$ (people have "tried"; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space $R$, then we would specify it as
 
@@ -61,15 +61,28 @@ A set unioned with the null set is itself. The null set has nothing unique to ad
 
 Up to this point, we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how the previously mentioned operators work in the continuous case.
 
-The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$, and let's work with $Y = \{A,B,C\} $ and $Y\subset S$ . The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
+The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$, and let's work with $Y = \{A,B,C\}$ and $Y\subset S$ . The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
 
 $$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
-The complement allows for a wider breadth of operations. Let's again consider our sample space $S$ \@ref(eq:discreteset). Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 ={C,D}$. The first thing we would do in this circumstance is maybe consider all the ways our sample could be unsuccessful (we won't us "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $/cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
+The complement allows for a wider breadth of operations. Let's again consider our sample space $S$ \@ref(eq:discreteset). Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our sample could be unsuccessful (we won't us "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
 
 $$ C_1 \cup C_2 = \{A,B,C,D\} = X $$
 
-The continuous case is pretty much the same although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
+Now that we have our subset of unsuccessful elements, we just take the complement of that:
+
+$$ X^c = \{E\} $$
+Of course, you might have known the answer to this all along, but it's nice to see the steps broken down exactly. You could have written it all in one go using parentheses to specify order of operations, e.g.:
+
+$$ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} $$
+
+Notice how we do the operation in the parentheses before taking the complement. Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful sample as all the things NOT in C_1 and C_2. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
+
+$$ (C_1 \cup C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
+
+The two sets have no overlap, so their intersect is the null set, and the complement of the null set is all the elements in our sample space. Fun!
+
+With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 
 $$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$
