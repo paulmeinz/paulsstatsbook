@@ -133,3 +133,6 @@ There is no simplified way to write this in set notation. Note the intersect of 
 
 
 ### How big is your sample space?
+The introduction of sets was dedicated to a random experiment where we only draw a single element from our sample space. In practice, researchers and statisticians are often sampling from the same sample space (or multiple equivalent sample spaces), repeatedly. Here we'll describe the sample spaces which include multiple draws. Note, for the purposes of our learning, we shall only be discussing sampling with _replacement_. That is, we will be talking about circumstances where the 1st, 2nd, 3rd, ... , nth sample item gets returned to the sample space each time. This is opposed to the circumstance where a draw/realization reduces the size of the sample space each time.
+
+To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (draw) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we conduct two flips. The sample space would be all the possible combinations of heads and tails from the two flips, and an event is some subset of this space. It helps to draw draw a _tree diagram_ to get the gist of it.
