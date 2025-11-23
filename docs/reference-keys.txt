@@ -11,5 +11,5 @@ what-content-to-expect-in-this-book
 what-youll-need-to-know-to-get-the-most-out-of-this-book
 future-editions-of-this-book
 set-theory-and-probability
-sets-and-basic-set-theory
+sets-and-sample-spaces
 how-big-is-your-sample-space

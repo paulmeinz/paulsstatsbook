@@ -4,9 +4,9 @@ In the course of research, behavioral scientists will often take samples of huma
 
 Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstances, and each time the outcome changes. This is referred to as a **random experiment**. In order to familiarize you with some introductory concepts around probability, we're going to start in this context of a random experiment. First, we'll learn about sets and set theory in order to describe our **sample space**. This will also be useful in describing the form that outcomes of a random experiment may take. Then we'll more concretely define the randomness of our experiment by talking about **probability** - the quantification of randomness.
 
-## Sets and Basic Set Theory
+## Sets and Sample Spaces
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and it'll make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call this sample space $S$. Then we would describe it like this:
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the **sample space**. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call this sample space $S$. Then we would describe it like this:
 
 $$
 S = \{A, B, C, D, E\}
@@ -133,6 +133,29 @@ There is no simplified way to write this in set notation. Note the intersect of 
 
 
 ### How big is your sample space?
-The introduction of sets was dedicated to a random experiment where we only draw a single element from our sample space. In practice, researchers and statisticians are often sampling from the same sample space (or multiple equivalent sample spaces), repeatedly. Here we'll describe the sample spaces which include multiple draws. Note, for the purposes of our learning, we shall only be discussing sampling with _replacement_. That is, we will be talking about circumstances where the 1st, 2nd, 3rd, ... , nth sample item gets returned to the sample space each time. This is opposed to the circumstance where a draw/realization reduces the size of the sample space each time.
+The previous introduction to sets was dedicated to a random experiment where we only draw a single element from our sample space. In practice, researchers and statisticians are often sampling repeatedly. In this section we'll talk about how to describe the sample space of an experiment that involves multiple draws. Note, for the purposes of our learning, we shall only be discussing sampling with _replacement_. That is, we will be talking about circumstances where the 1st, 2nd, 3rd, ... , nth sample item gets returned to the sample space prior to the next draw. This is opposed to the circumstance where a draw/realization reduces the size of the sample space each time. For example, suppose we have a sample space, $S = \{A,B,C\}$. On our first sample, we randomly draw an $A$. In sampling without replacement, the sampling space for the next draw would be $\{B,C\}$ (or $\{A\}^c)$ and in sampling with replacement $A$ would be returned to the space.
 
-To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (draw) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we conduct two flips. The sample space would be all the possible combinations of heads and tails from the two flips, and an event is some subset of this space. It helps to draw draw a _tree diagram_ to get the gist of it.
+To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (draw) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we conduct two flips. The sample space would be all the possible permutations of heads and tails from the two flips. It helps to draw draw a _tree diagram_ to get the gist of it.
+
+```{r, echo = FALSE}
+a <- data.frame(x = c(1,2,3,1,2,3,1,2,3,1,2,3), 
+                y = c(1,1.5,1.75,1,1.5,1.25,1,.75,1,1,.75,.50),
+                grp = c('A','A','A','B','B','B','C','C','C','D','D','D'),
+                text = c('','H','H','','H','T','','T','H','','T','T'))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y, group = grp, label = text)) +
+  ggplot2::geom_line() +
+  ggplot2::geom_point() +
+  ggplot2::geom_label() +
+  ggplot2::theme(axis.ticks = ggplot2::element_blank(), 
+                 axis.line = ggplot2::element_blank(),
+                 axis.text = ggplot2::element_blank(),
+                 axis.title = ggplot2::element_blank(),
+                 panel.grid.major = ggplot2::element_blank(),
+                 panel.grid.minor = ggplot2::element_blank())
+
+
+```
+
+
