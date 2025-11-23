@@ -4,6 +4,7 @@ eq:subset
 eq:union
 eq:intersect
 eq:complement
+eq:comp
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
@@ -12,4 +13,4 @@ what-youll-need-to-know-to-get-the-most-out-of-this-book
 future-editions-of-this-book
 set-theory-and-probability
 sets-and-sample-spaces
-how-big-is-your-sample-space
+repeated-samples-and-sets
