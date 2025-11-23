@@ -91,7 +91,10 @@ statistics course.|</p>" />
 </ul></li>
 <li class="chapter" data-level="2" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html"><i class="fa fa-check"></i><b>2</b> Set Theory and Probability</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#sets-and-basic-set-theory"><i class="fa fa-check"></i><b>2.1</b> Sets and Basic Set Theory</a></li>
+<li class="chapter" data-level="2.1" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#sets-and-basic-set-theory"><i class="fa fa-check"></i><b>2.1</b> Sets and Basic Set Theory</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#how-big-is-your-sample-space"><i class="fa fa-check"></i><b>2.1.1</b> How big is your sample space?</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -131,7 +134,7 @@ That is to say we’ll describe the set <span class="math inline">\(S\)</span> w
 R = \{x\, | \, 0 \leq x \leq 1 \}
 \tag{2.2}
 \]</span></p>
-<p>The inclusion criteria for the set is written after the <span class="math inline">\(|\)</span> in the curly braces. The <span class="math inline">\(|\)</span> can be read loosely as meaning “where”, so reading the whole thing in the curly braces left to right you get x <em>where</em> <span class="math inline">\(0 \leq x \leq 1\)</span>. Therefore, our set is all the <span class="math inline">\(x\)</span>’s from 0 to 1. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless discuss these spaces with slightly less mathematical depth.</p>
+<p>The inclusion criteria for the set is written after the <span class="math inline">\(|\)</span> in the curly braces. The <span class="math inline">\(|\)</span> can be read loosely as meaning “where”, so reading the whole thing in the curly braces left to right you get x <em>where</em> <span class="math inline">\(0 \leq x \leq 1\)</span>. Therefore, our set is all the <span class="math inline">\(x\)</span>’s from 0 to 1. Note that I will occasionally drop the <span class="math inline">\(x\)</span> and <span class="math inline">\(|\)</span> when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless discuss these spaces with slightly less mathematical depth.</p>
 <p>Having discussed discrete and continuous sample spaces, it is now time to turn our attention towards sampling. Suppose we are randomly drawing a single item from our sample space <span class="math inline">\(S = \{A, B, C, D, E\}\)</span>. We shall call a particular outcome an <em>event</em>. Events are described by a <em>subset</em> of the sample space. For example, we might say the event is <span class="math inline">\(C = \{A, B, C\}\)</span>, and if our sample lands in the that subset (as either A, B, or C), then we shall say the event “occurred”. For the sake of brevity, and positivity, I will referred to the occurrence of an event as a “success” (congratulations all around!). You can indicate a set is a subset by:</p>
 <p><span class="math display" id="eq:subset">\[ C \subset S
 \tag{2.3} \]</span></p>
@@ -161,12 +164,24 @@ Since we’re being creative, let’s consider another scenario (and a new opera
 <p><span class="math display">\[ X^c = \{E\} \]</span>
 Of course, you might have known the answer to this all along, but it’s nice to see the steps broken down exactly. You could have written it all in one go using parentheses to specify order of operations, e.g.:</p>
 <p><span class="math display">\[ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} \]</span></p>
-<p>Notice how we do the operation in the parentheses before taking the complement. Let’s try one more example with <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. Let’s say we defined a successful sample as all the things NOT in C_1 and C_2. Notice the key word “and”. Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:</p>
+<p>Notice how we do the operation in the parentheses before taking the complement. Let’s try one more example with <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. Let’s say we defined a successful sample as all the things NOT in <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span>. Notice the key word “and”. Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:</p>
 <p><span class="math display">\[ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} \]</span></p>
 <p>The two sets have no overlap, so their intersect is the null set, and the complement of the null set is all the elements in our sample space. Fun!</p>
 <p>With a good understanding of some of the basic operators and sets, let’s turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space <span class="math inline">\(S = \{x\,|\,0 \leq x \leq 10 \}\)</span> and we are interested in if the event lands in <span class="math inline">\(C_1 = \{x\,|\,0 \leq x \leq 2 \}\)</span> OR <span class="math inline">\(C_2 = \{x\,|\,2 \leq x \leq 5 \}\)</span>. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:</p>
 <p><span class="math display">\[ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} \]</span></p>
+<p>Let’s keep the same continuous sample space and subsets as above, and this time let’s look at the intersect of the two sets:</p>
+<p><span class="math display">\[ \{0 \leq x \leq 2 \}\:\cap\:\{2 \leq x \leq 5\} = \{2\} \]</span></p>
+<p>The two sets only overlap at exactly <span class="math inline">\(x = 2\)</span>. The examples are numerous. Let’s do a couple more so you can get a sense for it. Suppose we have a sample space <span class="math inline">\(Q = \{x\,|\, 5 \leq x \leq 10\}\)</span> and define <span class="math inline">\(C \subset Q\)</span> where <span class="math inline">\(C = \{x\,|\, 5 \leq x &lt; 7\}\)</span>. That is to say, <span class="math inline">\(C\)</span> is a subset of Q, and its interval includes the lower side (5) but it doesn’t include the upper side (7). What is the complement?</p>
+<p><span class="math display">\[ C^c = \{5 \leq x &lt; 7\}^c = \{7 \leq x \leq 10\} \]</span>
+The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset <span class="math inline">\(C\)</span>, and the bottom line represents the complement. The open circle at the end of our subset <span class="math inline">\(C\)</span> indicates that the value 7 is not included in its range. This is in contrast to the complement line below - which has a solid black dot indicating 7’s inclusion. Thus the complement of <span class="math inline">\(C\)</span> ranges from 7 to 10.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>One more comment is worth a mention with regards to continuous sample spaces. Suppose we have two subsets of our space <span class="math inline">\(Q\)</span> that don’t overlap in any way. For example, take <span class="math inline">\(C_1 = \{x\,|\, 5 \leq x &lt; 7\}\)</span> and <span class="math inline">\(C_2 = \{x\,|\, 9 \leq x \leq 10\}\)</span>. Then you would simply write their union as:</p>
+<p><span class="math display">\[ \{\, 5 \leq x &lt; 7\} \cup \{\, 9 \leq x \leq 10\}\]</span>
+There is no simplified way to write this in set notation. The intersect of these two sets would be the <span class="math inline">\(\{\}\)</span>.</p>
+<div id="how-big-is-your-sample-space" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> How big is your sample space?<a href="set-theory-and-probability.html#how-big-is-your-sample-space" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
+</div>
 </div>
 </div>
             </section>

@@ -23,7 +23,7 @@ R = \{x\, | \, 0 \leq x \leq 1 \}
 (\#eq:continuousset)
 $$
 
-The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless discuss these spaces with slightly less mathematical depth. 
+The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. Note that I will occasionally drop the $x$ and $|$ when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless discuss these spaces with slightly less mathematical depth. 
 
 Having discussed discrete and continuous sample spaces, it is now time to turn our attention towards sampling. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. We shall call a particular outcome an _event_. Events are described by a *subset* of the sample space. For example, we might say the event is $C = \{A, B, C\}$, and if our sample lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will referred to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset by:
 
@@ -77,7 +77,7 @@ Of course, you might have known the answer to this all along, but it's nice to s
 
 $$ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} $$
 
-Notice how we do the operation in the parentheses before taking the complement. Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful sample as all the things NOT in C_1 and C_2. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
+Notice how we do the operation in the parentheses before taking the complement. Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful sample as all the things NOT in $C_1$ and $C_2$. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
 
 $$ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
 
@@ -86,3 +86,48 @@ The two sets have no overlap, so their intersect is the null set, and the comple
 With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
 
 $$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$
+
+Let's keep the same continuous sample space and subsets as above, and this time let's look at the intersect of the two sets:
+
+$$ \{0 \leq x \leq 2 \}\:\cap\:\{2 \leq x \leq 5\} = \{2\} $$
+
+The two sets only overlap at exactly $x = 2$. The examples are numerous. Let's do a couple more so you can get a sense for it. Suppose we have a sample space $Q = \{x\,|\, 5 \leq x \leq 10\}$ and define $C \subset Q$ where $C = \{x\,|\, 5 \leq x < 7\}$. That is to say, $C$ is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement?
+
+$$ C^c = \{5 \leq x < 7\}^c = \{7 \leq x \leq 10\} $$
+The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset $C$, and the bottom line represents the complement. The open circle at the end of our subset $C$ indicates that the value 7 is not included in its range. This is in contrast to the complement line below - which has a solid black dot indicating 7's inclusion. Thus the complement of $C$ ranges from 7 to 10.
+
+```{r, echo = FALSE}
+x <- c(5,7)
+y <- c(.3,.3)
+C <- data.frame(x,y)
+
+C2 <- data.frame(x = c(7,10), y = c(.1,.1))
+
+lines <- ggplot2::ggplot(C, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_line() +
+  ggplot2::scale_y_continuous(limits = c(0,1), expand = ggplot2::expansion(c(.1,.1))) +
+  ggplot2::geom_line(data = C2, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point(x = 7, y = .3, shape = 21, fill = 'white', size = 2.5) +
+  ggplot2::geom_point(x = 5, y = .3, shape = 21, fill = 'black', size = 2.5) +
+  ggplot2::geom_point(x = 7, y = .1, shape = 21, fill = 'black', size = 2.5) +
+  ggplot2::geom_point(x = 10, y = .1, shape = 21, fill = 'black', size = 2.5) +
+  ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), 
+                 axis.line.y = ggplot2::element_blank(),
+                 axis.text.y = ggplot2::element_blank(),
+                 axis.title.y = ggplot2::element_blank(),
+                 axis.title.x = ggplot2::element_text(size = 12, face = 'bold'),
+                 panel.grid.major = ggplot2::element_blank(),
+                 panel.grid.minor = ggplot2::element_blank(),
+                 axis.text.x = ggplot2::element_text(size = 12, face = 'bold')) +
+  ggplot2::coord_cartesian(xlim = c(5,10), ylim = c(0,.4))
+
+print(lines)
+```
+
+One more comment is worth a mention with regards to continuous sample spaces. Suppose we have two subsets of our space $Q$ that don't overlap in any way. For example, take $C_1 = \{x\,|\, 5 \leq x < 7\}$ and $C_2 = \{x\,|\, 9 \leq x \leq 10\}$. Then you would simply write their union as:
+
+$$ \{\, 5 \leq x < 7\} \cup \{\, 9 \leq x \leq 10\}$$
+There is no simplified way to write this in set notation. The intersect of these two sets would be the $\{\}$.
+
+
+### How big is your sample space?
