@@ -49,24 +49,26 @@ Unlike $\cup$, the intersect operator represents **and**. That is to say, if we 
 
 $$ C_1 \cap C_2 = \{A, B\} \cap \{C, D\} = \{\} $$
 
-Wow, that was an interesting result! Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets, and as a result, we get a very special set - the *null set* - $\{\}$. The null set is the set with zero elements, and it is a member of every set. It's fun and interesting to see how it works with our operators. For example:
+Wow, that was an interesting result! Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets. The are two lessons to learn from this. First, we get a very special set - a *null set* - $\{\}$ - which is a set with zero elements. Second, when the intersect of sets results in a null set (a.k.a. they have no overlap), then the sets are called **mutually exclusive**.
+
+Regarding the former point, it's fun and interesting to see how a null set works with our operators. For example:
 
 $$ \{A,B,C,D,E\} \cap \{\} = \{\} $$ 
 
-The null set intersected with any other set is itself. A set with something in it can share nothing with a set that has no elements at all. In a way, intersecting the empty set with any other set is like multiplying a number by zero. Next, what do you suppose happens when we union the null set with something else? Let's try it out:
+A null set intersected with any other set is itself. A set with something in it can share nothing with a set that has no elements at all. In a way, intersecting the empty set with any other set is like multiplying a number by zero. On the other hand, what do you suppose happens when we union a null set with something else? Let's try it out:
 
 $$ \{A,B,C,D,E\} \cup \{\} = \{A,B,C,D,E\} $$
 
-A set unioned with the null set is itself. The null set has nothing unique to add to our something set. Although the null set is really cool (in my opinion; and I hope your opinion too), working with it is (metaphorically speaking) like talking to the most boring person in the world. You have nothing in common with them ($\cap$), and they have nothing to add ($\cup$). And, with that, you have learned your first set theory insult.
+A set unioned with a null set is itself. A null set has nothing unique to add to our "something set". Although the null set is really cool (in my opinion; and I hope your opinion too), working with it is, metaphorically speaking, like talking to the most boring person in the world. You have nothing in common with them ($\cap$), and they have nothing to add ($\cup$). And, with that, you have learned your first set theory insult.
 
 Up to this point, we've learned how to describe our sample space, the concept of an event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how the previously mentioned operators work in the continuous case.
 
-The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$, and let's work with $Y = \{A,B,C\}$ and $Y\subset S$ . The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
+The complement of a subset describes all the elements of a sample space _not_ in that subset. For the sake of consistency, we'll keep using our sample space $S$ \@ref(eq:discreteset), and let's work with $Y = \{A,B,C\}$, $Y\subset S$. The complement of that subset in the sample space would be $\{D, E\}$. The operation of taking the complement of a subset is indicated by:
 
 $$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
-The complement allows for a wider breadth of operations. Let's again consider our sample space $S$ \@ref(eq:discreteset). Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our sample could be unsuccessful (we won't us "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
+The complement allows for a wider breadth of operations. Let's again consider our sample space $S$. Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our sample could be unsuccessful (we won't us "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
 
 $$ C_1 \cup C_2 = \{A,B,C,D\} = X $$
 
@@ -81,9 +83,9 @@ Notice how we do the operation in the parentheses before taking the complement. 
 
 $$ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
 
-The two sets have no overlap, so their intersect is the null set, and the complement of the null set is all the elements in our sample space. Fun!
+The two sets have no overlap, so their intersect is a null set, and the complement of the null set is all the elements in our sample space.
 
-With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our sample landed anywhere from zero to five. In other words:
+With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the event lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful sample here would occur if our realized element landed anywhere from zero to five. In other words:
 
 $$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$
 
@@ -91,10 +93,10 @@ Let's keep the same continuous sample space and subsets as above, and this time 
 
 $$ \{0 \leq x \leq 2 \}\:\cap\:\{2 \leq x \leq 5\} = \{2\} $$
 
-The two sets only overlap at exactly $x = 2$. The examples are numerous. Let's do a couple more so you can get a sense for it. Suppose we have a sample space $Q = \{x\,|\, 5 \leq x \leq 10\}$ and define $C \subset Q$ where $C = \{x\,|\, 5 \leq x < 7\}$. That is to say, $C$ is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement?
+The two sets only overlap at exactly $x = 2$, so their intersect is just a set with the value 2. Let's do a couple more so you can get a sense for it. Suppose we have a sample space $Q = \{x\,|\, 5 \leq x \leq 10\}$ and define $C \subset Q$ where $C = \{x\,|\, 5 \leq x < 7\}$. That is to say, $C$ is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement?
 
 $$ C^c = \{5 \leq x < 7\}^c = \{7 \leq x \leq 10\} $$
-The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset $C$, and the bottom line represents the complement. The open circle at the end of our subset $C$ indicates that the value 7 is not included in its range. This is in contrast to the complement line below - which has a solid black dot indicating 7's inclusion. Thus the complement of $C$ ranges from 7 to 10.
+The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset $C$, and the bottom line represents the complement. The open circle at the end of our subset $C$ indicates that the value 7 is not included in its range. The elements of C are strictly less than 7. This is in contrast to the complement line below - which has a solid black dot indicating 7's inclusion due to its exclusion from $C$. Thus the complement of $C$ ranges from 7 to 10.
 
 ```{r, echo = FALSE}
 x <- c(5,7)
@@ -127,7 +129,7 @@ print(lines)
 One more comment is worth a mention with regards to continuous sample spaces. Suppose we have two subsets of our space $Q$ that don't overlap in any way. For example, take $C_1 = \{x\,|\, 5 \leq x < 7\}$ and $C_2 = \{x\,|\, 9 \leq x \leq 10\}$. Then you would simply write their union as:
 
 $$ \{\, 5 \leq x < 7\} \cup \{\, 9 \leq x \leq 10\}$$
-There is no simplified way to write this in set notation. The intersect of these two sets would be the $\{\}$.
+There is no simplified way to write this in set notation. Note the intersect of these two sets would be $\{\}$ - a null set.
 
 
 ### How big is your sample space?
