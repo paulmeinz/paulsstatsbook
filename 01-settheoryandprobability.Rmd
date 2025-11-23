@@ -103,7 +103,7 @@ x <- c(5,7)
 y <- c(.3,.3)
 C <- data.frame(x,y)
 
-C2 <- data.frame(x = c(7,10), y = c(.1,.1))
+C2 <- data.frame(x = c(7,10), y = c(.2,.2))
 
 lines <- ggplot2::ggplot(C, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_line() +
@@ -111,8 +111,8 @@ lines <- ggplot2::ggplot(C, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_line(data = C2, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_point(x = 7, y = .3, shape = 21, fill = 'white', size = 2.5) +
   ggplot2::geom_point(x = 5, y = .3, shape = 21, fill = 'black', size = 2.5) +
-  ggplot2::geom_point(x = 7, y = .1, shape = 21, fill = 'black', size = 2.5) +
-  ggplot2::geom_point(x = 10, y = .1, shape = 21, fill = 'black', size = 2.5) +
+  ggplot2::geom_point(x = 7, y = .2, shape = 21, fill = 'black', size = 2.5) +
+  ggplot2::geom_point(x = 10, y = .2, shape = 21, fill = 'black', size = 2.5) +
   ggplot2::theme(axis.ticks.y = ggplot2::element_blank(), 
                  axis.line.y = ggplot2::element_blank(),
                  axis.text.y = ggplot2::element_blank(),
