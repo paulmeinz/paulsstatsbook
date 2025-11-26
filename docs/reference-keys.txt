@@ -6,6 +6,7 @@ eq:intersect
 eq:complement
 eq:permutations
 eq:addlaw
+eq:setprop
 preface
 you-can-learn-statistics
 why-i-wrote-this-book

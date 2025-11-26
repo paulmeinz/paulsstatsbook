@@ -172,23 +172,51 @@ Note: If we had sampled from several sample spaces, all with a different number 
 I will end this section with an important discussion on notation. As you can see from \@ref(eq:permutations), the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - $\{HH,HT,TH,TT\}$. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - $\{HH,HT\}$. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g. 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like $\{H \: on \: 1st \: flip\}$, because I don't have the rest of my natural born life to list permutations (and you don't have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.
 
 ## What is probability?
-Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. They can't go higher than one or less than zero - unless you are making a joke about your favorite basketball team's chances at winning the NBA playoffs. Exactness doesn't matter as much for humor as it does for mathematics.  
+Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. Indeed a "percentage of time" greater than 1 or less than zero would be nonsensical.  
 
-At any rate, in the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the *probability set operator* - $P()$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules the probability set operator uses is often referred to as a probability distribution. We'll talk about probability distributions in the next chapter, and for now we'll just focus on probability and the probability set operator. For the most part, we'll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.
+In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the **probability set operator** - $P()$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a **probability distribution**. We'll talk about probability distributions in the next chapter, and for now we'll just focus on probability and the probability set operator. And, we'll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.
 
 Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
 
 $$ P(C) = P(\{HH\}) = 1/4 $$
 
-As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$, how might we go about this? Well, lucky for us, there is the *law of addition* for probability. For two events $A$ and $B$ for which $A \cup B = \{\}$ (e.g. they are mutually exclusive):
+As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$, how might we go about this? Well, lucky for us, there is the *law of addition* for probability. For two events $A$ and $B$ for which $A \cap B = \{\}$ (e.g. they are mutually exclusive):
 
 $$ P(A \cup B) = P(A) + P(B) 
 (\#eq:addlaw)$$
 
-For convenience, I sometimes refer to this law as the law of "or", because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our event $C$ above? Well, every event can just be written as a union of mutually exclusive events. In our case,
+For convenience, I sometimes refer to this law as the "law of or", because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our event $C$ above? Well, every event can just be written as a union of mutually exclusive events. In our case,
 
 $$ C = \{HH,HT\} = \{HH\} \cup \{HT\} $$
 
 And with this in mind, we can apply the law of addition:
 
-$$ P(\{HH\} \cup \{HT\}) = P(HH) + P(HT) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} $$
+$$ P(\{HH\} \cup \{HT\}) = P(\{HH\}) + P(\{HT\}) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} $$
+
+Let's try another example with the same sample space and random experiment as above. Suppose we were interested in the probability of at least one head. In this case, a successful outcome would be HT, TH, or HH, whereas TT would be unsuccessful. Thus, the probability of $C = \{HT, TH, HH\}$ is
+
+$$ P(\{HT,TH, HH\}) = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = \frac{3}{4}$$
+
+In the last example, you could have also used a handy property of the probability set function. Namely, for some sample space $S$:
+
+$$ P(S) = 1 
+(\#eq:setprop)$$
+
+This property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the sample space has at least one H. So, let's say that the event $C$ is the event that we get at least one head, and let's also say that $S$ is our full sample space:
+
+Observe that:
+$$ C \cup \{TT\} = S $$
+
+So then we can do this:
+$$
+\begin{align} 
+P(C \cup \{TT\}) &= P(S) = 1 \\
+P(C) + P(\{TT\}) &= 1 \\
+P(C) + P(\{TT\}) - P(\{TT\}) &= 1 - P(\{TT\}) \\
+P(C) &= 1 - P(\{TT\}) \\
+P(C) &= 1 - \frac{1}{4} = \frac{3}{4}
+\end{align}$$
+
+So without listing out all the permutations of heads and tails for our two coins, we've calculated what we need.
+
+Okay, now it's time for the truth. I've told you a small lie and left out an important part of the law of addition. I'll show you what I mean. Let's define our sample space to be $S$ = {A,B,C}, and suppose each outcome has a probability of 1/3. Define $C_1 = \{A,B\}$ or $C_2 = \{B,C\}$. We would like to know the probability of our outcome landing in C_1 or C_2. However, remember our current version of the "law of or" only works for mutually exclusive sets, and $C_1 \cap C_2 = \{B\}$. That is to say they aren't mutually exclusive. We need to make a small addition to the law of addition. 

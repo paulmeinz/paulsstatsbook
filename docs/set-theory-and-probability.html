@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Set Theory and Probability | Advanced Behavioral Statistics</title>
+  <title>Chapter 2 Set Theory and Probability | Behavioral Statistics: Theory and Application</title>
   <meta name="description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
 that I wish I had had prior to enrolling in my first graduate level behavior
 statistics course.|</p>" />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Set Theory and Probability | Advanced Behavioral Statistics" />
+  <meta property="og:title" content="Chapter 2 Set Theory and Probability | Behavioral Statistics: Theory and Application" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
@@ -19,7 +19,7 @@ statistics course.|</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Set Theory and Probability | Advanced Behavioral Statistics" />
+  <meta name="twitter:title" content="Chapter 2 Set Theory and Probability | Behavioral Statistics: Theory and Application" />
   
   <meta name="twitter:description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
 that I wish I had had prior to enrolling in my first graduate level behavior
@@ -109,7 +109,7 @@ statistics course.|</p>" />
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Advanced Behavioral Statistics</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Behavioral Statistics: Theory and Application</a>
           </h1>
         </div>
 
@@ -195,17 +195,36 @@ There is no simplified way to write this in set notation. Note the intersect of 
 </div>
 <div id="what-is-probability" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> What is probability?<a href="set-theory-and-probability.html#what-is-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the <strong>relative frequency approach</strong> to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from <span class="math inline">\(0\leq x\leq1\)</span>. They can’t go higher than one or less than zero - unless you are making a joke about your favorite basketball team’s chances at winning the NBA playoffs. Exactness doesn’t matter as much for humor as it does for mathematics.</p>
-<p>At any rate, in the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we’ll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event <span class="math inline">\(C\)</span>, then the <em>probability set operator</em> - <span class="math inline">\(P()\)</span> - takes <span class="math inline">\(C\)</span>, and based on a set of rules, returns a probability for that event. The set of rules the probability set operator uses is often referred to as a probability distribution. We’ll talk about probability distributions in the next chapter, and for now we’ll just focus on probability and the probability set operator. For the most part, we’ll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.</p>
+<p>Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the <strong>relative frequency approach</strong> to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from <span class="math inline">\(0\leq x\leq1\)</span>. Indeed a “percentage of time” greater than 1 or less than zero would be nonsensical.</p>
+<p>In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we’ll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event <span class="math inline">\(C\)</span>, then the <strong>probability set operator</strong> - <span class="math inline">\(P()\)</span> - takes <span class="math inline">\(C\)</span>, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a <strong>probability distribution</strong>. We’ll talk about probability distributions in the next chapter, and for now we’ll just focus on probability and the probability set operator. And, we’ll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.</p>
 <p>Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was <span class="math inline">\(S = \{HH,HT,TH,TT\}\)</span>. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event <span class="math inline">\(C = \{HH\}\)</span> would therefore be</p>
 <p><span class="math display">\[ P(C) = P(\{HH\}) = 1/4 \]</span></p>
-<p>As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - <span class="math inline">\(C = \{HH,HT\}\)</span>, how might we go about this? Well, lucky for us, there is the <em>law of addition</em> for probability. For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> for which <span class="math inline">\(A \cup B = \{\}\)</span> (e.g. they are mutually exclusive):</p>
+<p>As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - <span class="math inline">\(C = \{HH,HT\}\)</span>, how might we go about this? Well, lucky for us, there is the <em>law of addition</em> for probability. For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> for which <span class="math inline">\(A \cap B = \{\}\)</span> (e.g. they are mutually exclusive):</p>
 <p><span class="math display" id="eq:addlaw">\[ P(A \cup B) = P(A) + P(B)
 \tag{2.8}\]</span></p>
-<p>For convenience, I sometimes refer to this law as the law of “or”, because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our event <span class="math inline">\(C\)</span> above? Well, every event can just be written as a union of mutually exclusive events. In our case,</p>
+<p>For convenience, I sometimes refer to this law as the “law of or”, because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our event <span class="math inline">\(C\)</span> above? Well, every event can just be written as a union of mutually exclusive events. In our case,</p>
 <p><span class="math display">\[ C = \{HH,HT\} = \{HH\} \cup \{HT\} \]</span></p>
 <p>And with this in mind, we can apply the law of addition:</p>
-<p><span class="math display">\[ P(\{HH\} \cup \{HT\}) = P(HH) + P(HT) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} \]</span></p>
+<p><span class="math display">\[ P(\{HH\} \cup \{HT\}) = P(\{HH\}) + P(\{HT\}) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} \]</span></p>
+<p>Let’s try another example with the same sample space and random experiment as above. Suppose we were interested in the probability of at least one head. In this case, a successful outcome would be HT, TH, or HH, whereas TT would be unsuccessful. Thus, the probability of <span class="math inline">\(C = \{HT, TH, HH\}\)</span> is</p>
+<p><span class="math display">\[ P(\{HT,TH, HH\}) = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = \frac{3}{4}\]</span></p>
+<p>In the last example, you could have also used a handy property of the probability set function. Namely, for some sample space <span class="math inline">\(S\)</span>:</p>
+<p><span class="math display" id="eq:setprop">\[ P(S) = 1
+\tag{2.9}\]</span></p>
+<p>This property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don’t need to go through the rigmarole of enumerating all the combinations with an H. We know there’s exactly one combination with no heads - TT - and the rest of the sample space has at least one H. So, let’s say that the event <span class="math inline">\(C\)</span> is the event that we get at least one head, and let’s also say that <span class="math inline">\(S\)</span> is our full sample space:</p>
+<p>Observe that:
+<span class="math display">\[ C \cup \{TT\} = S \]</span></p>
+<p>So then we can do this:
+<span class="math display">\[
+\begin{align}
+P(C \cup \{TT\}) &amp;= P(S) = 1 \\
+P(C) + P(\{TT\}) &amp;= 1 \\
+P(C) + P(\{TT\}) - P(\{TT\}) &amp;= 1 - P(\{TT\}) \\
+P(C) &amp;= 1 - P(\{TT\}) \\
+P(C) &amp;= 1 - \frac{1}{4} = \frac{3}{4}
+\end{align}\]</span></p>
+<p>So without listing out all the permutations of heads and tails for our two coins, we’ve calculated what we need.</p>
+<p>Okay, now it’s time for the truth. I’ve told you a small lie and left out an important part of the law of addition. I’ll show you what I mean. Let’s define our sample space to be <span class="math inline">\(S\)</span> = {A,B,C}, and suppose each outcome has a probability of 1/3. Define <span class="math inline">\(C_1 = \{A,B\}\)</span> or <span class="math inline">\(C_2 = \{B,C\}\)</span>. We would like to know the probability of our outcome landing in C_1 or C_2. However, remember our current version of the “law of or” only works for mutually exclusive sets, and <span class="math inline">\(C_1 \cap C_2 = \{B\}\)</span>. That is to say they aren’t mutually exclusive. We need to make a small addition to the law of addition.</p>
 
 </div>
 </div>
