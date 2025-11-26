@@ -174,14 +174,21 @@ I will end this section with an important discussion on notation. As you can see
 ## What is probability?
 Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. They can't go higher than one or less than zero - unless you are making a joke about your favorite basketball team's chances at winning the NBA playoffs. Exactness doesn't matter as much for humor as it does for mathematics.  
 
-At any rate, in the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the *probability set operator* - $P()$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules the probability set operator uses is often referred to as a probability distribution. We'll talk about probability distributions in the next chapter, and for now we'll just focus on probability and the probability set operator.
+At any rate, in the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the *probability set operator* - $P()$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules the probability set operator uses is often referred to as a probability distribution. We'll talk about probability distributions in the next chapter, and for now we'll just focus on probability and the probability set operator. For the most part, we'll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.
 
-Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the events in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
+Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
 
 $$ P(C) = P(\{HH\}) = 1/4 $$
 
-As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$, how might we go about this? Well, lucky for us, there is the *law of addition*. For two events $A$ and $B$ for which $A \cup B = \{\}$ (e.g. they are mutually exclusive):
+As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$, how might we go about this? Well, lucky for us, there is the *law of addition* for probability. For two events $A$ and $B$ for which $A \cup B = \{\}$ (e.g. they are mutually exclusive):
 
 $$ P(A \cup B) = P(A) + P(B) 
 (\#eq:addlaw)$$
 
+For convenience, I sometimes refer to this law as the law of "or", because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our event $C$ above? Well, every event can just be written as a union of mutually exclusive events. In our case,
+
+$$ C = \{HH,HT\} = \{HH\} \cup \{HT\} $$
+
+And with this in mind, we can apply the law of addition:
+
+$$ P(\{HH\} \cup \{HT\}) = P(HH) + P(HT) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} $$

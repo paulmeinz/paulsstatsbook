@@ -5,6 +5,7 @@ eq:union
 eq:intersect
 eq:complement
 eq:permutations
+eq:addlaw
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
