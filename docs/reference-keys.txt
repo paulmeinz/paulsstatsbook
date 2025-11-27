@@ -7,6 +7,7 @@ eq:complement
 eq:permutations
 eq:addlaw
 eq:setprop
+eq:additionnon
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
@@ -17,3 +18,4 @@ set-theory-and-probability
 sets-and-sample-spaces
 repeated-samples
 what-is-probability
+conditional-probability-and-independence

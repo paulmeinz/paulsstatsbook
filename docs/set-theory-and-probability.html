@@ -96,6 +96,7 @@ statistics course.|</p>" />
 <li class="chapter" data-level="2.1.1" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#repeated-samples"><i class="fa fa-check"></i><b>2.1.1</b> Repeated Samples</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#what-is-probability"><i class="fa fa-check"></i><b>2.2</b> What is probability?</a></li>
+<li class="chapter" data-level="2.3" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#conditional-probability-and-independence"><i class="fa fa-check"></i><b>2.3</b> Conditional Probability and Independence</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -196,7 +197,7 @@ There is no simplified way to write this in set notation. Note the intersect of 
 <div id="what-is-probability" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> What is probability?<a href="set-theory-and-probability.html#what-is-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Near everyone has an intuitive sense of probability. In the crisp fall of the California foothills, you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the <strong>relative frequency approach</strong> to probability. In this approach, you can think of probability as a percentage - out of many many random experiments - that a particular outcome or event would occur. Within this approach, probabilities can take values anywhere from <span class="math inline">\(0\leq x\leq1\)</span>. Indeed a “percentage of time” greater than 1 or less than zero would be nonsensical.</p>
-<p>In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we’ll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event <span class="math inline">\(C\)</span>, then the <strong>probability set operator</strong> - <span class="math inline">\(P()\)</span> - takes <span class="math inline">\(C\)</span>, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a <strong>probability distribution</strong>. We’ll talk about probability distributions in the next chapter, and for now we’ll just focus on probability and the probability set operator. And, we’ll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.</p>
+<p>In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we’ll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event <span class="math inline">\(C\)</span>, then the <strong>probability set operator</strong> - <span class="math inline">\(P()\)</span> - takes <span class="math inline">\(C\)</span>, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a <strong>probability distribution</strong>. We’ll talk about probability distributions in the next chapter, but for now we’ll just focus on probability and the probability set operator. And, we’ll consider just the discrete sample space in this section. The continuous case will take a bit more explanation.</p>
 <p>Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was <span class="math inline">\(S = \{HH,HT,TH,TT\}\)</span>. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event <span class="math inline">\(C = \{HH\}\)</span> would therefore be</p>
 <p><span class="math display">\[ P(C) = P(\{HH\}) = 1/4 \]</span></p>
 <p>As such, in this random experiment you might expect about 25% of the time the outcome would be two heads. But what about the event we discussed at the end of last section? Suppose we wanted to know the probability of getting a heads on the first flip - <span class="math inline">\(C = \{HH,HT\}\)</span>, how might we go about this? Well, lucky for us, there is the <em>law of addition</em> for probability. For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> for which <span class="math inline">\(A \cap B = \{\}\)</span> (e.g. they are mutually exclusive):</p>
@@ -222,9 +223,41 @@ P(C) + P(\{TT\}) &amp;= 1 \\
 P(C) + P(\{TT\}) - P(\{TT\}) &amp;= 1 - P(\{TT\}) \\
 P(C) &amp;= 1 - P(\{TT\}) \\
 P(C) &amp;= 1 - \frac{1}{4} = \frac{3}{4}
-\end{align}\]</span></p>
+\end{align}
+\]</span></p>
 <p>So without listing out all the permutations of heads and tails for our two coins, we’ve calculated what we need.</p>
-<p>Okay, now it’s time for the truth. I’ve told you a small lie and left out an important part of the law of addition. I’ll show you what I mean. Let’s define our sample space to be <span class="math inline">\(S\)</span> = {A,B,C}, and suppose each outcome has a probability of 1/3. Define <span class="math inline">\(C_1 = \{A,B\}\)</span> or <span class="math inline">\(C_2 = \{B,C\}\)</span>. We would like to know the probability of our outcome landing in C_1 or C_2. However, remember our current version of the “law of or” only works for mutually exclusive sets, and <span class="math inline">\(C_1 \cap C_2 = \{B\}\)</span>. That is to say they aren’t mutually exclusive. We need to make a small addition to the law of addition.</p>
+<p>Okay, now it’s time for the truth. I’ve told you a small lie and left out an important part of the law of addition. I’ll show you what I mean. Let’s define our sample space to be <span class="math inline">\(S\)</span> = {A,B,C}, and suppose each outcome has a probability of 1/3. Define two events <span class="math inline">\(C_1 = \{A,B\}\)</span> and <span class="math inline">\(C_2 = \{B,C\}\)</span>. We would like to know the probability of our outcome landing in <span class="math inline">\(C_1\)</span> or <span class="math inline">\(C_2\)</span>. However, remember our current version of the law of addition only works for mutually exclusive sets, but <span class="math inline">\(C_1 \cap C_2 = \{B\}\)</span>. That is to say they aren’t mutually exclusive. We need to make a small addition to the law of addition.</p>
+<p><span class="math display" id="eq:additionnon">\[
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+\tag{2.10}
+\]</span>
+If we were to simply sum the events as if they were mutually exclusive, we would count the probability of <span class="math inline">\(C_1 \cap C_2 = {B}\)</span> twice. If you don’t believe me, look at this</p>
+<p><span class="math display">\[
+P(C_1) = P(\{A,B\}) = P(A) + P(B) \\
+P(C_2) = P(\{B,C\}) = P(B) + P(C) \\
+\]</span>
+So if we applied our first version of the law of addition, then</p>
+<p><span class="math display">\[
+\begin{align}
+P(C_1 \cup C_2) &amp;= P(C_1) + P(C_2) \\
+&amp;= P(A) + P(B) + P(B) + P(C) \\
+&amp;= P(A) + 2P(B) + P(C)
+\end{align}
+\]</span>
+<span class="math inline">\(P(B)\)</span> is the probability that the outcome of our random experiment falls in <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> , and we’ve got one too many! Why do we have one too many? Because we would be successful if our outcome landed in the union of each of the two events <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> (<span class="math inline">\(C_1\)</span> OR <span class="math inline">\(C_2\)</span>), and that union is <span class="math inline">\(\{A,B,C\}\)</span>. This means that we should really only be counting the probability of B one time (if you aren’t quite getting this, take a look at how we calculated the probability of an event earlier). So let’s put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space</p>
+<p><span class="math display">\[
+\begin{align}
+P(C_1 \cup C_2) &amp;= P(C_1) + P(C_2) - P(C_1 \cap C_2) \\
+P(C_1 \cup C_2) &amp;= P(\{A,B\}) + P(\{B,C\}) - P(\{B\}) \\
+P(C_1 \cup C_2) &amp;= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
+\end{align}
+\]</span></p>
+<p>Using the full version of the law of addition helps to make clear why we can drop the last term for mutually exclusive sets <a href="set-theory-and-probability.html#eq:addlaw">(2.8)</a>. Suppose we have two mutually exclusive events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, each a subset of some sample space <span class="math inline">\(S\)</span>. Then, because they are mutually exclusive, <span class="math inline">\(A \cap B = \{\}\)</span>. And, indeed, the probability of the null set - <span class="math inline">\(P(\{\})\)</span> - is zero. You can’t draw nothing on a random experiment. So in the case of mutually exclusive events</p>
+<p><span class="math display">\[P(A \cup B) = P(A) + P(B) - 0\]</span></p>
+<p>What we just learned will serve as a nice initial step into probability. We shall close this session by emphasizing that <span class="math inline">\(P(A \cup B)\)</span> can be thought of as the probability that our outcome lands in A OR B. On the other hand, <span class="math inline">\(P(A \cap B)\)</span> can be thought of as the probability our outcome lands in an element shared by A and B. Indeed, although we can use our set operations and the probability set operator to calculate the ladder, there is another method that we will discuss next.</p>
+</div>
+<div id="conditional-probability-and-independence" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Conditional Probability and Independence<a href="set-theory-and-probability.html#conditional-probability-and-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
