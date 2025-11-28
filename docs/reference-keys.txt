@@ -6,7 +6,9 @@ eq:intersect
 eq:complement
 eq:permutations
 eq:addlaw
+eq:setadd
 eq:setprop
+eq:pcomplement
 eq:additionnon
 preface
 you-can-learn-statistics
