@@ -178,20 +178,20 @@ I will end this section with an important discussion on notation. As you can see
 ## What is probability?
 Many of us have an internal sense of this stuff we call probability. In the crisp fall of the California foothills (which is about the time that I'm writing this section), you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability in the random experiment sense. That is, if we did a random experiment over and over again, we might expect some event to occur a percentage of the time. We shall call this percentage a probability. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. Indeed a "percentage of time" greater than 1 or less than zero would be nonsensical.  
 
-In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the **probability set operator** - $P()$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a **probability distribution**. We'll talk about probability distributions in the next chapter, but for now we'll just focus on probability and the probability set operator. Calculating probabilities for the continuous sample space can be tricky, so we'll stick with the discrete case and talk about the continuous later.
+In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the **probability set operator** - $P(C)$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a **probability distribution**. We'll talk about probability distributions in the next chapter, but for now we'll just focus on probability and the probability set operator. Calculating probabilities for the continuous sample space can be tricky, so we'll stick with the discrete case and talk about the continuous later.
 
 Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
 
 $$ P(C) = P(\{HH\}) = 1/4 $$
 
-Within the relative frequency approach to probability, this means that over many many random experiments, we might see that about 25% of the outcomes are HH. This framing is meant to be an intuitive one - to give you a sense of this stuff called probability. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). For our purposes, we'll let _about_ and _might_ be the operative words. We may get _about_ 25% double heads.   
+Within the relative frequency approach to probability, this means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. You would need to flip your coins for a very very long time (infinitely) for the percentage of HH flips to converge to 25%.
 
 Let's now turn our attention to a slightly more complex example. We'll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$ - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the *law of addition* for probability. For two events $A$ and $B$ for which $A \cap B = \{\}$ (e.g. they are mutually exclusive):
 
 $$ P(A \cup B) = P(A) + P(B) 
 (\#eq:addlaw)$$
 
-I sometimes refer to this law as the "law of or", because it helps calculate the probability of success if we want our outcome to land in one event OR another event. So how does this law apply to our single event $C$ above? Well, recall from our earlier, we said that an event contains a set of _distinct_ elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,
+Put in plain language: The probability of our outcome landing in A or B ($\cup$) is equal to the probability of A plus the probability of B. This law helps calculate the probability of success if we want our outcome to land in one event OR another event. In this case, how does it apply to our single event $C$ above? Well, recall from our earlier, we said that an event contains a set of _distinct_ elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,
 
 $$ C = \{HH,HT\} = \{HH\} \cup \{HT\} $$
 
@@ -206,12 +206,12 @@ P(\{HT,TH, HH\}) = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = \frac{3}{4}
 (\#eq:setadd)
 $$
 
-The law of addition makes things easier in multiple ways, and it implies another (easier!) way to calculate the probability above. With this in mind, we shall start with a handy property of the probability set function. Namely, for some sample space $S$:
+The law of addition makes things easier in multiple ways, and it implies another (easier!) way to calculate the probability above. To see this, we shall start with a handy property of the probability set function. Namely, for some sample space $S$:
 
 $$ P(S) = 1 
 (\#eq:setprop)$$
 
-In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
+In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; $\{TT}^c$) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
 
 Observe that:
 $$ C \cup \{TT\} = S $$
@@ -253,7 +253,7 @@ P(C) &= \frac{8}{11}
 $$
 Much easier!
 
-Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've told a small lie about the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done. Let's define our sample space to be $S = \{A,B,C\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{A,B\}$ and $C_2 = \{B,C\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of or. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{B\}$. That is to say they aren't mutually exclusive. We need to make a small addition to the law of addition.
+Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've left out an important part of the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done and what we need to add. Let's define our sample space to be $S = \{A,B,C\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{A,B\}$ and $C_2 = \{B,C\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of or. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{B\}$. That is to say they aren't mutually exclusive. We need to make a small addition to the law of addition.
 
 $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
@@ -277,7 +277,7 @@ P(C_1 \cup C_2) &= P(C_1) + P(C_2) \\
 \end{align}
 $$
 
-$P(B)$ is the probability that the outcome of our random experiment falls in $C_1$ and $C_2$ , and we've got one too many! Why do we have one too many? Let's take a step back and consider the set operation inside $P(C_1 \cup C_2)$. If we do this set operation first, then we would see that a successful outcome is A, B, or C. In other words, we should really only be counting the probability of B one time. Indeed, if we counted the probability of B twice, we would end up with a nonsensical probability of 4/3. So let's put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space
+We have one too many $P(B)$s! And, for clarity, I'll unpack this a little more. Let's take a step back and consider the set operation inside $P(C_1 \cup C_2)$. If we do this set operation first - before the probability set operator does it's magic - then we would see that a successful outcome is A, B, or C. This includes just one B, and as such, we should really only be counting the probability of B one time. Indeed, if we counted the probability of B twice, we would end up with a nonsensical probability of 4/3. So let's put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space
 
 $$
 \begin{align}
@@ -287,7 +287,7 @@ P(C_1 \cup C_2) &= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
 \end{align}
 $$
 
-That fixed it! This version of the law of addition also highlights something I have been doing implicitly for the last couple of examples. You can execute the set operation within the probability set operator first, and then calculate the probability of the resulting event as in \@ref(eq:setadd), e.g., using the first law of addition I described for mutually exclusive events. In this case, for $P(C_1 \cap C_2)$, we executed the intersect first and then calculated the probability of the resulting event (B) using the law of addition.
+That fixed it! This version of the law of addition also highlights something I have been doing implicitly for the last couple of examples. You can execute the set operation within the probability set operator first, and then calculate the probability of the resulting event as in \@ref(eq:setadd), e.g., using the first law of addition I described for mutually exclusive events. In this case, for $P(C_1 \cap C_2)$, we executed the intersect first and then calculated the probability of the resulting event (B).
 
 Using the full version of the law of addition helps to make clear why we can drop the last term for mutually exclusive sets \@ref(eq:addlaw). Suppose we have two mutually exclusive events $A$ and $B$, each a subset of some sample space $S$. Then, because they are mutually exclusive, $A \cap B = \{\}$. And, indeed, the probability of the null set - $P(\{\})$ - is zero. You can't draw nothing on a random experiment. So in the case of mutually exclusive events
 
@@ -296,3 +296,12 @@ $$P(A \cup B) = P(A) + P(B) - 0$$
 What we just learned will serve as a nice initial step into probability. We shall close this session by further emphasizing that $P(A \cup B)$ can be thought of as the probability that our outcome lands in A OR B. On the other hand, $P(A \cap B)$ can be thought of as the probability our outcome is an element shared by A AND B. Indeed, although we can use our set operations and the probability set operator to calculate the ladder, there is another method that we will discuss next.
 
 ## Conditional Probability and Independence
+Having learned a little bit about probability and the law of addition, we will turn to a slightly more complicated topic - conditional probability. **Conditional Probability** describes how the probability of an event _changes_ as a result of learning something new about the context. For example, suppose you are on a game show where you are supposed to select one of four doors. A prize is equally likely to be behind each door; the probability set function assigns a probability of 1/4 to each door. Right before you select a door, the host yells, "stop!", and then it is revealed that the prize is behind doors 1, 2, or 3. That is indeed some fortuitous news! Common sense says that the probability our prize lands behind door number 4 is now _zero_, and we should constrain our guess to doors 1, 2, and 3. That is to say, the conditional probability our prize lands behind door 4 is zero, given the hosts announcement that the event $C = \{door\:1,door\:2,door\:3\}$ has occurred.
+
+We can calculate conditional probability by:
+
+$$ 
+\frac{P(A \cap B)}{P(B)} = P(A|B) 
+(\#eq:conditional)
+$$
+

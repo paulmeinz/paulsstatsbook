@@ -10,6 +10,7 @@ eq:setadd
 eq:setprop
 eq:pcomplement
 eq:additionnon
+eq:conditional
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
