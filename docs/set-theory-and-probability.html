@@ -78,7 +78,7 @@ statistics course.|</p>" />
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Advanced Behavioral Statistics</a></li>
+<li><a href="./">Behavioral Statistics: Theory and Application</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a>
@@ -200,13 +200,13 @@ There is no simplified way to write this in set notation. Note the intersect of 
 <h2><span class="header-section-number">2.2</span> What is probability?<a href="set-theory-and-probability.html#what-is-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many of us have an internal sense of this stuff we call probability. In the crisp fall of the California foothills (which is about the time that I’m writing this section), you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the <strong>relative frequency approach</strong> to probability. In this approach, you can think of probability in the random experiment sense. That is, if we did a random experiment over and over again, we might expect some event to occur a percentage of the time. We shall call this percentage a probability. Within this approach, probabilities can take values anywhere from <span class="math inline">\(0\leq x\leq1\)</span>. Indeed a “percentage of time” greater than 1 or less than zero would be nonsensical.</p>
 <p>In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we’ll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event <span class="math inline">\(C\)</span>, then the <strong>probability set operator</strong> - <span class="math inline">\(P(C)\)</span> - takes <span class="math inline">\(C\)</span>, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a <strong>probability distribution</strong>. We’ll talk about probability distributions in the next chapter, but for now we’ll just focus on probability and the probability set operator. Calculating probabilities for the continuous sample space can be tricky, so we’ll stick with the discrete case and talk about the continuous later.</p>
-<p>Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was <span class="math inline">\(S = \{HH,HT,TH,TT\}\)</span>. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event <span class="math inline">\(C = \{HH\}\)</span> would therefore be</p>
+<p>Consider for a moment the circumstance at the end of last section: Flipping two fair coins. If you recall, our sample space was <span class="math inline">\(S = \{HH,HT,TH,TT\}\)</span>. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event <span class="math inline">\(C = \{HH\}\)</span> would therefore be</p>
 <p><span class="math display">\[ P(C) = P(\{HH\}) = 1/4 \]</span></p>
-<p>Within the relative frequency approach to probability, this means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn’t get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. You would need to flip your coins for a very very long time (infinitely) for the percentage of HH flips to converge to 25%.</p>
-<p>Let’s now turn our attention to a slightly more complex example. We’ll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - <span class="math inline">\(C = \{HH,HT\}\)</span> - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the <em>law of addition</em> for probability. For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> for which <span class="math inline">\(A \cap B = \{\}\)</span> (e.g. they are mutually exclusive):</p>
+<p>The probability set operator takes the set <span class="math inline">\(C\)</span> and assigns to it a probability. Within the relative frequency approach, the assigned probability of 1/4 means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn’t get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. When I talk about “many” trials, I am referring to an exorbitantly large number of trials (e.g. infinitely large numbers of flips). Indeed, if we were to flip two truly fair coins until the end of time, a total of 1/4 of those flips would be HH.</p>
+<p>While you wrap your mind around that, let’s now turn our attention to a more informative example. We’ll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - <span class="math inline">\(C = \{HH,HT\}\)</span> - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the <strong>law of addition</strong> for probability. For two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> for which <span class="math inline">\(A \cap B = \{\}\)</span> (e.g. they are mutually exclusive):</p>
 <p><span class="math display" id="eq:addlaw">\[ P(A \cup B) = P(A) + P(B)
 \tag{2.8}\]</span></p>
-<p>Put in plain language: The probability of our outcome landing in A or B (<span class="math inline">\(\cup\)</span>) is equal to the probability of A plus the probability of B. This law helps calculate the probability of success if we want our outcome to land in one event OR another event. In this case, how does it apply to our single event <span class="math inline">\(C\)</span> above? Well, recall from our earlier, we said that an event contains a set of <em>distinct</em> elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,</p>
+<p>Put in plain language: The probability of our outcome landing in A or B (<span class="math inline">\(\cup\)</span>) is equal to the probability of A plus the probability of B. This law helps calculate the probability of success if we want our outcome to land in one event OR another event. In this case, how does it apply to our single event <span class="math inline">\(C\)</span> above? Well, recall from our earlier discussion, we said that an event contains a set of <em>distinct</em> elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,</p>
 <p><span class="math display">\[ C = \{HH,HT\} = \{HH\} \cup \{HT\} \]</span></p>
 <p>And with this in mind, we can apply the law of addition:</p>
 <p><span class="math display">\[ P(\{HH\} \cup \{HT\}) = P(\{HH\}) + P(\{HT\}) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} \]</span></p>
@@ -218,10 +218,10 @@ P(\{HT,TH, HH\}) = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = \frac{3}{4}
 <p>The law of addition makes things easier in multiple ways, and it implies another (easier!) way to calculate the probability above. To see this, we shall start with a handy property of the probability set function. Namely, for some sample space <span class="math inline">\(S\)</span>:</p>
 <p><span class="math display" id="eq:setprop">\[ P(S) = 1
 \tag{2.10}\]</span></p>
-<p>In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don’t need to go through the rigmarole of enumerating all the combinations with an H. We know there’s exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; <span class="math inline">\(\{TT}^c\)</span>) have at least one H. So, let’s say that the event <span class="math inline">\(C\)</span> contains the outcomes with at least one head, and let’s also say that <span class="math inline">\(S\)</span> is our full sample space:</p>
+<p>In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don’t need to go through the rigmarole of enumerating all the combinations with an H. We know there’s exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; <span class="math inline">\(\{TT\}^c\)</span>) have at least one H. So, let’s say that the event <span class="math inline">\(C\)</span> contains the outcomes with at least one head, and let’s also say that <span class="math inline">\(S\)</span> is our full sample space:</p>
 <p>Observe that:
-<span class="math display">\[ C \cup \{TT\} = S \]</span>
-Look back at the definition of our two-coin flip space, and you’ll see why I’m right about this. So then we can do this:</p>
+<span class="math display">\[ C \cup \{TT\} = S \]</span></p>
+<p>Look back at the definition of our two-coin flip space, and you’ll see why I’m right about this. So then we can do this:</p>
 <p><span class="math display">\[
 \begin{align}
 P(C \cup \{TT\}) &amp;= P(S) = 1 \\
@@ -231,15 +231,14 @@ P(C) &amp;= 1 - P(\{TT\}) \\
 P(C) &amp;= 1 - \frac{1}{4} = \frac{3}{4}
 \end{align}
 \]</span></p>
-<p>So without listing out all the permutations of heads and tails for our two coins, we’ve calculated what we need. That is to say, sometimes it’s much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. To more formally describe this, given some event <span class="math inline">\(C\)</span>:</p>
+<p>Thus, without listing out all the permutations of heads and tails for our two coins, we’ve calculated what we need. That is to say, sometimes it’s much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. To more formally describe this, To calculate the probability of some event <span class="math inline">\(C\)</span>, we could take its complement <span class="math inline">\(C^c\)</span>, and then</p>
 <p><span class="math display" id="eq:pcomplement">\[
 P(C) = 1 - P(C^c)
 \tag{2.11}
 \]</span></p>
-<p>Let’s work in another example of this just to hammer things home. Let’s say we have a sample space <span class="math inline">\(S = \{0,1,2,3,4,5,6,7,8,9,10\}\)</span>, and the probability set operator assigns a probability of 1/11 to each outcome in this sample space. We want to know the probability that our draw will land in the event <span class="math inline">\(C = \{3 \leq X\}\)</span> - an outcome of 3 or more. You might be able to do this in your head. I’m personally too lazy to write out the law of addition for <span class="math inline">\(C\)</span>, so we’ll use <a href="set-theory-and-probability.html#eq:pcomplement">(2.11)</a>. First observe that</p>
+<p>Let’s work in another example of this just to hammer this concept home. Let’s say we have a sample space <span class="math inline">\(S = \{0,1,2,3,4,5,6,7,8,9,10\}\)</span>, and the probability set operator assigns a probability of 1/11 to each outcome in this sample space. We want to know the probability that our draw will land in the event <span class="math inline">\(C = \{3 \leq X\}\)</span> - an outcome of 3 or more. You might be able to do this in your head. I’m personally too lazy to write out the law of addition for <span class="math inline">\(C\)</span>, so we’ll use <a href="set-theory-and-probability.html#eq:pcomplement">(2.11)</a>. First observe that</p>
 <p><span class="math display">\[
-C^c = \{0,1,2\}
-\\
+C^c = \{0,1,2\}\\
 P(C^c) = \frac{1}{11} + \frac{1}{11} + \frac{1}{11} = \frac{3}{11}
 \]</span>
 And therefore</p>
@@ -251,33 +250,43 @@ P(C) &amp;= \frac{8}{11}
 \end{align}
 \]</span>
 Much easier!</p>
-<p>Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I’ve left out an important part of the law of addition (I know: <span class="math inline">\(P({Hell}) &gt; 0\)</span>). Now it’s time for the truth, and I’ll show you what I’ve done and what we need to add. Let’s define our sample space to be <span class="math inline">\(S = \{A,B,C\}\)</span>, and suppose each outcome has a probability of 1/3. Define two events <span class="math inline">\(C_1 = \{A,B\}\)</span> and <span class="math inline">\(C_2 = \{B,C\}\)</span>. We would like to know the probability of our outcome landing in <span class="math inline">\(C_1\)</span> or <span class="math inline">\(C_2\)</span>. This sounds like a job for the law of or. However, remember our current version of the law only works for mutually exclusive sets, but <span class="math inline">\(C_1 \cap C_2 = \{B\}\)</span>. That is to say they aren’t mutually exclusive. We need to make a small addition to the law of addition.</p>
+<p>Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I’ve left out an important part of the law of addition (I know: <span class="math inline">\(P({Hell}) &gt; 0\)</span>). Now it’s time for the truth, and I’ll show you what I’ve done and what we need to add. Let’s define our sample space to be <span class="math inline">\(S = \{1,2,3\}\)</span>, and suppose each outcome has a probability of 1/3. Define two events <span class="math inline">\(C_1 = \{1,2\}\)</span> and <span class="math inline">\(C_2 = \{1,2\}\)</span>. We would like to know the probability of our outcome landing in <span class="math inline">\(C_1\)</span> or <span class="math inline">\(C_2\)</span>. This sounds like a job for the law of addition. However, remember our current version of the law only works for mutually exclusive sets, but <span class="math inline">\(C_1 \cap C_2 = \{2\}\)</span>.</p>
+<p>We could always get around the conundrum describe above by executing the set operation before applying the probability set operator. Then with that new set, we could calculate the probability as in <a href="set-theory-and-probability.html#eq:setadd">(2.9)</a>, e.g., using the first law of addition I described for mutually exclusive events. For example:</p>
+<p>Observe that
+<span class="math display">\[
+C_1 \cup C_2 = \{1,2\} \cup \{2,3\} = \{1,2,3\}
+\]</span>
+And therefore the probability of <span class="math inline">\(C_1\)</span> or <span class="math inline">\(C_2\)</span> is</p>
+<p><span class="math display">\[
+P(\{1,2,3\}) = \frac{1}{3} + \frac{1}{3} + \frac{1}{3} = 1
+\]</span>
+You can see that works pretty well. If we want to use the law of addition, we will nevertheless need to make a small addition. Specifically, we shall have to subtract out the intersect (<span class="math inline">\(\cap\)</span>) between our two sets. That is, given two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span></p>
 <p><span class="math display" id="eq:additionnon">\[
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 \tag{2.12}
 \]</span></p>
-<p>If we were to simply sum the events as if they were mutually exclusive, we would count the probability of <span class="math inline">\(C_1 \cap C_2 = {B}\)</span> twice. If you don’t believe me, look at this</p>
+<p>This saw says that if we were to simply sum the probability of each event, we would double count the overlap between sets A and B (<span class="math inline">\(\cap\)</span>) . In the case of our example, we would double count the probability of <span class="math inline">\(C_1 \cap C_2 = {2}\)</span> twice. If you don’t believe me, look at this. Consider <span class="math inline">\(C_1\)</span> and <span class="math inline">\(C_2\)</span> as defined above</p>
 <p><span class="math display">\[
-P(C_1) = P(\{A,B\}) = P(A) + P(B) \\
-P(C_2) = P(\{B,C\}) = P(B) + P(C) \\
+P(C_1) = P(\{1,2\}) = P(1) + P(2) \\
+P(C_2) = P(\{2,3\}) = P(2) + P(3) \\
 \]</span></p>
 <p>So if we applied our first version of the law of addition, then</p>
 <p><span class="math display">\[
 \begin{align}
 P(C_1 \cup C_2) &amp;= P(C_1) + P(C_2) \\
-&amp;= P(A) + P(B) + P(B) + P(C) \\
-&amp;= P(A) + 2P(B) + P(C)
+&amp;= P(1) + P(2) + P(2) + P(3) \\
+&amp;= P(1) + 2P(2) + P(1)
 \end{align}
 \]</span></p>
-<p>We have one too many <span class="math inline">\(P(B)\)</span>s! And, for clarity, I’ll unpack this a little more. Let’s take a step back and consider the set operation inside <span class="math inline">\(P(C_1 \cup C_2)\)</span>. If we do this set operation first - before the probability set operator does it’s magic - then we would see that a successful outcome is A, B, or C. This includes just one B, and as such, we should really only be counting the probability of B one time. Indeed, if we counted the probability of B twice, we would end up with a nonsensical probability of 4/3. So let’s put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space</p>
+<p>We have one too many <span class="math inline">\(P(2)\)</span>s! Indeed, if we counted the probability of 2 twice, we would end up with a nonsensical value of 4/3 (e.g. <span class="math inline">\(1/3 + 2 \times 1/3 + 1/3\)</span>). So let’s put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space</p>
 <p><span class="math display">\[
 \begin{align}
 P(C_1 \cup C_2) &amp;= P(C_1) + P(C_2) - P(C_1 \cap C_2) \\
-P(C_1 \cup C_2) &amp;= P(\{A,B\}) + P(\{B,C\}) - P(\{B\}) \\
+P(C_1 \cup C_2) &amp;= P(\{1,2\}) + P(\{2,3\}) - P(\{2\}) \\
 P(C_1 \cup C_2) &amp;= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
 \end{align}
 \]</span></p>
-<p>That fixed it! This version of the law of addition also highlights something I have been doing implicitly for the last couple of examples. You can execute the set operation within the probability set operator first, and then calculate the probability of the resulting event as in <a href="set-theory-and-probability.html#eq:setadd">(2.9)</a>, e.g., using the first law of addition I described for mutually exclusive events. In this case, for <span class="math inline">\(P(C_1 \cap C_2)\)</span>, we executed the intersect first and then calculated the probability of the resulting event (B).</p>
+<p>Fixed!</p>
 <p>Using the full version of the law of addition helps to make clear why we can drop the last term for mutually exclusive sets <a href="set-theory-and-probability.html#eq:addlaw">(2.8)</a>. Suppose we have two mutually exclusive events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, each a subset of some sample space <span class="math inline">\(S\)</span>. Then, because they are mutually exclusive, <span class="math inline">\(A \cap B = \{\}\)</span>. And, indeed, the probability of the null set - <span class="math inline">\(P(\{\})\)</span> - is zero. You can’t draw nothing on a random experiment. So in the case of mutually exclusive events</p>
 <p><span class="math display">\[P(A \cup B) = P(A) + P(B) - 0\]</span></p>
 <p>What we just learned will serve as a nice initial step into probability. We shall close this session by further emphasizing that <span class="math inline">\(P(A \cup B)\)</span> can be thought of as the probability that our outcome lands in A OR B. On the other hand, <span class="math inline">\(P(A \cap B)\)</span> can be thought of as the probability our outcome is an element shared by A AND B. Indeed, although we can use our set operations and the probability set operator to calculate the ladder, there is another method that we will discuss next.</p>

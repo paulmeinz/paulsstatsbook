@@ -180,18 +180,18 @@ Many of us have an internal sense of this stuff we call probability. In the cris
 
 In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the **probability set operator** - $P(C)$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a **probability distribution**. We'll talk about probability distributions in the next chapter, but for now we'll just focus on probability and the probability set operator. Calculating probabilities for the continuous sample space can be tricky, so we'll stick with the discrete case and talk about the continuous later.
 
-Consider for a moment the circumstance at the end of last section, flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
+Consider for a moment the circumstance at the end of last section: Flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
 
 $$ P(C) = P(\{HH\}) = 1/4 $$
 
-Within the relative frequency approach to probability, this means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. You would need to flip your coins for a very very long time (infinitely) for the percentage of HH flips to converge to 25%.
+The probability set operator takes the set $C$ and assigns to it a probability. Within the relative frequency approach, the assigned probability of 1/4 means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. When I talk about "many" trials, I am referring to an exorbitantly large number of trials (e.g. infinitely large numbers of flips). Indeed, if we were to flip two truly fair coins until the end of time, a total of 1/4 of those flips would be HH.
 
-Let's now turn our attention to a slightly more complex example. We'll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$ - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the *law of addition* for probability. For two events $A$ and $B$ for which $A \cap B = \{\}$ (e.g. they are mutually exclusive):
+While you wrap your mind around that, let's now turn our attention to a more informative example. We'll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$ - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the **law of addition** for probability. For two events $A$ and $B$ for which $A \cap B = \{\}$ (e.g. they are mutually exclusive):
 
 $$ P(A \cup B) = P(A) + P(B) 
 (\#eq:addlaw)$$
 
-Put in plain language: The probability of our outcome landing in A or B ($\cup$) is equal to the probability of A plus the probability of B. This law helps calculate the probability of success if we want our outcome to land in one event OR another event. In this case, how does it apply to our single event $C$ above? Well, recall from our earlier, we said that an event contains a set of _distinct_ elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,
+Put in plain language: The probability of our outcome landing in A or B ($\cup$) is equal to the probability of A plus the probability of B. This law helps calculate the probability of success if we want our outcome to land in one event OR another event. In this case, how does it apply to our single event $C$ above? Well, recall from our earlier discussion, we said that an event contains a set of _distinct_ elements from the sample space. Because of this, every event can just be written as a union of mutually exclusive events. In our case,
 
 $$ C = \{HH,HT\} = \{HH\} \cup \{HT\} $$
 
@@ -211,10 +211,11 @@ The law of addition makes things easier in multiple ways, and it implies another
 $$ P(S) = 1 
 (\#eq:setprop)$$
 
-In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; $\{TT}^c$) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
+In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; $\{TT\}^c$) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
 
 Observe that:
 $$ C \cup \{TT\} = S $$
+
 Look back at the definition of our two-coin flip space, and you'll see why I'm right about this. So then we can do this:
 
 $$
@@ -227,19 +228,18 @@ P(C) &= 1 - \frac{1}{4} = \frac{3}{4}
 \end{align}
 $$
 
-So without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. To more formally describe this, given some event $C$:
+Thus, without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. To more formally describe this, To calculate the probability of some event $C$, we could take its complement $C^c$, and then
 
 $$
 P(C) = 1 - P(C^c) 
 (\#eq:pcomplement)
 $$
 
-Let's work in another example of this just to hammer things home. Let's say we have a sample space $S = \{0,1,2,3,4,5,6,7,8,9,10\}$, and the probability set operator assigns a probability of 1/11 to each outcome in this sample space. We want to know the probability that our draw will land in the event $C = \{3 \leq X\}$ - an outcome of 3 or more. You might be able to do this in your head. I'm personally too lazy to write out the law of addition for $C$, so we'll use \@ref(eq:pcomplement). First observe that
+Let's work in another example of this just to hammer this concept home. Let's say we have a sample space $S = \{0,1,2,3,4,5,6,7,8,9,10\}$, and the probability set operator assigns a probability of 1/11 to each outcome in this sample space. We want to know the probability that our draw will land in the event $C = \{3 \leq X\}$ - an outcome of 3 or more. You might be able to do this in your head. I'm personally too lazy to write out the law of addition for $C$, so we'll use \@ref(eq:pcomplement). First observe that
 
 
 $$
-C^c = \{0,1,2\}
-\\
+C^c = \{0,1,2\}\\
 P(C^c) = \frac{1}{11} + \frac{1}{11} + \frac{1}{11} = \frac{3}{11}
 $$
 And therefore
@@ -253,18 +253,31 @@ P(C) &= \frac{8}{11}
 $$
 Much easier!
 
-Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've left out an important part of the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done and what we need to add. Let's define our sample space to be $S = \{A,B,C\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{A,B\}$ and $C_2 = \{B,C\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of or. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{B\}$. That is to say they aren't mutually exclusive. We need to make a small addition to the law of addition.
+Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've left out an important part of the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done and what we need to add. Let's define our sample space to be $S = \{1,2,3\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{1,2\}$ and $C_2 = \{1,2\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of addition. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{2\}$. 
+
+We could always get around the conundrum describe above by executing the set operation before applying the probability set operator. Then with that new set, we could calculate the probability as in \@ref(eq:setadd), e.g., using the first law of addition I described for mutually exclusive events. For example:
+
+Observe that
+$$
+C_1 \cup C_2 = \{1,2\} \cup \{2,3\} = \{1,2,3\}
+$$
+And therefore the probability of $C_1$ or $C_2$ is
+
+$$
+P(\{1,2,3\}) = \frac{1}{3} + \frac{1}{3} + \frac{1}{3} = 1
+$$
+You can see that works pretty well. If we want to use the law of addition, we will nevertheless need to make a small addition. Specifically, we shall have to subtract out the intersect ($\cap$) between our two sets. That is, given two events $A$ and $B$
 
 $$
 P(A \cup B) = P(A) + P(B) - P(A \cap B)
 (\#eq:additionnon)
 $$
 
-If we were to simply sum the events as if they were mutually exclusive, we would count the probability of $C_1 \cap C_2 = {B}$ twice. If you don't believe me, look at this
+This saw says that if we were to simply sum the probability of each event, we would double count the overlap between sets A and B ($\cap$) . In the case of our example, we would double count the probability of $C_1 \cap C_2 = {2}$ twice. If you don't believe me, look at this. Consider $C_1$ and $C_2$ as defined above
 
 $$
-P(C_1) = P(\{A,B\}) = P(A) + P(B) \\
-P(C_2) = P(\{B,C\}) = P(B) + P(C) \\
+P(C_1) = P(\{1,2\}) = P(1) + P(2) \\
+P(C_2) = P(\{2,3\}) = P(2) + P(3) \\
 $$
 
 So if we applied our first version of the law of addition, then
@@ -272,22 +285,22 @@ So if we applied our first version of the law of addition, then
 $$ 
 \begin{align}
 P(C_1 \cup C_2) &= P(C_1) + P(C_2) \\
-&= P(A) + P(B) + P(B) + P(C) \\
-&= P(A) + 2P(B) + P(C)
+&= P(1) + P(2) + P(2) + P(3) \\
+&= P(1) + 2P(2) + P(1)
 \end{align}
 $$
 
-We have one too many $P(B)$s! And, for clarity, I'll unpack this a little more. Let's take a step back and consider the set operation inside $P(C_1 \cup C_2)$. If we do this set operation first - before the probability set operator does it's magic - then we would see that a successful outcome is A, B, or C. This includes just one B, and as such, we should really only be counting the probability of B one time. Indeed, if we counted the probability of B twice, we would end up with a nonsensical probability of 4/3. So let's put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space
+We have one too many $P(2)$s! Indeed, if we counted the probability of 2 twice, we would end up with a nonsensical value of 4/3 (e.g. $1/3 + 2 \times 1/3 + 1/3$). So let's put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space
 
 $$
 \begin{align}
 P(C_1 \cup C_2) &= P(C_1) + P(C_2) - P(C_1 \cap C_2) \\
-P(C_1 \cup C_2) &= P(\{A,B\}) + P(\{B,C\}) - P(\{B\}) \\
+P(C_1 \cup C_2) &= P(\{1,2\}) + P(\{2,3\}) - P(\{2\}) \\
 P(C_1 \cup C_2) &= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
 \end{align}
 $$
 
-That fixed it! This version of the law of addition also highlights something I have been doing implicitly for the last couple of examples. You can execute the set operation within the probability set operator first, and then calculate the probability of the resulting event as in \@ref(eq:setadd), e.g., using the first law of addition I described for mutually exclusive events. In this case, for $P(C_1 \cap C_2)$, we executed the intersect first and then calculated the probability of the resulting event (B).
+Fixed! 
 
 Using the full version of the law of addition helps to make clear why we can drop the last term for mutually exclusive sets \@ref(eq:addlaw). Suppose we have two mutually exclusive events $A$ and $B$, each a subset of some sample space $S$. Then, because they are mutually exclusive, $A \cap B = \{\}$. And, indeed, the probability of the null set - $P(\{\})$ - is zero. You can't draw nothing on a random experiment. So in the case of mutually exclusive events
 
