@@ -228,7 +228,7 @@ P(C) &= 1 - \frac{1}{4} = \frac{3}{4}
 \end{align}
 $$
 
-Thus, without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. To more formally describe this, To calculate the probability of some event $C$, we could take its complement $C^c$, and then
+Thus, without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. More formally, to calculate the probability of some event $C$, we could take its complement $C^c$. Then
 
 $$
 P(C) = 1 - P(C^c) 
@@ -318,3 +318,24 @@ $$
 (\#eq:conditional)
 $$
 
+Indeed, the idea of conditional probability can be a sticking point for new learners of probability, so it's worth doing a few examples. First, let's define a sample space - $S = \{1,2,3\}$ - and assign a probability of 1/3 to each outcome. Now, let's define two events - $C_1 = \{1\}$ and $C_2 = \{1,2\}$. In this case, let's calculate $P(C_1|C_2)$. In other words we want to know the probability of a "1" outcome in our random experiment, given the event $C_2$ has occurred. Intuitively speaking, if we know that the outcome has landed in $\{1,2\}$, we may feel as if the probability of getting a 1 is increased. Indeed, the outcome of 3 is out of the picture. Let's not lean on our intuition though. Looking at the equation for conditional probability, we shall need to quantities for our calculation - the probability of $C_1$ AND $C_2$ ($\cap$) and the probability of $C_2$:
+$$
+P(C_1 \cap C_2) \\
+P(C_2)
+$$
+
+The tools in the last section shall prove sufficient to calculate these.
+
+$$
+P(C_1 \cap C_2) = P(\{1,2\} \cap \{1\}) = P(\{1\}) = 1/3 \\
+P(C_2) = 1/3 + 1/3 = 2/3
+$$
+
+Now that we have what we need, it's just a matter of plugging in the numbers.
+
+$$
+\frac{P(C_1 \cap C_2)}{P(C_2)} = P(C_1|C_2)\\
+\frac{1/3}{2/3} = \frac{1}{2}
+$$
+
+The probability of $C_1$ given that $C_2$ occurred is 1/2.
