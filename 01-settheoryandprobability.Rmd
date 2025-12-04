@@ -32,28 +32,51 @@ $$ C \subset S
 
 In this case, we are saying $C$ is a subset of $S$. We might also, for example say that our event is a single element/outcome $C_1 = \{A\}$ or the entire sample space $C_2 = \{A,B,C,D,E\}$. We can be as creative as we would like to be, so long as the event is in our sample space. 
 
-Indeed, in practice we might want to get a little more creative in terms of the outcomes of our random experiment. Let's talk about a slightly more complicated scenario. Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ or $C_2$. It's helpful here to consider the circumstances where we this event would occur. Namely, If the instantiation of our outcome was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique outcomes of either set and combined them into a new set. If our outcome lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
+Indeed, in practice we might want to get a little more creative in terms of the outcomes of our random experiment. Let's talk about a slightly more complicated scenario. 
+
+::: {.example}
+
+Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ or $C_2$. It's helpful here to consider the circumstances where we this event would occur. Namely, If the instantiation of our outcome was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique outcomes of either set and combined them into a new set. If our outcome lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
 
 $$ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
 (\#eq:union) $$
+:::
 
-This *union operator* ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with *or*. If the event of interest is our outcome landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g., all the unique elements from both sets. Here's another example, suppose we are interested in if our outcome falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the element was A or B:
+This *union operator* ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with *or*. If the event of interest is our outcome landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g., all the unique elements from both sets. 
+
+::: {.example}
+
+Here's another example, suppose we are interested in if our outcome falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the element was A or B:
 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
-Our random experiment would be successful if our outcome was an A OR a B. 
+Our random experiment would be successful if our outcome was A OR B. 
+:::
 
-Indeed, the union operator helps us figure out the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important operator. Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Lets further say that we are interested in whether or not both events occur as a result of our random experiment. That is, we shall be successful if our outcome falls in both $C_1$ AND $C_2$. We are therefore interested in the _shared_ elements of our two events. Specifically, just by eyeballing the sets above, B and C are shared by the two events $C_1$ and $C_2$, but if we were unfortunate enough to draw a D or an A, game over. The *intersect operator* will help us signify this process:
+Indeed, the union operator helps us figure out the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important operator. 
+
+::: {.example}
+
+Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Lets further say that we are interested in whether or not both events occur as a result of our random experiment. That is, we shall be successful if our outcome falls in both $C_1$ AND $C_2$. We are therefore interested in the _shared_ elements of our two events. Specifically, just by eyeballing the sets above, B and C are shared by the two events $C_1$ and $C_2$, but if we were unfortunate enough to draw a D or an A, game over. The *intersect operator* will help us signify this process:
 
 $$ C_1 \cap C_2 = \{A,B,C\} \cap \{B,C,D\} = \{B,C\} 
 (\#eq:intersect)$$
+:::
 
-Unlike $\cup$, the intersect operator represents **and**. It tells us the conditions for success if we would like _both_ events to occur (a.k.a., our outcome landing in both events). This operator can create some interesting conundrums, so it's worthwhile to do another example or two. This time let's define our events to be $C_1 = \{A,B\}$ and $C_2 = \{C,D\}$. Now we're interested in whether or not our outcome falls in $C_1$ and $C_2$ (What do you think is going to happen here?):
+Unlike $\cup$, the intersect operator represents **and**. It tells us the conditions for success if we would like _both_ events to occur (a.k.a., our outcome landing in both events). This operator can create some interesting conundrums, so it's worthwhile to do another example or two. 
+
+::: {.example}
+
+This time let's define our events to be $C_1 = \{A,B\}$ and $C_2 = \{C,D\}$. Now we're interested in whether or not our outcome falls in $C_1$ and $C_2$ (What do you think is going to happen here?):
 
 $$ C_1 \cap C_2 = \{A, B\} \cap \{C, D\} = \{\} $$
 
 Well, you may have guessed it: Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_ the sets, because the sets share no elements. As a result, we get a very special set - a *null set* - $\{\}$ - which is a set with zero elements. In this circumstance, when the intersect of sets results in a null set (a.k.a. they have no overlap), we shall refer to them as being **mutually exclusive** - because the two sets do not share elements. In terms of probability, mutually exclusive sets can be much easier to work with. We'll talk about this soon.
+:::
 
-Now you have some understanding of the two main set operators we'll need - the union ($\cup$) and the intersect ($\cap$). We shall need to know a little bit more about the null set, so let's take a slightly deeper look. It's interesting to see how a null set works with other sets that have elements. For example:
+Now you have some understanding of the two main set operators we'll need - the union ($\cup$) and the intersect ($\cap$). We shall need to know a little bit more about the null set, so let's take a slightly deeper look. 
+
+::: {.example}
+It's interesting to see how a null set works with other sets that have elements. For example:
 
 $$ \{A,B,C,D,E\} \cap \{\} = \{\} $$ 
 
@@ -64,6 +87,7 @@ What do you suppose happens when we union a null set with something else? Let's 
 $$ \{A,B,C,D,E\} \cup \{\} = \{A,B,C,D,E\} $$
 
 A set unioned with a null set is itself. A null set has nothing unique to add to our "something set". Although the null set is really cool (in my opinion; and I hope your opinion too), working with it is, metaphorically speaking, like talking to the most boring person in the world. You have nothing in common with them ($\cap$), and they have nothing to add ($\cup$). And, with that, you have learned your first set theory insult.
+:::
 
 Up to this point, we've learned how to describe our sample space, the concept of an outcome and event, how to create new events with union/intersect (or/and) operators, and the fancy null set. That's about all we need. I would like to finish out this brief section on sets with a discussion of the *complement* of a subset and a brief treatment of how the previously mentioned operators work in the continuous case.
 
@@ -72,7 +96,10 @@ The complement of a subset describes all the elements of a sample space _not_ in
 $$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
-The complement allows for a wider breadth of operations. Let's again consider our sample space $S$. Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our outcome could be unsuccessful (we won't use "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
+The complement allows for a wider breadth of operations. 
+
+::: {.example}
+Let's again consider our sample space $S$. Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our outcome could be unsuccessful (we won't use "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
 
 $$ C_1 \cup C_2 = \{A,B,C,D\} = X $$
 
@@ -84,13 +111,21 @@ Of course, you might have known the answer to this all along, but it's nice to s
 
 $$ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} $$
 
-Notice how we do the operation in the parentheses before taking the complement. Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful outcome as all the things NOT in $C_1$ and $C_2$. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
+Notice how we do the operation in the parentheses before taking the complement. 
+:::
+
+::: {.example}
+Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful outcome as all the things NOT in $C_1$ and $C_2$. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
 
 $$ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
 
 The two sets have no overlap, so their intersect is a null set, and the complement of the null set is all the elements in our sample space.
+:::
 
-With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the outcome lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful outcome here would occur if our realized element landed anywhere from zero to five. In other words:
+With a good understanding of some of the basic operators and sets, let's turn to a brief treatment of the continuous sample space. The continuous case is very similar to the discrete case - although it takes some drawing of number lines if you are rusty with inequalities (no problem). 
+
+::: {.example}
+Suppose we are sampling from a sample space $S = \{x\,|\,0 \leq x \leq 10 \}$ and we are interested in if the outcome lands in $C_1 = \{x\,|\,0 \leq x \leq 2 \}$ OR $C_2 = \{x\,|\,2 \leq x \leq 5 \}$. A successful outcome here would occur if our realized element landed anywhere from zero to five. In other words:
 
 $$ \{0 \leq x \leq 2 \}\:\cup\:\{2 \leq x \leq 5\} = \{0 \leq x \leq 5\} $$
 
@@ -98,7 +133,11 @@ Let's keep the same continuous sample space and subsets as above, and this time 
 
 $$ \{0 \leq x \leq 2 \}\:\cap\:\{2 \leq x \leq 5\} = \{2\} $$
 
-The two sets only overlap at exactly $x = 2$, so their intersect is just a set with the value 2. Let's do a couple more so you can get a sense for it. Suppose we have a sample space $Q = \{x\,|\, 5 \leq x \leq 10\}$ and define $C \subset Q$ where $C = \{x\,|\, 5 \leq x < 7\}$. That is to say, $C$ is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement?
+The two sets only overlap at exactly $x = 2$, so their intersect is just a set with the value 2. Let's do a couple more so you can get a sense for it. 
+:::
+
+::: {.example}
+Suppose we have a sample space $Q = \{x\,|\, 5 \leq x \leq 10\}$ and define $C \subset Q$ where $C = \{x\,|\, 5 \leq x < 7\}$. That is to say, $C$ is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement of $C$?
 
 $$ C^c = \{5 \leq x < 7\}^c = \{7 \leq x \leq 10\} $$
 
@@ -131,12 +170,14 @@ lines <- ggplot2::ggplot(C, ggplot2::aes(x = x, y = y)) +
 
 print(lines)
 ```
+:::
 
+::: {.example}
 One more comment is worth a mention with regards to continuous sample spaces. Suppose we have two subsets of our space $Q$ that don't overlap in any way. For example, take $C_1 = \{x\,|\, 5 \leq x < 7\}$ and $C_2 = \{x\,|\, 9 \leq x \leq 10\}$. Then you would simply write their union as:
 
 $$ \{\, 5 \leq x < 7\} \cup \{\, 9 \leq x \leq 10\}$$
 There is no simplified way to write this in set notation. Note the intersect of these two sets would be $\{\}$ - a null set.
-
+:::
 
 ### Repeated Samples
 The previous introduction to sets was dedicated to a random experiment where we only draw a single element from our sample space. In practice, researchers and statisticians are often sampling/conducting a random experiment repeatedly. In this section we'll talk about how to describe the sample space of an experiment that involves multiple draws. Note, for the purposes of our learning, we shall only be discussing sampling with _replacement_. That is, we will be talking about circumstances where the 1st, 2nd, 3rd, ... , nth outcome gets returned to the sample space prior to the next draw. This is opposed to the circumstance where an outcome of a single sample reduces the size of the sample space each time. For example, suppose we have a sample space, $S = \{A,B,C\}$. On our first experiment, we randomly draw an $A$. In sampling without replacement, the sampling space for the next draw would be $\{B,C\}$ (or $\{A\}^c)$ and in sampling with replacement $A$ would be returned to the space.
@@ -180,12 +221,17 @@ Many of us have an internal sense of this stuff we call probability. In the cris
 
 In the last section we discussed how we might describe sample spaces, outcomes, and events of random experiments. In this section we'll assign probabilities to them, and we shall adopt the above relative frequency approach interpretation. Suppose we have some event $C$, then the **probability set operator** - $P(C)$ - takes $C$, and based on a set of rules, returns a probability for that event. The set of rules for the assignment of probability is referred to as a **probability distribution**. We'll talk about probability distributions in the next chapter, but for now we'll just focus on probability and the probability set operator. Calculating probabilities for the continuous sample space can be tricky, so we'll stick with the discrete case and talk about the continuous later.
 
+::: {.example}
 Consider for a moment the circumstance at the end of last section: Flipping two fair coins. If you recall, our sample space was $S = \{HH,HT,TH,TT\}$. Suppose the probability set operator assigns a probability of 1/4 to each of the outcomes in this sample space. The probability, for example, of the event $C = \{HH\}$ would therefore be
 
 $$ P(C) = P(\{HH\}) = 1/4 $$
 
-The probability set operator takes the set $C$ and assigns to it a probability. Within the relative frequency approach, the assigned probability of 1/4 means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. When I talk about "many" trials, I am referring to an exorbitantly large number of trials (e.g. infinitely large numbers of flips). Indeed, if we were to flip two truly fair coins until the end of time, a total of 1/4 of those flips would be HH.
+The probability set operator takes the set $C$ and assigns to it a probability. 
+:::
 
+Within the relative frequency approach, the assigned probability of 1/4 means that over many many random experiments, we might see that about 25% of the outcomes are HH. When I have taught this to my colleagues and students, many will point out that they have flipped two fair coins a large number of times and didn't get exactly 25% of outcomes landing HH (budding statisticians!). That is indeed possible. When I talk about "many" trials, I am referring to an exorbitantly large number of trials (e.g. infinitely large numbers of flips). Indeed, if we were to flip two truly fair coins until the end of time, a total of 1/4 of those flips would be HH.
+
+::: {.example}
 While you wrap your mind around that, let's now turn our attention to a more informative example. We'll stick with fair coins for now. Suppose we wanted to know the probability of getting a heads on the first flip - $C = \{HH,HT\}$ - how does the probability set operator go about assigning probabilities to an event with more than one outcome? Well, lucky for us, there is the **law of addition** for probability. For two events $A$ and $B$ for which $A \cap B = \{\}$ (e.g. they are mutually exclusive):
 
 $$ P(A \cup B) = P(A) + P(B) 
@@ -198,20 +244,27 @@ $$ C = \{HH,HT\} = \{HH\} \cup \{HT\} $$
 And with this in mind, we can apply the law of addition:
 
 $$ P(\{HH\} \cup \{HT\}) = P(\{HH\}) + P(\{HT\}) = \frac{1}{4} + \frac{1}{4} = \frac{2}{4} = \frac{1}{2} $$
+:::
+Of course, in practice, you don't have to write an event as a union of distinct events or outcomes before applying the law of addition. You can simply sum up the respective probability of each outcome in the event. 
 
-Of course, in practice, you don't have to write an event as a union of distinct events or outcomes before applying the law of addition. You can simply sum up the respective probability of each outcome in the event. For example, suppose we were interested in the probability of at least one head. In this case, a successful outcome would be HT, TH, or HH, whereas TT would be unsuccessful. Thus we are considering the probability of the event - $C = \{HT, TH, HH\}$, and with the law of addition:
+::: {.example}
+For example, suppose we were interested in the probability of at least one head. In this case, a successful outcome would be HT, TH, or HH, whereas TT would be unsuccessful. Thus we are considering the probability of the event - $C = \{HT, TH, HH\}$, and with the law of addition:
 
 $$ 
 P(\{HT,TH, HH\}) = \frac{1}{4} + \frac{1}{4} + \frac{1}{4} = \frac{3}{4}
 (\#eq:setadd)
 $$
+:::
 
 The law of addition makes things easier in multiple ways, and it implies another (easier!) way to calculate the probability above. To see this, we shall start with a handy property of the probability set function. Namely, for some sample space $S$:
 
 $$ P(S) = 1 
 (\#eq:setprop)$$
 
-In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; $\{TT\}^c$) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
+In English, this means that the probability our outcome lands in the sample space is equal to 1. Of course this is true! The sample space is - by definition - the collection of all the possible outcomes of our random experiment. As I said, this property makes some computations easier. 
+
+::: {.example}
+For example, suppose we are interested in the probability of getting at least one head (as above). In this case, we don't need to go through the rigmarole of enumerating all the combinations with an H. We know there's exactly one combination with no heads - TT - and the rest of the outcomes (the complement of TT; $\{TT\}^c$) have at least one H. So, let's say that the event $C$ contains the outcomes with at least one head, and let's also say that $S$ is our full sample space:
 
 Observe that:
 $$ C \cup \{TT\} = S $$
@@ -227,7 +280,7 @@ P(C) &= 1 - P(\{TT\}) \\
 P(C) &= 1 - \frac{1}{4} = \frac{3}{4}
 \end{align}
 $$
-
+:::
 Thus, without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. More formally, to calculate the probability of some event $C$, we could take its complement $C^c$. Then
 
 $$
@@ -235,6 +288,7 @@ P(C) = 1 - P(C^c)
 (\#eq:pcomplement)
 $$
 
+::: {.example}
 Let's work in another example of this just to hammer this concept home. Let's say we have a sample space $S = \{0,1,2,3,4,5,6,7,8,9,10\}$, and the probability set operator assigns a probability of 1/11 to each outcome in this sample space. We want to know the probability that our draw will land in the event $C = \{3 \leq X\}$ - an outcome of 3 or more. You might be able to do this in your head. I'm personally too lazy to write out the law of addition for $C$, so we'll use \@ref(eq:pcomplement). First observe that
 
 
@@ -252,8 +306,12 @@ P(C) &= \frac{8}{11}
 \end{align}
 $$
 Much easier!
+:::
 
-Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've left out an important part of the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done and what we need to add. Let's define our sample space to be $S = \{1,2,3\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{1,2\}$ and $C_2 = \{1,2\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of addition. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{2\}$. 
+Okay, I have to stop the narrative now to tell you I have done a great misdeed. For the sake of simplicity I've left out an important part of the law of addition (I know: $P({Hell}) > 0$). Now it's time for the truth, and I'll show you what I've done and what we need to add. 
+
+::: {.example}
+Let's define our sample space to be $S = \{1,2,3\}$, and suppose each outcome has a probability of 1/3. Define two events $C_1 = \{1,2\}$ and $C_2 = \{1,2\}$. We would like to know the probability of our outcome landing in $C_1$ or $C_2$. This sounds like a job for the law of addition. However, remember our current version of the law only works for mutually exclusive sets, but $C_1 \cap C_2 = \{2\}$. 
 
 We could always get around the conundrum describe above by executing the set operation before applying the probability set operator. Then with that new set, we could calculate the probability as in \@ref(eq:setadd), e.g., using the first law of addition I described for mutually exclusive events. For example:
 
@@ -273,7 +331,7 @@ P(A \cup B) = P(A) + P(B) - P(A \cap B)
 (\#eq:additionnon)
 $$
 
-This saw says that if we were to simply sum the probability of each event, we would double count the overlap between sets A and B ($\cap$) . In the case of our example, we would double count the probability of $C_1 \cap C_2 = {2}$ twice. If you don't believe me, look at this. Consider $C_1$ and $C_2$ as defined above
+This law says that if we were to simply sum the probability of each event, we would double count the overlap between sets A and B ($\cap$) . In the case of our example, we would double count the probability of $C_1 \cap C_2 = {2}$ twice. If you don't believe me, look at this. Consider $C_1$ and $C_2$ as defined above
 
 $$
 P(C_1) = P(\{1,2\}) = P(1) + P(2) \\
@@ -301,11 +359,13 @@ P(C_1 \cup C_2) &= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
 $$
 
 Fixed! 
+:::
 
+::: {.example}
 Using the full version of the law of addition helps to make clear why we can drop the last term for mutually exclusive sets \@ref(eq:addlaw). Suppose we have two mutually exclusive events $A$ and $B$, each a subset of some sample space $S$. Then, because they are mutually exclusive, $A \cap B = \{\}$. And, indeed, the probability of the null set - $P(\{\})$ - is zero. You can't draw nothing on a random experiment. So in the case of mutually exclusive events
 
 $$P(A \cup B) = P(A) + P(B) - 0$$
-
+:::
 What we just learned will serve as a nice initial step into probability. We shall close this session by further emphasizing that $P(A \cup B)$ can be thought of as the probability that our outcome lands in A OR B. On the other hand, $P(A \cap B)$ can be thought of as the probability our outcome is an element shared by A AND B. Indeed, although we can use our set operations and the probability set operator to calculate the ladder, there is another method that we will discuss next.
 
 ## Conditional Probability and Independence
@@ -318,24 +378,24 @@ $$
 (\#eq:conditional)
 $$
 
-Indeed, the idea of conditional probability can be a sticking point for new learners of probability, so it's worth doing a few examples. First, let's define a sample space - $S = \{1,2,3\}$ - and assign a probability of 1/3 to each outcome. Now, let's define two events - $C_1 = \{1\}$ and $C_2 = \{1,2\}$. In this case, let's calculate $P(C_1|C_2)$. In other words we want to know the probability of a "1" outcome in our random experiment, given the event $C_2$ has occurred. Intuitively speaking, if we know that the outcome has landed in $\{1,2\}$, we may feel as if the probability of getting a 1 is increased. Indeed, the outcome of 3 is out of the picture. Let's not lean on our intuition though. Looking at the equation for conditional probability, we shall need to quantities for our calculation - the probability of $C_1$ AND $C_2$ ($\cap$) and the probability of $C_2$:
-$$
-P(C_1 \cap C_2) \\
-P(C_2)
-$$
+Indeed, the idea of conditional probability can be a sticking point for new learners of probability, so it's worth doing a few examples. 
 
-The tools in the last section shall prove sufficient to calculate these.
+::: {.example}
+First, let's define a sample space - $S = \{1,2,3\}$ - and assign a probability of 1/3 to each outcome. Now, let's define two events - $C_1 = \{1\}$ and $C_2 = \{1,2\}$. We shall endeavor to calculate $P(C_1|C_2)$. In other words we want to know the probability of a "1" outcome in our random experiment, given the event $C_2$ has occurred. Intuitively speaking, if we know that the outcome has landed in $C_2 = \{1,2\}$, we may feel as if the probability of getting a 1 is increased. Indeed, the outcome of 3 is now out of the picture. Let's not lean on our intuition though. Looking at the equation for conditional probability, we shall need two quantities for our calculation - the probability of $C_1$ AND $C_2$ ($\cap$) and the probability of $C_2$:
+
+The tools in the last section will prove sufficient to calculate these.
 
 $$
 P(C_1 \cap C_2) = P(\{1,2\} \cap \{1\}) = P(\{1\}) = 1/3 \\
 P(C_2) = 1/3 + 1/3 = 2/3
 $$
 
-Now that we have what we need, it's just a matter of plugging in the numbers.
+Now that we have what we need, it's just a matter of plugging in the numbers to the conditional probability equation.
 
 $$
 \frac{P(C_1 \cap C_2)}{P(C_2)} = P(C_1|C_2)\\
 \frac{1/3}{2/3} = \frac{1}{2}
 $$
 
-The probability of $C_1$ given that $C_2$ occurred is 1/2.
+The probability of $C_1$ given that $C_2$ has occurred is 1/2.
+:::
