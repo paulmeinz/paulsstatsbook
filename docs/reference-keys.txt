@@ -30,6 +30,9 @@ exm:unlabeled-div-17
 eq:conditional
 exm:unlabeled-div-18
 exm:unlabeled-div-19
+eq:lawofmultiplication
+eq:lawofmultiplication2
+exm:unlabeled-div-20
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
@@ -41,3 +44,4 @@ sets-and-sample-spaces
 repeated-samples
 what-is-probability
 conditional-probability-and-independence
+extended-examples-of-probability

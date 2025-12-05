@@ -214,7 +214,7 @@ $$ N^k
 
 Note: If we had sampled from several sample spaces, all with a different number of elements, then then we would just multiply the respective element lengths together.
 
-I will end this section with an important discussion on notation. As you can see from \@ref(eq:permutations), the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - $\{HH,HT,TH,TT\}$. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - $\{HH,HT\}$. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g. 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like $\{H \: on \: 1st \: flip\}$, because I don't have the rest of my natural born life to list permutations (and you don't have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.
+I will end this section with an important discussion on notation. As you can see from \@ref(eq:permutations), the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - $\{HH,HT,TH,TT\}$. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - $\{HH,HT\}$. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g. 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like or similar to $\{H \: on \: 1st \: flip\}$, because I don't have the rest of my natural born life to list permutations (and you don't have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.
 
 ## What is probability?
 Many of us have an internal sense of this stuff we call probability. In the crisp fall of the California foothills (which is about the time that I'm writing this section), you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability in the random experiment sense. That is, if we did a random experiment over and over again, we might expect some event to occur a percentage of the time. We shall call this percentage a probability. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. Indeed a "percentage of time" greater than 1 or less than zero would be nonsensical.  
@@ -421,7 +421,7 @@ lines <- ggplot2::ggplot(C, ggplot2::aes(x = '', fill = y, y = x, label = y)) +
 print(lines)
 ```
 
-Now, we are told that the event $C_2 = \{1,2\}$ has occurred. Put another way, we are told that the outcome from our random experiment has landed _somewhere_ in $C_2$. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. You might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given $C_2$ occurred - was 1/2.
+Now, we are told that the event $C_2 = \{1,2\}$ has occurred. Put another way, we are told that the outcome from our random experiment has landed _somewhere_ in $C_2$. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. You might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given $C_2$ occurred - was 1/2. Thus, because $C_2$ occurred, the probability of $C_1$ increased from 1/3 to 1/2.
 
 ```{r, echo = FALSE}
 x <- c(1/3,1/3,1/3)
@@ -442,6 +442,62 @@ lines <- ggplot2::ggplot(C, ggplot2::aes(x = '', fill = y, y = x, label = y)) +
 print(lines)
 ```
 
+
 ::: {.example}
-Let's take a look at an example that will give us another view of things. Suppose we flip two coins and, as in previous examples, our sample space is $S = \{TT,TH,HT,TT\}$. Suppose our probability set operator assigns to each a probability of 1/4.
+Let's take a look at an example that will give us another view of things. Suppose we flip two coins and, as in previous examples, our sample space is $S = \{TT,TH,HT,HH\}$. Like before, our probability set operator assigns to each a probability of 1/4. In this case, what is the probability of getting a head on the second flip - given we've flipped a head on the first?
+
+Recall from our previous work, and the note at the end of the section 2.1, that flipping a head on the second coin is described by the event - $C_2 = \{TH,HH\}$. Note that here I've used $C_2$ to remind you that we are referring to a head on the second flip. Getting a head on the first flip is described by $C_1 = \{HT,HH\}$. The probability of each of these events is:
+
+$$
+P(C_1) = P(\{HT,HH\}) = 1/4 + 1/4 = 1/2 \\
+P(C_2) = P(\{TH,HH\}) = 1/4 + 1/4 = 1/2
+$$
+In order to calculate the conditional probability - $P(C_2|C_1)$ - we shall also need $P(C_1 \cap C_2)$ - e.g. the probability that our flip lands in $C_1$ AND $C_2$.
+
+$$
+P(C_1 \cap C_2) = P(\{HT,HH\} \cap \{TH,HH\}) = P(\{HH\}) = 1/2
+$$
+With $P(C_1)$ and $P(C_1 \cap C_2)$, we can now calculate $P(C_2|C_1)$
+
+$$
+\frac{P(C_1 \cap C_2)}{P(C_1)} = \frac{1/4}{1/2} = \frac{1}{2}
+$$
+The probability of flipping a second head, given you've already flipped one, is 1/2.
 :::
+
+Indeed, we already observed that the $P(C_2)$ (head on second flip) was 1/2, and, interestingly, $P(C_2|C_1)$ was also equal to 1/2. Put another way, the occurrence of a head on the first flip did not change the likelihood of a head on the second flip. In terms of probability, we say these two events are _independent_. In a more concrete manner, given two events - A and B - with each assigned the probabilities $P(A)$ and $P(B)$, the two events are independent if
+
+$$
+\frac{P(A \cap B)}{P(B)} = P(A|B) = P(A) 
+(\#eq:conditional)
+$$
+
+The occurrence of B doesn't change the probability of A; the probability of A occurring, given B occurred, is unchanged. As I promised at the end of the last section, independence and conditional probability give us a new way of calculating P(A \cap B), and it's hidden in our equations for conditional probability. Specifically
+
+$$
+\begin{align}
+\frac{P(A \cap B)}{P(B)} &= P(A|B) \\
+P(B)\frac{P(A \cap B)}{P(B)} &= P(A|B)\,P(B) \\
+P(A \cap B) &= P(A|B)\,P(B)
+(\#eq:lawofmultiplication)
+\end{align}
+$$
+The last line above - $P(A \cap B) = P(A|B)\,P(B)$ - is known as the _law of multiplication_. It gives us another way to calculate the $P(A \cap B)$. For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above, in the case of independent events $P(A|B) = P(A)$, so the law of multiplication becomes
+
+$$
+P(A \cap B) = P(A)\,P(B)
+(\#eq:lawofmultiplication2)
+$$
+In other words, in the case of two independent events, we can calculate the probability of A and B ($P(A \cap B)$), by multiplying $P(A)$ and $P(B)$ together. Let's give these equations some run:
+
+::: {.example}
+Suppose we are flipping three coins _independently_. That is, assume the event we get a heads or tails on a flip is independent from getting a heads/tails on any other flip. Let's say $C_1$ represents the first flip event, $C_2$ the second, and $C_3$ the third. Here I'm using a shorthand because writing out the sample space would be tiresome. For each coin, assign the probability of 1/2 to the event that the coin flips heads (and 1/2 that it flips tails). What is the probability of $C_1 = \{H\}$, $C_2 = \{H\}$, and $C_3 = \{H\}$?  We can use the law of multiplication for indepdent events
+
+$$
+P(C_1)\,P(C_2)\,P(C_3)= 1/2 \times 1/2 \times 1/2 = 1/8
+$$
+We shall get three heads about 1/8th the time. As an interesting aside, suppose you wrote out the sample space and specifically identified the events described by my shorthand for $C_1$, $C_2$, and $C_3$, you'd find that the intersect of the sets is $\{HHH\}$. I didn't show you the exact method to determine the intersect between three sets, but you can simply do it by comparison.
+:::
+
+
+## Extended Examples of Probability

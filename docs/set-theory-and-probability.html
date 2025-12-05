@@ -97,6 +97,7 @@ statistics course.|</p>" />
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#what-is-probability"><i class="fa fa-check"></i><b>2.2</b> What is probability?</a></li>
 <li class="chapter" data-level="2.3" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#conditional-probability-and-independence"><i class="fa fa-check"></i><b>2.3</b> Conditional Probability and Independence</a></li>
+<li class="chapter" data-level="2.4" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#extended-examples-of-probability"><i class="fa fa-check"></i><b>2.4</b> Extended Examples of Probability</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -222,7 +223,7 @@ There is no simplified way to write this in set notation. Note the intersect of 
 <p><span class="math display" id="eq:permutations">\[ N^k
 \tag{2.7}\]</span></p>
 <p>Note: If we had sampled from several sample spaces, all with a different number of elements, then then we would just multiply the respective element lengths together.</p>
-<p>I will end this section with an important discussion on notation. As you can see from <a href="set-theory-and-probability.html#eq:permutations">(2.7)</a>, the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - <span class="math inline">\(\{HH,HT,TH,TT\}\)</span>. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - <span class="math inline">\(\{HH,HT\}\)</span>. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g. 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like <span class="math inline">\(\{H \: on \: 1st \: flip\}\)</span>, because I don’t have the rest of my natural born life to list permutations (and you don’t have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.</p>
+<p>I will end this section with an important discussion on notation. As you can see from <a href="set-theory-and-probability.html#eq:permutations">(2.7)</a>, the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - <span class="math inline">\(\{HH,HT,TH,TT\}\)</span>. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - <span class="math inline">\(\{HH,HT\}\)</span>. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g. 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like or similar to <span class="math inline">\(\{H \: on \: 1st \: flip\}\)</span>, because I don’t have the rest of my natural born life to list permutations (and you don’t have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.</p>
 </div>
 </div>
 <div id="what-is-probability" class="section level2 hasAnchor" number="2.2">
@@ -363,11 +364,55 @@ P(C_2) = 1/3 + 1/3 = 2/3
 </div>
 <p>Indeed the computation isn’t too hard (although it may be at first), but the interpretation of conditional probability can be tricky. It’s worth unpacking our last example a bit more. One way to envision probability is to think of a probability pie (stick with me here). In our example, the probability of each of the events was 1/3. In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
-<p>Now, we are told that the event <span class="math inline">\(C_2 = \{1,2\}\)</span> has occurred. Put another way, we are told that the outcome from our random experiment has landed <em>somewhere</em> in <span class="math inline">\(C_2\)</span>. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it’s now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. You might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given <span class="math inline">\(C_2\)</span> occurred - was 1/2.</p>
+<p>Now, we are told that the event <span class="math inline">\(C_2 = \{1,2\}\)</span> has occurred. Put another way, we are told that the outcome from our random experiment has landed <em>somewhere</em> in <span class="math inline">\(C_2\)</span>. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it’s now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. You might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given <span class="math inline">\(C_2\)</span> occurred - was 1/2. Thus, because <span class="math inline">\(C_2\)</span> occurred, the probability of <span class="math inline">\(C_1\)</span> increased from 1/3 to 1/2.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div class="example">
-<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 2.19  </strong></span>Let’s take a look at an example that will give us another view of things. Suppose we flip two coins and, as in previous examples, our sample space is <span class="math inline">\(S = \{TT,TH,HT,TT\}\)</span>. Suppose our probability set operator assigns to each a probability of 1/4.</p>
+<p><span id="exm:unlabeled-div-19" class="example"><strong>Example 2.19  </strong></span>Let’s take a look at an example that will give us another view of things. Suppose we flip two coins and, as in previous examples, our sample space is <span class="math inline">\(S = \{TT,TH,HT,HH\}\)</span>. Like before, our probability set operator assigns to each a probability of 1/4. In this case, what is the probability of getting a head on the second flip - given we’ve flipped a head on the first?</p>
+<p>Recall from our previous work, and the note at the end of the section 2.1, that flipping a head on the second coin is described by the event - <span class="math inline">\(C_2 = \{TH,HH\}\)</span>. Note that here I’ve used <span class="math inline">\(C_2\)</span> to remind you that we are referring to a head on the second flip. Getting a head on the first flip is described by <span class="math inline">\(C_1 = \{HT,HH\}\)</span>. The probability of each of these events is:</p>
+<p><span class="math display">\[
+P(C_1) = P(\{HT,HH\}) = 1/4 + 1/4 = 1/2 \\
+P(C_2) = P(\{TH,HH\}) = 1/4 + 1/4 = 1/2
+\]</span>
+In order to calculate the conditional probability - <span class="math inline">\(P(C_2|C_1)\)</span> - we shall also need <span class="math inline">\(P(C_1 \cap C_2)\)</span> - e.g. the probability that our flip lands in <span class="math inline">\(C_1\)</span> AND <span class="math inline">\(C_2\)</span>.</p>
+<p><span class="math display">\[
+P(C_1 \cap C_2) = P(\{HT,HH\} \cap \{TH,HH\}) = P(\{HH\}) = 1/2
+\]</span>
+With <span class="math inline">\(P(C_1)\)</span> and <span class="math inline">\(P(C_1 \cap C_2)\)</span>, we can now calculate <span class="math inline">\(P(C_2|C_1)\)</span></p>
+<p><span class="math display">\[
+\frac{P(C_1 \cap C_2)}{P(C_1)} = \frac{1/4}{1/2} = \frac{1}{2}
+\]</span>
+The probability of flipping a second head, given you’ve already flipped one, is 1/2.</p>
 </div>
+<p>Indeed, we already observed that the <span class="math inline">\(P(C_2)\)</span> (head on second flip) was 1/2, and, interestingly, <span class="math inline">\(P(C_2|C_1)\)</span> was also equal to 1/2. Put another way, the occurrence of a head on the first flip did not change the likelihood of a head on the second flip. In terms of probability, we say these two events are <em>independent</em>. In a more concrete manner, given two events - A and B - with each assigned the probabilities <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span>, the two events are independent if</p>
+<p><span class="math display" id="eq:conditional">\[
+\frac{P(A \cap B)}{P(B)} = P(A|B) = P(A)
+\tag{2.13}
+\]</span></p>
+<p>The occurrence of B doesn’t change the probability of A; the probability of A occurring, given B occurred, is unchanged. As I promised at the end of the last section, independence and conditional probability give us a new way of calculating P(A B), and it’s hidden in our equations for conditional probability. Specifically</p>
+<p><span class="math display" id="eq:lawofmultiplication">\[
+\begin{align}
+\frac{P(A \cap B)}{P(B)} &amp;= P(A|B) \\
+P(B)\frac{P(A \cap B)}{P(B)} &amp;= P(A|B)\,P(B) \\
+P(A \cap B) &amp;= P(A|B)\,P(B)
+\tag{2.14}
+\end{align}
+\]</span>
+The last line above - <span class="math inline">\(P(A \cap B) = P(A|B)\,P(B)\)</span> - is known as the <em>law of multiplication</em>. It gives us another way to calculate the <span class="math inline">\(P(A \cap B)\)</span>. For our purposes, this law finds it’s greatest use in the case of events that are independent. Recall from above, in the case of independent events <span class="math inline">\(P(A|B) = P(A)\)</span>, so the law of multiplication becomes</p>
+<p><span class="math display" id="eq:lawofmultiplication2">\[
+P(A \cap B) = P(A)\,P(B)
+\tag{2.15}
+\]</span>
+In other words, in the case of two independent events, we can calculate the probability of A and B (<span class="math inline">\(P(A \cap B)\)</span>), by multiplying <span class="math inline">\(P(A)\)</span> and <span class="math inline">\(P(B)\)</span> together. Let’s give these equations some run:</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-20" class="example"><strong>Example 2.20  </strong></span>Suppose we are flipping three coins <em>independently</em>. That is, assume the event we get a heads or tails on a flip is independent from getting a heads/tails on any other flip. Let’s say <span class="math inline">\(C_1\)</span> represents the first flip event, <span class="math inline">\(C_2\)</span> the second, and <span class="math inline">\(C_3\)</span> the third. Here I’m using a shorthand because writing out the sample space would be tiresome. For each coin, assign the probability of 1/2 to the event that the coin flips heads (and 1/2 that it flips tails). What is the probability of <span class="math inline">\(C_1 = \{H\}\)</span>, <span class="math inline">\(C_2 = \{H\}\)</span>, and <span class="math inline">\(C_3 = \{H\}\)</span>? We can use the law of multiplication for indepdent events</p>
+<p><span class="math display">\[
+P(C_1)\,P(C_2)\,P(C_3)= 1/2 \times 1/2 \times 1/2 = 1/8
+\]</span>
+We shall get three heads about 1/8th the time. As an interesting aside, suppose you wrote out the sample space and specifically identified the events described by my shorthand for <span class="math inline">\(C_1\)</span>, <span class="math inline">\(C_2\)</span>, and <span class="math inline">\(C_3\)</span>, you’d find that the intersect of the sets is <span class="math inline">\(\{HHH\}\)</span>. I didn’t show you the exact method to determine the intersect between three sets, but you can simply do it by comparison.</p>
+</div>
+</div>
+<div id="extended-examples-of-probability" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Extended Examples of Probability<a href="set-theory-and-probability.html#extended-examples-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
 </div>
 </div>
