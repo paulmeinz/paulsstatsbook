@@ -28,6 +28,8 @@ exm:unlabeled-div-16
 eq:additionnon
 exm:unlabeled-div-17
 eq:conditional
+exm:unlabeled-div-18
+exm:unlabeled-div-19
 preface
 you-can-learn-statistics
 why-i-wrote-this-book
