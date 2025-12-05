@@ -503,7 +503,7 @@ You may have also noticed that I used the law of multiplication for three events
 
 
 ## Extended Examples of Probability
-You've learned a a lot about probability to this point. Great job! Probability can be a tough subject, and when I have taught people the subject, I find that students get quite confused (it may be the teacher in this case). It's therefore a good idea to do some more examples. In this section, we'll add a little bit of flourish to our examples to make probability a little bit more clear.
+You've learned a a lot about probability to this point. Great job! Probability can be a tough subject, and when I have taught people the subject, I find that students can get quite confused (albeit it could be the teacher and not the subject). It's therefore a good idea to do some more examples. In this section, we'll add a little bit of flourish to our examples to make probability a little bit more clear.
 
 ::: {.example}
 Let's start on the simple side. Suppose the probability that a person likes hot dogs is - $P(\{likes\:hot\:dogs\}) = .25$ - and the probability a person likes broccoli is - $P(\{likes\:broccoli\}) = .15$. For the sake of my sanity, let's refer to these as events A and B, respectively. Further assume that if an individual likes broccoli, then the probability they like hot dogs is $.10$.

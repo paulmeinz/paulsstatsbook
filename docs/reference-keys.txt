@@ -34,7 +34,6 @@ eq:lawofmultiplication
 eq:lawofmultiplication2
 exm:unlabeled-div-20
 exm:unlabeled-div-21
-preface
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book

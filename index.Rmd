@@ -13,7 +13,7 @@ description: |
 link-citations: yes
 ---
 
-# Preface
+# Preface {-}
 
 ## You can learn statistics
 
