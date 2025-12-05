@@ -400,7 +400,7 @@ $$
 The probability of $C_1$ given that $C_2$ has occurred is 1/2.
 :::
 
-Indeed the computation isn't too hard (although it may be at first), but the interpretation of conditional probability can be tricky. It's worth unpacking our last example a bit more. One way to envision probability is to think of a probability pie (stick with me here). In our example, the probability of each of the events was 1/3. In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
+The computation isn't too hard (although it may be at first), but the interpretation of conditional probability can certainly be tricky. It's worth unpacking our last example a bit more. One way to envision probability is to think of a probability pie (stick with me here). In our example, the probability of each of the events was 1/3. In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
 
 ```{r, echo = FALSE}
 x <- c(1/3,1/3,1/3)
@@ -452,7 +452,7 @@ $$
 P(C_1) = P(\{HT,HH\}) = 1/4 + 1/4 = 1/2 \\
 P(C_2) = P(\{TH,HH\}) = 1/4 + 1/4 = 1/2
 $$
-In order to calculate the conditional probability - $P(C_2|C_1)$ - we shall also need $P(C_1 \cap C_2)$ - e.g. the probability that our flip lands in $C_1$ AND $C_2$.
+In order to calculate the conditional probability - $P(C_2|C_1)$ - we shall also need $P(C_1 \cap C_2)$ - e.g. the probability that our outcome lands in $C_1$ AND $C_2$.
 
 $$
 P(C_1 \cap C_2) = P(\{HT,HH\} \cap \{TH,HH\}) = P(\{HH\}) = 1/2
@@ -465,7 +465,7 @@ $$
 The probability of flipping a second head, given you've already flipped one, is 1/2.
 :::
 
-Indeed, we already observed that the $P(C_2)$ (head on second flip) was 1/2, and, interestingly, $P(C_2|C_1)$ was also equal to 1/2. Put another way, the occurrence of a head on the first flip did not change the likelihood of a head on the second flip. In terms of probability, we say these two events are _independent_. In a more concrete manner, given two events - A and B - with each assigned the probabilities $P(A)$ and $P(B)$, the two events are independent if
+Indeed, we already observed that the $P(C_2)$ (head on second flip) was 1/2, and, interestingly, $P(C_2|C_1)$ was also equal to 1/2. Put another way, the occurrence of a head on the first flip did not change the likelihood of a head on the second flip. In terms of probability, we say these two events are **independent**. In a more concrete manner, given two events - A and B - with each assigned the probabilities $P(A)$ and $P(B)$, the two events are independent if
 
 $$
 \frac{P(A \cap B)}{P(B)} = P(A|B) = P(A) 
@@ -482,7 +482,7 @@ P(A \cap B) &= P(A|B)\,P(B)
 (\#eq:lawofmultiplication)
 \end{align}
 $$
-The last line above - $P(A \cap B) = P(A|B)\,P(B)$ - is known as the _law of multiplication_. It gives us another way to calculate the $P(A \cap B)$. For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above, in the case of independent events $P(A|B) = P(A)$, so the law of multiplication becomes
+The last line above - $P(A \cap B) = P(A|B)\,P(B)$ - is known as the **law of multiplication**. It gives us another way to calculate the $P(A \cap B)$. For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above, in the case of independent events $P(A|B) = P(A)$, so the law of multiplication becomes
 
 $$
 P(A \cap B) = P(A)\,P(B)
@@ -491,13 +491,50 @@ $$
 In other words, in the case of two independent events, we can calculate the probability of A and B ($P(A \cap B)$), by multiplying $P(A)$ and $P(B)$ together. Let's give these equations some run:
 
 ::: {.example}
-Suppose we are flipping three coins _independently_. That is, assume the event we get a heads or tails on a flip is independent from getting a heads/tails on any other flip. Let's say $C_1$ represents the first flip event, $C_2$ the second, and $C_3$ the third. Here I'm using a shorthand because writing out the sample space would be tiresome. For each coin, assign the probability of 1/2 to the event that the coin flips heads (and 1/2 that it flips tails). What is the probability of $C_1 = \{H\}$, $C_2 = \{H\}$, and $C_3 = \{H\}$?  We can use the law of multiplication for indepdent events
+Suppose we are flipping three coins _independently_. That is, assume the event we get a heads or tails on a flip is independent from getting a heads/tails on any other flip. Let's say $C_1$ represents the first flip event, $C_2$ the second, and $C_3$ the third. Here I'm using a shorthand because writing out the sample space would be tiresome. For each coin, assign the probability of 1/2 to the event that the coin flips heads (and 1/2 that it flips tails). What is the probability of $C_1 = \{H\}$, $C_2 = \{H\}$, and $C_3 = \{H\}$?  We can use the law of multiplication for independent events
 
 $$
 P(C_1)\,P(C_2)\,P(C_3)= 1/2 \times 1/2 \times 1/2 = 1/8
 $$
 We shall get three heads about 1/8th the time. As an interesting aside, suppose you wrote out the sample space and specifically identified the events described by my shorthand for $C_1$, $C_2$, and $C_3$, you'd find that the intersect of the sets is $\{HHH\}$. I didn't show you the exact method to determine the intersect between three sets, but you can simply do it by comparison.
+
+You may have also noticed that I used the law of multiplication for three events - not two. Indeed, I only described the law for two independent events. However, if a set of events are mutually independent, you may multiply their probabilities together to get the probability of event 1 AND event 2 AND event 3... We won't discuss the mathematical definition of mutual independence here. I'll never provide you with a task in the textbook where it isn't clear.
 :::
 
 
 ## Extended Examples of Probability
+You've learned a a lot about probability to this point. Great job! Probability can be a tough subject, and when I have taught people the subject, I find that students get quite confused (it may be the teacher in this case). It's therefore a good idea to do some more examples. In this section, we'll add a little bit of flourish to our examples to make probability a little bit more clear.
+
+::: {.example}
+Let's start on the simple side. Suppose the probability that a person likes hot dogs is - $P(\{likes\:hot\:dogs\}) = .25$ - and the probability a person likes broccoli is - $P(\{likes\:broccoli\}) = .15$. For the sake of my sanity, let's refer to these as events A and B, respectively. Further assume that if an individual likes broccoli, then the probability they like hot dogs is $.10$.
+
+1. Are the events $A$ and $B$ independent?
+2. What is the probability that someone likes hot dogs AND broccoli?
+3. Bonus question: What is the sample space of our random experiment?
+
+We shall deal with each in turn. First, we are given that $P(A|B) = .10$. You may have missed this because I used less formal language (dang word problems!). This conditional probability does not equal $P(A) = .25$. Therefore, because $P(A|B)\neq P(A)$, the two are _dependent_. Put another way, if someone likes broccoli (event B occurred), it _lowers_ the probability that they like hot dogs. 
+
+The second question refers to the law of multiplication for dependent events. Here it is again:
+
+$$P(A \cap B) = P(A|B)\,P(B)$$
+We have $P(A|B) = .10$ and $P(B) = .15$. So, plugging these numbers in we get
+
+$$P(A|B)\,P(B) = .10 \times .15 = .015$$
+The probability of liking hot dogs AND liking broccoli is just $.015$. Out of a thousand random experiments, you might find 15 people who like broccoli and hot dogs. The actual rate is probably much higher, but we aren't talking about real numbers just yet.
+
+The third part of this question concerns the sample space. I used short hand to describe the sample space again, so it's worth unpacking things for clarity. Let's represent "liking hot dogs" with the symbol $LH$, and "disliking hot dogs" with the symbol $DH$. Then let's represent "likes broccoli" with $LB$ and "dislikes broccoli" with $DB$. Like the outcomes of two coin flips, each event in our sample space shall represent a combination of a hot dog preference and a broccoli preference.
+
+$$S = \{LHLB, LHDB, DHLB, DHDB\}$$
+And our event "liking hot dogs" would be
+
+$$ A = \{LHLB, LHDB\} $$
+Our event liking broccoli would be
+
+$$ B = \{LHLB, DHLB\} $$
+The event "liking broccoli" and "liking hot dogs" would be described as
+
+$$ A \cap B = \{LHLB\} $$
+
+which we have just learned has a probability of about .015. Eat your veggies!
+:::
+
