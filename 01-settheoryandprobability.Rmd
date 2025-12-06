@@ -554,6 +554,18 @@ Indeed, had we picked any two numbers for the first and second dice the probabil
 The second question asks us for the probability of rolling a 1 and a 2. In this case, we could get a 1 followed by a 2 OR a 2 followed by a 1. That is to say, we are talking about the probability of the event $A = \{1\,2, 2\,1\}$, and using the law of addition
 
 $$P(\{1\,2, 2\,1\}) = 1/16 + 1/16 = 2/16 = 1/8$$
-Our work in the last step has set us up nicely to approach the third part of the question. We shall need all the combinations 
+Our work in the last step has set us up nicely to approach the third part of the question. We shall find it useful to fully specify the sample space.  
+
+```{r, echo = FALSE}
+x <- rep(c(1,2,3,4), each = 4)
+y <- rep(c(1,2,3,4), times = 4)
+z <- rep('1/16', times = 16)
+
+sample_space <- data.frame(x,y,z)
+names(sample_space) <- c('1st Die', '2nd Die', 'Probability')
+
+flextable::flextable(sample_space)
+```
+
 
 :::
