@@ -541,10 +541,10 @@ And we needed independence and the law of multiplication to calculate that this 
 ::: {.example}
 Let's turn our attention to another classic probability example: dice! We'll keep it relatively simple and say we are rolling two four-sided die, and assign a probability of 1/4 to each number for each die, respectively. Let's look at some scenarios with increasing complexity.
 
-1.What is the probability of rolling a 1 followed by a 1?
-2.What is the probability of rolling a 1 and a 2?
-3.What is the probability of the dice summing to 3?
-4.What is the probability of getting a sum of 3 or more - given you've rolled a 1 on the first dice? 
+1. What is the probability of rolling a 1 followed by a 1?
+2. What is the probability of rolling a 1 and a 2?
+3. What is the probability of the dice summing to 3?
+4. What is the probability of getting a sum of 3 or more - given you've rolled a 1 on the first dice? 
 
 In the first scenario, We'll again use a short hand to refer to the outcomes of the sample space. $A_1$ will refer to the first roll and $A_2$ will refer to the second roll. We have the event $A_1 = \{1\}$ - which can also be written as the combination of all the outcomes where the first dice is 1 - $\{1\,1,1\,2,1\,3,1\,4\}$. Both are equivalent. The second way of writing it is more exact. We also have $A_2 = \{1\}$, and each event has $P(A_1) = P(A_2) = 1/4$. They both have a probability of 1/4. We also know that the two events are independent. So, using the law of multiplication:
 
@@ -554,18 +554,58 @@ Indeed, had we picked any two numbers for the first and second dice the probabil
 The second question asks us for the probability of rolling a 1 and a 2. In this case, we could get a 1 followed by a 2 OR a 2 followed by a 1. That is to say, we are talking about the probability of the event $A = \{1\,2, 2\,1\}$, and using the law of addition
 
 $$P(\{1\,2, 2\,1\}) = 1/16 + 1/16 = 2/16 = 1/8$$
-Our work in the last step has set us up nicely to approach the third part of the question. We shall find it useful to fully specify the sample space.  
+Our work in the last step has set us up nicely to approach the third part of the question. We shall find it useful to fully specify the sample space. The table below will help us with that endeavor. Each larger row represents the first dice roll, and embedded within each larger row are all the possible rolls of the second dice. For example, let your eyes focus on the first big roll - the row corresponding to a 1 on the first die. Next scan to the right and see the row corresponding to a 1 on the second dice. The probability of getting a 1 followed by a 1 (summing to 2) is 1/16. 
 
 ```{r, echo = FALSE}
 x <- rep(c(1,2,3,4), each = 4)
 y <- rep(c(1,2,3,4), times = 4)
+q <- x + y
 z <- rep('1/16', times = 16)
 
-sample_space <- data.frame(x,y,z)
-names(sample_space) <- c('1st Die', '2nd Die', 'Probability')
+sample_space <- data.frame(x,y,q,z)
+names(sample_space) <- c('1st Die', '2nd Die','Sum', 'Probability')
 
-flextable::flextable(sample_space)
+x <- flextable::flextable(sample_space)
+x <- flextable::merge_v(x, j = 1)
+x <- flextable::hline(x, i = c(4,8,12,16))
+x <- flextable::align(x, align = 'center', part = 'body')
+x <- flextable::align(x, align = 'center', part = 'header')
+x
 ```
+Thanks to this table we can find the combinations that lead to a sum of three. Specifically we have $S = \{1\,2, 2\,1\}$, and each of these outcomes is 1/16, so the probability of getting an outcome that sums to three is 1/8.
 
+Now it's time for the final boss! How shall we determine the probability of the dice summing to 3 _given_ we roll a 1 on the first die? How shall we determine the independence of these two events? Well, let's look at the equation for conditional probability again
 
+$$ 
+\frac{P(A \cap B)}{P(B)} = P(A|B) 
+$$
+
+We shall need the probability of getting a sum of 3 AND rolling a 1 on the first dice, as well as, the probability of rolling a 1 on the first dice. Furthermore, for the determination of independence we will need the probability of rolling two dice that sum to 3. Let's calculate each of these in turn.
+
+1. Let's denote the event of rolling a 1 on the first dice as $A = \{1\,1, 1\,2, 1\,3, 1\,4\}$. Way back in the beginning of this example we said that P($A$) = 1/4.
+
+2. Let's deal with the probability of our two dice summing to 3 first. Denote this event as $B = \{1\,2,2\,1\}$. We just calculated this probability as 1/8.
+
+3. We can calculate $P(A \cap B)$ in a couple of ways. First we can lean on our intuition a bit. Looking at the table above, we see that there is only one way to roll a 1 on the first dice AND produce a sum of three - $\{1\,2\}$. The probability of this event is 1/16. If we are having difficulty leaning on our intuition, we have learned the tools to calculate $P\{A \cap B\}$.
+
+$$
+\begin{align}
+P\{A \cap B\} &= P(\{1\,1, 1\,2, 1\,3, 1\,4\} \cap \{1\,2,2\,1\}) \\
+&= P(\{1\,2\}) \\
+&= 1/16
+\end{align}
+$$
+
+Now we can calculate the probability of B given A:
+
+$$
+\frac{P(A \cap B)}{P(B)} = \frac{1/16}{1/8}= \frac{1}{4}
+$$
+And now we are prepared to evaluate independence. The probability of our dice summing to three is $P(B) = 1/8$, and $P(A|B) = 1/4$. As such, $P(B) \neq P(A|B)$. The two events are dependent. Rolling a 1 increases our overall chances of getting two dice that sum to 3. Indeed, reflecting on this a bit more, had we rolled a 4 on the first die it would be impossible to have a sum of 3 (e.g., $P(B)$ = 0). It therefore makes sense that our two events are dependent. 
+:::
+
+::: {.example}
+One more example is worth considering here. Suppose we know the probability of liking the San Francisco Giants is .10. Denote this event as $A$. Further suppose that we know the probability of liking meatballs is .40. Denote this event as $B$. What is the probability of A and B - $(P(A \cap B)$?
+
+The answer to this question is that it is unanswerable. We need more information about their independence to go any further. If the two events were independent, we could simply multiply their probabilities together. If they were not independent, we would need $P(A|B)$ or $P(B|A)$ before applying the law of multiplication. 
 :::
