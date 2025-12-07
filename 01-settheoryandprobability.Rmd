@@ -369,9 +369,9 @@ $$P(A \cup B) = P(A) + P(B) - 0$$
 What we just learned will serve as a nice initial step into probability. We shall close this session by further emphasizing that $P(A \cup B)$ can be thought of as the probability that our outcome lands in A OR B. On the other hand, $P(A \cap B)$ can be thought of as the probability our outcome is an element shared by A AND B. Indeed, although we can use our set operations and the probability set operator to calculate the ladder, there is another method that we will discuss next.
 
 ## Conditional Probability and Independence
-Having learned a little bit about probability and the law of addition, we will turn to a slightly more complicated topic - conditional probability. **Conditional Probability** describes the probability of an event as a result of the occurrence of another event. For example, suppose you are on a game show where you are supposed to select one of four doors. A prize is equally likely to be behind each door; the probability set function assigns a probability of 1/4 to each door. Right before you select a door, the host yells, "stop!", and then it is revealed that the prize is behind doors 1, 2, or 3. That is indeed some fortuitous news! Common sense says that the probability our prize lands behind door number 4 is now _zero_, and we should constrain our guess to doors 1, 2, and 3. That is to say, the conditional probability our prize lands behind door 4 is zero, given the hosts announcement that the event $C = \{door\:1,door\:2,door\:3\}$ has occurred.
+Having learned a little bit about probability and the law of addition, we will turn to a slightly more complicated topic - conditional probability. **Conditional Probability** describes the probability of an event given the occurrence of another event. For example, suppose you are on a game show where you select one of four doors. Further suppose that a prize is equally likely to be behind each door. That is, the probability set function assigns a probability of 1/4 to each door. Right before you select a door, the host yells, "stop!", and then it is revealed that the prize is behind doors 1, 2, or 3. That is some fortuitous news! Common sense says that the probability our prize lands behind door number 4 is now _zero_, and we should constrain our guess to doors 1, 2, and 3. That is to say, the conditional probability our prize lands behind door 4 is zero, given that the event $C = \{door\:1,door\:2,door\:3\}$ has occurred.
 
-As in the case above, it is often possible to intuit the conditional probability of an event. Nevertheless, we shall need a concrete formula. The conditional probability of an event can be calculated using some familiar terms
+It is often possible to intuit the conditional probability of an event, but a concrete formula will be essential for more complex scenarios. The conditional probability of an event can be calculated using some familiar terms
 
 $$ 
 \frac{P(A \cap B)}{P(B)} = P(A|B) 
@@ -381,7 +381,7 @@ $$
 Indeed, the idea of conditional probability can be a sticking point for new learners of probability, so it's worth doing a few examples. 
 
 ::: {.example}
-First, let's define a sample space - $S = \{1,2,3\}$ - and assign a probability of 1/3 to each outcome. Now, let's define two events - $C_1 = \{1\}$ and $C_2 = \{1,2\}$. We shall endeavor to calculate $P(C_1|C_2)$. In other words we want to know the probability of a "1" outcome in our random experiment, given the event $C_2$ has occurred. Intuitively speaking, if we know that the outcome has landed in $C_2 = \{1,2\}$, we may feel as if the probability of getting a 1 is increased. Indeed, the outcome of 3 is now out of the picture. Let's not lean on our intuition though. Looking at the equation for conditional probability, we shall need two quantities for our calculation - the probability of $C_1$ AND $C_2$ ($\cap$) and the probability of $C_2$:
+First, let's define a sample space - $S = \{1,2,3\}$ - and assign a probability of 1/3 to each outcome. Now, let's define two events - $C_1 = \{1\}$ and $C_2 = \{1,2\}$. We shall endeavor to calculate $P(C_1|C_2)$. In other words we want to know the probability of a "1" outcome/event in our random experiment, given the event $C_2$ has occurred. Intuitively speaking, if we know that the outcome has landed in $C_2 = \{1,2\}$, we may feel as if the probability of getting a 1 is increased. Indeed, the outcome of 3 is now out of the picture. Let's not lean on our intuition though. Looking at the equation for conditional probability, we shall need two quantities for our calculation - the probability of $C_1$ AND $C_2$ ($\cap$) and the probability of $C_2$:
 
 The tools in the last section will prove sufficient to calculate these.
 
@@ -400,7 +400,7 @@ $$
 The probability of $C_1$ given that $C_2$ has occurred is 1/2.
 :::
 
-The computation isn't too hard (although it may be at first), but the interpretation of conditional probability can certainly be tricky. It's worth unpacking our last example a bit more. One way to envision probability is to think of a probability pie (stick with me here). In our example, the probability of each of the events was 1/3. In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
+The computation isn't too hard (although it may be at first), but the interpretation of conditional probability can certainly be tricky. It's worth unpacking our last example a bit more. One way to envision the last example is to think of a probability pie (stick with me here). In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
 
 ```{r, echo = FALSE}
 x <- c(1/3,1/3,1/3)
@@ -421,7 +421,7 @@ lines <- ggplot2::ggplot(C, ggplot2::aes(x = '', fill = y, y = x, label = y)) +
 print(lines)
 ```
 
-Now, we are told that the event $C_2 = \{1,2\}$ has occurred. Put another way, we are told that the outcome from our random experiment has landed _somewhere_ in $C_2$. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. You might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given $C_2$ occurred - was 1/2. Thus, because $C_2$ occurred, the probability of $C_1$ increased from 1/3 to 1/2.
+Now, we are learn that the event $C_2 = \{1,2\}$ has occurred. Put another way, we now know that the outcome from our random experiment has landed _somewhere_ in $C_2$. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. One might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given $C_2$ occurred - is 1/2. Because $C_2$ occurred, the probability of $C_1$ increased from 1/3 to 1/2.
 
 ```{r, echo = FALSE}
 x <- c(1/3,1/3,1/3)
