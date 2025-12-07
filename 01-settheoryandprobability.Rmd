@@ -482,7 +482,7 @@ P(A \cap B) &= P(A|B)\,P(B)
 (\#eq:lawofmultiplication)
 \end{align}
 $$
-The last line above - $P(A \cap B) = P(A|B)\,P(B)$ - is known as the **law of multiplication**. It gives us another way to calculate the $P(A \cap B)$. For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above, in the case of independent events $P(A|B) = P(A)$, so the law of multiplication becomes
+The last line above - $P(A \cap B) = P(A|B)\,P(B)$ - is known as the **law of multiplication**. It gives us another way to calculate the $P(A \cap B)$. For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above that in the case of independent events - $P(A|B) = P(A)$. Therefore the law of multiplication becomes
 
 $$
 P(A \cap B) = P(A)\,P(B)
@@ -498,12 +498,14 @@ P(C_1)\,P(C_2)\,P(C_3)= 1/2 \times 1/2 \times 1/2 = 1/8
 $$
 We shall get three heads about 1/8th the time. As an interesting aside, suppose you wrote out the sample space and specifically identified the events described by my shorthand for $C_1$, $C_2$, and $C_3$, you'd find that the intersect of the sets is $\{HHH\}$. I didn't show you the exact method to determine the intersect between three sets, but you can simply do it by comparison.
 
-You may have also noticed that I used the law of multiplication for three events - not two. Indeed, I only described the law for two independent events. However, if a set of events are mutually independent, you may multiply their probabilities together to get the probability of event 1 AND event 2 AND event 3... We won't discuss the mathematical definition of mutual independence here. I'll never provide you with a task in the textbook where it isn't clear.
+You may have also noticed that I used the law of multiplication for three events - not two as I described earlier. However, if a set of events are mutually independent, you may multiply their probabilities together to get the probability of event 1 AND event 2 AND event 3... We won't discuss the mathematical definition of mutual independence here. I'll never provide you with a task in the textbook where it isn't clear.
 :::
 
 
 ## Extended Examples of Probability
-You've learned a a lot about probability to this point. Great job! Probability can be a tough subject, and when I have taught people the subject, I find that students can get quite confused (albeit it could be the teacher and not the subject). It's therefore a good idea to do some more examples. In this section, we'll add a little bit of flourish to our examples to make probability a little bit more clear.
+You've learned a lot about probability to this point. Great job! Probability can be a tough subject, and when I have taught people the subject, I find that students can get quite confused (albeit it could be the teacher and not the subject). It's therefore a good idea to do some more detailed and tricky examples. In this section, we'll add a little bit of flourish to our examples to make probability a little bit more clear. 
+
+As we go through each example, I recommend attempting them yourself first. Remember: _It is okay to be wrong_. In fact, being wrong is very important to fully understanding a concept, so don't get discouraged if you can't quite answer each question.
 
 ::: {.example}
 Let's start on the simple side. Suppose the probability that a person likes hot dogs is - $P(\{likes\:hot\:dogs\}) = .25$ - and the probability a person likes broccoli is - $P(\{likes\:broccoli\}) = .15$. For the sake of my sanity, let's refer to these as events A and B, respectively. Further assume that if an individual likes broccoli, then the probability they like hot dogs is $.10$.
@@ -517,12 +519,13 @@ We shall deal with each in turn. First, we are given that $P(A|B) = .10$. You ma
 The second question refers to the law of multiplication for dependent events. Here it is again:
 
 $$P(A \cap B) = P(A|B)\,P(B)$$
+
 We have $P(A|B) = .10$ and $P(B) = .15$. So, plugging these numbers in we get
 
 $$P(A|B)\,P(B) = .10 \times .15 = .015$$
-The probability of liking hot dogs AND liking broccoli is just $.015$. Out of a thousand random experiments, you might find 15 people who like broccoli and hot dogs. The actual rate is probably much higher, but we aren't talking about real numbers just yet.
+The probability of liking hot dogs AND liking broccoli is just $.015$. Out of a thousand random experiments, you might find 15 people who like broccoli and hot dogs. The actual rate is probably much higher, but we aren't talking about real data just yet.
 
-The third part of this question concerns the sample space. I used short hand to describe the sample space again, so it's worth unpacking things for clarity. Let's represent "liking hot dogs" with the symbol $LH$, and "disliking hot dogs" with the symbol $DH$. Then let's represent "likes broccoli" with $LB$ and "dislikes broccoli" with $DB$. Like the outcomes of two coin flips, each event in our sample space shall represent a combination of a hot dog preference and a broccoli preference.
+The third part of this question concerns the sample space. I used short hand to describe the sample space, so it's worth unpacking things for clarity. Let's represent "liking hot dogs" with the symbol $LH$, and "disliking hot dogs" with the symbol $DH$. Then let's represent "likes broccoli" with $LB$ and "dislikes broccoli" with $DB$. Like the outcomes of two coin flips, each event in our sample space shall represent a combination of a hot dog preference and a broccoli preference.
 
 $$S = \{LHLB, LHDB, DHLB, DHDB\}$$
 And our event "liking hot dogs" would be
@@ -535,26 +538,28 @@ The event "liking broccoli" and "liking hot dogs" would be described as
 
 $$ A \cap B = \{LHLB\} $$
 
-And we needed independence and the law of multiplication to calculate that this has a probability of about .015. Eat your veggies!
+And we needed independence and the law of multiplication to calculate the probability of this event - .015. Eat your veggies!
 :::
 
 ::: {.example}
-Let's turn our attention to another classic probability example: dice! We'll keep it relatively simple and say we are rolling two four-sided die, and assign a probability of 1/4 to each number for each die, respectively. Let's look at some scenarios with increasing complexity.
+Let's turn our attention to another classic probability example: dice! Suppose we are rolling two four-sided die, and assign a probability of 1/4 to each number for each die, respectively. Let's look at some scenarios with increasing complexity.
 
 1. What is the probability of rolling a 1 followed by a 1?
 2. What is the probability of rolling a 1 and a 2?
 3. What is the probability of the dice summing to 3?
 4. What is the probability of getting a sum of 3 or more - given you've rolled a 1 on the first dice? 
 
-In the first scenario, We'll again use a short hand to refer to the outcomes of the sample space. $A_1$ will refer to the first roll and $A_2$ will refer to the second roll. We have the event $A_1 = \{1\}$ - which can also be written as the combination of all the outcomes where the first dice is 1 - $\{1\,1,1\,2,1\,3,1\,4\}$. Both are equivalent. The second way of writing it is more exact. We also have $A_2 = \{1\}$, and each event has $P(A_1) = P(A_2) = 1/4$. They both have a probability of 1/4. We also know that the two events are independent. So, using the law of multiplication:
+In the first scenario, we'll again use a short hand to refer to the outcomes of the sample space. $A_1$ will refer to the first roll and $A_2$ will refer to the second roll. We have the event $A_1 = \{1\}$ - which can also be written as the combination of all the outcomes where the first dice is 1 - $\{1\,1,1\,2,1\,3,1\,4\}$. Both are equivalent. The second way of writing it is more exact. We also have $A_2 = \{1\}$, and each event has $P(A_1) = P(A_2) = 1/4$. They both have a probability of 1/4. We also know that the two events are independent. So, using the law of multiplication:
 
-$$P(A_1 \cap A_2) = P(A_1)P(A_2) = 1/4 \times 1/4 = 1/16$$ 
+$$P(A_1 \cap A_2) = P(A_1)P(A_2) = 1/4 \times 1/4 = 1/16$$
+
 Indeed, had we picked any two numbers for the first and second dice the probability would be the same - $1/4 \times 1/4 = 1/16$. This fact will help us with the second question above, because we now know the probability set operator will assign a probability of 1/16 to each outcome in our two roll sample space. Our two roll sample space has $4 \times 4 = 16$ possible outcomes - so the probability has been divided equally across each outcome. 
 
 The second question asks us for the probability of rolling a 1 and a 2. In this case, we could get a 1 followed by a 2 OR a 2 followed by a 1. That is to say, we are talking about the probability of the event $A = \{1\,2, 2\,1\}$, and using the law of addition
 
 $$P(\{1\,2, 2\,1\}) = 1/16 + 1/16 = 2/16 = 1/8$$
-Our work in the last step has set us up nicely to approach the third part of the question. We shall find it useful to fully specify the sample space. The table below will help us with that endeavor. Each larger row represents the first dice roll, and embedded within each larger row are all the possible rolls of the second dice. For example, let your eyes focus on the first big roll - the row corresponding to a 1 on the first die. Next scan to the right and see the row corresponding to a 1 on the second dice. The probability of getting a 1 followed by a 1 (summing to 2) is 1/16. 
+
+Our work in the last step has set us up nicely to approach the third part of the question. We shall find it useful to fully specify the sample space. The table below will help us with that endeavor. Each larger row represents the first dice roll, and embedded within each larger row are all the possible rolls of the second dice. For example, let your eyes focus on the first big row - the row corresponding to a 1 on the first die. Next scan to the right and see the row corresponding to a 1 on the second dice. The probability of getting a 1 followed by a 1 (summing to 2) is 1/16. 
 
 ```{r, echo = FALSE}
 x <- rep(c(1,2,3,4), each = 4)
@@ -572,6 +577,7 @@ x <- flextable::align(x, align = 'center', part = 'body')
 x <- flextable::align(x, align = 'center', part = 'header')
 x
 ```
+
 Thanks to this table we can find the combinations that lead to a sum of three. Specifically we have $S = \{1\,2, 2\,1\}$, and each of these outcomes is 1/16, so the probability of getting an outcome that sums to three is 1/8.
 
 Now it's time for the final boss! How shall we determine the probability of the dice summing to 3 _given_ we roll a 1 on the first die? How shall we determine the independence of these two events? Well, let's look at the equation for conditional probability again
@@ -580,13 +586,13 @@ $$
 \frac{P(A \cap B)}{P(B)} = P(A|B) 
 $$
 
-We shall need the probability of getting a sum of 3 AND rolling a 1 on the first dice, as well as, the probability of rolling a 1 on the first dice. Furthermore, for the determination of independence we will need the probability of rolling two dice that sum to 3. Let's calculate each of these in turn.
+We shall need the probability of getting a sum of 3 AND rolling a 1 on the first die, as well as, the probability of rolling a 1 on the first die. Furthermore, for the determination of independence we will need the probability of rolling two dice that sum to 3. Let's calculate each of these in turn.
 
 1. Let's denote the event of rolling a 1 on the first dice as $A = \{1\,1, 1\,2, 1\,3, 1\,4\}$. Way back in the beginning of this example we said that P($A$) = 1/4.
 
 2. Let's deal with the probability of our two dice summing to 3 first. Denote this event as $B = \{1\,2,2\,1\}$. We just calculated this probability as 1/8.
 
-3. We can calculate $P(A \cap B)$ in a couple of ways. First we can lean on our intuition a bit. Looking at the table above, we see that there is only one way to roll a 1 on the first dice AND produce a sum of three - $\{1\,2\}$. The probability of this event is 1/16. If we are having difficulty leaning on our intuition, we have learned the tools to calculate $P\{A \cap B\}$.
+3. We can calculate $P(A \cap B)$ in a couple of ways. First we can lean on our intuition a bit. Looking at the table above, we see that there is only one way to roll a 1 on the first die AND produce a sum of three - $\{1\,2\}$. The probability of this event is 1/16. If we are having difficulty leaning on our intuition, we have learned the tools to calculate $P\{A \cap B\}$.
 
 $$
 \begin{align}
