@@ -1,1 +1,4 @@
 # Discrete Random Variables
+As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like dogs or the number of dogs owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. Not surprisingly, the populations we study may be vaguely defined, e.g. as the population of people who have received some experimental treatment. We might be interested in knowing the population average; how much the population varies from person to person; and whether or not the average differs from other populations.
+
+In this chapter, we will begin to take these somewhat vague notions and make them concrete. In the mathematical sense, when we are studying populations we are really studying _random variables_. A random variable has a set of numerical outcomes, and    
