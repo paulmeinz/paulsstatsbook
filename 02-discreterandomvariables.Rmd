@@ -1,4 +1,13 @@
 # Discrete Random Variables
-As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like dogs or the number of dogs owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. Not surprisingly, the populations we study may be vaguely defined, e.g. as the population of people who have received some experimental treatment. We might be interested in knowing the population average; how much the population varies from person to person; and whether or not the average differs from other populations.
+As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g. as in the population of people who have received some experimental treatment. In this chapter, we will begin to take these somewhat vague notions and make them concrete.
 
-In this chapter, we will begin to take these somewhat vague notions and make them concrete. In the mathematical sense, when we are studying populations we are really studying _random variables_. A random variable has a set of numerical outcomes, and    
+When we are talking about populations, we are really referring to *random variables*. A random variable isn't far from the sample spaces and probabilities we discussed in the last chapter. An example will make things clearer and then we'll move into specific definitions later. Recall in the last chapter, we defined the sample space of a fair coin - $S = \{H,T\}$. The probability set operator assigned a probability of 1/2 to each outcome in this sample space. Suppose we recode the sample space of the fair coin into numbers, such that a heads is mapped to 1 and a tails is mapped to 0.  
+
+$$
+P(X=x) = 
+\begin{cases}
+\frac{1}{2} & x = 1 \\
+\frac{1}{2} & x = 0
+\end{cases}
+$$
+
