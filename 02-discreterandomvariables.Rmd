@@ -3,7 +3,7 @@ As behavioral researchers, we are often studying a population of something. We m
 
 To get started, it will be useful to see an example. When we are in the process of conducting quantitative research, we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g. $S = \{H, T\}$ in the case of a coin flip, etc. In practice, we shall map the values in a discrete sample space to numbers. This makes it easier to study their mathematical properties. In the case of a coin, we might map heads to 1 and tails to 0, so now our set of outcomes can be described as $S = \{1,0\}$. On an given random experiment within this space, the outcome may therefore be a 1 or 0. 
 
-What we have just described in our discussion above is a *discrete random variable*. 
+What we have just described in our discussion above is a *discrete random variable*. Oftentimes, discrete random variables - and random variables more generally - are referred to by the capital letter $X$. The value this variable takes is the outcome of randomness, and therefore a potential _outcome_ of this randomness is referred to by a lower case $x$. 
 
 $$
 P(X=x) = p(x) = 
