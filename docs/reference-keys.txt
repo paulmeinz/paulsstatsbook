@@ -48,3 +48,4 @@ what-is-probability
 conditional-probability-and-independence
 extended-examples-of-probability
 discrete-random-variables
+independence-of-discrete-random-variables

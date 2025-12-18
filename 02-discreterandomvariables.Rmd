@@ -1,13 +1,15 @@
 # Discrete Random Variables
 As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g. as in the population of people who have received some experimental treatment. In this chapter, we will begin to take these somewhat vague notions and make them concrete. Here we shall talk about the discrete sample space and probabilities therein. 
 
-As usual, it will be useful to start this discussion with an example. When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g. $S = \{H, T\}$ in the case of a coin flip, etc. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. In the case of a coin, we might map heads to 1 and tails to 0. Our set of outcomes would then be described as $S = \{1,0\}$. On a given random experiment within this space, the outcome may therefore be a 1 or 0. 
+As usual, it will be useful to start this discussion with an example. When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip, etc. In practice, we shall map the values in a discrete sample space to numbers making them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $S = \{1,0\}$. On a given random experiment within this space, the outcome may therefore be a 1 or 0 with each number corresponding to heads or tails, respectively. 
 
-What we have just described in is a *discrete random variable* - a variable that assumes a _number_ as a result of randomness. The numbers that the random variable can take are called the _space_ of the random variable. Like the discrete sample space, the outcomes in the space of a discrete random variable are either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by the capital letter $X$. This variable will assume an outcome at the resolution of some random process, and a potential _outcome_ of this randomness is referred to by a lower case $x$. 
+Plainly speaking, what we have just described is a *discrete random variable* - a variable that assumes a _number_ as a result of randomness. If necessary, we shall map the members of our sample space to numbers. The set of these numbers is called the _space_ of the random variable, and like the discrete sample space, the outcomes in the space of a discrete random variable are either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by the capital letter $X$. This variable will assume an outcome at the resolution of some random process, and for the sake of clarity, a potential _outcome_ of this randomness is referred to by a lower case $x$. 
 
-Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - in this case $x$ - on the basis of a set of rules. The set of rules that map an outcome to a probability is referred to as a probability distribution. Specifically, the probability distribution for a discrete random variable is called a *probability mass function* - $p(x)$ - where $x$ is a particular outcome in the space of $X$.
+Indeed, because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. At the time, I told you that we would discuss this "set of rules" later. Later is now. As we noted, the set of rules for the assignment of probability is called a probability distribution. In the case of a discrete random variable, this distribution is called a *probability mass function* - $p(x)$ - where $x$ is used to reference a particular outcome in the space of $X$. 
 
-Suppose we are looking to assign a probability to some value of $x$ - let's say $\{x|X = x\}$ where $x$ is some value in the space of $X$. As before we might write, $P(\{x|X = x\})$, but that's a pain, so we will use the shorthand $P(X = x)$. The set of rules the probability set operator uses (a.k.a, a probability distribution) can be described like this:
+Suppose we are looking to determine the probability of random variable $X$ attaining a specific value - $x$ - let's say $\{x|X = 1\}$. ${x|X = 1}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. Indeed, it's a small set composed of exactly one value - $\{1\}$. With regards to the probability set operator, we might write $P(\{x|X = x\})$, but that's a pain. Instead, we will use the shorthand $P(X = x)$. Moreover, you might also be interested in a larger set described by an inequality - e.g. $P(X < 2)$ - the probability of all the outcomes in the space of $X$ where our random experiment results in an outcome less than 2. 
+
+The set of rules the probability set operator uses (a.k.a, a probability mass function) are frequently described like this:
 
 $$
 P(X=x) = p(x) = 
@@ -16,6 +18,17 @@ P(X=x) = p(x) =
 \frac{1}{2} & x = 0
 \end{cases}
 $$
-Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of $X$. For example, $P(X = 1) = p(1) = 1/2$. The values of x for which $p(x) > 0$ are called the support of $X$.
+Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of $X$. In that row you will find the probability for that outcome. For example, $P(X = 1) = p(1) = 1/2$. The values of $x$ for which $p(x) > 0$ are called the *support* of $X$. The pmf of $X$ has two important properties. Specifically:
+
+1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. 
+
+2. Given the space $S$ of a random variable, $P(S)$ = 1. In other words, if we are conducting a random experiment by drawing a value from the space of $X$ (the set of all numeric outcomes for $X$), the probability that it lands in $S$ is 1. This hearkens back to \@ref(eq:setprop) in the previous section.
+
+In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the space of $X$). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. Each outcome would have a value from 0 to 1, and their respective probabilities would sum to 1. We shall discuss some important pmfs later in this chapter that use common rules for assigning probability to outcomes.
+
+### Independence of discrete random variables*
+
+
+
 
 
