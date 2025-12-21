@@ -36,6 +36,7 @@ exm:unlabeled-div-20
 exm:unlabeled-div-21
 exm:unlabeled-div-22
 exm:unlabeled-div-23
+eq:descreteind
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book

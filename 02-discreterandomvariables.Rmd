@@ -33,9 +33,15 @@ As previously stated, in this chapter we will dig into discrete random variables
 3. And finally, we will discuss some random variables that are frequently found in behavioral research.
 
 ## Independence of discrete random variables
-The concept of independence is found frequently within the field of statistics. As you read on you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental statistical theories. Therefore, it is nice to have a deeper understanding of it. The goal if this section is therefore to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).
+The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal if this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).
 
-In the last chapter, we discussed the concept of the independence of _events_ in a random experiment. We shall now discuss independence as it pertains to random variables. Suppose we have two random variables $X_1$ and $X_2$.
+In the last chapter, we discussed the concept of the independence of _events_ in a random experiment. We shall now discuss independence as it pertains to random variables. Suppose we have two random variables $X_1$ and $X_2$. Then we say the two events are independent if
+
+$$
+P(X_1 = x_1 \cap X_2 = x_2) = P(X_1 = x_1)P(X_2 = x_2)
+(\#eq:descreteind)
+$$
+In other words, if two random variables are independent, the probability of $X_1 = x_1$ AND $X_2 = x_2$ is equal to the product of their respective probabilities. We've already seen examples of this. Recall example 1.20, we flipped three coins _independently_. If we mapped   
 
 
 
