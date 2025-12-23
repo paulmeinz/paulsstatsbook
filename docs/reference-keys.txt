@@ -32,10 +32,10 @@ exm:unlabeled-div-18
 exm:unlabeled-div-19
 eq:lawofmultiplication
 eq:lawofmultiplication2
+exm:coins
 exm:unlabeled-div-20
+exm:dice
 exm:unlabeled-div-21
-exm:unlabeled-div-22
-exm:unlabeled-div-23
 eq:descreteind
 you-can-learn-statistics
 why-i-wrote-this-book

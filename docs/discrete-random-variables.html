@@ -158,7 +158,44 @@ P(X=x) = p(x) =
 P(X_1 = x_1 \cap X_2 = x_2) = P(X_1 = x_1)P(X_2 = x_2)
 \tag{2.1}
 \]</span>
-In other words, if two random variables are independent, the probability of <span class="math inline">\(X_1 = x_1\)</span> AND <span class="math inline">\(X_2 = x_2\)</span> is equal to the product of their respective probabilities. We’ve already seen examples of this. Recall</p>
+In other words, if two random variables are independent, the probability of <span class="math inline">\(X_1 = x_1\)</span> AND <span class="math inline">\(X_2 = x_2\)</span> is equal to the product of their respective probabilities. We’ve already seen examples of this. Recall in example <a href="set-theory-and-probability.html#exm:coins">1.20</a>, we flipped three coins <em>independently</em>. If we mapped the outcomes of each coin to 1 and 0 for heads and tails, respectively, then the three resulting random variables are independent in the sense of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>.</p>
+<p>With some algebraic manipulation of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>, we can see that the definition of independence for random variables is very similar to the definition of independence for events</p>
+<p><span class="math display">\[
+\frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)}=P(X_1 = x_1)
+\]</span>
+And, perhaps not surprisingly, if the two random variables are not independent then</p>
+<p><span class="math display">\[
+\frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
+\]</span>
+That is to say, similar to the dependence of events, an event in the space of one variable <em>changes</em> the probability of an event in the space of another variable. Well, it may help to know that you have already seen an example of this in the last chapter. Recall example <a href="set-theory-and-probability.html#exm:dice">1.22</a>, when we looked at the sum of two dice. In this case, let’s call the sum of our two dice the random variable <span class="math inline">\(Z\)</span> and call the values of the first dice <span class="math inline">\(X\)</span>. Using the table we created, and the law of addition, we can determine a probability distribution for <span class="math inline">\(Z\)</span> (try it yourself and see if you get the same thing as below)
+<span class="math display">\[
+P(Z=z) = p(z) =
+\begin{cases}
+1/16 &amp; z = 2 \\
+2/16 &amp; z = 3 \\
+3/16 &amp; z = 4 \\
+4/16 &amp; z = 5 \\
+3/16 &amp; z = 6 \\
+2/16 &amp; z = 7 \\
+1/16 &amp; z = 8
+\end{cases}
+\]</span>
+Here you can see that the space of <span class="math inline">\(Z\)</span> are all the integers from 2 to 8. The most probable value is 5. Because we haven’t had much experience with random variables yet, it is also important to point out that this distribution (surprisingly or not surprisingly) has all the properties of a pmf. The probabilities of all the outcomes in the space of <span class="math inline">\(Z\)</span> sum to 1, and the probabilities are constrained between 0 and 1.</p>
+<p>Now we are going to look <span class="math inline">\((P(Z = z|X = x))\)</span> and things will start to become clearer. Consider the case where <span class="math inline">\(X = 1\)</span>. What does the distribution of <span class="math inline">\(P(Z = z|X = 1)\)</span> look like? To determine this we shall calculate the conditional probability of each Z - <em>given</em> our first dice roll is a 1. We did this back in example <a href="set-theory-and-probability.html#exm:dice">1.22</a> for the specific value of <span class="math inline">\(Z = 3\)</span>, and now we shall do it here for every value (try it yourself)</p>
+<p><span class="math display">\[
+P(Z=z|X=1) = p(z|x=1) =
+\begin{cases}
+1/4 &amp; z = 2 \\
+1/4 &amp; z = 3 \\
+1/4 &amp; z = 4 \\
+1/4 &amp; z = 5 \\
+0 &amp; z = 6 \\
+0 &amp; z = 7 \\
+0 &amp; z = 8
+\end{cases}
+\]</span></p>
+<p>Do you see what happens with the event <span class="math inline">\(X = 1\)</span>? The probability of <span class="math inline">\(Z\)</span> <em>changes</em> with a roll of a 1 on the first die. For example, getting a <span class="math inline">\(Z = 2\)</span> now has a whopping 1/4 chance, compared to a paltry 1/16 before the first dice was rolled. Moreover, the probability is now spread across only four values - <span class="math inline">\(\{2,3,4,5\}\)</span>. That is, the support of <span class="math inline">\(Z\)</span> - given <span class="math inline">\(X = 1\)</span> - is now 2, 3, 4, 5.</p>
+<p>Carry this idea of independence forward as we discuss and become more sophisticated in statistics. As you will see, some of the most fundamental statistical concepts require an <em>assumption</em> of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We’ll see one of these convenient properties as soon as the next section.</p>
 
 </div>
 </div>
