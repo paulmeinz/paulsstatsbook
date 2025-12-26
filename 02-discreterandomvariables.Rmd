@@ -1,15 +1,17 @@
 # Discrete Random Variables
-As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g. as in the population of people who have received some experimental treatment. Here, we will begin to take these somewhat vague notions and make them concrete. It turns out that, when we are studying a population, we are really studying what statisticians call a *random variable*. In this chapter, we will pay particular attention to the *discrete random variable*. 
+As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g., as in the population of people who have received some experimental treatment. Here, we will begin to take these somewhat vague notions and make them concrete. It turns out that, when we are studying a population, we are really studying what statisticians call a **random variable**. In this chapter, we will pay particular attention to the **discrete random variable**.
 
-To develop an initial understanding of random variables, it will be useful to start with an example. When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip, etc. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $S = \{1,0\}$. On a given random experiment within this space, the outcome may therefore be a 1 or 0 with each number corresponding to heads or tails, respectively. 
+# What is a discrete random variable?
 
-Plainly speaking, what we have just described is a *discrete random variable* - a variable that assumes a _number_ as a result of randomness. We shall map the members of our sample space to numbers. The set of these numbers is called the _space_ of the random variable, and like the discrete sample space, the outcomes in the space of a discrete random variable are either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by the capital letter $X$. This variable will assume an outcome at the resolution of some random process, and for the sake of clarity, a potential _outcome_ of this randomness is referred to symbolically by a lower case $x$. 
+When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may get a 1 or 0 at the resolution of our draw or random process.
 
-Indeed, because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. At the time, I told you that we would discuss this "set of rules" later. Later is now. As we noted, the set of rules for the assignment of probability is called a probability distribution. In the case of a discrete random variable, this distribution is called a *probability mass function* (pmf) - $p(x)$ - where $x$ is used to reference a particular outcome in the space of $X$. 
+What we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of randomness. In practice, we shall map the members of our discrete sample space to numbers. The set of these numbers is called the _space_ of the random variable, and like the discrete sample space, the outcomes shall be either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by a capital letter, typically $X$. This variable will assume an outcome at the resolution of some random process, and for the sake of clarity, a potential _outcome_ of this randomness is referred to symbolically by a lower case letter, e.g., $x$. 
 
-Suppose we are looking to determine the probability of random variable $X$ attaining a specific value - $x$ - let's say, for example, $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. Indeed, it's a small set composed of exactly one value - $\{1\}$. With regards to the probability set operator, we might write $P(\{x|X = x\})$, but that's a pain. Instead, we will use the shorthand $P(X = 1)$, or more generally $P(X = x)$. Moreover, you might also be interested in a larger set described by an inequality - e.g. $P(X < 2)$ - the probability of all the outcomes in the space of $X$ where our random experiment results in an outcome less than 2. 
+Indeed, because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules.  As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a *probability mass function* (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. 
 
-The set of rules the probability set operator uses (a.k.a, a probability mass function) are frequently described like this:
+We shall refer to events in the space of $X$ using a "shorthand" set notation. Suppose we are looking to determine the probability of a random variable $X$ attaining a value of 1, then in the language of the last chapter we might write $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. This is a small set composed of exactly one element - $\{1\}$. With regards probability, instead of writing $P(\{x|X = 1\})$, we will use the shorthand $P(X = 1)$, or more generally $P(X = x)$. In the case of a range of possible outcomes, we might also use an inequality - e.g., $P(X \leq x)$. You shall see this shorthand frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
+
+Now let's describe the rules for probability assignment. The set of rules (a.k.a, a probability mass function) are frequently described like this:
 
 $$
 P(X=x) = p(x) = 
@@ -19,23 +21,26 @@ P(X=x) = p(x) =
 \end{cases}
 $$
 
-Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of $X$. In that row you will find the probability for that outcome. For example, $P(X = 1) = p(1) = 1/2$. The values of $x$ for which $p(x) > 0$ are called the *support* of $X$. The pmf of $X$ has two important properties. Specifically:
+Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of $X$. In that row you will find the probability for that outcome. For example, $P(X = 1) = p(1) = 1/2$. The pmf of $X$ has two important properties. Specifically:
 
-1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. 
+1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. The outcomes for which $p(x) > 0$ is called the ***support** of $X$.
 
 2. Given the space $S$ of a random variable, $P(S)$ = 1. In other words, if we are conducting a random experiment by drawing a value from the space of $X$ (the set of all numeric outcomes for $X$), the probability that it lands in $S$ is 1. This hearkens back to \@ref(eq:setprop) in the previous section.
 
-In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of $X$). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. Each outcome would have a value from 0 to 1, and their respective probabilities would sum to 1. 
+In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of $X$). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. In this case, each outcome would have a probability from 0 to 1, and these values would sum to 1. 
 
 As previously stated, in this chapter we will dig into discrete random variables:
+
 1. We shall start by discussing the independence of random variables - with the goal of framing an intuition for the concept.
+
 2. We will then turn our attention to things researchers might want to know about discrete random variables (and random variables more generally)
+
 3. And finally, we will discuss some random variables that are frequently found in behavioral research.
 
 ## Independence of discrete random variables
 The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal if this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).
 
-In the last chapter, we discussed the concept of the independence of _events_ in a random experiment. We shall now discuss independence as it pertains to random variables. Suppose we have two random variables $X_1$ and $X_2$. Then we say the two events are independent if
+In the last chapter, we discussed the concept of the independence of _events_ in a random experiment. We shall now discuss independence as it pertains to random variables. And, as you will see, it is very similar to the concept of independence for events. Suppose we have two random variables $X_1$ and $X_2$. Then we say the two variables are independent if
 
 $$
 P(X_1 = x_1 \cap X_2 = x_2) = P(X_1 = x_1)P(X_2 = x_2)
@@ -47,13 +52,23 @@ With some algebraic manipulation of \@ref(eq:descreteind), we can see that the d
 
 $$
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)}=P(X_1 = x_1)
+(\#eq:descreteind2)
 $$
 And, perhaps not surprisingly, if the two random variables are not independent then
 
 $$
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
 $$
-That is to say, similar to the dependence of events, an event in the space of one variable _changes_ the probability of an event in the space of another variable. Well, it may help to know that you have already seen an example of this in the last chapter. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and call the values of the first dice $X$. Using the table we created, and the law of addition, we can determine a probability distribution for $Z$ (try it yourself and see if you get the same thing as below)
+That is to say, similar to the dependence of events, an event in the space of one variable _changes_ the probability of an event in the space of another variable. This may seem a bit confusing at first. It may, therefore, help to know that you have already seen an example of the dependence of random variables in the last chapter. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and represent the random variable of the first die by $X$. 
+
+On the basis of \@ref(eq:descreteind), we shall be looking to determine if
+
+$$
+\frac{P(Z = z \cap X = x)}{P(X = x)} \neq P(Z = z)
+$$
+
+The first thing we will need is $P(Z = z)$. The space of $Z$ are all the possible sums of our two dice - $\{2,3,4,5,6,7,8\}$. Using the table we created in example \@ref(exm:dice), and the law of addition, we can determine a probability distribution for $Z$ (try it yourself and see if you get the same thing as below)
+
 $$
 P(Z=z) = p(z) = 
 \begin{cases}
@@ -66,9 +81,10 @@ P(Z=z) = p(z) =
 1/16 & z = 8
 \end{cases}
 $$
-Here you can see that the space of $Z$ are all the integers from 2 to 8. The most probable value is 5. Because we haven't had much experience with random variables yet, it is also important to point out that this distribution (surprisingly or not surprisingly) has all the properties of a pmf. The probabilities of all the outcomes in the space of $Z$ sum to 1, and the probabilities are constrained between 0 and 1. 
 
-Now we are going to look $(P(Z = z|X = x))$ and things will start to become clearer. Consider the case where $X = 1$. What does the distribution of $P(Z = z|X = 1)$ look like? To determine this we shall calculate the conditional probability of each Z - _given_ our first dice roll is a 1. We did this back in example \@ref(exm:dice) for the specific value of $Z = 3$, and now we shall do it here for every value (try it yourself)
+After our computation, we can see that the most probable value is 5. Because we haven't had much experience with random variables, it is also important to point out that this distribution has all our previously discussed properties of a pmf. The probabilities of all the outcomes in the space of $Z$ sum to 1, and they are constrained between 0 and 1. 
+
+Now that we have determined the probability mass function for $Z$, we shall calculate $(P(Z = z|X = x))$. Hopefully the idea of independence/dependence of random variables will come into focus. Consider the case where $X = 1$ (a 1 was rolled on the first die). What does the distribution of $P(Z = z|X = 1)$ look like? To determine this we shall calculate the conditional probability of each Z - _given_ our first dice roll is a 1. We did this back in example \@ref(exm:dice) for the specific value of $Z = 3$, and now we shall do it here for every value (try it yourself)
 
 $$
 P(Z=z|X=1) = p(z|x=1) = 
@@ -83,6 +99,13 @@ P(Z=z|X=1) = p(z|x=1) =
 \end{cases}
 $$
 
-Do you see what happens with the event $X = 1$? The probability of $Z$ _changes_ with a roll of a 1 on the first die. For example, getting a $Z = 2$ now has a whopping 1/4 chance, compared to a paltry 1/16 before the first dice was rolled. Moreover, the probability is now spread across only four values - $\{2,3,4,5\}$. That is, the support of $Z$ - given $X = 1$ - is now 2, 3, 4, 5. 
+Do you see what happens with the event $X = 1$? The probability of $Z$ _changes_ with a roll of a 1 on the first die. For example, getting a $Z = 2$ now has a whopping 1/4 chance, compared to a paltry 1/16 before the first dice was rolled. Moreover, the probability is now spread across only four values - $\{2,3,4,5\}$. That is, the support of $Z$ - given $X = 1$ - is now 2, 3, 4, and 5. Thus, an intuitive definition of independence pivots on changes in the pmf of one random variable given the outcome of another variable. 
 
-Carry this idea of independence forward as we discuss and become more sophisticated in statistics. As you will see, some of the most fundamental statistical concepts require an _assumption_ of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We'll see one of these convenient properties as soon as the next section.
+This idea of independence shall be sufficient for our purposes, especially as we become more sophisticated in statistics and statistical analysis. As you will see, some of the most fundamental statistical concepts require an _assumption_ of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We'll see one of these convenient properties as soon as the next section.
+
+## What do we want to know about random variables?
+A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In my opinion, this section is where things really start to get interesting. I'm hoping you feel the same. 
+
+But first, let's do a very very short review.
+
+### A quick review: The summation operator
