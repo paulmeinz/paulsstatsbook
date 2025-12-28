@@ -4,13 +4,13 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Discrete Random Variables | Behavioral Statistics: Theory and Application</title>
+  <title>Chapter 3 What is a discrete random variable? | Behavioral Statistics: Theory and Application</title>
   <meta name="description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
 that I wish I had had prior to enrolling in my first graduate level behavior
 statistics course.|</p>" />
   <meta name="generator" content="bookdown 0.45 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Discrete Random Variables | Behavioral Statistics: Theory and Application" />
+  <meta property="og:title" content="Chapter 3 What is a discrete random variable? | Behavioral Statistics: Theory and Application" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
@@ -19,7 +19,7 @@ statistics course.|</p>" />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Discrete Random Variables | Behavioral Statistics: Theory and Application" />
+  <meta name="twitter:title" content="Chapter 3 What is a discrete random variable? | Behavioral Statistics: Theory and Application" />
   
   <meta name="twitter:description" content="<p>This is a behavioral statistics textbook with additional mathematical depth
 that I wish I had had prior to enrolling in my first graduate level behavior
@@ -35,7 +35,7 @@ statistics course.|</p>" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="set-theory-and-probability.html"/>
+<link rel="prev" href="discrete-random-variables.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -101,14 +101,13 @@ statistics course.|</p>" />
 <li class="chapter" data-level="1.3" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#conditional-probability-and-independence"><i class="fa fa-check"></i><b>1.3</b> Conditional Probability and Independence</a></li>
 <li class="chapter" data-level="1.4" data-path="set-theory-and-probability.html"><a href="set-theory-and-probability.html#extended-examples-of-probability"><i class="fa fa-check"></i><b>1.4</b> Extended Examples of Probability</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html"><i class="fa fa-check"></i><b>2</b> Discrete Random Variables</a>
+<li class="chapter" data-level="2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html"><i class="fa fa-check"></i><b>2</b> Discrete Random Variables</a></li>
+<li class="chapter" data-level="3" data-path="what-is-a-discrete-random-variable.html"><a href="what-is-a-discrete-random-variable.html"><i class="fa fa-check"></i><b>3</b> What is a discrete random variable?</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#what-is-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.1</b> What is a discrete random variable?</a></li>
-<li class="chapter" data-level="2.2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>2.2</b> Independence of discrete random variables</a></li>
-<li class="chapter" data-level="2.3" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#what-do-we-want-to-know-about-discrete-random-variables"><i class="fa fa-check"></i><b>2.3</b> What do we want to know about discrete random variables?</a>
+<li class="chapter" data-level="3.1" data-path="what-is-a-discrete-random-variable.html"><a href="what-is-a-discrete-random-variable.html#independence-of-discrete-random-variables"><i class="fa fa-check"></i><b>3.1</b> Independence of discrete random variables</a></li>
+<li class="chapter" data-level="3.2" data-path="what-is-a-discrete-random-variable.html"><a href="what-is-a-discrete-random-variable.html#what-do-we-want-to-know-about-random-variables"><i class="fa fa-check"></i><b>3.2</b> What do we want to know about random variables?</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#a-very-quick-review-the-summation-operator"><i class="fa fa-check"></i><b>2.3.1</b> A very quick review: The summation operator</a></li>
-<li class="chapter" data-level="2.3.2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-expectation-of-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.3.2</b> The expectation of a discrete random variable</a></li>
+<li class="chapter" data-level="3.2.1" data-path="what-is-a-discrete-random-variable.html"><a href="what-is-a-discrete-random-variable.html#a-quick-review-the-summation-operator"><i class="fa fa-check"></i><b>3.2.1</b> A quick review: The summation operator</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -131,11 +130,8 @@ statistics course.|</p>" />
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="discrete-random-variables" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Discrete Random Variables<a href="discrete-random-variables.html#discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g., as in the population of people who have received some experimental treatment. Here, we will begin to take these somewhat vague notions and make them concrete. It turns out that, when we are studying a population, we are really studying what statisticians call a <strong>random variable</strong>. In this chapter, we will pay particular attention to the <strong>discrete random variable</strong>.</p>
-<div id="what-is-a-discrete-random-variable" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> What is a discrete random variable?<a href="discrete-random-variables.html#what-is-a-discrete-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-a-discrete-random-variable" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> What is a discrete random variable?<a href="what-is-a-discrete-random-variable.html#what-is-a-discrete-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., <span class="math inline">\(S = \{H, T\}\)</span> in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as <span class="math inline">\(\{1,0\}\)</span>. On a given random experiment within this space, we may get a 1 or 0 at the resolution of our draw or random process.</p>
 <p>What we have just described is known as a <strong>discrete random variable</strong> - a variable that assumes a <em>number</em> as a result of randomness. In practice, we shall map the members of our discrete sample space to numbers. The set of these numbers is called the <em>space</em> of the random variable, and like the discrete sample space, the outcomes shall be either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by a capital letter, typically <span class="math inline">\(X\)</span>. This variable will assume an outcome at the resolution of some random process, and for the sake of clarity, a potential <em>outcome</em> of this randomness is referred to symbolically by a lower case letter, e.g., <span class="math inline">\(x\)</span>.</p>
 <p>Indeed, because <span class="math inline">\(X\)</span> is a random variable, we shall need a concrete way of describing it’s randomness. Recall in the last chapter, we discussed the probability set operator - <span class="math inline">\(P()\)</span>. This operator assigns the probability to an outcome - <span class="math inline">\(x\)</span> - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a <em>probability mass function</em> (pmf) - <span class="math inline">\(p(x)\)</span>. Note that <span class="math inline">\(x\)</span> is used to reference a particular numeric outcome in the space of <span class="math inline">\(X\)</span>.</p>
@@ -160,27 +156,26 @@ P(X=x) = p(x) =
 <li><p>We will then turn our attention to things researchers might want to know about discrete random variables (and random variables more generally)</p></li>
 <li><p>And finally, we will discuss some random variables that are frequently found in behavioral research.</p></li>
 </ol>
-</div>
-<div id="independence-of-discrete-random-variables" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> Independence of discrete random variables<a href="discrete-random-variables.html#independence-of-discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="independence-of-discrete-random-variables" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Independence of discrete random variables<a href="what-is-a-discrete-random-variable.html#independence-of-discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal if this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).</p>
 <p>In the last chapter, we discussed the concept of the independence of <em>events</em> in a random experiment. We shall now discuss independence as it pertains to random variables. And, as you will see, it is very similar to the concept of independence for events. Suppose we have two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Then we say the two variables are independent if</p>
 <p><span class="math display" id="eq:descreteind">\[
 P(X_1 = x_1 \cap X_2 = x_2) = P(X_1 = x_1)P(X_2 = x_2)
-\tag{2.1}
+\tag{3.1}
 \]</span>
-In other words, if two random variables are independent, the probability of <span class="math inline">\(X_1 = x_1\)</span> AND <span class="math inline">\(X_2 = x_2\)</span> is equal to the product of their respective probabilities. We’ve already seen examples of this. Recall in example <a href="set-theory-and-probability.html#exm:coins">1.20</a>, we flipped three coins <em>independently</em>. If we mapped the outcomes of each coin to 1 and 0 for heads and tails, respectively, then the three resulting random variables are independent in the sense of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>.</p>
-<p>With some algebraic manipulation of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>, we can see that the definition of independence for random variables is very similar to the definition of independence for events</p>
+In other words, if two random variables are independent, the probability of <span class="math inline">\(X_1 = x_1\)</span> AND <span class="math inline">\(X_2 = x_2\)</span> is equal to the product of their respective probabilities. We’ve already seen examples of this. Recall in example <a href="set-theory-and-probability.html#exm:coins">1.20</a>, we flipped three coins <em>independently</em>. If we mapped the outcomes of each coin to 1 and 0 for heads and tails, respectively, then the three resulting random variables are independent in the sense of <a href="what-is-a-discrete-random-variable.html#eq:descreteind">(3.1)</a>.</p>
+<p>With some algebraic manipulation of <a href="what-is-a-discrete-random-variable.html#eq:descreteind">(3.1)</a>, we can see that the definition of independence for random variables is very similar to the definition of independence for events</p>
 <p><span class="math display" id="eq:descreteind2">\[
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)}=P(X_1 = x_1)
-\tag{2.2}
+\tag{3.2}
 \]</span>
 And, perhaps not surprisingly, if the two random variables are not independent then</p>
 <p><span class="math display">\[
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
 \]</span>
 That is to say, similar to the dependence of events, an event in the space of one variable <em>changes</em> the probability of an event in the space of another variable. This may seem a bit confusing at first. It may, therefore, help to know that you have already seen an example of the dependence of random variables in the last chapter. Recall example <a href="set-theory-and-probability.html#exm:dice">1.22</a>, when we looked at the sum of two dice. In this case, let’s call the sum of our two dice the random variable <span class="math inline">\(Z\)</span> and represent the random variable of the first die by <span class="math inline">\(X\)</span>.</p>
-<p>On the basis of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>, we shall be looking to determine if</p>
+<p>On the basis of <a href="what-is-a-discrete-random-variable.html#eq:descreteind">(3.1)</a>, we shall be looking to determine if</p>
 <p><span class="math display">\[
 \frac{P(Z = z \cap X = x)}{P(X = x)} \neq P(Z = z)
 \]</span></p>
@@ -214,49 +209,12 @@ P(Z=z|X=1) = p(z|x=1) =
 <p>Do you see what happens with the event <span class="math inline">\(X = 1\)</span>? The probability of <span class="math inline">\(Z\)</span> <em>changes</em> with a roll of a 1 on the first die. For example, getting a <span class="math inline">\(Z = 2\)</span> now has a whopping 1/4 chance, compared to a paltry 1/16 before the first dice was rolled. Moreover, the probability is now spread across only four values - <span class="math inline">\(\{2,3,4,5\}\)</span>. That is, the support of <span class="math inline">\(Z\)</span> - given <span class="math inline">\(X = 1\)</span> - is now 2, 3, 4, and 5. Thus, an intuitive definition of independence pivots on changes in the pmf of one random variable given the outcome of another variable.</p>
 <p>This idea of independence shall be sufficient for our purposes, especially as we become more sophisticated in statistics and statistical analysis. As you will see, some of the most fundamental statistical concepts require an <em>assumption</em> of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We’ll see one of these convenient properties as soon as the next section.</p>
 </div>
-<div id="what-do-we-want-to-know-about-discrete-random-variables" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> What do we want to know about discrete random variables?<a href="discrete-random-variables.html#what-do-we-want-to-know-about-discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In doing so, hopefully the bigger picture comes into view. This, in my humble opinion, is where things really start to get interesting. I’m hoping you feel the same.</p>
+<div id="what-do-we-want-to-know-about-random-variables" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> What do we want to know about random variables?<a href="what-is-a-discrete-random-variable.html#what-do-we-want-to-know-about-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In my opinion, this section is where things really start to get interesting. I’m hoping you feel the same.</p>
 <p>But first, let’s do a very very short review.</p>
-<div id="a-very-quick-review-the-summation-operator" class="section level3 hasAnchor" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> A very quick review: The summation operator<a href="discrete-random-variables.html#a-very-quick-review-the-summation-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>As statisticians we will need to sum a lot of things. It will therefore be useful to have an easy way to describe the operation of summation. To that end, suppose we are summing a set of numbers</p>
-<p><span class="math display">\[
-x_1 + x_2 + x_3 + x_4 + x_5 \,+\:... + x_n
-\]</span></p>
-<p>You can see how it might get out of hand quickly if we had a large number (<span class="math inline">\(n\)</span>) of <span class="math inline">\(x\)</span>’s to sum. Thankfully the <strong>summation operator</strong> saves us from this potential hellscape</p>
-<p><span class="math display" id="eq:summation">\[
-\sum_{i=1}^{n} x_i
-\tag{2.3}
-\]</span>
-The <span class="math inline">\(i\)</span> at the bottom of the <span class="math inline">\(\sum{}^{}\)</span> is referred to as the <em>index</em>. The index is how we refer to a single element in our set of <span class="math inline">\(x\)</span>’s. For example, <span class="math inline">\(i=5\)</span> refers to <span class="math inline">\(x_5\)</span>. The starting index is specified at the bottom of the summation operator. In the equation above we are starting at the 1st element of our set of <span class="math inline">\(x\)</span>’s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written <span class="math inline">\(n\)</span> which is the last element of our set of <span class="math inline">\(x\)</span>’s. In other words</p>
-<p><span class="math display">\[
-\sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + x_4 + x_5 + ... + x_n
-\]</span>
-in terms of our example above. Now it is important to note that n and i are not always used to indicate the last element and the index, respectively. Here we shall try to be consistent. Occasionally, to save a little time we shall write the summation operator like</p>
-<p><span class="math display">\[
-\sum_{x}^{}
-\]</span></p>
-<p>This means - given all the <span class="math inline">\(x&#39;s\)</span> in a set - sum all of them.</p>
-</div>
-<div id="the-expectation-of-a-discrete-random-variable" class="section level3 hasAnchor" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> The expectation of a discrete random variable<a href="discrete-random-variables.html#the-expectation-of-a-discrete-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable <span class="math inline">\(X\)</span>, we refer to its expectation as <span class="math inline">\(E(X)\)</span>. We shall also sometimes refer to it as <span class="math inline">\(\mu\)</span>. In other words</p>
-<p><span class="math display">\[
-E(X) = \mu
-\]</span></p>
-<p>The expectation of a random variable <span class="math inline">\(X\)</span> with a given pmf - <span class="math inline">\(p(x)\)</span> is calculated</p>
-<p><span class="math display" id="eq:discreteexpectation">\[
-\sum_{i = 1}^{n} x_ip(x_i)
-\tag{2.4}
-\]</span></p>
-<p>In words: For each <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span>, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the <strong>mean</strong> of a random variable. An example, will help us understand the expectation a bit better.</p>
-<div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.1  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> with five outcomes in it’s space - <span class="math inline">\(\{1,2,3,4,5\}\)</span>. The pmf for <span class="math inline">\(X\)</span> assigns <span class="math inline">\(\frac{1}{n}\)</span> probability to each outcome</p>
-<p><span class="math display">\[
-P(X=x) = p(x)
-\]</span></p>
-</div>
+<div id="a-quick-review-the-summation-operator" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> A quick review: The summation operator<a href="what-is-a-discrete-random-variable.html#a-quick-review-the-summation-operator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
@@ -266,7 +224,7 @@ P(X=x) = p(x)
           </div>
         </div>
       </div>
-<a href="set-theory-and-probability.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discrete-random-variables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

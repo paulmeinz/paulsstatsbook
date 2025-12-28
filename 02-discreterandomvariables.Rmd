@@ -1,7 +1,7 @@
 # Discrete Random Variables
 As behavioral researchers, we are often studying a population of something. We might be interested in the percentage of individuals who like cats or the number of cats owned by the average individual. We might be interested in the average happiness level of a population of individuals and/or what makes them happy. The populations we study are often vaguely defined, e.g., as in the population of people who have received some experimental treatment. Here, we will begin to take these somewhat vague notions and make them concrete. It turns out that, when we are studying a population, we are really studying what statisticians call a **random variable**. In this chapter, we will pay particular attention to the **discrete random variable**.
 
-# What is a discrete random variable?
+## What is a discrete random variable?
 
 When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may get a 1 or 0 at the resolution of our draw or random process.
 
@@ -103,9 +103,57 @@ Do you see what happens with the event $X = 1$? The probability of $Z$ _changes_
 
 This idea of independence shall be sufficient for our purposes, especially as we become more sophisticated in statistics and statistical analysis. As you will see, some of the most fundamental statistical concepts require an _assumption_ of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We'll see one of these convenient properties as soon as the next section.
 
-## What do we want to know about random variables?
-A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In my opinion, this section is where things really start to get interesting. I'm hoping you feel the same. 
+## What do we want to know about discrete random variables?
+A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In doing so, hopefully the bigger picture comes into view. This, in my humble opinion, is where things really start to get interesting. I'm hoping you feel the same. 
 
 But first, let's do a very very short review.
 
-### A quick review: The summation operator
+### A very quick review: The summation operator
+As statisticians we will need to sum a lot of things. It will therefore be useful to have an easy way to describe the operation of summation. To that end, suppose we are summing a set of numbers
+
+$$
+x_1 + x_2 + x_3 + x_4 + x_5 \,+\:... + x_n
+$$
+
+You can see how it might get out of hand quickly if we had a large number ($n$) of $x$'s to sum. Thankfully the **summation operator** saves us from this potential hellscape
+
+$$
+\sum_{i=1}^{n} x_i
+(\#eq:summation)
+$$
+The $i$ at the bottom of the $\sum{}^{}$ is referred to as the _index_. The index is how we refer to a single element in our set of $x$'s. For example, $i=5$ refers to $x_5$. The starting index is specified at the bottom of the summation operator. In the equation above we are starting at the 1st element of our set of $x$'s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written $n$ which is the last element of our set of $x$'s. In other words
+
+$$
+\sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + x_4 + x_5 + ... + x_n
+$$
+in terms of our example above. Now it is important to note that n and i are not always used to indicate the last element and the index, respectively. Here we shall try to be consistent. Occasionally, to save a little time we shall write the summation operator like
+
+$$
+\sum_{x}^{}
+$$
+
+This means - given all the $x's$ in a set - sum all of them.
+
+### The expectation of a discrete random variable
+The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable $X$, we refer to its expectation as $E(X)$. We shall also sometimes refer to it as $\mu$. In other words
+
+$$
+E(X) = \mu
+$$
+
+The expectation of a random variable $X$ with a given pmf - $p(x)$ is calculated 
+
+$$
+\sum_{i = 1}^{n} x_ip(x_i)
+(\#eq:discreteexpectation)
+$$
+
+In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the **mean** of a random variable. An example, will help us understand the expectation a bit better.
+
+::: {.example}
+Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome
+
+$$
+P(X=x) = p(x)
+$$
+:::

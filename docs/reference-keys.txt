@@ -37,6 +37,10 @@ exm:unlabeled-div-20
 exm:dice
 exm:unlabeled-div-21
 eq:descreteind
+eq:descreteind2
+eq:summation
+eq:discreteexpectation
+exm:unlabeled-div-22
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -49,4 +53,8 @@ what-is-probability
 conditional-probability-and-independence
 extended-examples-of-probability
 discrete-random-variables
+what-is-a-discrete-random-variable
 independence-of-discrete-random-variables
+what-do-we-want-to-know-about-discrete-random-variables
+a-very-quick-review-the-summation-operator
+the-expectation-of-a-discrete-random-variable
