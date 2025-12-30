@@ -3,15 +3,13 @@ As behavioral researchers, we are often studying a population of something. We m
 
 ## What is a discrete random variable?
 
-When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may get a 1 or 0 at the resolution of our draw or random process.
+When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may therefore get a 1 or 0 at the resolution of our draw or random process.
 
-What we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of randomness. In practice, we shall map the members of our discrete sample space to numbers. The set of these numbers is called the _space_ of the random variable, and like the discrete sample space, the outcomes shall be either finite or countable. Oftentimes, discrete random variables - and random variables more generally - are referred to by a capital letter, typically $X$. This variable will assume an outcome at the resolution of some random process, and for the sake of clarity, a potential _outcome_ of this randomness is referred to symbolically by a lower case letter, e.g., $x$. 
+Indeed, what we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of randomness. The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
 
-Indeed, because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules.  As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a **probability mass function** (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. 
+We shall refer to events in the space of $X$ using a simplified set notation. Suppose we are looking to determine the probability of a random variable $X$ attaining a value of 1 (more on this soon), then in the language of the last chapter we might write $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. This is a small set composed of exactly one element - $\{1\}$. For the sake of simplicity, we will use the shorthand $(X = 1)$, or more generally $(X = x)$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorthand is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
 
-We shall refer to events in the space of $X$ using a "shorthand" set notation. Suppose we are looking to determine the probability of a random variable $X$ attaining a value of 1, then in the language of the last chapter we might write $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. This is a small set composed of exactly one element - $\{1\}$. With regards probability, instead of writing $P(\{x|X = 1\})$, we will use the shorthand $P(X = 1)$, or more generally $P(X = x)$. In the case of a range of possible outcomes, we might also use an inequality - e.g., $P(X \leq x)$. You shall see this shorthand frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
-
-Now let's describe the rules for probability assignment. The set of rules (a.k.a, a probability mass function) are frequently described like this:
+Because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a **probability mass function** (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. The set of rules (a.k.a, a probability mass function) are frequently described like this:
 
 $$
 P(X=x) = p(x) = 
@@ -29,11 +27,11 @@ Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. Afte
 
 In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of $X$). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. In this case, each outcome would have a probability from 0 to 1, and these values would sum to 1. 
 
-As previously stated, in this chapter we will dig into discrete random variables:
+In this chapter we will dig into discrete random variables in three steps:
 
 1. We shall start by discussing the independence of random variables - with the goal of framing an intuition for the concept.
 
-2. We will then turn our attention to things researchers might want to know about discrete random variables (and random variables more generally)
+2. We will then turn our attention to things researchers might want to know about discrete random variables (and, as you will learn, random variables more generally).
 
 3. And finally, we will discuss some random variables that are frequently found in behavioral research.
 
@@ -115,7 +113,7 @@ $$
 x_1 + x_2 + x_3 + x_4 + x_5 \,+\:... + x_n
 $$
 
-You can see how it might get out of hand quickly if we had a large number ($n$) of $x$'s to sum. Thankfully the **summation operator** saves us from this potential hellscape
+The **summation operator** helps us write this operation more efficiently and with less ambiguity:
 
 $$
 \sum_{i=1}^{n} x_i
@@ -126,16 +124,16 @@ The $i$ at the bottom of the $\sum{}^{}$ is referred to as the _index_. The inde
 $$
 \sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + x_4 + x_5 + ... + x_n
 $$
-in terms of our example above. Now it is important to note that n and i are not always used to indicate the last element and the index, respectively. Here we shall try to be consistent. Occasionally, to save a little time we shall write the summation operator like
+in terms of our example above. Additionally, it is important to note that n and i are not always used to indicate the last element and the index, respectively. Here we shall try to be consistent. Occasionally, to save a little time we shall write the summation operator like
 
 $$
 \sum_{x}^{}
 $$
 
-This means - given all the $x's$ in a set - sum all of them.
+This means - given all the $x's$ in a set - sum all of them. Alright, now it's time for the interesting stuff.
 
 ### The expectation of a discrete random variable
-The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable $X$, we refer to its expectation as $E(X)$. We shall also sometimes refer to it as $\mu$. In other words
+The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable $X$, we refer to its expectation as $E(X)$. We shall also sometimes refer to it algebraically as $\mu$. In other words
 
 $$
 E(X) = \mu
@@ -151,9 +149,19 @@ $$
 In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the **mean** of a random variable. An example, will help us understand the expectation a bit better.
 
 ::: {.example}
-Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome
+Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome. Here there are 5 outcomes, so
 
 $$
-P(X=x) = p(x)
+P(X=x) = p(x) = 
+\begin{cases}
+1/5 & x_1 = 1 \\
+1/5 & x_2 = 2 \\
+1/5 & x_3 = 3 \\
+1/5 & x_4 = 4 \\
+1/5 & x_5 = 5 
+\end{cases}
 $$
+This is an example of a **discrete uniform distribution** - which assigns an equivalent amount of probability to each outcome on the space of the random variable.
+
+Let's calculate the expectation of our random variable
 :::
