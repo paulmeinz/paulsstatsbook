@@ -40,6 +40,7 @@ eq:descreteind
 eq:descreteind2
 eq:summation
 eq:discreteexpectation
+eq:discreteexpectationfunction
 exm:unlabeled-div-22
 you-can-learn-statistics
 why-i-wrote-this-book

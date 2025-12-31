@@ -5,7 +5,7 @@ As behavioral researchers, we are often studying a population of something. We m
 
 When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may therefore get a 1 or 0 at the resolution of our draw or random process.
 
-Indeed, what we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of randomness. The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
+Indeed, what we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of some random process (e.g., a random experiment, drawing out of a hat, rolling, randomly sampling, etc.). The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
 
 We shall refer to events in the space of $X$ using a simplified set notation. Suppose we are looking to determine the probability of a random variable $X$ attaining a value of 1 (more on this soon), then in the language of the last chapter we might write $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. This is a small set composed of exactly one element - $\{1\}$. For the sake of simplicity, we will use the shorthand $(X = 1)$, or more generally $(X = x)$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorthand is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
 
@@ -142,13 +142,13 @@ $$
 The expectation of a random variable $X$ with a given pmf - $p(x)$ is calculated 
 
 $$
-\sum_{i = 1}^{n} x_ip(x_i)
+E(X) = \sum_{i = 1}^{n} x_ip(x_i)
 (\#eq:discreteexpectation)
 $$
 
 In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the **mean** of a random variable. An example, will help us understand the expectation a bit better.
 
-::: {.example}
+::: {.example} #ogexpectation
 Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome. Here there are 5 outcomes, so
 
 $$
@@ -161,7 +161,51 @@ P(X=x) = p(x) =
 1/5 & x_5 = 5 
 \end{cases}
 $$
-This is an example of a **discrete uniform distribution** - which assigns an equivalent amount of probability to each outcome on the space of the random variable.
+This is an example of a **discrete uniform distribution**. Given n outcomes, the discrete uniform distribution assigns $1/n$ probability to each outcome on the space of the random variable.
 
-Let's calculate the expectation of our random variable
+Now let's calculate the expectation of this random variable
+
+$$
+\begin{align}
+E(X) = \sum_{i=1}^{5} x_ip(x_i) &= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5p(x_5) \\
+&= 1p(1)+2p(2)+3p(3)+4p(4)+5p(5) \\
+&= (1)\frac{1}{5}+(2)\frac{1}{5}+(3)\frac{1}{5}+(4)\frac{1}{5}+(5)\frac{1}{5} \\
+&= \frac{15}{5} = 3
+\end{align}
+$$
+We've multiplied each value in the space of our random variable $X$ by its probability and summed the values. The result of our computation is 3 - $E(x) = 3$ - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of $X$. In the figure below, the probability of each outcome is plotted as a bar. You can see the outcomes of the random variable labelled on the $x$ axis. The probability of each outcome is represented by the bar height. In this case, each outcome is equilikely, so the bars are of equal height.  
+
+```{r, echo = FALSE}
+a <- data.frame(x = c(1,2,3,4,5), 
+                y = rep(1/5, times = 5))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_col(fill = 'gray', color = 'black') +
+  ggplot2::scale_y_continuous(limits = c(0,1)) +
+  ggplot2::theme(panel.grid.major = ggplot2::element_blank(),
+                 panel.grid.minor = ggplot2::element_blank()) +
+  ggplot2::labs(x = 'Outcome', y = 'Probability Mass') +
+  ggplot2::geom_vline(xintercept = 3)
+
+
+```
+Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+:::
+Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let's observe that it is possible to take the expectation of some _function_ of a random variable. Suppose we have a random variable $X$, and at the resolution of a random process or experiment it takes a value. After it takes a value, we apply some function to that value. For example, we might have
+
+$$
+f(X) = 2X
+$$
+This function takes the result of the random process and multiplies it by 2. We shall calculate the expectation of this function of our random variable by 
+
+$$
+E(f(X)) = \sum_{i = 1}^{n} f(x_i)p(x_i)
+(\#eq:discreteexpectationfunction)
+$$
+
+Let's try it out in a couple examples.
+
+::: {.example}
+We will again use the distribution from example \@ref(exm:ogexpectation).
 :::
