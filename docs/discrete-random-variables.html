@@ -250,8 +250,8 @@ E(X) = \sum_{i = 1}^{n} x_ip(x_i)
 \tag{2.4}
 \]</span></p>
 <p>In words: For each <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span>, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the <strong>mean</strong> of a random variable. An example, will help us understand the expectation a bit better.</p>
-<p>::: {.example} #ogexpectation
-Suppose we have a random variable <span class="math inline">\(X\)</span> with five outcomes in it’s space - <span class="math inline">\(\{1,2,3,4,5\}\)</span>. The pmf for <span class="math inline">\(X\)</span> assigns <span class="math inline">\(\frac{1}{n}\)</span> probability to each outcome. Here there are 5 outcomes, so</p>
+<div class="example">
+<p><span id="exm:ogexpectation" class="example"><strong>Example 2.1  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> with five outcomes in it’s space - <span class="math inline">\(\{1,2,3,4,5\}\)</span>. The pmf for <span class="math inline">\(X\)</span> assigns <span class="math inline">\(\frac{1}{n}\)</span> probability to each outcome. Here there are 5 outcomes, so</p>
 <p><span class="math display">\[
 P(X=x) = p(x) =
 \begin{cases}
@@ -274,21 +274,86 @@ E(X) = \sum_{i=1}^{5} x_ip(x_i) &amp;= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5
 \]</span>
 We’ve multiplied each value in the space of our random variable <span class="math inline">\(X\)</span> by its probability and summed the values. The result of our computation is 3 - <span class="math inline">\(E(x) = 3\)</span> - but what does that mean exactly? Well let’s explore the idea of expectation further by plotting the pmf of <span class="math inline">\(X\)</span>. In the figure below, the probability of each outcome is plotted as a bar. You can see the outcomes of the random variable labelled on the <span class="math inline">\(x\)</span> axis. The probability of each outcome is represented by the bar height. In this case, each outcome is equilikely, so the bars are of equal height.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-Now suppose each of those bars has <em>mass</em> (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
-:::
-Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let’s observe that it is possible to take the expectation of some <em>function</em> of a random variable. Suppose we have a random variable <span class="math inline">\(X\)</span>, and at the resolution of a random process or experiment it takes a value. After it takes a value, we apply some function to that value. For example, we might have</p>
+Now suppose each of those bars has <em>mass</em> (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.</p>
+</div>
+<p>Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let’s observe that it is possible to take the expectation of some <em>function</em> of a random variable. Suppose we have a random variable <span class="math inline">\(X\)</span>, and at the resolution of a random process or experiment it takes a value. We may apply some function to the outcomes in the space of <span class="math inline">\(X\)</span>. For example, we might have</p>
 <p><span class="math display">\[
 f(X) = 2X
 \]</span>
-This function takes the result of the random process and multiplies it by 2. We shall calculate the expectation of this function of our random variable by</p>
+This function takes the outcomes in the space of <span class="math inline">\(X\)</span> and multiplies each by 2. We shall calculate the expectation of this function of our random variable by</p>
 <p><span class="math display" id="eq:discreteexpectationfunction">\[
 E(f(X)) = \sum_{i = 1}^{n} f(x_i)p(x_i)
 \tag{2.5}
 \]</span></p>
 <p>Let’s try it out in a couple examples.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.1  </strong></span>We will again use the distribution from example <a href="#exm:ogexpectation"><strong>??</strong></a>.</p>
+<p><span id="exm:exp1" class="example"><strong>Example 2.2  </strong></span>We will again use the distribution from example <a href="discrete-random-variables.html#exm:ogexpectation">2.1</a>. Here we will keep it simple (and also demonstrate a property of multiplication you may recall from algebra). Suppose our function <span class="math inline">\(f(x)\)</span> takes every value in the space of <span class="math inline">\(X\)</span> and returns the value one. In other words,</p>
+<p><span class="math display">\[
+f(X) = 1
+\]</span>
+Let’s apply <a href="discrete-random-variables.html#eq:discreteexpectationfunction">(2.5)</a> to find the expectation of this function. First, let’s apply the function <span class="math inline">\(f(x)\)</span> to each outcome in the space of <span class="math inline">\(X\)</span></p>
+<p><span class="math display">\[
+P(X=x) = p(x) =
+\begin{cases}
+1/5 &amp; f(x_1) = 1 \\
+1/5 &amp; f(x_2) = 1 \\
+1/5 &amp; f(x_3) = 1 \\
+1/5 &amp; f(x_4) = 1 \\
+1/5 &amp; f(x_5) = 1
+\end{cases}
+\]</span>
+Now let’s calculate the expectation of <span class="math inline">\(f(X)\)</span>. Watch the underlined values for a little bit of algebra review.
+<span class="math display">\[
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= \underline{1}\:p(x_1)+\underline{1}\:p(x_2)+\underline{1}\:p(x_3)+\underline{1}\:p(x_4)+\underline{1}\:p(x_5) \\
+&amp;= \underline{1}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&amp;= \underline{1}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&amp;= \underline{1}(1) = 1
+\end{align}
+\]</span>
+The second line of this calculation was made possible by the distributive property of multiplication. That made the computation easier because we note that the sum of probabilities over the space of <span class="math inline">\(X\)</span> is equal to 1 (see the third line; and see the properties of a discrete random variable at the start of this chapter).</p>
 </div>
+<div class="example">
+<p><span id="exm:exp2" class="example"><strong>Example 2.3  </strong></span>Suppose our random variable <span class="math inline">\(X\)</span> is again defined as in example <a href="discrete-random-variables.html#exm:ogexpectation">2.1</a>. Now let’s use the function <span class="math inline">\(f(x)= 2X\)</span>. Then let’s again apply the function to the space of <span class="math inline">\(X\)</span>
+<span class="math display">\[
+P(X=x) = p(x) =
+\begin{cases}
+1/5 &amp; f(x_1) = f(1) = 2 \\
+1/5 &amp; f(x_2) = f(2) = 4 \\
+1/5 &amp; f(x_3) = f(3) = 6 \\
+1/5 &amp; f(x_4) = f(4) = 8 \\
+1/5 &amp; f(x_5) = f(10) = 10
+\end{cases}
+\]</span></p>
+<p><span class="math display">\[
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
+&amp;= (2)\frac{1}{5} + (4)\frac{1}{5} + (6)\frac{1}{5} + (8)\frac{1}{5} + (10)\frac{1}{5} \\
+&amp;= \frac{30}{5} = 6
+\end{align}
+\]</span></p>
+</div>
+<p>The astute observer might notice an interesting trend in the last two examples. In example <a href="discrete-random-variables.html#exm:exp1">2.2</a>, we saw that our function which converts the whole space of <span class="math inline">\(X\)</span> into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if <span class="math inline">\(c\)</span> is a constant, and <span class="math inline">\(f(X) = c\)</span>, then</p>
+<p><span class="math display">\[
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= \underline{c}\:p(x_1)+\underline{c}\:p(x_2)+\underline{c}\:p(x_3)+\underline{c}\:p(x_4)+\underline{c}\:p(x_5) \\
+&amp;= \underline{c}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&amp;= \underline{c}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&amp;= \underline{c}(1) = c
+\end{align}
+\]</span></p>
+<p>In other words, we would get c every time. Similarly, in <a href="discrete-random-variables.html#exm:exp2">2.3</a>, recall that the original expectation of <span class="math inline">\(X\)</span> was 3. Our function <span class="math inline">\(f(X) = 2X\)</span> had the expectation of <span class="math inline">\(2\times3 = 6\)</span>. That is, we multiplied <span class="math inline">\(X\)</span> by 2 and got back 2 times its expectation.</p>
+<p>Our last two observations highlight a couple of <em>properties</em> of the expectation. They are listed below. The first two you are familiar with (we just talked about them). The second two are new, and we’ll pay particular attention to the fourth.</p>
+<div class="theorem">
+<p><span id="thm:expprop" class="theorem"><strong>Theorem 2.1  (Properties of the Expectation) </strong></span>If c is a constant, then</p>
+<ol style="list-style-type: decimal">
+<li><p>If f(X) = c, then E(f(X)) = E(c) = c</p></li>
+<li><p>If f(X) = cX, then E(f(X)) = E(cX) = cE(X)</p></li>
+<li><p>If f(X) = X + c, then E(f(X)) = E(X + c) = E(X) + c</p></li>
+<li><p>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are random variables, then E(<span class="math inline">\(X_1\)</span> + <span class="math inline">\(X_2\)</span>) = E(<span class="math inline">\(X_1\)</span>) + E(<span class="math inline">\(X_2\)</span>)</p></li>
+</ol>
+</div>
+<p>These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won’t discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let’s see how they work in practice and look at a more thorough example for the fourth.</p>
 
 </div>
 </div>

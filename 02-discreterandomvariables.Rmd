@@ -148,7 +148,7 @@ $$
 
 In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the **mean** of a random variable. An example, will help us understand the expectation a bit better.
 
-::: {.example} #ogexpectation
+::: {.example #ogexpectation} 
 Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome. Here there are 5 outcomes, so
 
 $$
@@ -192,12 +192,13 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 ```
 Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
 :::
-Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let's observe that it is possible to take the expectation of some _function_ of a random variable. Suppose we have a random variable $X$, and at the resolution of a random process or experiment it takes a value. After it takes a value, we apply some function to that value. For example, we might have
+
+Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let's observe that it is possible to take the expectation of some _function_ of a random variable. Suppose we have a random variable $X$, and at the resolution of a random process or experiment it takes a value. We may apply some function to the outcomes in the space of $X$. For example, we might have
 
 $$
 f(X) = 2X
 $$
-This function takes the result of the random process and multiplies it by 2. We shall calculate the expectation of this function of our random variable by 
+This function takes the outcomes in the space of $X$ and multiplies each by 2. We shall calculate the expectation of this function of our random variable by 
 
 $$
 E(f(X)) = \sum_{i = 1}^{n} f(x_i)p(x_i)
@@ -206,6 +207,83 @@ $$
 
 Let's try it out in a couple examples.
 
-::: {.example}
-We will again use the distribution from example \@ref(exm:ogexpectation).
+::: {.example #exp1}
+We will again use the distribution from example \@ref(exm:ogexpectation). Here we will keep it simple (and also demonstrate a property of multiplication you may recall from algebra). Suppose our function $f(x)$ takes every value in the space of $X$ and returns the value one. In other words,
+
+$$
+f(X) = 1
+$$
+Let's apply \@ref(eq:discreteexpectationfunction) to find the expectation of this function. First, let's apply the function $f(x)$ to each outcome in the space of $X$
+
+$$
+P(X=x) = p(x) = 
+\begin{cases}
+1/5 & f(x_1) = 1 \\
+1/5 & f(x_2) = 1 \\
+1/5 & f(x_3) = 1 \\
+1/5 & f(x_4) = 1 \\
+1/5 & f(x_5) = 1 
+\end{cases}
+$$
+Now let's calculate the expectation of $f(X)$. Watch the underlined values for a little bit of algebra review.
+$$
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= \underline{1}\:p(x_1)+\underline{1}\:p(x_2)+\underline{1}\:p(x_3)+\underline{1}\:p(x_4)+\underline{1}\:p(x_5) \\
+&= \underline{1}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&= \underline{1}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&= \underline{1}(1) = 1
+\end{align}
+$$
+The second line of this calculation was made possible by the distributive property of multiplication. That made the computation easier because we note that the sum of probabilities over the space of $X$ is equal to 1 (see the third line; and see the properties of a discrete random variable at the start of this chapter).
 :::
+
+::: {.example #exp2}
+Suppose our random variable $X$ is again defined as in example \@ref(exm:ogexpectation). Now let's use the function $f(x)= 2X$. Then let's again apply the function to the space of $X$ 
+$$
+P(X=x) = p(x) = 
+\begin{cases}
+1/5 & f(x_1) = f(1) = 2 \\
+1/5 & f(x_2) = f(2) = 4 \\
+1/5 & f(x_3) = f(3) = 6 \\
+1/5 & f(x_4) = f(4) = 8 \\
+1/5 & f(x_5) = f(10) = 10 
+\end{cases}
+$$
+
+$$
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
+&= (2)\frac{1}{5} + (4)\frac{1}{5} + (6)\frac{1}{5} + (8)\frac{1}{5} + (10)\frac{1}{5} \\
+&= \frac{30}{5} = 6
+\end{align}
+$$
+:::
+
+The astute observer might notice an interesting trend in the last two examples. In example \@ref(exm:exp1), we saw that our function which converts the whole space of $X$ into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if $c$ is a constant, and $f(X) = c$, then
+
+$$
+\begin{align}
+E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= \underline{c}\:p(x_1)+\underline{c}\:p(x_2)+\underline{c}\:p(x_3)+\underline{c}\:p(x_4)+\underline{c}\:p(x_5) \\
+&= \underline{c}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&= \underline{c}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&= \underline{c}(1) = c
+\end{align}
+$$
+
+In other words, we would get c every time. Similarly, in \@ref(exm:exp2), recall that the original expectation of $X$ was 3. Our function $f(X) = 2X$ had the expectation of $2\times3 = 6$. That is, we multiplied $X$ by 2 and got back 2 times its expectation.
+
+Our last two observations highlight a couple of _properties_ of the expectation. They are listed below. The first two you are familiar with (we just talked about them). The second two are new, and we'll pay particular attention to the fourth.
+
+::: {.theorem #expprop name="Properties of the Expectation"}
+If c is a constant, then
+
+1. If f(X) = c, then E(f(X)) = E(c) = c
+
+2. If f(X) = cX, then E(f(X)) = E(cX) = cE(X)
+
+3. If f(X) = X + c, then E(f(X)) = E(X + c) = E(X) + c
+
+4. If $X_1$ and $X_2$ are random variables, then E($X_1$ + $X_2$) = E($X_1$) + E($X_2$)
+:::
+
+These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won't discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let's see how they work in practice and look at a more thorough example for the fourth.
