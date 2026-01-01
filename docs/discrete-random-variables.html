@@ -293,7 +293,7 @@ f(X) = 1
 \]</span>
 Let’s apply <a href="discrete-random-variables.html#eq:discreteexpectationfunction">(2.5)</a> to find the expectation of this function. First, let’s apply the function <span class="math inline">\(f(x)\)</span> to each outcome in the space of <span class="math inline">\(X\)</span></p>
 <p><span class="math display">\[
-P(X=x) = p(x) =
+p(c) =
 \begin{cases}
 1/5 &amp; f(x_1) = 1 \\
 1/5 &amp; f(x_2) = 1 \\
@@ -316,44 +316,50 @@ The second line of this calculation was made possible by the distributive proper
 <div class="example">
 <p><span id="exm:exp2" class="example"><strong>Example 2.3  </strong></span>Suppose our random variable <span class="math inline">\(X\)</span> is again defined as in example <a href="discrete-random-variables.html#exm:ogexpectation">2.1</a>. Now let’s use the function <span class="math inline">\(f(x)= 2X\)</span>. Then let’s again apply the function to the space of <span class="math inline">\(X\)</span>
 <span class="math display">\[
-P(X=x) = p(x) =
+p(2x) =
 \begin{cases}
-1/5 &amp; f(x_1) = f(1) = 2 \\
-1/5 &amp; f(x_2) = f(2) = 4 \\
-1/5 &amp; f(x_3) = f(3) = 6 \\
-1/5 &amp; f(x_4) = f(4) = 8 \\
-1/5 &amp; f(x_5) = f(10) = 10
+1/5 &amp; f(x_1) = 2(1) = 2 \\
+1/5 &amp; f(x_2) = 2(2) = 4 \\
+1/5 &amp; f(x_3) = 2(3) = 6 \\
+1/5 &amp; f(x_4) = 2(4) = 8 \\
+1/5 &amp; f(x_5) = 2(5) = 10
 \end{cases}
 \]</span></p>
 <p><span class="math display">\[
 \begin{align}
-E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
+E(2X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
 &amp;= (2)\frac{1}{5} + (4)\frac{1}{5} + (6)\frac{1}{5} + (8)\frac{1}{5} + (10)\frac{1}{5} \\
 &amp;= \frac{30}{5} = 6
 \end{align}
 \]</span></p>
 </div>
-<p>The astute observer might notice an interesting trend in the last two examples. In example <a href="discrete-random-variables.html#exm:exp1">2.2</a>, we saw that our function which converts the whole space of <span class="math inline">\(X\)</span> into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if <span class="math inline">\(c\)</span> is a constant, and <span class="math inline">\(f(X) = c\)</span>, then</p>
+<p>The astute observer might notice an interesting trend in the last two examples. In example <a href="discrete-random-variables.html#exm:exp1">2.2</a>, we saw that our function which converts the whole space of <span class="math inline">\(X\)</span> into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if <span class="math inline">\(a\)</span> is a constant, and <span class="math inline">\(f(X) = a\)</span>, then</p>
 <p><span class="math display">\[
 \begin{align}
-E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= \underline{c}\:p(x_1)+\underline{c}\:p(x_2)+\underline{c}\:p(x_3)+\underline{c}\:p(x_4)+\underline{c}\:p(x_5) \\
-&amp;= \underline{c}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
-&amp;= \underline{c}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
-&amp;= \underline{c}(1) = c
+E(a) = \sum_{i=1}^{5} ap(x_i) &amp;= \underline{a}\:p(x_1)+\underline{a}\:p(x_2)+\underline{a}\:p(x_3)+\underline{a}\:p(x_4)+\underline{a}\:p(x_5) \\
+&amp;= \underline{a}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&amp;= \underline{a}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&amp;= \underline{a}(1) = a
 \end{align}
 \]</span></p>
-<p>In other words, we would get c every time. Similarly, in <a href="discrete-random-variables.html#exm:exp2">2.3</a>, recall that the original expectation of <span class="math inline">\(X\)</span> was 3. Our function <span class="math inline">\(f(X) = 2X\)</span> had the expectation of <span class="math inline">\(2\times3 = 6\)</span>. That is, we multiplied <span class="math inline">\(X\)</span> by 2 and got back 2 times its expectation.</p>
-<p>Our last two observations highlight a couple of <em>properties</em> of the expectation. They are listed below. The first two you are familiar with (we just talked about them). The second two are new, and we’ll pay particular attention to the fourth.</p>
+<p>In other words, we would get the value of our constant every time. Similarly, in <a href="discrete-random-variables.html#exm:exp2">2.3</a>, recall that the original expectation of <span class="math inline">\(X\)</span> was 3. Our function <span class="math inline">\(f(X) = 2X\)</span> had the expectation of <span class="math inline">\(2\times3 = 6\)</span>. That is, we multiplied <span class="math inline">\(X\)</span> by 2 and got back 2 times its expectation.</p>
+<p>Our last two observations highlight a couple of <em>properties</em> of the expectation. We’ll list a few below. The first two (or three) you might have deduced yourself. The second two are new, and we’ll pay particular attention to the fourth.</p>
 <div class="theorem">
-<p><span id="thm:expprop" class="theorem"><strong>Theorem 2.1  (Properties of the Expectation) </strong></span>If c is a constant, then</p>
+<p><span id="thm:expprop" class="theorem"><strong>Theorem 2.1  (Some Properties of the Expectation) </strong></span>If a and b are constants, then</p>
 <ol style="list-style-type: decimal">
-<li><p>If f(X) = c, then E(f(X)) = E(c) = c</p></li>
-<li><p>If f(X) = cX, then E(f(X)) = E(cX) = cE(X)</p></li>
-<li><p>If f(X) = X + c, then E(f(X)) = E(X + c) = E(X) + c</p></li>
-<li><p>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are random variables, then E(<span class="math inline">\(X_1\)</span> + <span class="math inline">\(X_2\)</span>) = E(<span class="math inline">\(X_1\)</span>) + E(<span class="math inline">\(X_2\)</span>)</p></li>
+<li><p>E(b) = b</p></li>
+<li><p>E(aX) = aE(X)</p></li>
+<li><p>More generally, E(aX + b) = aE(X) + b</p></li>
+</ol>
+<p>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are random variables, then</p>
+<ol start="4" style="list-style-type: decimal">
+<li><span class="math inline">\(E(aX_1 + bX_2)\)</span> = <span class="math inline">\(aE(X_1) + bE(X_2)\)</span></li>
 </ol>
 </div>
 <p>These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won’t discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let’s see how they work in practice and look at a more thorough example for the fourth.</p>
+<div class="{example.}">
+<p>Suppose we are given a random variable - <span class="math inline">\(Z\)</span> - and <span class="math inline">\(E(Z)\)</span> = 7</p>
+</div>
 
 </div>
 </div>

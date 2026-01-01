@@ -216,7 +216,7 @@ $$
 Let's apply \@ref(eq:discreteexpectationfunction) to find the expectation of this function. First, let's apply the function $f(x)$ to each outcome in the space of $X$
 
 $$
-P(X=x) = p(x) = 
+p(c) =
 \begin{cases}
 1/5 & f(x_1) = 1 \\
 1/5 & f(x_2) = 1 \\
@@ -240,50 +240,56 @@ The second line of this calculation was made possible by the distributive proper
 ::: {.example #exp2}
 Suppose our random variable $X$ is again defined as in example \@ref(exm:ogexpectation). Now let's use the function $f(x)= 2X$. Then let's again apply the function to the space of $X$ 
 $$
-P(X=x) = p(x) = 
+p(2x) = 
 \begin{cases}
-1/5 & f(x_1) = f(1) = 2 \\
-1/5 & f(x_2) = f(2) = 4 \\
-1/5 & f(x_3) = f(3) = 6 \\
-1/5 & f(x_4) = f(4) = 8 \\
-1/5 & f(x_5) = f(10) = 10 
+1/5 & f(x_1) = 2(1) = 2 \\
+1/5 & f(x_2) = 2(2) = 4 \\
+1/5 & f(x_3) = 2(3) = 6 \\
+1/5 & f(x_4) = 2(4) = 8 \\
+1/5 & f(x_5) = 2(5) = 10 
 \end{cases}
 $$
 
 $$
 \begin{align}
-E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
+E(2X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
 &= (2)\frac{1}{5} + (4)\frac{1}{5} + (6)\frac{1}{5} + (8)\frac{1}{5} + (10)\frac{1}{5} \\
 &= \frac{30}{5} = 6
 \end{align}
 $$
 :::
 
-The astute observer might notice an interesting trend in the last two examples. In example \@ref(exm:exp1), we saw that our function which converts the whole space of $X$ into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if $c$ is a constant, and $f(X) = c$, then
+The astute observer might notice an interesting trend in the last two examples. In example \@ref(exm:exp1), we saw that our function which converts the whole space of $X$ into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if $a$ is a constant, and $f(X) = a$, then
 
 $$
 \begin{align}
-E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= \underline{c}\:p(x_1)+\underline{c}\:p(x_2)+\underline{c}\:p(x_3)+\underline{c}\:p(x_4)+\underline{c}\:p(x_5) \\
-&= \underline{c}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
-&= \underline{c}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
-&= \underline{c}(1) = c
+E(a) = \sum_{i=1}^{5} ap(x_i) &= \underline{a}\:p(x_1)+\underline{a}\:p(x_2)+\underline{a}\:p(x_3)+\underline{a}\:p(x_4)+\underline{a}\:p(x_5) \\
+&= \underline{a}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
+&= \underline{a}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
+&= \underline{a}(1) = a
 \end{align}
 $$
 
-In other words, we would get c every time. Similarly, in \@ref(exm:exp2), recall that the original expectation of $X$ was 3. Our function $f(X) = 2X$ had the expectation of $2\times3 = 6$. That is, we multiplied $X$ by 2 and got back 2 times its expectation.
+In other words, we would get the value of our constant every time. Similarly, in \@ref(exm:exp2), recall that the original expectation of $X$ was 3. Our function $f(X) = 2X$ had the expectation of $2\times3 = 6$. That is, we multiplied $X$ by 2 and got back 2 times its expectation.
 
-Our last two observations highlight a couple of _properties_ of the expectation. They are listed below. The first two you are familiar with (we just talked about them). The second two are new, and we'll pay particular attention to the fourth.
+Our last two observations highlight a couple of _properties_ of the expectation. We'll list a few below. The first two (or three) you might have deduced yourself. The second two are new, and we'll pay particular attention to the fourth.
 
-::: {.theorem #expprop name="Properties of the Expectation"}
-If c is a constant, then
+::: {.theorem #expprop name="Some Properties of the Expectation"}
+If a and b are constants, then
 
-1. If f(X) = c, then E(f(X)) = E(c) = c
+1. E(b) = b
 
-2. If f(X) = cX, then E(f(X)) = E(cX) = cE(X)
+2. E(aX) = aE(X)
 
-3. If f(X) = X + c, then E(f(X)) = E(X + c) = E(X) + c
+3. More generally, E(aX + b) = aE(X) + b
 
-4. If $X_1$ and $X_2$ are random variables, then E($X_1$ + $X_2$) = E($X_1$) + E($X_2$)
+If $X_1$ and $X_2$ are random variables, then 
+
+4. $E(aX_1 + bX_2)$ = $aE(X_1) + bE(X_2)$
 :::
 
 These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won't discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let's see how they work in practice and look at a more thorough example for the fourth.
+
+::: {example.}
+Suppose we are given a random variable - $Z$ - and $E(Z)$ = 7
+:::
