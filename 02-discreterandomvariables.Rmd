@@ -7,7 +7,7 @@ When we are in the process of conducting quantitative research (and statistics),
 
 Indeed, what we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of some random process (e.g., a random experiment, drawing out of a hat, rolling, randomly sampling, etc.). The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
 
-We shall refer to events in the space of $X$ using a simplified set notation. Suppose we are looking to determine the probability of a random variable $X$ attaining a value of 1 (more on this soon), then in the language of the last chapter we might write $\{x|X = 1\}$. Here, $\{x|X = 1\}$ describes the set of outcomes ($x$) in the space of $X$ where the random experiment results in 1. This is a small set composed of exactly one element - $\{1\}$. For the sake of simplicity, we will use the shorthand $(X = 1)$, or more generally $(X = x)$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorthand is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
+We shall refer to events in the space of $X$ using a simplified set notation. Suppose we are describing the set of outcomes where our random variable $X$ attains a value of 1. For the sake of simplicity, we will use the shorthand, $X = 1$, or more generally, $X = x$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorter form is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
 
 Because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a **probability mass function** (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. The set of rules (a.k.a, a probability mass function) are frequently described like this:
 
@@ -21,7 +21,7 @@ $$
 
 Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of $X$. In that row you will find the probability for that outcome. For example, $P(X = 1) = p(1) = 1/2$. The pmf of $X$ has two important properties. Specifically:
 
-1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. The outcomes for which $p(x) > 0$ is called the **support** of $X$.
+1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. The set of outcomes for which $p(x) > 0$ is called the **support** of $X$.
 
 2. Given the space $S$ of a random variable, $P(S)$ = 1. In other words, if we are conducting a random experiment by drawing a value from the space of $X$ (the set of all numeric outcomes for $X$), the probability that it lands in $S$ is 1. This hearkens back to \@ref(eq:setprop) in the previous section.
 
@@ -36,7 +36,7 @@ In this chapter we will dig into discrete random variables in three steps:
 3. And finally, we will discuss some random variables that are frequently found in behavioral research.
 
 ## Independence of discrete random variables
-The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal if this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).
+The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal of this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).
 
 In the last chapter, we discussed the concept of the independence of _events_ in a random experiment. We shall now discuss independence as it pertains to random variables. And, as you will see, it is very similar to the concept of independence for events. Suppose we have two random variables $X_1$ and $X_2$. Then we say the two variables are independent if
 
@@ -57,7 +57,7 @@ And, perhaps not surprisingly, if the two random variables are not independent t
 $$
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
 $$
-That is to say, similar to the dependence of events, an event in the space of one variable _changes_ the probability of an event in the space of another variable. This may seem a bit confusing at first. It may, therefore, help to know that you have already seen an example of the dependence of random variables in the last chapter. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and represent the random variable of the first die by $X$. 
+Put into (more understandable) words, when two random variables are dependent, an event in the space of one variable _changes_ the probability of an event in the space of another variable. This may seem a bit confusing at first, but you have already seen an example of the dependence of random variables in the last chapter. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and represent the random variable of the first die by $X$. 
 
 On the basis of \@ref(eq:descreteind), we shall be looking to determine if
 
@@ -119,7 +119,7 @@ $$
 \sum_{i=1}^{n} x_i
 (\#eq:summation)
 $$
-The $i$ at the bottom of the $\sum{}^{}$ is referred to as the _index_. The index is how we refer to a single element in our set of $x$'s. For example, $i=5$ refers to $x_5$. The starting index is specified at the bottom of the summation operator. In the equation above we are starting at the 1st element of our set of $x$'s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written $n$ which is the last element of our set of $x$'s. In other words
+The $i$ at the bottom of the $\sum{}^{}$ is referred to as the _index_. The index is how we refer to a single element in our set of $x$'s. For example, $i=5$ refers to $x_5$. The starting index is specified at the bottom of the summation operator to the right of the equal sign. In the equation above we are starting at the 1st element of our set of $x$'s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written $n$ which is the last element of our set of n $x$'s. In other words
 
 $$
 \sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + x_4 + x_5 + ... + x_n
@@ -139,17 +139,17 @@ $$
 E(X) = \mu
 $$
 
-The expectation of a random variable $X$ with a given pmf - $p(x)$ is calculated 
+The expectation is commonly referred to as the **mean** of a random variable. The expectation of a random variable $X$ with a given pmf - $p(x)$ is calculated 
 
 $$
 E(X) = \sum_{i = 1}^{n} x_ip(x_i)
 (\#eq:discreteexpectation)
 $$
 
-In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the **mean** of a random variable. An example, will help us understand the expectation a bit better.
+In words: For each $x$ in the space of $X$, multiply by its corresponding probability and sum the resulting values. An example, will help us understand the expectation a bit better.
 
 ::: {.example #ogexpectation} 
-Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. The pmf for $X$ assigns $\frac{1}{n}$ probability to each outcome. Here there are 5 outcomes, so
+Suppose we have a random variable $X$ with five outcomes in it's space - $\{1,2,3,4,5\}$. Further assume that the pmf of $X$ assigns $\frac{1}{5}$ probability to each outcome. 
 
 $$
 P(X=x) = p(x) = 
@@ -163,7 +163,7 @@ P(X=x) = p(x) =
 $$
 This is an example of a **discrete uniform distribution**. Given n outcomes, the discrete uniform distribution assigns $1/n$ probability to each outcome on the space of the random variable.
 
-Now let's calculate the expectation of this random variable
+Now let's calculate the expectation of this random variable.
 
 $$
 \begin{align}
@@ -173,7 +173,7 @@ E(X) = \sum_{i=1}^{5} x_ip(x_i) &= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5p(x_
 &= \frac{15}{5} = 3
 \end{align}
 $$
-We've multiplied each value in the space of our random variable $X$ by its probability and summed the values. The result of our computation is 3 - $E(x) = 3$ - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of $X$. In the figure below, the probability of each outcome is plotted as a bar. You can see the outcomes of the random variable labelled on the $x$ axis. The probability of each outcome is represented by the bar height. In this case, each outcome is equilikely, so the bars are of equal height.  
+We've multiplied each value in the space of our random variable $X$ by its probability and summed the values. The result of our computation is 3 - $E(x) = 3$ - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of $X$. In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the $x$ axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.  
 
 ```{r, echo = FALSE}
 a <- data.frame(x = c(1,2,3,4,5), 
@@ -190,10 +190,10 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 
 ```
-Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Indeed, the number 3 was the result of our computation above. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
 :::
 
-Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let's observe that it is possible to take the expectation of some _function_ of a random variable. Suppose we have a random variable $X$, and at the resolution of a random process or experiment it takes a value. We may apply some function to the outcomes in the space of $X$. For example, we might have
+Hopefully that example helped build an initial understanding of the expectation. We shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some _function_ of a random variable. In other words, we may apply some function to the outcomes in the space of $X$ and then calculate an expectation. For example, we might have
 
 $$
 f(X) = 2X
@@ -213,19 +213,20 @@ We will again use the distribution from example \@ref(exm:ogexpectation). Here w
 $$
 f(X) = 1
 $$
-Let's apply \@ref(eq:discreteexpectationfunction) to find the expectation of this function. First, let's apply the function $f(x)$ to each outcome in the space of $X$
+Let's apply \@ref(eq:discreteexpectationfunction) to find the expectation of this function. First, let's remind ourselves of the distribution of $X$ and calculate $f(x)$ for each outcome in it's space
 
 $$
-p(c) =
+p(x) =
 \begin{cases}
-1/5 & f(x_1) = 1 \\
-1/5 & f(x_2) = 1 \\
-1/5 & f(x_3) = 1 \\
-1/5 & f(x_4) = 1 \\
-1/5 & f(x_5) = 1 
+1/5 & x_1 = 1 & f(1) = 1 \\
+1/5 & x_2 = 2 & f(2) = 1 \\
+1/5 & x_3 = 3 & f(3) = 1 \\
+1/5 & x_4 = 4 & f(4) = 1 \\
+1/5 & x_5 = 5 & f(5) = 1 
 \end{cases}
 $$
 Now let's calculate the expectation of $f(X)$. Watch the underlined values for a little bit of algebra review.
+
 $$
 \begin{align}
 E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= \underline{1}\:p(x_1)+\underline{1}\:p(x_2)+\underline{1}\:p(x_3)+\underline{1}\:p(x_4)+\underline{1}\:p(x_5) \\
@@ -240,13 +241,13 @@ The second line of this calculation was made possible by the distributive proper
 ::: {.example #exp2}
 Suppose our random variable $X$ is again defined as in example \@ref(exm:ogexpectation). Now let's use the function $f(x)= 2X$. Then let's again apply the function to the space of $X$ 
 $$
-p(2x) = 
+p(x) = 
 \begin{cases}
-1/5 & f(x_1) = 2(1) = 2 \\
-1/5 & f(x_2) = 2(2) = 4 \\
-1/5 & f(x_3) = 2(3) = 6 \\
-1/5 & f(x_4) = 2(4) = 8 \\
-1/5 & f(x_5) = 2(5) = 10 
+1/5 & x_1 = 1 & f(1) = 2(1) = 2 \\
+1/5 & x_2 = 2 & f(2) = 2(2) = 4 \\
+1/5 & x_3 = 3 & f(3) = 2(3) = 6 \\
+1/5 & x_4 = 4 & f(4) = 2(4) = 8 \\
+1/5 & x_5 = 5 & f(5) = 2(5) = 10 
 \end{cases}
 $$
 
@@ -290,6 +291,6 @@ If $X_1$ and $X_2$ are random variables, then
 
 These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won't discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let's see how they work in practice and look at a more thorough example for the fourth.
 
-::: {example.}
+::: {.example}
 Suppose we are given a random variable - $Z$ - and $E(Z)$ = 7
 :::

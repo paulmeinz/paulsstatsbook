@@ -138,7 +138,7 @@ statistics course.|</p>" />
 <h2><span class="header-section-number">2.1</span> What is a discrete random variable?<a href="discrete-random-variables.html#what-is-a-discrete-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., <span class="math inline">\(S = \{H, T\}\)</span> in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as <span class="math inline">\(\{1,0\}\)</span>. On a given random experiment within this space, we may therefore get a 1 or 0 at the resolution of our draw or random process.</p>
 <p>Indeed, what we have just described is known as a <strong>discrete random variable</strong> - a variable that assumes a <em>number</em> as a result of some random process (e.g., a random experiment, drawing out of a hat, rolling, randomly sampling, etc.). The set of possible numbers for a given discrete random variable is called the <em>space</em> of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically <span class="math inline">\(X\)</span>. To avoid ambiguity, a potential <em>outcome</em> of this random variable is referred to symbolically by a lower case letter, e.g., <span class="math inline">\(x\)</span>.</p>
-<p>We shall refer to events in the space of <span class="math inline">\(X\)</span> using a simplified set notation. Suppose we are looking to determine the probability of a random variable <span class="math inline">\(X\)</span> attaining a value of 1 (more on this soon), then in the language of the last chapter we might write <span class="math inline">\(\{x|X = 1\}\)</span>. Here, <span class="math inline">\(\{x|X = 1\}\)</span> describes the set of outcomes (<span class="math inline">\(x\)</span>) in the space of <span class="math inline">\(X\)</span> where the random experiment results in 1. This is a small set composed of exactly one element - <span class="math inline">\(\{1\}\)</span>. For the sake of simplicity, we will use the shorthand <span class="math inline">\((X = 1)\)</span>, or more generally <span class="math inline">\((X = x)\)</span>. We may also use an inequality - e.g., <span class="math inline">\(X \leq x\)</span> - to reference a range of outcomes. This shorthand is used frequently within the field of statistics and probability, so it’s good to learn it now before we move into the more interesting stuff.</p>
+<p>We shall refer to events in the space of <span class="math inline">\(X\)</span> using a simplified set notation. Suppose we are describing the set of outcomes where our random variable <span class="math inline">\(X\)</span> attains a value of 1. For the sake of simplicity, we will use the shorthand, <span class="math inline">\(X = 1\)</span>, or more generally, <span class="math inline">\(X = x\)</span>. We may also use an inequality - e.g., <span class="math inline">\(X \leq x\)</span> - to reference a range of outcomes. This shorter form is used frequently within the field of statistics and probability, so it’s good to learn it now before we move into the more interesting stuff.</p>
 <p>Because <span class="math inline">\(X\)</span> is a random variable, we shall need a concrete way of describing it’s randomness. Recall in the last chapter, we discussed the probability set operator - <span class="math inline">\(P()\)</span>. This operator assigns the probability to an outcome - <span class="math inline">\(x\)</span> - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a <strong>probability mass function</strong> (pmf) - <span class="math inline">\(p(x)\)</span>. Note that <span class="math inline">\(x\)</span> is used to reference a particular numeric outcome in the space of <span class="math inline">\(X\)</span>. The set of rules (a.k.a, a probability mass function) are frequently described like this:</p>
 <p><span class="math display">\[
 P(X=x) = p(x) =
@@ -149,7 +149,7 @@ P(X=x) = p(x) =
 \]</span></p>
 <p>Note that <span class="math inline">\(P(X = x)\)</span> and <span class="math inline">\(p(x)\)</span> mean the same thing - hence the equal sign. After the large curly-brace, you will see a row for each outcome in the space of <span class="math inline">\(X\)</span>. In that row you will find the probability for that outcome. For example, <span class="math inline">\(P(X = 1) = p(1) = 1/2\)</span>. The pmf of <span class="math inline">\(X\)</span> has two important properties. Specifically:</p>
 <ol style="list-style-type: decimal">
-<li><p>All the outcomes <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span> have a probability <span class="math inline">\(0 \leq p(x) \leq 1\)</span>. That is, all the outcomes in the space of <span class="math inline">\(X\)</span> must have a probability from 0 to 1. The outcomes for which <span class="math inline">\(p(x) &gt; 0\)</span> is called the <strong>support</strong> of <span class="math inline">\(X\)</span>.</p></li>
+<li><p>All the outcomes <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span> have a probability <span class="math inline">\(0 \leq p(x) \leq 1\)</span>. That is, all the outcomes in the space of <span class="math inline">\(X\)</span> must have a probability from 0 to 1. The set of outcomes for which <span class="math inline">\(p(x) &gt; 0\)</span> is called the <strong>support</strong> of <span class="math inline">\(X\)</span>.</p></li>
 <li><p>Given the space <span class="math inline">\(S\)</span> of a random variable, <span class="math inline">\(P(S)\)</span> = 1. In other words, if we are conducting a random experiment by drawing a value from the space of <span class="math inline">\(X\)</span> (the set of all numeric outcomes for <span class="math inline">\(X\)</span>), the probability that it lands in <span class="math inline">\(S\)</span> is 1. This hearkens back to <a href="set-theory-and-probability.html#eq:setprop">(1.10)</a> in the previous section.</p></li>
 </ol>
 <p>In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of <span class="math inline">\(X\)</span>). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. In this case, each outcome would have a probability from 0 to 1, and these values would sum to 1.</p>
@@ -162,7 +162,7 @@ P(X=x) = p(x) =
 </div>
 <div id="independence-of-discrete-random-variables" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Independence of discrete random variables<a href="discrete-random-variables.html#independence-of-discrete-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal if this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).</p>
+<p>The concept of independence is found frequently within the field of statistics. As you read on, you will find that it is essential to the derivation, understanding, and validity of some of the most fundamental things we shall learn in statistics. Therefore, it is nice to have a deeper understanding of it. The goal of this section is to frame an intuition of the independence of random variables. A deeper mathematical understanding shall be saved for your inevitable foray into mathematical statistics (no doubt after being inspired by this book to master the topic).</p>
 <p>In the last chapter, we discussed the concept of the independence of <em>events</em> in a random experiment. We shall now discuss independence as it pertains to random variables. And, as you will see, it is very similar to the concept of independence for events. Suppose we have two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>. Then we say the two variables are independent if</p>
 <p><span class="math display" id="eq:descreteind">\[
 P(X_1 = x_1 \cap X_2 = x_2) = P(X_1 = x_1)P(X_2 = x_2)
@@ -178,7 +178,7 @@ And, perhaps not surprisingly, if the two random variables are not independent t
 <p><span class="math display">\[
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
 \]</span>
-That is to say, similar to the dependence of events, an event in the space of one variable <em>changes</em> the probability of an event in the space of another variable. This may seem a bit confusing at first. It may, therefore, help to know that you have already seen an example of the dependence of random variables in the last chapter. Recall example <a href="set-theory-and-probability.html#exm:dice">1.22</a>, when we looked at the sum of two dice. In this case, let’s call the sum of our two dice the random variable <span class="math inline">\(Z\)</span> and represent the random variable of the first die by <span class="math inline">\(X\)</span>.</p>
+Put into (more understandable) words, when two random variables are dependent, an event in the space of one variable <em>changes</em> the probability of an event in the space of another variable. This may seem a bit confusing at first, but you have already seen an example of the dependence of random variables in the last chapter. Recall example <a href="set-theory-and-probability.html#exm:dice">1.22</a>, when we looked at the sum of two dice. In this case, let’s call the sum of our two dice the random variable <span class="math inline">\(Z\)</span> and represent the random variable of the first die by <span class="math inline">\(X\)</span>.</p>
 <p>On the basis of <a href="discrete-random-variables.html#eq:descreteind">(2.1)</a>, we shall be looking to determine if</p>
 <p><span class="math display">\[
 \frac{P(Z = z \cap X = x)}{P(X = x)} \neq P(Z = z)
@@ -228,7 +228,7 @@ x_1 + x_2 + x_3 + x_4 + x_5 \,+\:... + x_n
 \sum_{i=1}^{n} x_i
 \tag{2.3}
 \]</span>
-The <span class="math inline">\(i\)</span> at the bottom of the <span class="math inline">\(\sum{}^{}\)</span> is referred to as the <em>index</em>. The index is how we refer to a single element in our set of <span class="math inline">\(x\)</span>’s. For example, <span class="math inline">\(i=5\)</span> refers to <span class="math inline">\(x_5\)</span>. The starting index is specified at the bottom of the summation operator. In the equation above we are starting at the 1st element of our set of <span class="math inline">\(x\)</span>’s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written <span class="math inline">\(n\)</span> which is the last element of our set of <span class="math inline">\(x\)</span>’s. In other words</p>
+The <span class="math inline">\(i\)</span> at the bottom of the <span class="math inline">\(\sum{}^{}\)</span> is referred to as the <em>index</em>. The index is how we refer to a single element in our set of <span class="math inline">\(x\)</span>’s. For example, <span class="math inline">\(i=5\)</span> refers to <span class="math inline">\(x_5\)</span>. The starting index is specified at the bottom of the summation operator to the right of the equal sign. In the equation above we are starting at the 1st element of our set of <span class="math inline">\(x\)</span>’s. The value at the top of the summation operator is the index of the last element to be summed. Here we have written <span class="math inline">\(n\)</span> which is the last element of our set of n <span class="math inline">\(x\)</span>’s. In other words</p>
 <p><span class="math display">\[
 \sum_{i=1}^{n} x_i = x_1 + x_2 + x_3 + x_4 + x_5 + ... + x_n
 \]</span>
@@ -244,14 +244,14 @@ in terms of our example above. Additionally, it is important to note that n and 
 <p><span class="math display">\[
 E(X) = \mu
 \]</span></p>
-<p>The expectation of a random variable <span class="math inline">\(X\)</span> with a given pmf - <span class="math inline">\(p(x)\)</span> is calculated</p>
+<p>The expectation is commonly referred to as the <strong>mean</strong> of a random variable. The expectation of a random variable <span class="math inline">\(X\)</span> with a given pmf - <span class="math inline">\(p(x)\)</span> is calculated</p>
 <p><span class="math display" id="eq:discreteexpectation">\[
 E(X) = \sum_{i = 1}^{n} x_ip(x_i)
 \tag{2.4}
 \]</span></p>
-<p>In words: For each <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span>, multiply by its corresponding probability and sum the resulting values. The expectation is commonly referred to as the <strong>mean</strong> of a random variable. An example, will help us understand the expectation a bit better.</p>
+<p>In words: For each <span class="math inline">\(x\)</span> in the space of <span class="math inline">\(X\)</span>, multiply by its corresponding probability and sum the resulting values. An example, will help us understand the expectation a bit better.</p>
 <div class="example">
-<p><span id="exm:ogexpectation" class="example"><strong>Example 2.1  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> with five outcomes in it’s space - <span class="math inline">\(\{1,2,3,4,5\}\)</span>. The pmf for <span class="math inline">\(X\)</span> assigns <span class="math inline">\(\frac{1}{n}\)</span> probability to each outcome. Here there are 5 outcomes, so</p>
+<p><span id="exm:ogexpectation" class="example"><strong>Example 2.1  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> with five outcomes in it’s space - <span class="math inline">\(\{1,2,3,4,5\}\)</span>. Further assume that the pmf of <span class="math inline">\(X\)</span> assigns <span class="math inline">\(\frac{1}{5}\)</span> probability to each outcome.</p>
 <p><span class="math display">\[
 P(X=x) = p(x) =
 \begin{cases}
@@ -263,7 +263,7 @@ P(X=x) = p(x) =
 \end{cases}
 \]</span>
 This is an example of a <strong>discrete uniform distribution</strong>. Given n outcomes, the discrete uniform distribution assigns <span class="math inline">\(1/n\)</span> probability to each outcome on the space of the random variable.</p>
-<p>Now let’s calculate the expectation of this random variable</p>
+<p>Now let’s calculate the expectation of this random variable.</p>
 <p><span class="math display">\[
 \begin{align}
 E(X) = \sum_{i=1}^{5} x_ip(x_i) &amp;= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5p(x_5) \\
@@ -272,11 +272,11 @@ E(X) = \sum_{i=1}^{5} x_ip(x_i) &amp;= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5
 &amp;= \frac{15}{5} = 3
 \end{align}
 \]</span>
-We’ve multiplied each value in the space of our random variable <span class="math inline">\(X\)</span> by its probability and summed the values. The result of our computation is 3 - <span class="math inline">\(E(x) = 3\)</span> - but what does that mean exactly? Well let’s explore the idea of expectation further by plotting the pmf of <span class="math inline">\(X\)</span>. In the figure below, the probability of each outcome is plotted as a bar. You can see the outcomes of the random variable labelled on the <span class="math inline">\(x\)</span> axis. The probability of each outcome is represented by the bar height. In this case, each outcome is equilikely, so the bars are of equal height.</p>
+We’ve multiplied each value in the space of our random variable <span class="math inline">\(X\)</span> by its probability and summed the values. The result of our computation is 3 - <span class="math inline">\(E(x) = 3\)</span> - but what does that mean exactly? Well let’s explore the idea of expectation further by plotting the pmf of <span class="math inline">\(X\)</span>. In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the <span class="math inline">\(x\)</span> axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-Now suppose each of those bars has <em>mass</em> (a.k.a. probability mass), and further suppose we were looking to balance that mass on a wedge or fulcrum. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.</p>
+Now suppose each of those bars has <em>mass</em> (a.k.a. probability mass), and further suppose we’ll place our wedge under the <span class="math inline">\(x\)</span> axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Indeed, the number 3 was the result of our computation above. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.</p>
 </div>
-<p>Hopefully that example helped unpack the idea of the expectation. In this regard, we shall need a few more tools to proceed down the wonderful rabbit hole of statistics. First let’s observe that it is possible to take the expectation of some <em>function</em> of a random variable. Suppose we have a random variable <span class="math inline">\(X\)</span>, and at the resolution of a random process or experiment it takes a value. We may apply some function to the outcomes in the space of <span class="math inline">\(X\)</span>. For example, we might have</p>
+<p>Hopefully that example helped build an initial understanding of the expectation. We shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let’s observe that it is possible to take the expectation of some <em>function</em> of a random variable. In other words, we may apply some function to the outcomes in the space of <span class="math inline">\(X\)</span> and then calculate an expectation. For example, we might have</p>
 <p><span class="math display">\[
 f(X) = 2X
 \]</span>
@@ -291,19 +291,19 @@ E(f(X)) = \sum_{i = 1}^{n} f(x_i)p(x_i)
 <p><span class="math display">\[
 f(X) = 1
 \]</span>
-Let’s apply <a href="discrete-random-variables.html#eq:discreteexpectationfunction">(2.5)</a> to find the expectation of this function. First, let’s apply the function <span class="math inline">\(f(x)\)</span> to each outcome in the space of <span class="math inline">\(X\)</span></p>
+Let’s apply <a href="discrete-random-variables.html#eq:discreteexpectationfunction">(2.5)</a> to find the expectation of this function. First, let’s remind ourselves of the distribution of <span class="math inline">\(X\)</span> and calculate <span class="math inline">\(f(x)\)</span> for each outcome in it’s space</p>
 <p><span class="math display">\[
-p(c) =
+p(x) =
 \begin{cases}
-1/5 &amp; f(x_1) = 1 \\
-1/5 &amp; f(x_2) = 1 \\
-1/5 &amp; f(x_3) = 1 \\
-1/5 &amp; f(x_4) = 1 \\
-1/5 &amp; f(x_5) = 1
+1/5 &amp; x_1 = 1 &amp; f(1) = 1 \\
+1/5 &amp; x_2 = 2 &amp; f(2) = 1 \\
+1/5 &amp; x_3 = 3 &amp; f(3) = 1 \\
+1/5 &amp; x_4 = 4 &amp; f(4) = 1 \\
+1/5 &amp; x_5 = 5 &amp; f(5) = 1
 \end{cases}
 \]</span>
-Now let’s calculate the expectation of <span class="math inline">\(f(X)\)</span>. Watch the underlined values for a little bit of algebra review.
-<span class="math display">\[
+Now let’s calculate the expectation of <span class="math inline">\(f(X)\)</span>. Watch the underlined values for a little bit of algebra review.</p>
+<p><span class="math display">\[
 \begin{align}
 E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &amp;= \underline{1}\:p(x_1)+\underline{1}\:p(x_2)+\underline{1}\:p(x_3)+\underline{1}\:p(x_4)+\underline{1}\:p(x_5) \\
 &amp;= \underline{1}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
@@ -316,13 +316,13 @@ The second line of this calculation was made possible by the distributive proper
 <div class="example">
 <p><span id="exm:exp2" class="example"><strong>Example 2.3  </strong></span>Suppose our random variable <span class="math inline">\(X\)</span> is again defined as in example <a href="discrete-random-variables.html#exm:ogexpectation">2.1</a>. Now let’s use the function <span class="math inline">\(f(x)= 2X\)</span>. Then let’s again apply the function to the space of <span class="math inline">\(X\)</span>
 <span class="math display">\[
-p(2x) =
+p(x) =
 \begin{cases}
-1/5 &amp; f(x_1) = 2(1) = 2 \\
-1/5 &amp; f(x_2) = 2(2) = 4 \\
-1/5 &amp; f(x_3) = 2(3) = 6 \\
-1/5 &amp; f(x_4) = 2(4) = 8 \\
-1/5 &amp; f(x_5) = 2(5) = 10
+1/5 &amp; x_1 = 1 &amp; f(1) = 2(1) = 2 \\
+1/5 &amp; x_2 = 2 &amp; f(2) = 2(2) = 4 \\
+1/5 &amp; x_3 = 3 &amp; f(3) = 2(3) = 6 \\
+1/5 &amp; x_4 = 4 &amp; f(4) = 2(4) = 8 \\
+1/5 &amp; x_5 = 5 &amp; f(5) = 2(5) = 10
 \end{cases}
 \]</span></p>
 <p><span class="math display">\[
@@ -357,8 +357,8 @@ E(a) = \sum_{i=1}^{5} ap(x_i) &amp;= \underline{a}\:p(x_1)+\underline{a}\:p(x_2)
 </ol>
 </div>
 <p>These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won’t discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let’s see how they work in practice and look at a more thorough example for the fourth.</p>
-<div class="{example.}">
-<p>Suppose we are given a random variable - <span class="math inline">\(Z\)</span> - and <span class="math inline">\(E(Z)\)</span> = 7</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-22" class="example"><strong>Example 2.4  </strong></span>Suppose we are given a random variable - <span class="math inline">\(Z\)</span> - and <span class="math inline">\(E(Z)\)</span> = 7</p>
 </div>
 
 </div>

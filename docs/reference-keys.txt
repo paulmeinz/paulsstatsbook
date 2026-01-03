@@ -45,6 +45,7 @@ eq:discreteexpectationfunction
 exm:exp1
 exm:exp2
 thm:expprop
+exm:unlabeled-div-22
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
