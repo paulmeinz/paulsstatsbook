@@ -3,13 +3,13 @@ As behavioral researchers, we are often studying a population of something. We m
 
 ## What is a discrete random variable?
 
-When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. In practice, we shall map the values in a discrete sample space to numbers. This makes them easier to work with and describe. Moving back to our frequently referenced example of a coin flip, we might map heads to the value of 1 and tails to the value of 0. Our set of outcomes would then be described as $\{1,0\}$. On a given random experiment within this space, we may therefore get a 1 or 0 at the resolution of our draw or random process.
+When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. To make these sample spaces easier to work with, we shall in practice map the outcomes in a discrete sample space to numbers. For example, if we were interested in a coin flip, we wouldn't work directly with the values of $H$ and $T$. We would map the each outcome to a value, e.g., heads to the value of 1 and tails to the value of 0. As you will see in the coming sections, this will permit us to look at the mathematical properties of our random experiment and sample space.
 
-Indeed, what we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of some random process (e.g., a random experiment, drawing out of a hat, rolling, randomly sampling, etc.). The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
+What we have just described is known as a **discrete random variable** - a variable that assumes a _number_ as a result of some random process (e.g., a random experiment, drawing out of a hat, rolling, randomly sampling, etc.). The set of possible numbers for a given discrete random variable is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
 
-We shall refer to events in the space of $X$ using a simplified set notation. Suppose we are describing the set of outcomes where our random variable $X$ attains a value of 1. For the sake of simplicity, we will use the shorthand, $X = 1$, or more generally, $X = x$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorter form is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
+For convenience, events in the space of $X$ are referenced with a simplified set notation. Suppose we are describing the set of outcomes where our random variable $X$ attains a particular value. For the sake of simplicity, we will use the shorthand, $X = x$. In the case of $X = 1$, for example, this shorthand describes the outcomes in the space of $X$ where our random variable attains a value of 1 - ${1}$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorter form is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
 
-Because $X$ is a random variable, we shall need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable, this distribution is called a **probability mass function** (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. The set of rules (a.k.a, a probability mass function) are frequently described like this:
+Because $X$ attains a value from a random process, we'll need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. As we noted, the set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable this distribution is called a **probability mass function** (pmf) - $p(x)$. Note that $x$ is used to reference a particular numeric outcome in the space of $X$. The set of rules (a.k.a, a probability mass function) are frequently described like this:
 
 $$
 P(X=x) = p(x) = 
@@ -52,12 +52,12 @@ $$
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)}=P(X_1 = x_1)
 (\#eq:descreteind2)
 $$
-And, perhaps not surprisingly, if the two random variables are not independent then
+And, perhaps not surprisingly (although it's okay if you are surprised), if the two random variables are not independent then
 
 $$
 \frac{P(X_1 = x_1 \cap X_2 = x_2)}{P(X_2 = x_2)} = P(X_1 = x_1|X_2 = x_2) \neq P(X_1 = x_1)
 $$
-Put into (more understandable) words, when two random variables are dependent, an event in the space of one variable _changes_ the probability of an event in the space of another variable. This may seem a bit confusing at first, but you have already seen an example of the dependence of random variables in the last chapter. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and represent the random variable of the first die by $X$. 
+Put into the logic and hopefully more understandable intuition of last chapter, when two random variables are dependent, an event in the space of one variable _changes_ the probability of an event in the space of another variable. This may seem a bit confusing at first, but you have already seen an example of the dependence of random variables. Recall example \@ref(exm:dice), when we looked at the sum of two dice. In this case, let's call the sum of our two dice the random variable $Z$ and represent the random variable of the first die by $X$. 
 
 On the basis of \@ref(eq:descreteind), we shall be looking to determine if
 
@@ -99,7 +99,7 @@ $$
 
 Do you see what happens with the event $X = 1$? The probability of $Z$ _changes_ with a roll of a 1 on the first die. For example, getting a $Z = 2$ now has a whopping 1/4 chance, compared to a paltry 1/16 before the first dice was rolled. Moreover, the probability is now spread across only four values - $\{2,3,4,5\}$. That is, the support of $Z$ - given $X = 1$ - is now 2, 3, 4, and 5. Thus, an intuitive definition of independence pivots on changes in the pmf of one random variable given the outcome of another variable. 
 
-This idea of independence shall be sufficient for our purposes, especially as we become more sophisticated in statistics and statistical analysis. As you will see, some of the most fundamental statistical concepts require an _assumption_ of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We'll see one of these convenient properties as soon as the next section.
+This idea of independence shall be sufficient for our purposes, especially as we become more sophisticated in statistics and statistical analysis. As you will see, some of the most fundamental statistical concepts require an _assumption_ of independence. In many cases, we shall assume that our random variables are independent to take advantage of some convenient mathematical properties associated with independence. We'll see one of these convenient properties as soon as this chapter.
 
 ## What do we want to know about discrete random variables?
 A new statistics student will have made it to this point and reasonably wondered: what the heck is the point of all this back story? This skepticism is understandable, welcomed, and hopefully motivating. In this section, we shall discuss some things - as statisticians and researchers - that we might want to know about random variables. In doing so, hopefully the bigger picture comes into view. This, in my humble opinion, is where things really start to get interesting. I'm hoping you feel the same. 
@@ -190,10 +190,10 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 
 ```
-Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Indeed, the number 3 was the result of our computation above. The expectation can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. $E(X)$ can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
 :::
 
-Hopefully that example helped build an initial understanding of the expectation. We shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some _function_ of a random variable. In other words, we may apply some function to the outcomes in the space of $X$ and then calculate an expectation. For example, we might have
+That said, we shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some _function_ of a random variable. In other words, we may apply some function to the outcomes in the space of $X$ and then calculate an expectation. For example, we might have
 
 $$
 f(X) = 2X
@@ -239,7 +239,7 @@ The second line of this calculation was made possible by the distributive proper
 :::
 
 ::: {.example #exp2}
-Suppose our random variable $X$ is again defined as in example \@ref(exm:ogexpectation). Now let's use the function $f(x)= 2X$. Then let's again apply the function to the space of $X$ 
+Suppose our random variable $X$ is again defined as in example \@ref(exm:ogexpectation). Now let's use the function $f(x)= 2X$. Then 
 $$
 p(x) = 
 \begin{cases}
@@ -273,7 +273,7 @@ $$
 
 In other words, we would get the value of our constant every time. Similarly, in \@ref(exm:exp2), recall that the original expectation of $X$ was 3. Our function $f(X) = 2X$ had the expectation of $2\times3 = 6$. That is, we multiplied $X$ by 2 and got back 2 times its expectation.
 
-Our last two observations highlight a couple of _properties_ of the expectation. We'll list a few below. The first two (or three) you might have deduced yourself. The second two are new, and we'll pay particular attention to the fourth.
+Our last two observations highlight a couple of _properties_ of the expectation. We'll list a few below. The first two (or three) you might have deduced yourself. The fourth is new.
 
 ::: {.theorem #expprop name="Some Properties of the Expectation"}
 If a and b are constants, then
@@ -292,5 +292,29 @@ If $X_1$ and $X_2$ are random variables, then
 These are called properties because they apply to any random variable - assuming that random variable has an expectation (a more advanced topic that we won't discuss in much depth in this book). They allow us to perform computations with expectations without knowing much about the actual distribution of the random variable. And, they make computations easier. As you will see later, they will help us draw certain conclusions about the populations we study. For now, let's see how they work in practice and look at a more thorough example for the fourth.
 
 ::: {.example}
-Suppose we are given a random variable - $Z$ - and $E(Z)$ = 7
+Suppose we are given a random variable - $Z$ - and $E(Z)$ = 7. What is the expectation of
+
+1. $4Z$
+
+2. $Z + 10$
+
+3. $1$
+
+4. $4Z+10$
+
+We will approach each of these in turn.
+
+1. $E(4Z) = 4E(Z) = 4(7) = 28$ - by property 2
+
+2. $E(Z + 10) = E(Z) + 10 = 7 + 10 = 17$ - by property 3 ($a = 1$)
+
+3. $E(1) = 1$ - by property 1
+
+4. $E(4Z + 10) = E(4Z) + 10 = 4E(Z) + 10 = 28 + 10 = 38$ - by property 3
+:::
+
+Do you see how that made things a bit easier? We didn't have to go through the computation of the expectation of our function of $Z$. I bet you can tell by now I like to avoid long computations! Now we shall turn our attention towards property 4.
+
+::: {.example}
+
 :::
