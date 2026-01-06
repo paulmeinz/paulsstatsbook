@@ -109,6 +109,7 @@ statistics course.|</p>" />
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#a-very-quick-review-the-summation-operator"><i class="fa fa-check"></i><b>2.3.1</b> A very quick review: The summation operator</a></li>
 <li class="chapter" data-level="2.3.2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-expectation-of-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.3.2</b> The expectation of a discrete random variable</a></li>
+<li class="chapter" data-level="2.3.3" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-variance-of-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.3.3</b> The variance of a discrete random variable</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -245,7 +246,7 @@ in terms of our example above. Additionally, it is important to note that n and 
 <p><span class="math display">\[
 E(X) = \mu
 \]</span></p>
-<p>The expectation is commonly referred to as the <strong>mean</strong> of a random variable. The expectation of a random variable <span class="math inline">\(X\)</span> with a given pmf - <span class="math inline">\(p(x)\)</span> is calculated</p>
+<p>The expectation is commonly referred to as the <strong>mean</strong> of a random variable. The expectation of a discrete random variable <span class="math inline">\(X\)</span> with a given pmf - <span class="math inline">\(p(x)\)</span> is calculated</p>
 <p><span class="math display" id="eq:discreteexpectation">\[
 E(X) = \sum_{i = 1}^{n} x_ip(x_i)
 \tag{2.4}
@@ -396,17 +397,58 @@ E(4Z + 10) = E(4Z) + 10 = 4E(Z) + 10 = 28 + 10 = 38
 </div>
 <p>Do you see how that made things a bit easier? We didn’t have to go through the computation of the expectation of our function of <span class="math inline">\(Z\)</span>. I bet you can tell by now I like to avoid long computations! Now let’s turn our attention towards property 4.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.5  </strong></span>Suppose we flip two coins - where a flip of <span class="math inline">\(H\)</span> yields a value of 1 and a flip of <span class="math inline">\(T\)</span> yields a value of zero. Call these two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, respectively. What is the expectation of their sum? To demonstrate why property four is so useful, we’ll do this the hard way and the easy way.</p>
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.5  </strong></span>Suppose we flip two coins - where a flip of <span class="math inline">\(H\)</span> yields a value of 1 and a flip of <span class="math inline">\(T\)</span> yields a value of zero. Call these two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, respectively, and further assume that they are independent (recall what that means?). What is the expectation of their sum? To demonstrate why property four is so useful, we’ll do this the hard way and then the easy way.</p>
 <p>First note that the pmf of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is</p>
 <p><span class="math display">\[
-p(x_1) = p(x_2) =
+p(x_1) =
 \begin{cases}
-1/2 &amp; 1 \\
-1/2 &amp; 0 \\
+1/2 &amp; x_1 = 1 \\
+1/2 &amp; x_1 = 0 \\
+\end{cases}
+\\
+p(x_2) =
+\begin{cases}
+1/2 &amp; x_2 = 1 \\
+1/2 &amp; x_2 = 0 \\
 \end{cases}
 \]</span>
-Unfortunately, these pmfs won’t suffice to calculate the expectation of <span class="math inline">\(X_1 + X_2\)</span>.</p>
+Without the use of property 4, these pmfs won’t suffice to calculate the expectation of <span class="math inline">\(X_1 + X_2\)</span>. We’ll have to figure out the pmf of the sum of the two random variables, a.k.a., <span class="math inline">\(Z = X_1 + X_2\)</span>. Note that there are four possible outcomes in the sample space of our two coin flips = <span class="math inline">\({HH, HT, TH, TT}\)</span>. One outcome in this sample space that would lead to a sum of two - <span class="math inline">\({HH}\)</span>. In this case, both values of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> would be 1 so</p>
+<p><span class="math display">\[
+X_1 + X_2 = 1 + 1 = 2
+\]</span>
+Because our random variables are independent, we can find the probability of this outcome using the law of multiplication for independent events</p>
+<p><span class="math display">\[
+P(X_1 = 1 \cap X_2 = 1) = P(X_1 = 1)P(X_2 = 1) = (1/2)(1/2) = 1/4
+\]</span>
+We can do this calculation for each of the other outcomes in the sample space of our coin flips. The table below breaks down each. It is most easily read from left to right. Find the value of the first flip in the first column. For example, the big top row has a first flip of 1 (Heads). Next scan to the right to see outcome of the second flip, which can either be a 1 or a 0. Scan further to the right to see the sum and probability of the outcome. For example, if we flipped a 1 on the first coin, and then a zero on the second coin, the sum of the two would be 1, and the probability would be 1/4.</p>
+<div class="tabwid"><style>.cl-f6c7e1f4{}.cl-f6c1e7fe{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-f6c483c4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-f6c496f2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6c496fc{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6c49706{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6c49707{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-f6c49710{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-f6c7e1f4'><thead><tr style="overflow-wrap:break-word;"><th class="cl-f6c496f2"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1st Flip</span></p></th><th class="cl-f6c496f2"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">2nd Flip</span></p></th><th class="cl-f6c496f2"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">Sum (Z)</span></p></th><th class="cl-f6c496f2"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">Probability</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1</span></p></td><td class="cl-f6c49706"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1</span></p></td><td class="cl-f6c49706"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">2</span></p></td><td class="cl-f6c49706"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">0</span></p></td><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1</span></p></td><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-f6c49707"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">0</span></p></td><td class="cl-f6c49710"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1</span></p></td><td class="cl-f6c49710"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1</span></p></td><td class="cl-f6c49710"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">0</span></p></td><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">0</span></p></td><td class="cl-f6c496fc"><p class="cl-f6c483c4"><span class="cl-f6c1e7fe">1/4</span></p></td></tr></tbody></table></div>
+<p>Looking over this table, we see that our new random variable <span class="math inline">\(Z\)</span> has the space of <span class="math inline">\({0,1,2}\)</span>. There is only 1 way to get a 0 or 2, respectively, and each of those outcomes has a probability of <span class="math inline">\(1/4\)</span>. There are two ways to get a 1, so by the law of addition, this outcome in the space of <span class="math inline">\(Z\)</span> has a probability of <span class="math inline">\(1/4 + 1/4 = 1/2\)</span>. In other words</p>
+<p><span class="math display">\[
+p(z) =
+\begin{cases}
+1/4 &amp; z = 0 \\
+1/2 &amp; z = 1 \\
+1/4 &amp; z = 2
+\end{cases}
+\]</span>
+Now, after that slog (you can imagine it being much worse), are in a position to calculate the expectation of <span class="math inline">\(Z = X_1 + X_2\)</span></p>
+<p><span class="math display">\[
+\begin{align}
+E(a) = \sum_{z}^{} zp(z) &amp;= 0\:p(x_1)+1\:p(x_2)+2\:p(x_3) \\
+&amp;= 0\frac{1}{4} + 1\frac{1}{2} + 2\frac{1}{4} = \frac{2}{4} + \frac{2}{4} = 1 \\
+\end{align}
+\]</span></p>
+<p>The usefulness of the fourth property now comes into view. Observe that <span class="math inline">\(E(X_1) = E(X_2) = 1/2\)</span> (calculate this on your own; you can do it!). So, by property 4</p>
+<p><span class="math display">\[
+E(X_1 + X_2) = E(X_1) + E(X_2) = 1/2 + 1/2 = 1
+\]</span>
+Easier!</p>
 </div>
+<p>We shall end this section with a word of caution. Some beginning statistics students may understandably read property 4 and think it applies to other arithmetic operations. For example they may think that <span class="math inline">\(E(XY) = E(X)E(Y)\)</span>. This is true in some circumstances but it is not true in general. The properties of the expectation apply <em>specifically</em> to the circumstances outlined by each property. You may get into trouble to go beyond that.</p>
+</div>
+<div id="the-variance-of-a-discrete-random-variable" class="section level3 hasAnchor" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> The variance of a discrete random variable<a href="discrete-random-variables.html#the-variance-of-a-discrete-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>We have just dedicated a bit of time to the expectation of a random variable. Another important thing will want to know as statisticians is the <strong>variance</strong> of a random variable.</p>
 
 </div>
 </div>
