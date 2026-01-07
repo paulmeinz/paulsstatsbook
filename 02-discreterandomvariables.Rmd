@@ -3,15 +3,13 @@ As behavioral researchers, we are often studying a population of something. We m
 
 ## What is a discrete random variable?
 
-When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. To make these sample spaces easier to work with, we shall in practice map the outcomes in a discrete space to numbers. For example, if we were interested in a coin flip, we wouldn't work directly with the values of $H$ and $T$. We would map each outcome to a value, e.g., heads to the value of 1 and tails to the value of 0. On any given coin flip, the value of our outcome would therefore be a number. 
+When we are in the process of conducting quantitative research (and statistics), we measure things in numbers. You may have noticed that our previous discussions of discrete sample spaces used non-numeric descriptions - e.g., $S = \{H, T\}$ in the case of a coin flip. To make these sample spaces easier to work with, we shall, in practice, map discrete outcomes to numbers. For example, if we were interested in a coin flip, we wouldn't work directly with the values of $H$ and $T$. We would map each outcome to a value, e.g., heads to the value of 1 and tails to the value of 0. On any given coin flip, the value of our outcome would therefore be a number. A variable like this - one that assumes a _number_ as a result of some random process (e.g., a flip, a random experiment, drawing out of a hat, rolling, randomly sampling, etc.) - is called a **discrete random variable**. In this section, we'll provide some key definitions and notation for discrete random variables. This will make things more concrete and clear for you and make the interesting stuff more interesting. 
 
-A variable that assumes a _number_ as a result of some random process (e.g., a flip, a random experiment, drawing out of a hat, rolling, randomly sampling, etc.) is called a **discrete random variable**. The set of possible numbers this variable can take is called the _space_ of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. 
-
-For convenience, events in the space of a random variable are referenced with a simplified set notation. Suppose we are describing the set of outcomes where our random variable $X$ attains a particular value. We will write $X = x$. For example, $X = 1$ describes the outcomes in the space of $X$ where our random variable attains a value of 1 - ${1}$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes. This shorter form is used frequently within the field of statistics and probability, so it's good to learn it now before we move into the more interesting stuff.  
+The set of possible numbers a random variable can take is called the **space** of the random variable, and like the discrete sample space, these outcomes shall be either finite or countable. In general we refer to a random variable with a capital letter, typically $X$. To avoid ambiguity, a potential _outcome_ of this random variable is referred to symbolically by a lower case letter, e.g., $x$. For convenience, events in the space of a random variable are referenced with a simplified set notation. Suppose we are describing the set of outcomes where our random variable $X$ attains a particular value. We will write $X = x$. For example, $X = 1$ describes the outcomes in the space of $X$ where our random variable attains a value of 1 - $\{1\}$. We may also use an inequality - e.g., $X \leq x$ - to reference a range of outcomes.   
 
 Because $X$ attains a value from a random process, we'll need a concrete way of describing it's randomness. Recall in the last chapter, we discussed the probability set operator - $P()$. This operator assigns the probability to an outcome - $x$ - on the basis of a set of rules. The set of rules for the assignment of probability is called a probability distribution, and in the case of a discrete random variable this distribution is called a **probability mass function** (pmf) - $p(x)$. 
 
-In practice, the set of rules (a.k.a, a probability mass function) are frequently described like this:
+In practice, the set of rules (a.k.a, a probability mass function) is frequently described like this:
 
 $$
 P(X=x) = p(x) = 
@@ -423,7 +421,7 @@ Var(X) = E((X-\mu)^2) = \sum_{x}^{} (x - \mu)^2p(x)
 (\#eq:discretevariance)
 $$
 
-It is a measure of how the outcomes of $X$ are spread out about their mean (a.k.a. their _dispersion_). Some might wonder why we don't just calculate $E(X - \mu)$ as a measure of dispersion, and this shall motivate our first example
+It is a measure of how the outcomes of $X$ are spread out about their mean (a.k.a. their _dispersion_). There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don't just calculate $E(X - \mu)$ as a measure of dispersion, and to answer this question, we'll do the calculation ourselves.
 
 ::: {.example}
 Let's calculate $E(X-\mu)$ to understand why we can't use it as a measure of dispersion. This will also help us review properties of the expectation. First notice that $\mu$ is a constant, so
@@ -437,8 +435,9 @@ Now observe that $E(X) = \mu$, so
 $$
 E(X) - \mu = \mu - \mu = 0
 $$
-The expectation of $X - \mu$ is zero which is not a very good measure of dispersion
+$E(X - \mu)$ is zero for every random variable (that has an expectation) which is not a very good measure of dispersion.
 :::
+
 
 
 
