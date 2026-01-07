@@ -285,7 +285,7 @@ If a and b are constants, then
 
 2. E(aX) = aE(X)
 
-3. More generally, E(aX + b) = aE(X) + b
+3. More generally, E(aX + b) = aE(X) + E(b)
 
 If $X_1$ and $X_2$ are random variables, then 
 
@@ -416,4 +416,29 @@ Easier!
 We shall end this section with a word of caution. Some beginning statistics students may understandably read property 4 and think it applies to other arithmetic operations. For example they may think that $E(XY) = E(X)E(Y)$. This is true in some circumstances but it is not true in general. The properties of the expectation apply _specifically_ to the circumstances outlined by each property. You may get into trouble to go beyond that.
 
 ### The variance of a discrete random variable
-We have just dedicated a bit of time to the expectation of a random variable. Another important thing will want to know as statisticians is the **variance** of a random variable.
+We have just dedicated a bit of time to the expectation of a random variable. Another important thing we will want to know as statisticians is the **variance** of a random variable. The variance of a random variable $X$ is referred to as $Var(X)$ or algebraically as $\sigma^2$. The square root of the variance - $\sigma$ - is called the **standard deviation**. In terms of discrete random variables, the variance is calculated
+
+$$
+Var(X) = E((X-\mu)^2) = \sum_{x}^{} (x - \mu)^2p(x)
+(\#eq:discretevariance)
+$$
+
+It is a measure of how the outcomes of $X$ are spread out about their mean (a.k.a. their _dispersion_). Some might wonder why we don't just calculate $E(X - \mu)$ as a measure of dispersion, and this shall motivate our first example
+
+::: {.example}
+Let's calculate $E(X-\mu)$ to understand why we can't use it as a measure of dispersion. This will also help us review properties of the expectation. First notice that $\mu$ is a constant, so
+
+$$
+E(X-\mu) = E(X) - E(\mu) = E(X) - \mu
+$$
+
+Now observe that $E(X) = \mu$, so
+
+$$
+E(X) - \mu = \mu - \mu = 0
+$$
+The expectation of $X - \mu$ is zero which is not a very good measure of dispersion
+:::
+
+
+
