@@ -133,7 +133,7 @@ $$
 This means - given all the $x's$ in a set - sum all of them. Alright, now it's time for the interesting stuff.
 
 ### The expectation of a discrete random variable
-The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable $X$, we refer to its expectation as $E(X)$. We shall also sometimes refer to it algebraically as $\mu$. In other words
+The first thing that we shall want to know about a discrete random variable is its expectation. Given a random variable $X$, we refer to its expectation as $E(X)$. We shall also sometimes refer to it symbolically as $\mu$. In other words
 
 $$
 E(X) = \mu
@@ -414,14 +414,14 @@ Easier!
 We shall end this section with a word of caution. Some beginning statistics students may understandably read property 4 and think it applies to other arithmetic operations. For example they may think that $E(XY) = E(X)E(Y)$. This is true in some circumstances but it is not true in general. The properties of the expectation apply _specifically_ to the circumstances outlined by each property. You may get into trouble to go beyond that.
 
 ### The variance of a discrete random variable
-We have just dedicated a bit of time to the expectation of a random variable. Another important thing we will want to know as statisticians is the **variance** of a random variable. The variance of a random variable $X$ is referred to as $Var(X)$ or algebraically as $\sigma^2$. The square root of the variance - $\sigma$ - is called the **standard deviation**. In terms of discrete random variables, the variance is calculated
+We have just dedicated a bit of time to the expectation of a random variable. Another important thing we will want to know as statisticians is the **variance** of a random variable. The variance of a random variable $X$ is referred to as $Var(X)$ or symbolically as $\sigma^2$. The square root of the variance - $\sigma$ - is called the **standard deviation**. In terms of discrete random variables, the variance is calculated
 
 $$
 Var(X) = E((X-\mu)^2) = \sum_{x}^{} (x - \mu)^2p(x)
 (\#eq:discretevariance)
 $$
 
-It is a measure of how the outcomes of $X$ are spread out about their mean (a.k.a. their _dispersion_). There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don't just calculate $E(X - \mu)$ as a measure of dispersion, and to answer this question, we'll do the calculation ourselves.
+It is a measure of the spread of the probability distribution for $X$ (a.k.a. the _dispersion_). There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don't just calculate $E(X - \mu)$ as a measure of dispersion, and to answer this question, we'll do the calculation ourselves.
 
 ::: {.example}
 Let's calculate $E(X-\mu)$ to understand why we can't use it as a measure of dispersion. This will also help us review properties of the expectation. First notice that $\mu$ is a constant, so
@@ -435,9 +435,66 @@ Now observe that $E(X) = \mu$, so
 $$
 E(X) - \mu = \mu - \mu = 0
 $$
-$E(X - \mu)$ is zero for every random variable (that has an expectation) which is not a very good measure of dispersion.
+$E(X - \mu)$ is zero for every random variable (that has an expectation) which is not a very good measure of dispersion!
 :::
 
+::: {.example #firstvariance}
+With that minor point out of the way, let's give the variance equation some run. Suppose our random variable $X$ has the pmf
 
+$$
+p(x) = 
+\begin{cases}
+1/8 & x_1 = 0 \\
+3/4 & x_2 = 1 \\
+1/8 & x_3 = 2
+\end{cases}
+$$
+
+Reviewing the equation for the variance, it is apparent we shall first need to calculate $\mu$ for $X$ before we can do any calculation of the variance. Knowing what we know about the expected value and the balancing point of probability mass, I think we would be pretty safe to guess that the expectation of $X$ is 1. Let's calculate it really quick
+
+$$
+\begin{align}
+E(X) = \sum_{i=1}^{3} x_ip(x_i) &= 0\frac{1}{8}+ 1\frac{3}{4} + 2\frac{1}{8} \\
+&= \frac{6}{8} + \frac{2}{8} = 1
+\end{align}
+$$
+
+Our intuition was indeed correct - $E(X) = 1$. We shall now turn our attention to calculating the variance of $X$
+
+$$
+\begin{align}
+Var(X) = \sum_{i=1}^{3} (x_1-\mu)^2p(x_i) &= (x_1-\mu)^2p(x_1) + (x_2-\mu)^2p(x_2) + (x_3-\mu)^2p(x_3) \\
+&= (0 - 1)^2\frac{1}{8} + (1-1)^2\frac{1}{8} + (2-1)^2\frac{1}{8} \\
+&= (-1)^2\frac{1}{8} + 0 + 1^2\frac{1}{8} = \frac{1}{4}
+\end{align}
+$$
+Thus, $Var(X) = 1/4$. Congratulations on calculating your first variance!
+
+:::
+
+To further demonstrate the idea of variance as a measure of dispersion, let's do a small manipulation of the space of our random variable $X$ in example \@ref(exm:firstvariance).
+
+::: .{example}
+Let's multiply all the outcomes in the space of $X$ by 2 and call our new random variable $Z$ (in other words $Z = 2X$). Then $Z$ would have the pmf
+
+$$
+p(x) = 
+\begin{cases}
+1/8 & z_1 = 0 \\
+3/4 & z_2 = 2 \\
+1/8 & z_3 = 4
+\end{cases}
+$$
+I'll just go ahead and give you the fact that $E(Z) = 2$, but you should calculate this for yourself as well (you have all the tools, skill, and excitement to do it!). Next we'll calculate the variance
+
+$$
+\begin{align}
+Var(Z) = \sum_{i=1}^{3} (z_1-\mu)^2p(z_i) &= (z_1-\mu)^2p(z_1) + (z_2-\mu)^2p(z_2) + (z_3-\mu)^2p(z_3) \\
+&= (0 - 2)^2\frac{1}{8} + (2-2)^2\frac{1}{8} + (4-2)^2\frac{1}{8} \\
+&= (-2)^2\frac{1}{8} + 0 + 2^2\frac{1}{8} = 1
+\end{align}
+$$
+
+:::
 
 
