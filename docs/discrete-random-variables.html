@@ -396,7 +396,7 @@ E(4Z + 10) = E(4Z) + 10 = 4E(Z) + 10 = 28 + 10 = 38
 </div>
 <p>Do you see how that made things a bit easier? We didn’t have to go through the computation of the expectation of our function of <span class="math inline">\(Z\)</span>. I bet you can tell by now I like to avoid long computations! Now let’s turn our attention towards property 4.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.5  </strong></span>Suppose we flip two coins - where a flip of <span class="math inline">\(H\)</span> yields a value of 1 and a flip of <span class="math inline">\(T\)</span> yields a value of zero. Call these two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, respectively, and further assume that they are independent (recall what that means?). What is the expectation of their sum? To demonstrate why property four is so useful, we’ll do this the hard way and then the easy way.</p>
+<p><span id="exm:expectationsum" class="example"><strong>Example 2.5  </strong></span>Suppose we flip two coins - where a flip of <span class="math inline">\(H\)</span> yields a value of 1 and a flip of <span class="math inline">\(T\)</span> yields a value of zero. Call these two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, respectively, and further assume that they are independent (recall what that means?). What is the expectation of their sum? To demonstrate why property four is so useful, we’ll do this the hard way and then the easy way.</p>
 <p>First note that the pmf of <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> is</p>
 <p><span class="math display">\[
 p(x_1) =
@@ -420,7 +420,7 @@ Because our random variables are independent, we can find the probability of thi
 P(X_1 = 1 \cap X_2 = 1) = P(X_1 = 1)P(X_2 = 1) = (1/2)(1/2) = 1/4
 \]</span>
 We can do this calculation for each of the other outcomes in the sample space of our coin flips. The table below breaks down each. It is most easily read from left to right. Find the value of the first flip in the first column. For example, the big top row has a first flip of 1 (Heads). Next scan to the right to see outcome of the second flip, which can either be a 1 or a 0. Scan further to the right to see the sum and probability of the outcome. For example, if we flipped a 1 on the first coin, and then a zero on the second coin, the sum of the two would be 1, and the probability would be 1/4.</p>
-<div class="tabwid"><style>.cl-d7dc3ca4{}.cl-d7d2c5ac{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d7d673b4{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d7d6961e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7d69628{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7d69632{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7d69633{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d7d6963c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-d7dc3ca4'><thead><tr style="overflow-wrap:break-word;"><th class="cl-d7d6961e"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1st Flip</span></p></th><th class="cl-d7d6961e"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">2nd Flip</span></p></th><th class="cl-d7d6961e"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">Sum (Z)</span></p></th><th class="cl-d7d6961e"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">Probability</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1</span></p></td><td class="cl-d7d69632"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1</span></p></td><td class="cl-d7d69632"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">2</span></p></td><td class="cl-d7d69632"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">0</span></p></td><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1</span></p></td><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-d7d69633"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">0</span></p></td><td class="cl-d7d6963c"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1</span></p></td><td class="cl-d7d6963c"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1</span></p></td><td class="cl-d7d6963c"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">0</span></p></td><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">0</span></p></td><td class="cl-d7d69628"><p class="cl-d7d673b4"><span class="cl-d7d2c5ac">1/4</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-a255da2e{}.cl-a24fe588{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-a2523374{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-a252479c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a25247a6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a25247a7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a25247b0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-a25247b1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-a255da2e'><thead><tr style="overflow-wrap:break-word;"><th class="cl-a252479c"><p class="cl-a2523374"><span class="cl-a24fe588">1st Flip</span></p></th><th class="cl-a252479c"><p class="cl-a2523374"><span class="cl-a24fe588">2nd Flip</span></p></th><th class="cl-a252479c"><p class="cl-a2523374"><span class="cl-a24fe588">Sum (Z)</span></p></th><th class="cl-a252479c"><p class="cl-a2523374"><span class="cl-a24fe588">Probability</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">1</span></p></td><td class="cl-a25247a7"><p class="cl-a2523374"><span class="cl-a24fe588">1</span></p></td><td class="cl-a25247a7"><p class="cl-a2523374"><span class="cl-a24fe588">2</span></p></td><td class="cl-a25247a7"><p class="cl-a2523374"><span class="cl-a24fe588">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">0</span></p></td><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">1</span></p></td><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-a25247b0"><p class="cl-a2523374"><span class="cl-a24fe588">0</span></p></td><td class="cl-a25247b1"><p class="cl-a2523374"><span class="cl-a24fe588">1</span></p></td><td class="cl-a25247b1"><p class="cl-a2523374"><span class="cl-a24fe588">1</span></p></td><td class="cl-a25247b1"><p class="cl-a2523374"><span class="cl-a24fe588">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">0</span></p></td><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">0</span></p></td><td class="cl-a25247a6"><p class="cl-a2523374"><span class="cl-a24fe588">1/4</span></p></td></tr></tbody></table></div>
 <p>Looking over this table, we see that our new random variable <span class="math inline">\(Z\)</span> has the space of <span class="math inline">\({0,1,2}\)</span>. There is only 1 way to get a 0 or 2, respectively, and each of those outcomes has a probability of <span class="math inline">\(1/4\)</span>. There are two ways to get a 1, so by the law of addition, this outcome in the space of <span class="math inline">\(Z\)</span> has a probability of <span class="math inline">\(1/4 + 1/4 = 1/2\)</span>. In other words</p>
 <p><span class="math display">\[
 p(z) =
@@ -452,9 +452,9 @@ Easier!</p>
 Var(X) = E((X-\mu)^2) = \sum_{x}^{} (x - \mu)^2p(x)
 \tag{2.6}
 \]</span></p>
-<p>It is a measure of the spread of the probability distribution for <span class="math inline">\(X\)</span> (a.k.a. the <em>dispersion</em>). There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don’t just calculate <span class="math inline">\(E(X - \mu)\)</span> as a measure of dispersion, and to answer this question, we’ll do the calculation ourselves.</p>
+<p>It can be thought of as a measure of how “spread” out the probability mass function is for the random <span class="math inline">\(X\)</span> (a.k.a. the <em>dispersion</em>). We’ll look at some distributions later to make this a bit more concrete. There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don’t just calculate <span class="math inline">\(E(X - \mu)\)</span> instead of squaring the difference as in <a href="discrete-random-variables.html#eq:discretevariance">(2.6)</a>. Let’s do a quick calculation to convince ourselves why this isn’t a good idea.</p>
 <div class="example">
-<p><span id="exm:unlabeled-div-24" class="example"><strong>Example 2.6  </strong></span>Let’s calculate <span class="math inline">\(E(X-\mu)\)</span> to understand why we can’t use it as a measure of dispersion. This will also help us review properties of the expectation. First notice that <span class="math inline">\(\mu\)</span> is a constant, so</p>
+<p><span id="exm:unlabeled-div-23" class="example"><strong>Example 2.6  </strong></span>In particular, we shall calculate <span class="math inline">\(E(X-\mu)\)</span>. This will have the added bonus of helping us review properties of the expectation. First notice that <span class="math inline">\(\mu\)</span> is a constant, so</p>
 <p><span class="math display">\[
 E(X-\mu) = E(X) - E(\mu) = E(X) - \mu
 \]</span></p>
@@ -492,10 +492,10 @@ Var(X) = \sum_{i=1}^{3} (x_1-\mu)^2p(x_i) &amp;= (x_1-\mu)^2p(x_1) + (x_2-\mu)^2
 Thus, <span class="math inline">\(Var(X) = 1/4\)</span>.</p>
 <p>We should stop here and take a breath. In the last two sections, you’ve calculated your very first mean and variance of a random variable. Congratulations! These concepts may seem a little disconnected from our work as behavioral scientists, but they will make some wonderful things clear later on.</p>
 </div>
-<p>Now let’s get back to work. Just like the expectation, we can also calculate the variance of some function of <span class="math inline">\(X\)</span>. First calculate <span class="math inline">\(E(f(X))\)</span>, referred to here as <span class="math inline">\(\mu\)</span>, then</p>
-<p><span class="math display" id="eq:discretevariance">\[
-Var(X) = E((f(X)-\mu)^2) = \sum_{x}^{} (f(x) - \mu)^2p(x)
-\tag{2.6}
+<p>Now let’s get back to work. Just like the expectation, we can also calculate the variance of some function of <span class="math inline">\(X\)</span>. First calculate <span class="math inline">\(E(f(X))\)</span>, referred to here as <span class="math inline">\(\mu_f\)</span>, then</p>
+<p><span class="math display" id="eq:discretevariancef">\[
+Var(X) = E((f(X)-\mu_f)^2) = \sum_{x}^{} (f(x) - \mu_f)^2p(x)
+\tag{2.7}
 \]</span></p>
 <p>To demonstrate how this equation works we’ll use the same pmf as example <a href="discrete-random-variables.html#exm:firstvariance">2.7</a>.</p>
 <div class=".{example}">
@@ -508,20 +508,20 @@ p(x) =
 1/8 &amp; x_3 = 2 &amp; f(x_3) = (2)2 = 4
 \end{cases}
 \]</span>
-Next, in order to calculate <span class="math inline">\(Var(2X)\)</span>, we will need first need <span class="math inline">\(E(2X)\)</span>. I’ll just go ahead and give you the fact that <span class="math inline">\(E(2X) = 2\)</span>, but you should calculate this for yourself as well (you have all the tools, skill, and excitement to do it!). Next we’ll apply our new equation</p>
+Next, in order to calculate <span class="math inline">\(Var(2X)\)</span>, we will first need <span class="math inline">\(E(2X)\)</span>. I’ll just go ahead and give you the fact that <span class="math inline">\(E(2X) = 2\)</span>, but you should calculate this for yourself as well (you have all the tools, skill, and excitement to do it!). Next we’ll apply our new equation</p>
 <p><span class="math display">\[
 \begin{align}
-Var(Z) = \sum_{i=1}^{3} (f(x_i)-\mu)^2p(z_i) &amp;= (f(x_1)-\mu)^2p(x_1) + (f(x_2)-\mu)^2p(x_2) + (f(x_3)-\mu)^2p(x_3) \\
+Var(2X) = \sum_{i=1}^{3} (f(x_i)-\mu_f)^2p(x_i) &amp;= (f(x_1)-\mu_f)^2p(x_1) + (f(x_2)-\mu_f)^2p(x_2) + (f(x_3)-\mu_f)^2p(x_3) \\
 &amp;= (0 - 2)^2\frac{1}{8} + (2-2)^2\frac{1}{8} + (4-2)^2\frac{1}{8} \\
 &amp;= (-2)^2\frac{1}{8} + 0 + 2^2\frac{1}{8} = 1
 \end{align}
 \]</span>
-Observe that the variance of our random variable <span class="math inline">\(2X\)</span> is larger than <span class="math inline">\(X\)</span>. Let’s take a look at a graphical depiction of the pmfs of <span class="math inline">\(2X\)</span> and <span class="math inline">\(X\)</span>. This will help to bring home the idea of variance home.</p>
-<p>The top plot below is the pmf of <span class="math inline">\(X\)</span>, with the vertical line representing <span class="math inline">\(E(X)\)</span>. The height of each bar represent the probability mass assigned to a particular value on the <span class="math inline">\(x\)</span>-axis - in the space of <span class="math inline">\(X\)</span>. For example, <span class="math inline">\(1/8\)</span> mass sits on top of the value 0. The bottom plot is the pmf of <span class="math inline">\(2X\)</span> with a vertical line representing <span class="math inline">\(E(2X)\)</span>. Note how the mass for <span class="math inline">\(2X\)</span> now sits on the values of 0, 2, and 4. And, it’s pmf is spread out further. It is <em>dispersed</em> in a wider range than the probability mass of <span class="math inline">\(X\)</span>. Indeed, this is an intuitive (although maybe not perfectly exact) way of thinking about variance: A random variable with a larger variance will tend to have it’s probability mass spread out more.</p>
+Observe that the variance of our random variable <span class="math inline">\(2X\)</span> is larger than <span class="math inline">\(X\)</span>. Let’s take a look at a graphical depiction of the pmfs of <span class="math inline">\(2X\)</span> and <span class="math inline">\(X\)</span>. This will help to bring the idea of variance home.</p>
+<p>The top plot below is the pmf of <span class="math inline">\(X\)</span>, with the vertical line representing <span class="math inline">\(E(X)\)</span>. The height of each bar represents the probability mass assigned to a particular value on the <span class="math inline">\(x\)</span>-axis - in the space of <span class="math inline">\(X\)</span>. For example, <span class="math inline">\(1/8\)</span> mass sits on top of the value 0. The bottom plot is the pmf of <span class="math inline">\(2X\)</span> with a vertical line representing <span class="math inline">\(E(2X)\)</span>. Note how the mass for <span class="math inline">\(2X\)</span> now sits on the values of 0, 2, and 4. And, it’s pmf is spread out further. It is <em>dispersed</em> in a wider range than the probability mass of <span class="math inline">\(X\)</span>. Indeed, this is an intuitive (although maybe not perfectly exact) way of thinking about variance: A random variable with a larger variance will tend to have it’s probability mass spread out more. Therefore, it is not surprising that the <span class="math inline">\(Var(X) &lt; Var(2X)\)</span>. In fact, this is precisely the sort of behavior we would want out of a measure of variance!</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 <img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
-<p>We shall observe one more thing about our last two examples. In the first example we found <span class="math inline">\(Var(X) = 1/4\)</span> and in the second example, we found <span class="math inline">\(Var(2X) = 1\)</span>. Indeed, you may not have noticed this quickly (I didn’t), but</p>
+<p>We shall observe one more thing about our last two examples. In the first example we found <span class="math inline">\(Var(X) = 1/4\)</span> and in the second example, we found <span class="math inline">\(Var(2X) = 1\)</span>. Indeed, you may not have noticed this quickly (I didn’t when I first learned this stuff), but</p>
 <p><span class="math display">\[
 \begin{align}
 Var(2X) &amp;= 1 \\
@@ -530,18 +530,89 @@ Var(2X) &amp;= 1 \\
 &amp;= 2^2Var(X)
 \end{align}
 \]</span>
-I might have lost you there. In words, it looks like the variance of <span class="math inline">\(2X\)</span> is simply 2 squared times the variance of <span class="math inline">\(X\)</span>. This points to something that we observed for the expectation. Specifically, the variance also has properties for calculation. They make things way easier - especially given the computational intensity of finding the variance.</p>
+I might have lost you there. In words, it looks like the variance of <span class="math inline">\(2X\)</span> is simply <span class="math inline">\(2^2\)</span> times the variance of <span class="math inline">\(X\)</span>. Indeed this is true in general (for random variables that have a variance). Like the expectation, the variance also has some useful properties. They are listed below:</p>
 <div class="theorem">
 <p><span id="thm:expprop" class="theorem"><strong>Theorem 2.1  (Some Properties of the Variance) </strong></span>If <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants, then</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(Var(b) = 0\)</span></p></li>
 <li><p><span class="math inline">\(Var(aX) = a^2Var(X)\)</span></p></li>
-<li><p>More generally, <span class="math inline">\(Var(aX + b) = a^2E(X) + 0\)</span></p></li>
+<li><p>More generally, <span class="math inline">\(Var(aX + b) = a^2Var(X) + Var(b) = a^2Var(X) + 0\)</span></p></li>
 </ol>
 <p>If <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> are random variables, <strong>and they are independent</strong>, then</p>
 <ol start="4" style="list-style-type: decimal">
 <li><span class="math inline">\(Var(aX_1 + bX_2)\)</span> = <span class="math inline">\(a^2Var(X_1) + b^2Var(X_2)\)</span></li>
 </ol>
+</div>
+<p>Let’s do some examples to get a better grasp on these.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-24" class="example"><strong>Example 2.8  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> and we are seeking to determine the the variance of <span class="math inline">\(f(X) = b\)</span> - e.g., <span class="math inline">\(Var(b)\)</span>. This function takes any value in the space of <span class="math inline">\(X\)</span> and returns a constant <span class="math inline">\(b\)</span>. First take a moment to recall that <span class="math inline">\(E(f(x)) = E(b) = b\)</span> (Property 1 of the expectation). So then our variance equation boils down to:</p>
+<p><span class="math display">\[
+Var(X) = E((f(X)-\mu_f)^2) = \sum_{x}^{} (b - b)^2p(x) = 0
+\]</span>
+Indeed, we could have just used property 1 of the variance and concluded the same thing - <span class="math inline">\(Var(b) = 0\)</span>. Within the field of statistics, random variables with zero variance are called <em>degenerate</em>. These variables return a constant every time because all their probability sits on exactly one value.</p>
+</div>
+<p>The next example will elucidate a bit of property 3. Specifically, we unpack why adding a constant value to a random variable doesn’t change it’s variance. That is to say, if we have <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b=10\)</span>, then</p>
+<p><span class="math display">\[
+Var(aX+b) = (1)Var(X) + 0 = Var(X)
+\]</span></p>
+<div class="example">
+<p><span id="exm:unlabeled-div-25" class="example"><strong>Example 2.9  </strong></span>Suppose we have a random variable <span class="math inline">\(X\)</span> with <span class="math inline">\(E(X) = 1/2\)</span>, <span class="math inline">\(Var(X) = 1/4\)</span>, and pmf</p>
+<p><span class="math display">\[
+p(x) =
+\begin{cases}
+1/2 &amp; x = 0 \\
+1/2 &amp; x = 1
+\end{cases}
+\]</span>
+Take a moment to calculate the expectation and variance of this random variable yourself. Now let’s say we would like to calculate <span class="math inline">\(Var(X + 5)\)</span>. Looking at property 3 of the expectation, we have <span class="math inline">\(a = 1\)</span> and <span class="math inline">\(b = 5\)</span>. Therefore</p>
+<p><span class="math display">\[
+Var(X + 5) = Var(X) + 0 = 1/4
+\]</span>
+Why didn’t adding a constant to <span class="math inline">\(X\)</span> change it’s variance? It’s also easier to see why by visualizing the pmfs. In the plot below, you will see two pmfs. The first (blueish) is the pmf of <span class="math inline">\(X\)</span>, and the second (redish) is the pmf of <span class="math inline">\(X+5\)</span> - as if we created a new random variable and pmf by adding 5 to <span class="math inline">\(X\)</span>. The vertical lines represent <span class="math inline">\(E(X)\)</span> and <span class="math inline">\(E(X+5)\)</span> respectively. Do you see how the plot of <span class="math inline">\(X+5\)</span> is simply the pmf of <span class="math inline">\(X\)</span> shifted to the right? We can see the bars of <span class="math inline">\(X+%\)</span> are still equivalently “spread” out but at a new location on the number line. Indeed, the values in the <span class="math inline">\(X+5\)</span> pmf are just as close to their expectation compared to <span class="math inline">\(X\)</span>, so the variance calculation would not turn out differently (I invite you to convince yourself of this by using equation <a href="discrete-random-variables.html#eq:discretevariancef">(2.7)</a>.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+</div>
+<p>Let’s do a few more examples using properties 1 through 3, and then we’ll move on to the fourth.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-26" class="example"><strong>Example 2.10  </strong></span>Given a random variable <span class="math inline">\(X\)</span> with <span class="math inline">\(Var(X) = 10\)</span> what is</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(Var(5X)\)</span></p></li>
+<li><p><span class="math inline">\(Var(3)\)</span></p></li>
+<li><p><span class="math inline">\(Var(2X + 7)\)</span></p></li>
+</ol>
+<p>Let’s unpack each in turn.</p>
+<ol style="list-style-type: decimal">
+<li>Property 2 says that <span class="math inline">\(Var(aX) = a^2Var(X)\)</span>, so</li>
+</ol>
+<p><span class="math display">\[
+Var(5X) = 25Var(X) = 250
+\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Property 1 says that <span class="math inline">\(Var(b) = 0\)</span>, so this one is <span class="math inline">\(0\)</span></p></li>
+<li><p>Property 3 says that <span class="math inline">\(Var(aX + b) = a^2Var(X) + 0\)</span>, so</p></li>
+</ol>
+<p><span class="math display">\[
+Var(2X + 7) = 4Var(X) + 0 =
+\]</span></p>
+</div>
+<p>The last three examples should give you a good sense of how to use properties 1 through 3 of the variance. We now turn our attention to the fourth property. Notice how this property is very similar to the fourth property of the expectation - except there is an additional caveat. Our random variables must be <em>independent</em>.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-27" class="example"><strong>Example 2.11  </strong></span>We will again work with the random variables in example <a href="discrete-random-variables.html#exm:expectationsum">2.5</a>. Recall that <span class="math inline">\(Z\)</span> was the sum of two random variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> - each having an expectation of 1/2. From property 4 of the expectation we determined that <span class="math inline">\(E(Z) = E(X_1 + X_2) = 1/2 + 1/2 = 1\)</span>. Now let’s determine the variance of <span class="math inline">\(Z\)</span>.</p>
+<p>Recall that the variables X_1 and X_2 are independent. This means that property 4 applies, and we shall use it. First’ let’s calculate the variance of <span class="math inline">\(X_1\)</span> (which will also be the variance of <span class="math inline">\(X_2\)</span>)</p>
+<p><span class="math display">\[
+\begin{align}
+Var(X_1) = \sum_{x}^{} &amp;= (0-\frac{1}{2})^2p(0) + (1-\frac{1}{2})^2p(x_2) \\
+&amp;= 0 + \frac{1}{4} \\ &amp;= \frac{1}{4}
+\end{align}
+\]</span>
+And, therefore, by property 4, the variance of <span class="math inline">\(Z\)</span> is</p>
+<p><span class="math display">\[
+Var(Z) = Var(X_1 + X_2) = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+\]</span>
+Now consider the circumstance where we multiply <span class="math inline">\(X_1\)</span> by four before adding it to <span class="math inline">\(X_2\)</span>. Then the variance of the sum of <span class="math inline">\(4X_1\)</span> and <span class="math inline">\(X_2\)</span> would be</p>
+<p><span class="math display">\[
+Var(4X_1 + X_2) = 16Var(X_1) + Var(X_2) = (16) \frac{1}{4} + 1/4 = \frac{17}{4}
+\]</span>
+And now you see the usefulness of the fourth property of the variance. We only needed the expectations and variances of our simpler variables <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span> to do more complicated computations. In this case, we didn’t need to know the distribution or expectation of <span class="math inline">\(4X_1 + X_2\)</span> (although I bet you could figure it out by following the procedure of example <a href="discrete-random-variables.html#exm:expectationsum">2.5</a>).</p>
 </div>
 
 </div>
