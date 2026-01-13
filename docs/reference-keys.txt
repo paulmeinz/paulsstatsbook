@@ -73,3 +73,4 @@ what-do-we-want-to-know-about-discrete-random-variables
 a-very-quick-review-the-summation-operator
 the-expectation-of-a-discrete-random-variable
 the-variance-of-a-discrete-random-variable
+some-common-discrete-distributions

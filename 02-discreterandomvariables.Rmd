@@ -421,10 +421,10 @@ Var(X) = E((X-\mu)^2) = \sum_{x}^{} (x - \mu)^2p(x)
 (\#eq:discretevariance)
 $$
 
-It can be thought of as a measure of how "spread" out the probability mass function is for the random $X$ (a.k.a. the _dispersion_). We'll look at some distributions later to make this a bit more concrete. There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don't just calculate $E(X - \mu)$ instead of squaring the difference as in \@ref(eq:discretevariance). Let's do a quick calculation to convince ourselves why this isn't a good idea.
+It can be thought of as a measure of how "spread" out the probability mass function is for a given random variable (a.k.a. the _dispersion_). That is, it will tend to be higher for variables that have probability mass spread over larger ranges of values. In the case of the variance calculation described here, we are measuring dispersion by how far values are spread out from the expectation or mean of the random variable. There are indeed many ways you can measure the dispersion of a random variable. New students, for example, often wonder why we don't just calculate $E(X - \mu)$ instead of squaring the difference as in \@ref(eq:discretevariance). 
 
 ::: {.example}
-In particular, we shall calculate $E(X-\mu)$. This will have the added bonus of helping us review properties of the expectation. First notice that $\mu$ is a constant, so
+Let's do a quick calculation to convince ourselves why this isn't a good idea. Such a calculation will have the added bonus of helping us review properties of the expectation. First notice that $\mu$ is a constant, so
 
 $$
 E(X-\mu) = E(X) - E(\mu) = E(X) - \mu
@@ -450,7 +450,7 @@ p(x) =
 \end{cases}
 $$
 
-Reviewing the equation for the variance, it is apparent we shall first need to calculate $\mu$ for $X$ before we can do any calculation of the variance. Knowing what we know about the expected value and the balancing point of probability mass, I think we would be pretty safe to guess that the expectation of $X$ is 1. Let's calculate it really quick
+Reviewing the equation for the variance, it is apparent we shall first need to calculate $\mu$ for $X$ before we can do any calculation of the variance. Knowing what we know about the expected value and the balancing point of probability mass, I think we would be pretty safe to guess that the expectation of $X$ is 1. Nevertheless, let's calculate it really quick
 
 $$
 \begin{align}
@@ -470,7 +470,7 @@ Var(X) = \sum_{i=1}^{3} (x_1-\mu)^2p(x_i) &= (x_1-\mu)^2p(x_1) + (x_2-\mu)^2p(x_
 $$
 Thus, $Var(X) = 1/4$. 
 
-We should stop here and take a breath. In the last two sections, you've calculated your very first mean and variance of a random variable. Congratulations! These concepts may seem a little disconnected from our work as behavioral scientists, but they will make some wonderful things clear later on.
+We should stop here and take a breath. In the last two sections, you've calculated your very first mean and variance of a random variable. Congratulations! These concepts may seem a little disconnected from our work as behavioral scientists, but they will make some wonderful things clear later on. I promise.
 :::
 
 Now let's get back to work. Just like the expectation, we can also calculate the variance of some function of $X$. First calculate $E(f(X))$, referred to here as $\mu_f$, then 
@@ -483,7 +483,7 @@ $$
 To demonstrate how this equation works we'll use the same pmf as example \@ref(exm:firstvariance).
 
 ::: .{example}
-Suppose we want to find the variance of $f(X) = 2X$. Let's first multiply all the outcomes in the space of $X$ by 2
+Suppose we want to find the variance of $f(X) = 2X$. As with calculation of the expecation in the last section, let's first multiply all the outcomes in the space of $X$ by 2
 
 $$
 p(x) = 
@@ -502,9 +502,9 @@ Var(2X) = \sum_{i=1}^{3} (f(x_i)-\mu_f)^2p(x_i) &= (f(x_1)-\mu_f)^2p(x_1) + (f(x
 &= (-2)^2\frac{1}{8} + 0 + 2^2\frac{1}{8} = 1
 \end{align}
 $$
-Observe that the variance of our random variable $2X$ is larger than $X$. Let's take a look at a graphical depiction of the pmfs of $2X$ and $X$. This will help to bring the idea of variance home. 
+Observe that the variance of our random variable $2X$ is larger than $X$. To understand why, let's take a look at the probability mass functions of $X$ and $2X$. 
 
-The top plot below is the pmf of $X$, with the vertical line representing $E(X)$. The height of each bar represents the probability mass assigned to a particular value on the $x$-axis - in the space of $X$. For example, $1/8$ mass sits on top of the value 0. The bottom plot is the pmf of $2X$ with a vertical line representing $E(2X)$. Note how the mass for $2X$ now sits on the values of 0, 2, and 4. And, it's pmf is spread out further. It is _dispersed_ in a wider range than the probability mass of $X$. Indeed, this is an intuitive (although maybe not perfectly exact) way of thinking about variance: A random variable with a larger variance will tend to have it's probability mass spread out more. Therefore, it is not surprising that the $Var(X) < Var(2X)$. In fact, this is precisely the sort of behavior we would want out of a measure of variance!
+The top plot below is the pmf of $X$, with the vertical line representing $E(X)$. The height of each bar represents the probability mass assigned to a particular value on the $x$-axis - in the space of $X$. For example, $1/8$ mass sits on top of the value 0. The bottom plot is the pmf of $2X$ - as if we created a new random variable as $x$ but with each of the outcomes multiplied by 2. That is, for example, instead of $1/8$ probability sitting on top of 2, it now sits on top of 4. In this case, the vertical line represents $E(2X)$. Note how the mass for $2X$ now sits on the values of 0, 2, and 4 (the outcomes after we have applied $f(x)$). And, it's pmf is spread out further around its expectation. It is _dispersed_ more widely than the probability mass of $X$. Indeed, this is an intuitive (although maybe not perfectly exact) way of thinking about variance: A random variable with a larger variance will tend to have it's probability mass spread out more. Therefore, it is not surprising that the $Var(X) < Var(2X)$. In fact, this is precisely the sort of behavior we would want out of a measure of variance!
 
 ```{r, echo = FALSE}
 a <- data.frame(x = c(0,1,2,3,4), 
@@ -548,7 +548,7 @@ Var(2X) &= 1 \\
 &= 2^2Var(X)
 \end{align}
 $$
-I might have lost you there. In words, it looks like the variance of $2X$ is simply $2^2$ times the variance of $X$. Indeed this is true in general (for random variables that have a variance). Like the expectation, the variance also has some useful properties. They are listed below:
+Because $Var(X) = 1/4$. I might have lost you there. In words, it looks like the variance of $2X$ is simply $2^2$ times the variance of $X$. If we did this a few more times, you might begin to think that, given some value $c$, the variance of $cX$ is just $c^2Var(X)$. Indeed this is true in general (for random variables that have a variance). Like the expectation, the variance also has some useful properties. They are listed below:
 
 ::: {.theorem #expprop name="Some Properties of the Variance"}
 If $a$ and $b$ are constants, then
@@ -567,12 +567,12 @@ If $X_1$ and $X_2$ are random variables, **and they are independent**, then
 Let's do some examples to get a better grasp on these.
 
 ::: {.example}
-Suppose we have a random variable $X$ and we are seeking to determine the the variance of $f(X) = b$ - e.g., $Var(b)$. This function takes any value in the space of $X$ and returns a constant $b$. First take a moment to recall that $E(f(x)) = E(b) = b$ (Property 1 of the expectation). So then our variance equation boils down to:
+Suppose we have a random variable $X$ and we are seeking to determine the the variance of $f(X) = b$ - e.g., $Var(b)$. This function takes any value in the space of $X$ and returns a constant $b$. First take a moment to recall that $E(f(X)) = E(b) = b$ (Property 1 of the expectation). So then our variance equation boils down to:
 
 $$
 Var(X) = E((f(X)-\mu_f)^2) = \sum_{x}^{} (b - b)^2p(x) = 0
 $$
-Indeed, we could have just used property 1 of the variance and concluded the same thing - $Var(b) = 0$. Within the field of statistics, random variables with zero variance are called *degenerate*. These variables return a constant every time because all their probability sits on exactly one value.
+Indeed, we could have just used property 1 of the variance and concluded the same thing - $Var(b) = 0$. As an aside: within the field of statistics, random variables with zero variance are called *degenerate*. These variables return a constant every time because all their probability sits on exactly one value. 
 :::
 
 The next example will elucidate a bit of property 3. Specifically, we unpack why adding a constant value to a random variable doesn't change it's variance. That is to say, if we have $a = 1$ and $b=10$, then
@@ -596,7 +596,7 @@ Take a moment to calculate the expectation and variance of this random variable 
 $$
 Var(X + 5) = Var(X) + 0 = 1/4
 $$
-Why didn't adding a constant to $X$ change it's variance?  It's also easier to see why by visualizing the pmfs. In the plot below, you will see two pmfs. The first (blueish) is the pmf of $X$, and the second (redish) is the pmf of $X+5$ - as if we created a new random variable and pmf by adding 5 to $X$. The vertical lines represent $E(X)$ and $E(X+5)$ respectively. Do you see how the plot of $X+5$ is simply the pmf of $X$ shifted to the right? We can see the bars of $X+%$ are still equivalently "spread" out but at a new location on the number line. Indeed, the values in the $X+5$ pmf are just as close to their expectation compared to $X$, so the variance calculation would not turn out differently (I invite you to convince yourself of this by using equation \@ref(eq:discretevariancef).
+Why didn't adding a constant to $X$ change it's variance?  As is often the case, it's easier to see why by visualizing some pmfs. In the plot below, you will see two pmfs. The first (blueish) is the pmf of $X$, and the second (redish) is the pmf of $X+5$ - as if we created a new random variable and pmf by adding 5 to each outcome of $X$. The vertical lines represent $E(X)$ and $E(X+5)$ respectively. Do you see how the plot of $X+5$ is simply the pmf of $X$ shifted to the right? We can see the bars of $X+%$ are still equivalently "spread" out but at a new location on the number line. Indeed, the values in the $X+5$ pmf are just as close to their expectation compared to $X$, so the variance calculation would not turn out differently (I invite you to convince yourself of this by using equation \@ref(eq:discretevariancef).
 
 ```{r, echo = FALSE}
 a <- data.frame(x = c(0,1,5,6), 
@@ -647,12 +647,12 @@ Var(2X + 7) = 4Var(X) + 0 =
 $$
 :::
 
-The last three examples should give you a good sense of how to use properties 1 through 3 of the variance. We now turn our attention to the fourth property. Notice how this property is very similar to the fourth property of the expectation - except there is an additional caveat. Our random variables must be _independent_.
+The last three examples should give you a good sense of how to use properties 1 through 3 of the variance. They can each be useful and save us the rigmarole of the variance calculation. We now turn our attention to the fourth property. Notice how this property is very similar to the fourth property of the expectation - except there is an additional caveat. Our random variables must be _independent_.
 
 ::: {.example}
-We will again work with the random variables in example \@ref(exm:expectationsum). Recall that $Z$ was the sum of two random variables $X_1$ and $X_2$ - each having an expectation of 1/2. From property 4 of the expectation we determined that $E(Z) = E(X_1 + X_2) = 1/2 + 1/2 = 1$. Now let's determine the variance of $Z$.
+We will again work with the random variables in example \@ref(exm:expectationsum). Recall that $Z$ was the sum of two random variables $X_1$ and $X_2$ - each having an expectation of 1/2. In this example, we determined the distribution and expectation of $Z$. From property 4 of the expectation we found that $E(Z) = E(X_1 + X_2) = 1/2 + 1/2 = 1$. Now let's determine the variance of this random variable.
 
-Recall that the variables X_1 and X_2 are independent. This means that property 4 applies, and we shall use it. First' let's calculate the variance of $X_1$ (which will also be the variance of $X_2$)
+Recall that the variables $X_1$ and $X_2$ are independent. This means that property 4 applies, and we shall use it. First let's calculate the variance of $X_1$ (which will also be the variance of $X_2$)
 
 $$
 \begin{align}
@@ -670,5 +670,23 @@ Now consider the circumstance where we multiply $X_1$ by four before adding it t
 $$
 Var(4X_1 + X_2) = 16Var(X_1) + Var(X_2) = (16) \frac{1}{4} + 1/4 = \frac{17}{4}
 $$
-And now you see the usefulness of the fourth property of the variance. We only needed the expectations and variances of our simpler variables $X_1$ and $X_2$ to do more complicated computations. In this case, we didn't need to know the distribution or expectation of $4X_1 + X_2$ (although I bet you could figure it out by following the procedure of example \@ref(exm:expectationsum)).
+by property 4. And now you see the usefulness of the fourth property of the variance. We only needed the expectations and variances of our simpler variables $X_1$ and $X_2$ to do more complicated computations. In this case, we didn't need to know the distribution or expectation of $4X_1 + X_2$ (although I bet you could figure it out by following the procedure of example \@ref(exm:expectationsum)). We only need to know that they are independent. As you will see, many of the statistical procedures we will learn will _assume_ independence to take advantage of this particular property of the variance.
 :::
+
+We close out this section with a final word of caution and a reference to the bigger picture. First the word of caution: The properties of the variance must be applied exactly how they are described. For example, without more information (which we will not persue here) it would be difficult to tell what $Var(X_1X_2)$ would be.
+
+Now the bigger picture: We have spent the last two sections of this chapter talking about the expectation and variance of random variables. In our research practice, we typically _do not know_ the expectation and variance of the population (random variable) we are trying to study. Statistics is the mathematical science of figuring these things out. Over the years some very smart people have invented some wonderful ways to study random variables. Understanding the expectation and variance shall help us develop a deeper understanding how to study random variables. We're on the journey to learn the beginnings of this wonderful field.
+
+### Some common discrete distributions
+As we have seen from the previous sections, there are an infinitude of probability mass functions/discrete distributions. Nevertheless, as behavioral researchers we tend to encounter certain types of random variables and discrete distributions more frequently. In this section, we shall discuss three commonly occurring distributions of discrete random variables: 
+
+1. The Bernoulli distribution,
+
+2. The binomial distribution,
+
+3. and the Poisson distribution.
+
+As you will see, these distributions are closely related.
+
+#### The Bernoulli distribution
+
