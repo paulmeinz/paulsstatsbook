@@ -689,4 +689,31 @@ As we have seen from the previous sections, there are an infinitude of probabili
 As you will see, these distributions are closely related.
 
 #### The Bernoulli distribution
+A random variable - $X$ - with a Bernoulli distribution (here referred to as a _Bernoulli random variable_) can take two outcomes - 1 or 0 - where 1 is typically mapped to a "success" or outcome of interest. We've already seen an example of a Bernoulli random variable - a coin flip with pmf
+
+$$
+p(x) = 
+\begin{cases}
+1/2 & x = 1 \\
+1/2 & x = 0 
+\end{cases}
+$$
+
+In general, however, the probability of a success does not have to be 1/2. We can choose any probability $p$ with $0 \leq p \leq 1$, such that the pmf of our random variable $X$ is 
+
+$$
+p(x) = 
+\begin{cases}
+p & x = 1 \\
+1-p & x = 0 
+\end{cases}
+$$
+
+That is to say, we assign $p$ as the probability of success and then assign the remaining probability $1-p$ to a non-success. Notice how the probabilities add to 1, e.g.,
+
+$$
+p + (1-p) = 1
+$$
+
+Here we refer to $p$ as a **parameter** of the pmf of $X$. A parameter is a value that is necessary to fully specify a distribution and determine a probability from it. In this case, we need the value of $p$ in order to determine the -probability of a success or non-success, respectively.
 
