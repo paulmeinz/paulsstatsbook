@@ -677,7 +677,7 @@ We close out this section with a final word of caution and a reference to the bi
 
 Now the bigger picture: We have spent the last two sections of this chapter talking about the expectation and variance of random variables. In our research practice, we typically _do not know_ the expectation and variance of the population (random variable) we are trying to study. Statistics is the mathematical science of figuring these things out. Over the years some very smart people have invented some wonderful ways to study random variables. Understanding the expectation and variance shall help us develop a deeper understanding how to study random variables. We're on the journey to learn the beginnings of this wonderful field.
 
-### Some common discrete distributions
+## Some common discrete distributions
 As we have seen from the previous sections, there are an infinitude of probability mass functions/discrete distributions. Nevertheless, as behavioral researchers we tend to encounter certain types of random variables and discrete distributions more frequently. In this section, we shall discuss three commonly occurring distributions of discrete random variables: 
 
 1. The Bernoulli distribution,
@@ -715,5 +715,5 @@ $$
 p + (1-p) = 1
 $$
 
-Here we refer to $p$ as a **parameter** of the pmf of $X$. A parameter is a value that is necessary to fully specify a distribution and determine a probability from it. In this case, we need the value of $p$ in order to determine the -probability of a success or non-success, respectively.
+Here we refer to $p$ as a **parameter** of the pmf of $X$. A parameter is a value that is necessary to fully specify a distribution and determine a probability from it. In this case, we need the value of $p$ in order to determine the probability of a success or non-success, respectively.
 
