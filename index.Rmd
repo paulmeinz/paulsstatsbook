@@ -17,19 +17,17 @@ link-citations: yes
 
 ## You can learn statistics
 
-Many textbooks in mathematics begin with a useful high level overview of the content of book. We'll get to that in a moment, but I want to start this book off a little differently. _You can learn statistics._ I believe that you can learn statistics and I'm happy you have opened this book to do it. Statistics is a wonderful field, and I am excited for you to learn it. I believe in you.
+Many textbooks in mathematics begin with a useful high level overview of the content of the book. We'll get to that in a moment. I want to start this one off a little differently: _You can learn statistics._ I believe that you can learn statistics and I'm happy you have opened this book to do it. Statistics is a wonderful field, and I am excited for you to learn it. I believe in you.
 
 ## Why I wrote this book
 
 First and foremost, I wrote this book because I'm excited about statistics (really excited; who writes a textbook for fun?), and I want other people to be excited about statistics too. 
 
-The second and important reason I wrote this textbook is because I would have appreciated a one like this as a behavioral scientist learning statistics. As a graduate student in Psychology, I became very comfortable with the applied end of statistics, but I found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. Over the course of my studies and career, I picked up "explanations" for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. This book is meant to teach the theory in addition to the application, so some curious student can have that curiosity assuaged.  
-
-As I studied mathematics and mathematical statistics throughout my career, I came to realize that a much deeper understanding is within the reach of a student in the behavioral sciences. I intend for it to take a student - perhaps with an okay memory of algebra and maybe with some knowledge of calculus (not at all required) - to a more mathematical understanding of statistics. Many of the foundation ideas of statistics are wonderful! And, I am happy to share them with you.
+The second and most important reason I wrote this textbook is because I would have appreciated a deeper mathematical understanding when I was learning statistics. Indeed, as a graduate student in Psychology, I became very comfortable with the applied end of statistics. I nevertheless found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. I did eventually pick up semi-mathematical "explanations" for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. This book is therefore meant to teach the a deeper mathematical theory _in addition to_ the application of statistics. My hope is that some curious student (like myself long ago) can have their curiosity assuaged.  
 
 ## What content to expect in this book
 
-To that end, this book will review many concepts learned in an undergraduate behavioral statistics course, but with more mathematical emphasis. This book can be categorized into three parts:
+To that end, this book will review many concepts learned in an undergraduate behavioral statistics course, but with more mathematical emphasis. It will proceed in three parts:
 
 1. Chapters 1, 2, and 3 give a background on probability and probability distributions. Within behavioral statistics courses, we often discuss a vaguely defined "population" of study. These three chapters define more concretely what we mean when we refer to a population or populations. Hint: Populations can be thought of as random variables and their corresponding **probability distributions**. We'll dig into this later.
 

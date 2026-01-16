@@ -715,5 +715,48 @@ $$
 p + (1-p) = 1
 $$
 
-Here we refer to $p$ as a **parameter** of the pmf of $X$. A parameter is a value that is necessary to fully specify a distribution and determine a probability from it. In this case, we need the value of $p$ in order to determine the probability of a success or non-success, respectively.
+Here we refer to $p$ as a **parameter** of the pmf of $X$. A parameter is a value that is necessary to fully specify a distribution and determine a probability from it. In this case, we need the value of $p$ in order to determine the probability of a success or non-success, respectively. For example, if $p = 1/4$, then the pmf of the random variable $X$ is
 
+$$
+p(x) = 
+\begin{cases}
+1/4 & x = 1 \\
+1-1/4 = 3/4 & x = 0 
+\end{cases}
+$$
+As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we shall therefore present or derive formuli for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable ($X$) with some parameter $p$, the expectation is
+
+$$
+E(X) = \sum_{x} xp(x) = 1(p) + 0(1-p) = p
+$$
+The expectation of a Bernoulli random variable is the parameter $p$ - a.k.a. the probability of a success. Now that we have the expectation, we can calculate the variance. This is a smidge more complicated. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+$$
+p(x) = 
+\begin{cases}
+p & x = 1 \\
+1-p & x = 0 
+\end{cases}
+$$
+
+Now let's calculate the variance with this as reference.
+
+$$
+\begin{align}
+Var(X) = \sum_{x} (x - \mu)^2p(x) &= (x-p)^2p(x) \\
+&= (1-p)^2p + (0-p)^2(1-p) \\
+&= (1-p)^2p + p^2(1-p) \\
+&= p(1-p)^2 + p^2(1-p) \\
+&= p(1-p)(1-p) + p(p)(1-p)
+\end{align}
+$$
+Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of $p(1-p)$. We're going to use the magic of the distributive property. Watch the underlines below.
+
+$$
+\begin{align}
+&= \underline{p(1-p)}(1-p) + p\underline{(p)(1-p)} \\
+&= \underline{p(1-p)}[(1-p) + p] \\
+&= p(1-p)[1-p+p] \\
+&= p(1-p)[1] = p(1-p)
+\end{align}
+$$
+The variance of a Bernoulli random variable is therefore $p(1-p)$.
