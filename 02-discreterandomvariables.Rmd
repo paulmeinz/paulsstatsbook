@@ -688,7 +688,7 @@ As we have seen from the previous sections, there are an infinitude of probabili
 
 As you will see, these distributions are closely related.
 
-#### The Bernoulli distribution
+### The Bernoulli distribution
 A random variable - $X$ - with a Bernoulli distribution (here referred to as a _Bernoulli random variable_) can take two outcomes - 1 or 0 - where 1 is typically mapped to a "success" or outcome of interest. We've already seen an example of a Bernoulli random variable - a coin flip with pmf
 
 $$
@@ -724,12 +724,12 @@ p(x) =
 1-1/4 = 3/4 & x = 0 
 \end{cases}
 $$
-As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we shall therefore present or derive formuli for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable ($X$) with some parameter $p$, the expectation is
+As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we will therefore present or derive equations for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable ($X$) with some parameter $p$, the expectation is
 
 $$
 E(X) = \sum_{x} xp(x) = 1(p) + 0(1-p) = p
 $$
-The expectation of a Bernoulli random variable is the parameter $p$ - a.k.a. the probability of a success. Now that we have the expectation, we can calculate the variance. This is a smidge more complicated. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+In words, the expectation of a Bernoulli random variable is the probability of a success. As you recall from our previous discussion, now that we have the expectation of our random variable, we have enough information to calculate the variance. This is a little more complicated, although certainly within our reach. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
 $$
 p(x) = 
 \begin{cases}
@@ -749,14 +749,61 @@ Var(X) = \sum_{x} (x - \mu)^2p(x) &= (x-p)^2p(x) \\
 &= p(1-p)(1-p) + p(p)(1-p)
 \end{align}
 $$
-Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of $p(1-p)$. We're going to use the magic of the distributive property. Watch the underlines below.
+Note that we just rearranged terms from the 3rd to 4th line. On the 5th line we wrote out the squares as multiplications. Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of $p(1-p)$. We're going to use the magic of the distributive property. Watch the underlines below.
 
 $$
 \begin{align}
 &= \underline{p(1-p)}(1-p) + p\underline{(p)(1-p)} \\
 &= \underline{p(1-p)}[(1-p) + p] \\
 &= p(1-p)[1-p+p] \\
-&= p(1-p)[1] = p(1-p)
+&= p(1-p)[1] \\ 
+&= p(1-p)
 \end{align}
 $$
-The variance of a Bernoulli random variable is therefore $p(1-p)$.
+The variance of a Bernoulli random variable is therefore $p(1-p)$. These equations help us quickly calculate important aspects of Bernoulli distributions, but they will also help us derive the expectation and variance of our next important distribution. An example will kick us off.
+
+::: {.example}
+Suppose an individual who really likes lottery tickets has a .01 chance of winning any money from their favorite scratcher. They purchase 100 lottery tickets. What is the average number of winning lottery tickets we would expect from such a large purchase? 
+
+First, observe that we are talking about a Bernoulli random variable (100 of them in fact) with $p = 0.01$. Our pmf is therefore
+
+$$
+p(x) = 
+\begin{cases}
+.01 & x = 1 \\
+.99 & x = 0 
+\end{cases}
+$$
+From our derivations above, we also know that the expectation of our random variable is .01. We also know that (for the sake of completeness) its variance is 
+
+$$
+p(1-p) = .01(1-.01) = 0.0099 
+$$
+We are, however, asked to determine the expectation of 100 scratchers. You can think about each lottery ticket as a single random variable. That is we have a set of 100 random variables
+
+$$
+\{X_1, X_2, X_3,...,X_{100}\}
+$$
+The key observation here is that their _sum_ represents the number of successful lottery tickets. That is, if we added them all up, e.g.,
+
+$$
+\sum_{i-1}^{100} X_i
+$$
+then the sum of their outcomes would be the number of winning lotto tickets. For example, if we had 3 winners, we would get three ones and 97 zeros. The total sum would be 3. Indeed, we know how to calculate the expectation of a sum of random variables thanks to the properties of the expectation.
+
+$$
+\begin{align}
+E(\sum_{i=1}^{100} X_i) &= E(X_1) + E(X_2) + E(X_3) + ... + E(X_{100}) \\
+&= p + p + p + ... + p \\
+&= 100p \\
+&= 100(.01) = 1 \\
+\end{align}
+$$
+The lotto ticket enthusiast shall expect to have 1 winning ticket on average. That's not a stupendously lucrative hobby, but who says hobbies have to be profitable.
+
+To close out this example, let's think about $\sum_{i=1}^{100} X_i$. The sum of these random variables is itself a random variable, call it $Z$. Note that we have already looked at similar variables as in examples \@ref(exm:expectationsum) and \@ref(exm:dice). Although, we were able to determine the expectation of this variable $Z$ using our knowledge of the expectation and Bernoulli random variables, we do not know its pmf. 
+
+You're in for a treat! We shall next discuss the pmf of this random variable (and others like it). Fair warning: This is one of my favorite pmfs of all time.
+:::
+
+### The binomial distribution

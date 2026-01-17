@@ -111,7 +111,11 @@ statistics course.|</p>" />
 <li class="chapter" data-level="2.3.2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-expectation-of-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.3.2</b> The expectation of a discrete random variable</a></li>
 <li class="chapter" data-level="2.3.3" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-variance-of-a-discrete-random-variable"><i class="fa fa-check"></i><b>2.3.3</b> The variance of a discrete random variable</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#some-common-discrete-distributions"><i class="fa fa-check"></i><b>2.4</b> Some common discrete distributions</a></li>
+<li class="chapter" data-level="2.4" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#some-common-discrete-distributions"><i class="fa fa-check"></i><b>2.4</b> Some common discrete distributions</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-bernoulli-distribution"><i class="fa fa-check"></i><b>2.4.1</b> The Bernoulli distribution</a></li>
+<li class="chapter" data-level="2.4.2" data-path="discrete-random-variables.html"><a href="discrete-random-variables.html#the-binomial-distribution"><i class="fa fa-check"></i><b>2.4.2</b> The binomial distribution</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -421,7 +425,7 @@ Because our random variables are independent, we can find the probability of thi
 P(X_1 = 1 \cap X_2 = 1) = P(X_1 = 1)P(X_2 = 1) = (1/2)(1/2) = 1/4
 \]</span>
 We can do this calculation for each of the other outcomes in the sample space of our coin flips. The table below breaks down each. It is most easily read from left to right. Find the value of the first flip in the first column. For example, the big top row has a first flip of 1 (Heads). Next scan to the right to see outcome of the second flip, which can either be a 1 or a 0. Scan further to the right to see the sum and probability of the outcome. For example, if we flipped a 1 on the first coin, and then a zero on the second coin, the sum of the two would be 1, and the probability would be 1/4.</p>
-<div class="tabwid"><style>.cl-91aacfae{}.cl-91a4a6ec{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-91a75022{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-91a76792{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91a7679c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91a767a6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91a767a7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-91a767a8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-91aacfae'><thead><tr style="overflow-wrap:break-word;"><th class="cl-91a76792"><p class="cl-91a75022"><span class="cl-91a4a6ec">1st Flip</span></p></th><th class="cl-91a76792"><p class="cl-91a75022"><span class="cl-91a4a6ec">2nd Flip</span></p></th><th class="cl-91a76792"><p class="cl-91a75022"><span class="cl-91a4a6ec">Sum (Z)</span></p></th><th class="cl-91a76792"><p class="cl-91a75022"><span class="cl-91a4a6ec">Probability</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">1</span></p></td><td class="cl-91a767a6"><p class="cl-91a75022"><span class="cl-91a4a6ec">1</span></p></td><td class="cl-91a767a6"><p class="cl-91a75022"><span class="cl-91a4a6ec">2</span></p></td><td class="cl-91a767a6"><p class="cl-91a75022"><span class="cl-91a4a6ec">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">0</span></p></td><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">1</span></p></td><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-91a767a7"><p class="cl-91a75022"><span class="cl-91a4a6ec">0</span></p></td><td class="cl-91a767a8"><p class="cl-91a75022"><span class="cl-91a4a6ec">1</span></p></td><td class="cl-91a767a8"><p class="cl-91a75022"><span class="cl-91a4a6ec">1</span></p></td><td class="cl-91a767a8"><p class="cl-91a75022"><span class="cl-91a4a6ec">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">0</span></p></td><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">0</span></p></td><td class="cl-91a7679c"><p class="cl-91a75022"><span class="cl-91a4a6ec">1/4</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-956e5eb2{}.cl-9563a238{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-95678704{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-9567a87e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9567a888{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9567a889{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9567a892{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1pt solid rgba(102, 102, 102, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-9567a89c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 1pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing='true' class='cl-956e5eb2'><thead><tr style="overflow-wrap:break-word;"><th class="cl-9567a87e"><p class="cl-95678704"><span class="cl-9563a238">1st Flip</span></p></th><th class="cl-9567a87e"><p class="cl-95678704"><span class="cl-9563a238">2nd Flip</span></p></th><th class="cl-9567a87e"><p class="cl-95678704"><span class="cl-9563a238">Sum (Z)</span></p></th><th class="cl-9567a87e"><p class="cl-95678704"><span class="cl-9563a238">Probability</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">1</span></p></td><td class="cl-9567a889"><p class="cl-95678704"><span class="cl-9563a238">1</span></p></td><td class="cl-9567a889"><p class="cl-95678704"><span class="cl-9563a238">2</span></p></td><td class="cl-9567a889"><p class="cl-95678704"><span class="cl-9563a238">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">0</span></p></td><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">1</span></p></td><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td  rowspan="2"class="cl-9567a892"><p class="cl-95678704"><span class="cl-9563a238">0</span></p></td><td class="cl-9567a89c"><p class="cl-95678704"><span class="cl-9563a238">1</span></p></td><td class="cl-9567a89c"><p class="cl-95678704"><span class="cl-9563a238">1</span></p></td><td class="cl-9567a89c"><p class="cl-95678704"><span class="cl-9563a238">1/4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">0</span></p></td><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">0</span></p></td><td class="cl-9567a888"><p class="cl-95678704"><span class="cl-9563a238">1/4</span></p></td></tr></tbody></table></div>
 <p>Looking over this table, we see that our new random variable <span class="math inline">\(Z\)</span> has the space of <span class="math inline">\({0,1,2}\)</span>. There is only 1 way to get a 0 or 2, respectively, and each of those outcomes has a probability of <span class="math inline">\(1/4\)</span>. There are two ways to get a 1, so by the law of addition, this outcome in the space of <span class="math inline">\(Z\)</span> has a probability of <span class="math inline">\(1/4 + 1/4 = 1/2\)</span>. In other words</p>
 <p><span class="math display">\[
 p(z) =
@@ -628,8 +632,8 @@ by property 4. And now you see the usefulness of the fourth property of the vari
 <li><p>and the Poisson distribution.</p></li>
 </ol>
 <p>As you will see, these distributions are closely related.</p>
-<div id="the-bernoulli-distribution" class="section level4 hasAnchor" number="2.4.0.1">
-<h4><span class="header-section-number">2.4.0.1</span> The Bernoulli distribution<a href="discrete-random-variables.html#the-bernoulli-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="the-bernoulli-distribution" class="section level3 hasAnchor" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> The Bernoulli distribution<a href="discrete-random-variables.html#the-bernoulli-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A random variable - <span class="math inline">\(X\)</span> - with a Bernoulli distribution (here referred to as a <em>Bernoulli random variable</em>) can take two outcomes - 1 or 0 - where 1 is typically mapped to a “success” or outcome of interest. We’ve already seen an example of a Bernoulli random variable - a coin flip with pmf</p>
 <p><span class="math display">\[
 p(x) =
@@ -658,11 +662,11 @@ p(x) =
 1-1/4 = 3/4 &amp; x = 0
 \end{cases}
 \]</span>
-As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we shall therefore present or derive formuli for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable (<span class="math inline">\(X\)</span>) with some parameter <span class="math inline">\(p\)</span>, the expectation is</p>
+As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we will therefore present or derive equations for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable (<span class="math inline">\(X\)</span>) with some parameter <span class="math inline">\(p\)</span>, the expectation is</p>
 <p><span class="math display">\[
 E(X) = \sum_{x} xp(x) = 1(p) + 0(1-p) = p
 \]</span>
-The expectation of a Bernoulli random variable is the parameter <span class="math inline">\(p\)</span> - a.k.a. the probability of a success. Now that we have the expectation, we can calculate the variance. This is a smidge more complicated. I’ll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+In words, the expectation of a Bernoulli random variable is the probability of a success. As you recall from our previous discussion, now that we have the expectation of our random variable, we have enough information to calculate the variance. This is a little more complicated, although certainly within our reach. I’ll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
 <span class="math display">\[
 p(x) =
 \begin{cases}
@@ -680,16 +684,55 @@ Var(X) = \sum_{x} (x - \mu)^2p(x) &amp;= (x-p)^2p(x) \\
 &amp;= p(1-p)(1-p) + p(p)(1-p)
 \end{align}
 \]</span>
-Now, we’ll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of <span class="math inline">\(p(1-p)\)</span>. We’re going to use the magic of the distributive property. Watch the underlines below.</p>
+Note that we just rearranged terms from the 3rd to 4th line. On the 5th line we wrote out the squares as multiplications. Now, we’ll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of <span class="math inline">\(p(1-p)\)</span>. We’re going to use the magic of the distributive property. Watch the underlines below.</p>
 <p><span class="math display">\[
 \begin{align}
 &amp;= \underline{p(1-p)}(1-p) + p\underline{(p)(1-p)} \\
 &amp;= \underline{p(1-p)}[(1-p) + p] \\
 &amp;= p(1-p)[1-p+p] \\
-&amp;= p(1-p)[1] = p(1-p)
+&amp;= p(1-p)[1] \\
+&amp;= p(1-p)
 \end{align}
 \]</span>
-The variance of a Bernoulli random variable is therefore <span class="math inline">\(p(1-p)\)</span>.</p>
+The variance of a Bernoulli random variable is therefore <span class="math inline">\(p(1-p)\)</span>. These equations help us quickly calculate important aspects of Bernoulli distributions, but they will also help us derive the expectation and variance of our next important distribution. An example will kick us off.</p>
+<div class="example">
+<p><span id="exm:unlabeled-div-28" class="example"><strong>Example 2.12  </strong></span>Suppose an individual who really likes lottery tickets has a .01 chance of winning any money from their favorite scratcher. They purchase 100 lottery tickets. What is the average number of winning lottery tickets we would expect from such a large purchase?</p>
+<p>First, observe that we are talking about a Bernoulli random variable (100 of them in fact) with <span class="math inline">\(p = 0.01\)</span>. Our pmf is therefore</p>
+<p><span class="math display">\[
+p(x) =
+\begin{cases}
+.01 &amp; x = 1 \\
+.99 &amp; x = 0
+\end{cases}
+\]</span>
+From our derivations above, we also know that the expectation of our random variable is .01. We also know that (for the sake of completeness) its variance is</p>
+<p><span class="math display">\[
+p(1-p) = .01(1-.01) = 0.0099
+\]</span>
+We are, however, asked to determine the expectation of 100 scratchers. You can think about each lottery ticket as a single random variable. That is we have a set of 100 random variables</p>
+<p><span class="math display">\[
+\{X_1, X_2, X_3,...,X_{100}\}
+\]</span>
+The key observation here is that their <em>sum</em> represents the number of successful lottery tickets. That is, if we added them all up, e.g.,</p>
+<p><span class="math display">\[
+\sum_{i-1}^{100} X_i
+\]</span>
+then the sum of their outcomes would be the number of winning lotto tickets. For example, if we had 3 winners, we would get three ones and 97 zeros. The total sum would be 3. Indeed, we know how to calculate the expectation of a sum of random variables thanks to the properties of the expectation.</p>
+<p><span class="math display">\[
+\begin{align}
+E(\sum_{i=1}^{100} X_i) &amp;= E(X_1) + E(X_2) + E(X_3) + ... + E(X_{100}) \\
+&amp;= p + p + p + ... + p \\
+&amp;= 100p \\
+&amp;= 100(.01) = 1 \\
+\end{align}
+\]</span>
+The lotto ticket enthusiast shall expect to have 1 winning ticket on average. That’s not a stupendously lucrative hobby, but who says hobbies have to be profitable.</p>
+<p>To close out this example, let’s think about <span class="math inline">\(\sum_{i=1}^{100} X_i\)</span>. The sum of these random variables is itself a random variable, call it <span class="math inline">\(Z\)</span>. Note that we have already looked at similar variables as in examples <a href="discrete-random-variables.html#exm:expectationsum">2.5</a> and <a href="set-theory-and-probability.html#exm:dice">1.22</a>. Although, we were able to determine the expectation of this variable <span class="math inline">\(Z\)</span> using our knowledge of the expectation and Bernoulli random variables, we do not know its pmf.</p>
+<p>You’re in for a treat! We shall next discuss the pmf of this random variable (and others like it). Fair warning: This is one of my favorite pmfs of all time.</p>
+</div>
+</div>
+<div id="the-binomial-distribution" class="section level3 hasAnchor" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> The binomial distribution<a href="discrete-random-variables.html#the-binomial-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 
 </div>
 </div>
