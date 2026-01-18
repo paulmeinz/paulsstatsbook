@@ -730,6 +730,7 @@ $$
 E(X) = \sum_{x} xp(x) = 1(p) + 0(1-p) = p
 $$
 In words, the expectation of a Bernoulli random variable is the probability of a success. As you recall from our previous discussion, now that we have the expectation of our random variable, we have enough information to calculate the variance. This is a little more complicated, although certainly within our reach. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+
 $$
 p(x) = 
 \begin{cases}
@@ -807,3 +808,44 @@ You're in for a treat! We shall next discuss the pmf of this random variable (an
 :::
 
 ### The binomial distribution
+The binomial distribution is the pmf of the sum of $n$ Bernoulli random variables. In our last example, we saw an example of a binomial distribution with 100 Bernoulli random variables, and we were already equipped to calculate its expectation (and variance if independence is assumed). Instead of throwing the whole distribution at you at once, we'll work up from a single example.
+
+::: {.example}
+Suppose we have three independent Bernoulli random variables - $X_1$, $X_2$, and $X_3$ - with with $p = 1/2$. We would like to know the probability that they sum to the value of 1. In order to get a value of 1 from our sum, we will need exactly 1 success and 2 non-successes at the resolution of our random process for each variable. There are three such combinations of outcomes that will yield this result. I've listed each in a set below. Note that the digit order in each outcome corresponds to variables 1, 2, and 3, respectively.
+
+$$
+\{1\,0\,0, 0\,1\,0, 0\,0\,1\}
+$$
+Each of these outcomes in our three-variable sample space would result in a value of 1. For example, with regards to the first element, we have $1 + 0 + 0 = 1$. The event $Y = \{1\,0\,0, 0\,1\,0, 0\,0\,1\}$ therefore fully specifies the scenario where our Bernoulli random variables sum to 1. Now we need to calculate the probability of this event, and for this, we will need the probability of each of the outcomes in the set $Y$. We know that our random variables are independent. We can multiply $P(X_1 = x_1)$, $P(X_2 = x_2)$, and $P(X_3 = x_3)$ to determine the probability of each of the outcomes in $Y$. 
+
+$$
+P(\{1\,0\,0\})=(P(X_1 = 1)P(X_2 = 0)P(X_3 = 0) = 1/2 \times 1/2 \times 1/2 = 1/8 \\
+P(\{0\,1\,0\})=(P(X_1 = 0)P(X_2 = 1)P(X_3 = 0) = 1/2 \times 1/2 \times 1/2 = 1/8 \\
+P(\{0\,0\,1\})=(P(X_1 = 0)P(X_2 = 0)P(X_3 = 1) = 1/2 \times 1/2 \times 1/2 = 1/8
+$$
+Each of the outcomes above has the same number of successes and the same number of non-successes. Therefore each has the exact same probability, and by the law of addition, $P(Y) = 1/8 + 1/8 + 1/8 = 3/8$.
+:::
+
+There are a couple of important things to note from the last example. If we are looking to determine the pmf of a random variable $Z$ - where $Z$ is the sum of $n$ Bernoulli random variables (e.g., $Z = X_1 + X_2 +...+X_n$) - we will need two pieces of information. The first thing we will need is the number of ways we can get a given value of $Z$. In the example above, we found that there were three different ways to get a value of 1. We enumerated them by hand, but you can see that this process would be incredibly cumbersome for large $n$'s. The second thing we shall need is the probability of single outcome where $Z=z$. We only need the probability of 1, because each possible combination will have the same number of successes and non-success, and therefore, the same probability. In our last example, we had three possible combinations - each with a probability of 1/8, and observe
+
+$$
+\frac{1}{8} + \frac{1}{8} + \frac{1}{8} = 3\times\frac{1}{8}
+$$
+
+as we calculated before. We shall discuss each of these - the number and the probability - in turn.
+
+First we will discuss the number of combinations, and to do this we will need a little bit of gentle review. Specifically, we will need to know the basics of the *factorial*. Given some integer $n$, a factorial is defined as
+
+$$
+n! = n(n-1)(n-2)...(1)
+$$
+so for example, if $n = 3$ then,
+
+$$
+n! = 3\times2\times1 = 6
+$$
+We multiply $n$ by all the integers less than $n$ - all the way down to 1. Now you may recall (or be wondering) what we do with $0!$. A zero factorial is defined to be 1, so
+
+$$
+0! = 1
+$$
