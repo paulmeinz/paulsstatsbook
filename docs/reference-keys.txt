@@ -55,9 +55,17 @@ exm:unlabeled-div-24
 exm:unlabeled-div-25
 exm:unlabeled-div-26
 exm:unlabeled-div-27
+eq:bernoulli
+eq:bernexpectation
+eq:bernvariance
 exm:unlabeled-div-28
 exm:binom
+eq:nchoosez
 exm:unlabeled-div-29
+eq:singleprob
+eq:binom
+eq:binomexpectation
+eq:binomvariance
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
