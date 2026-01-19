@@ -56,6 +56,7 @@ exm:unlabeled-div-25
 exm:unlabeled-div-26
 exm:unlabeled-div-27
 exm:unlabeled-div-28
+exm:binom
 exm:unlabeled-div-29
 you-can-learn-statistics
 why-i-wrote-this-book
