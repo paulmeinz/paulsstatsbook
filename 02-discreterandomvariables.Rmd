@@ -941,9 +941,33 @@ E(Z) = E(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p = np
 (\#eq:binomexpectation)
 $$
 
-where $\sum_{i=1}^{n}p$ means that for each $X_i$ we add another $p$. The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is $p(1-p$, so
+where $\sum_{i=1}^{n}p$ means that for each $X_i$ we add another $p$. The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is $p(1-p)$, so
 
 $$
 Var(Z) = Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p(1-p) = np(1-p)
 (\#eq:binomvariance)
 $$
+
+We shall close this chapter out with a few more examples of the binomial distribution and its usefulness in calculating probabilities. 
+
+::: {.example}
+Suppose there are 30 students in a particularly difficult course at College of Learning (a preeminent college). Over many many years, researchers at the college determined that the probability of passing this very difficult course is about .25. What is the probability of 0 students passing the course, and what is the probability of at least 1 student passing the course? What is the expectation of the number of students passing?
+
+This question looks like a problem the binomial distribution can solve. Here we have $p = .25$ and $n=30$. Our binomial distribution therefore looks like this:
+
+$$
+p(x) = 
+\begin{cases}
+{30 \choose z} .25^z(1-.25)^{30-z} & z = 0,1,...,30 \\
+0 & Everywhere\: else 
+\end{cases}
+(\#eq:binom)
+$$
+
+With regards to the first part of the question, we have $z = 0$, and the probability is calculated
+
+$$
+P(Z = 1) = p(z) = {30 \choose 0} .25^z(1-.25)^{30-z}
+$$
+
+:::
