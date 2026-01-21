@@ -1595,7 +1595,7 @@ As we have seen from the previous sections, there are an infinitude of probabili
 
 As you will see, these distributions are closely related.
 
-\subsubsection{The Bernoulli distribution}\label{the-bernoulli-distribution}
+\subsection{The Bernoulli distribution}\label{the-bernoulli-distribution}
 
 A random variable - \(X\) - with a Bernoulli distribution (here referred to as a \emph{Bernoulli random variable}) can take two outcomes - 1 or 0 - where 1 is typically mapped to a ``success'' or outcome of interest. We've already seen an example of a Bernoulli random variable - a coin flip with pmf
 
@@ -1615,6 +1615,7 @@ p(x) =
 p & x = 1 \\
 1-p & x = 0 
 \end{cases}
+\label{eq:bernoulli}
 \]
 
 That is to say, we assign \(p\) as the probability of success and then assign the remaining probability \(1-p\) to a non-success. Notice how the probabilities add to 1, e.g.,
@@ -1632,12 +1633,14 @@ p(x) =
 1-1/4 = 3/4 & x = 0 
 \end{cases}
 \]
-As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we shall therefore present or derive formuli for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable (\(X\)) with some parameter \(p\), the expectation is
+As we have seen from the previous two sections, it helps to have quick ways of calculating expectations and variances. For each of the common distributions, we will therefore present or derive equations for each. As you know, in order to get the variance, we first need to expectation. With regards to a Bernoulli random variable (\(X\)) with some parameter \(p\), the expectation is
 
 \[
 E(X) = \sum_{x} xp(x) = 1(p) + 0(1-p) = p
+\label{eq:bernexpectation}
 \]
-The expectation of a Bernoulli random variable is the parameter \(p\) - a.k.a. the probability of a success. Now that we have the expectation, we can calculate the variance. This is a smidge more complicated. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+In words, the expectation of a Bernoulli random variable is the probability of a success. As you recall from our previous discussion, now that we have the expectation of our random variable, we have enough information to calculate the variance. This is a little more complicated, although certainly within our reach. I'll try my best to breakdown the steps. Recall the definition of the Bernoulli distribution:
+
 \[
 p(x) = 
 \begin{cases}
@@ -1657,17 +1660,223 @@ Var(X) = \sum_{x} (x - \mu)^2p(x) &= (x-p)^2p(x) \\
 &= p(1-p)(1-p) + p(p)(1-p)
 \end{align}
 \]
-Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of \(p(1-p)\). We're going to use the magic of the distributive property. Watch the underlines below.
+Note that we just rearranged terms from the 3rd to 4th line. On the 5th line we wrote out the squares as multiplications. Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of \(p(1-p)\). We're going to use the magic of the distributive property. Watch the underlines below.
 
 \[
 \begin{align}
 &= \underline{p(1-p)}(1-p) + p\underline{(p)(1-p)} \\
 &= \underline{p(1-p)}[(1-p) + p] \\
 &= p(1-p)[1-p+p] \\
-&= p(1-p)[1] = p(1-p)
+&= p(1-p)[1] \\ 
+&= p(1-p)
+\end{align}
+\label{eq:bernvariance}
+\]
+The variance of a Bernoulli random variable is therefore \(p(1-p)\). These equations help us quickly calculate important aspects of Bernoulli distributions, but they will also help us derive the expectation and variance of our next important distribution. An example will kick us off.
+
+\begin{example}
+Suppose an individual who really likes lottery tickets has a .01 chance of winning any money from their favorite scratcher. They purchase 100 lottery tickets. What is the average number of winning lottery tickets we would expect from such a large purchase?
+
+First, observe that we are talking about a Bernoulli random variable (100 of them in fact) with \(p = 0.01\). Our pmf is therefore
+
+\[
+p(x) = 
+\begin{cases}
+.01 & x = 1 \\
+.99 & x = 0 
+\end{cases}
+\]
+From our derivations above, we also know that the expectation of our random variable is .01. We also know that (for the sake of completeness) its variance is
+
+\[
+p(1-p) = .01(1-.01) = 0.0099 
+\]
+We are, however, asked to determine the expectation of 100 scratchers. You can think about each lottery ticket as a single random variable. That is we have a set of 100 random variables
+
+\[
+\{X_1, X_2, X_3,...,X_{100}\}
+\]
+The key observation here is that their \emph{sum} represents the number of successful lottery tickets. That is, if we added them all up, e.g.,
+
+\[
+\sum_{i-1}^{100} X_i
+\]
+then the sum of their outcomes would be the number of winning lotto tickets. For example, if we had 3 winners, we would get three ones and 97 zeros. The total sum would be 3. Indeed, we know how to calculate the expectation of a sum of random variables thanks to the properties of the expectation.
+
+\[
+\begin{align}
+E(\sum_{i=1}^{100} X_i) &= E(X_1) + E(X_2) + E(X_3) + ... + E(X_{100}) \\
+&= p + p + p + ... + p \\
+&= 100p \\
+&= 100(.01) = 1 \\
 \end{align}
 \]
-The variance of a Bernoulli random variable is therefore \(p(1-p)\).
+The lotto ticket enthusiast shall expect to have 1 winning ticket on average. That's not a stupendously lucrative hobby, but who says hobbies have to be profitable.
+
+To close out this example, let's think about \(\sum_{i=1}^{100} X_i\). The sum of these random variables is itself a random variable. Call it \(Z\). Note that we have already looked at similar variables as in examples \ref{exm:expectationsum} and \ref{exm:dice}. Although, we were able to determine the expectation of this variable \(Z\) using our knowledge of the expectation and Bernoulli random variables, we do not know its pmf.
+
+Well, you're in for a treat! We shall next discuss the pmf of this random variable (and others like it). Fair warning: This is one of my favorite pmfs of all time.
+\end{example}
+
+\subsection{The binomial distribution}\label{the-binomial-distribution}
+
+The binomial distribution is the pmf of the sum of \(n\) Bernoulli random variables. In our last example, we saw an example of a binomial distribution with 100 Bernoulli random variables, and we were already equipped to calculate its expectation (and variance if independence is assumed). Instead of throwing the whole distribution at you at once, we'll work up from a single example.
+
+\begin{example}
+\protect\hypertarget{exm:binom}{}\label{exm:binom}Suppose we have three independent Bernoulli random variables - \(X_1\), \(X_2\), and \(X_3\) - with with \(p = 1/3\), and \(1-p = 1-1/3 = 2/3\). We would like to know the probability that they sum to the value of 1. In order to get a value of 1 from our sum, we will need exactly 1 success and 2 non-successes at the resolution of our random process (e.g.~flipping three coins and hoping for heads). There are three such combinations of successes and non-successes that will yield this result. I've listed each in a set below. Note that the order of the digits in each outcome corresponds to variables 1, 2, and 3, respectively.
+
+\[
+\{1\,0\,0, 0\,1\,0, 0\,0\,1\}
+\]
+Each of these outcomes in our three-variable sample space would result in a value of 1. For example, with regards to the first element, we have \(1 + 0 + 0 = 1\). The event \(Y = \{1\,0\,0, 0\,1\,0, 0\,0\,1\}\) therefore fully specifies the scenario where our Bernoulli random variables sum to 1. We have learned all the tools to calculate the probability of this event. We will first need the probability of each of the outcomes in the set \(Y\). Our random variables are independent, so we can multiply \(P(X_1 = x_1)\), \(P(X_2 = x_2)\), and \(P(X_3 = x_3)\) to determine the probability of each of the outcomes in \(Y\).
+
+\[
+P(\{1\,0\,0\})=(P(X_1 = 1)P(X_2 = 0)P(X_3 = 0) = 1/3 \times 2/3 \times 2/3 = 4/27 \\
+P(\{0\,1\,0\})=(P(X_1 = 0)P(X_2 = 1)P(X_3 = 0) = 2/3 \times 1/3 \times 2/3 = 4/27 \\
+P(\{0\,0\,1\})=(P(X_1 = 0)P(X_2 = 0)P(X_3 = 1) = 2/3 \times 2/3 \times 1/3 = 4/27
+\]
+Therefore each has the exact same probability, and by the law of addition, \(P(Y) = 4/27 + 4/27 + 4/27 = 12/27 = 4/9\). Importantly, note how each of the combinations has exactly the same probability. This is because each has the same number of successes and the same number of non-successes. A little algebra helps to see this. Let's take a closer look at the combination - \(\{0\,1\,0\}\).
+
+\[
+\begin{align}
+P(\{1\,0\,0\})=(P(X_1 = 0)P(X_2 = 1)P(X_3 = 0) &= (1-p)p(1-p) \\
+&= p(1-p)(1-p) \\
+&= p^1(1-p)^2 \\
+&= (1/3)^1(1-1/3)^2
+\end{align}
+\]
+Note that the second line from the top is just a rearrangement of factors thanks to the commutative property of multiplication. Looking carefully, we see that we have \(p^1\) because we have 1 success, and we have \((1-p)^2\) because we have two non-successes. You could rearrange the factors of the other combinations and get the same result. That is to say, each outcome has the same probability because they have the same number of successes and non-successes.
+\end{example}
+
+There are a couple of important things to note from the last example. If we are looking to determine the pmf of a random variable \(Z\) - where \(Z\) is the sum of \(n\) Bernoulli random variables (e.g., \(Z = X_1 + X_2 +...+X_n\)) - we will need two pieces of information. The first thing we will need is the number of ways we can get a given value of \(Z\). In the example above, we found that there were three different ways to get a value of 1. We enumerated them by hand, but you can see that this process would be incredibly cumbersome for large \(n\)'s. The second thing we shall need is the probability of single outcome where \(Z=z\). We only need the probability of 1, because each possible combination will have the same number of successes and non-success, and therefore, the same probability. In our last example, we had three possible combinations - each with a probability of 4/27, and observe
+
+\[
+\frac{4}{27} + \frac{4}{27} + \frac{4}{27} = 3\times\frac{4}{27} 
+\]
+
+as we calculated before. We shall discuss each of these - the number and the probability - in turn.
+
+First we will discuss the number of combinations, and to do this we will need a little bit of review. Specifically, we will need to know how to calculate a \emph{factorial}. The factorial looks a little intimidating, but it's not too hard to unpack. Given some integer \(n\), a factorial is defined as
+
+\[
+n! = n(n-1)(n-2)...(1)
+\]
+so for example, if \(n = 3\) then,
+
+\[
+3! = 3\cdot2\cdot1 = 6
+\]
+We multiply \(3\) by all the integers less than \(3\) - all the way down to 1. Now you may recall (or be wondering) what we do with \(0!\). A zero factorial is defined to be 1, so
+
+\[
+0! = 1
+\]
+
+With that brief review out of the way, we now return to calculating the number of combinations. Supposing we have \(n\) Bernoulli random variables, and \(z\) successes, then the number of combinations resulting in the value \(z\) is calculated
+
+\[
+[Number\: of \: Combinations]=\frac{n!}{z!(n-z)!}
+\]
+
+This equation is often symbolically referenced as \({n \choose z}\). That is
+
+\[
+{n \choose z} = \frac{n!}{z!(n-z)!}
+\label{eq:nchoosez}
+\]
+
+\begin{example}
+Returning to our previous example with \(n = 3\), we can now quickly calculate the number of ways to get a sum of 1.
+
+\[
+\begin{align}
+{3 \choose 1} &= \frac{3!}{1!(3-1)!} \\
+&= \frac{3 \cdot 2 \cdot 1}{1 \cdot 2 \cdot 1}
+\end{align}
+\]
+
+Then if we cancel out common multiples in the numerator and denominator, we get
+
+\[
+\frac{3}{1} = 3
+\]
+
+which is exactly what we were looking for.
+\end{example}
+
+Now that we know how to calculate the number of combinations necessary for \(z\) successes, we shall turn our attention to the probability of a single combination. Looking back at example \ref{exm:binom}, a single outcome had one success and two non-successes. The probability of a single was therefore
+
+\[
+p(1-p)(1-p) = p(1-p)^2
+\]
+
+Generally speaking, we can calculate the probability of a \emph{single} combination of \(z\) successes and \(n-z\) non-successes by
+
+\[
+p^z(1-p)^{n-z}
+\label{eq:singleprob}
+\]
+
+In our example, we had \(z = 1\) and \(n-z = 3-1 = 2\), so we had \(p(1-p)^2\) for each of the outcomes. Indeed, this agrees with our algebraic manipulation at the end of example \ref{exm:binom}.
+
+Now we are ready to put it all together. The pmf of the sum of \(n\) Bernoulli random variables, each with probability of success \(p\), is
+
+\[
+p(x) = 
+\begin{cases}
+{n \choose z} p^z(1-p)^{n-z} & z = 0,1,...,n \\
+0 & Everywhere\: else 
+\end{cases}
+\label{eq:binom}
+\]
+The \({n \choose z}\) gives us the number of ways to get a value of z, and the \(p^z(1-p)^{n-z}\) gives us the probability for a single way. If we plugged our first example into this equation, then we get
+
+\[
+3 \times \frac{4}{27} = \frac{4}{9}
+\]
+as we observed before when we calculated the probability by hand. The binomial distribution is often referenced as \(B(n,p)\) - where \(n\) and \(p\) are parameters. To indicate the distribution of \(X\) we would write \(X \sim B(n,p)\), meaning \(X\) is a random variable with a binomial distribution, a.k.a., a binomial random variable. Not all distributions have a special symbol, but when they do we will also sometimes use the shorthand above.
+
+We now turn our attention to the expectation and variance of a binomial random variable. Our random variable - call it \(Z\) - is just the sum of \(n\) indepndent Bernoulli random variables with parameter \(p\), so the expectation is calculated as
+
+\[
+E(Z) = E(\sum_{i=1}^{n}X_i)
+\]
+And each of the \(X_i\)'s has \(E(X_i) = p\), so we would sum \(p\) a total of \(n\) times. That is,
+
+\[
+E(Z) = E(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p = np
+\label{eq:binomexpectation}
+\]
+
+where \(\sum_{i=1}^{n}p\) means that for each \(X_i\) we add another \(p\). The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is \(p(1-p)\), so
+
+\[
+Var(Z) = Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p(1-p) = np(1-p)
+\label{eq:binomvariance}
+\]
+
+We shall close this chapter out with a few more examples of the binomial distribution and its usefulness in calculating probabilities.
+
+\begin{example}
+Suppose there are 30 students in a particularly difficult course at College of Learning (a preeminent college). Over many many years, researchers at the college determined that the probability of passing this very difficult course is about .25. What is the probability of 0 students passing the course, and what is the probability of at least 1 student passing the course? What is the expectation of the number of students passing?
+
+This question looks like a problem the binomial distribution can solve. Here we have \(p = .25\) and \(n=30\). Our binomial distribution therefore looks like this:
+
+\[
+p(x) = 
+\begin{cases}
+{30 \choose z} .25^z(1-.25)^{30-z} & z = 0,1,...,30 \\
+0 & Everywhere\: else 
+\end{cases}
+\label{eq:binom}
+\]
+
+With regards to the first part of the question, we have \(z = 0\), and the probability is calculated
+
+\[
+P(Z = 1) = p(z) = {30 \choose 0} .25^z(1-.25)^{30-z}
+\]
+\end{example}
 
 \bibliography{book.bib,packages.bib}
 
