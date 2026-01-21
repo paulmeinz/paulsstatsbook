@@ -941,17 +941,17 @@ E(Z) = E(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p = np
 (\#eq:binomexpectation)
 $$
 
-where $\sum_{i=1}^{n}p$ means that for each $X_i$ we add another $p$. The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is $p(1-p)$, so
+where $\sum_{i=1}^{n}p$ means that for each $X_i$ we add another $p$, and as such, $E(X) = np$. The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is $p(1-p)$, so
 
 $$
 Var(Z) = Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p(1-p) = np(1-p)
 (\#eq:binomvariance)
 $$
 
-We shall close this chapter out with a few more examples of the binomial distribution and its usefulness in calculating probabilities. 
+For each random variable, we add a $p(1-p$, so $Var(Z) = np(1-p)$. Let's close this section out with a few examples of the binomial distribution. 
 
 ::: {.example}
-Suppose we are flipping 4 fair coins - each with $p=1/2$ probability of flipping heads. Further suppose that we assign $H$ the value of 1 and $T$ the value of zero, and sum the flipped outcomes up. Let's call this new random variable $Z$. What is the probability of flipping zero heads - $P(Z = 0)$? What is the probability of flipping _at least_ 1 head - $P(Z \geq 1)$? What are the expectation and variance of this new random variable $Z$.
+Suppose we are flipping 4 fair coins - each with $p=1/2$ probability of flipping heads. Further suppose that we assign $H$ the value of 1 and $T$ the value of zero, and sum the flipped outcomes. Our new random variable has a space of $\{0,1,2,3,4\}$. Let's call this new (binomial) random variable $Z$. In this case, what is the probability of flipping zero heads - $P(Z = 0)$? What is the probability of flipping _at least_ 1 head - $P(Z \geq 1)$? What are the expectation and variance of this new random variable $Z$.
 
 For the first part of the question, we have $n = 4$, $p = 1/2$, and $z = 0$, so let's plug these into the pmf for a binomial distribution. 
 
@@ -963,7 +963,7 @@ P(Z = 0) &= {4 \choose 0} 1/2^0(1-1/2)^{4-0} \\
 \end{align}
 $$
 
-Notice how the factors are the same for the top and bottom of $\frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}$. So we can cancel out all the common factors and get 1. Then
+Notice how the factors are the same for the top and bottom of $\frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}$, so we can cancel out all the common factors and get 1. Then
 
 $$
 \begin{align}
@@ -972,14 +972,24 @@ $$
 &= (1/2)^{4} = 1/16
 \end{align}
 $$
-where the last step follows because a number raised to the 0th power is 1. Therefore, $P(Z = 0) = 1/16$.
+where the last step follows because a number raised to the 0th power is 1. Therefore, $P(Z = 0) = 1/16$. The second part follows from this first part of the question. Let's call the space of our random variable $S = \{0,1,2,3,4\}$. Note that the set $\{Z \geq 1\} = \{1,2,3,4\}$ is the complement of $\{Z = 0\}$. Therefore, we can use equation \@ref(eq:pcomplement).
 
+$$
+P(Z \geq 1) = 1 - P(Z = 0) = 1 - 1/16 = 15/16
+$$
+Finally the expectation and variance of this random variable is
+
+$$
+E(Z) = np = 4(1/2) = 2
+Var(Z) = np(1-p) = 4(1/2)(1-1/2) = 1
+$$
+respectively.
 :::
 
 ::: {.example}
 Suppose there are 30 students in a particularly difficult course at College of Learning (a preeminent college). Over many many years, researchers at the college determined that the probability of passing this very difficult course is about .25. What is the probability of 0 students passing the course, and what is the probability of at least 1 student passing the course? What is the expectation of the number of students passing?
 
-This question looks like a problem the binomial distribution can solve. Here we have $p = .25$ and $n=30$. Our binomial distribution therefore looks like this:
+Here we have $p = .25$ and $n=30$. Our binomial distribution therefore looks like this:
 
 $$
 p(x) = 
@@ -993,7 +1003,16 @@ $$
 With regards to the first part of the question, we have $z = 0$, and the probability is calculated
 
 $$
-P(Z = 1) = p(z) = {30 \choose 0} .25^z(1-.25)^{30-z}
+\begin{align}
+P(Z = 0) &= {30 \choose 0} .25^0(1-.25)^{30-0} \\
+&=\frac{30!}{0!(30-0)!}(.75)^{30} \\
+&=\frac{30!}{30!}(.75)^{30} = .00019
+\end{align}
 $$
+$P(Z=0) = 0.00019$ (after some rounding), and we can proceed with the second part as we did in the last example.
 
+$$
+P(Z \geq 1) = 1 - P(Z=0) = 1 - 0.00019 = 0.99981
+$$
+Finally, the expectation of our random variable is $E(Z) = .25(30) = 7.5$.
 :::
