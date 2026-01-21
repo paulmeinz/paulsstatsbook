@@ -1016,3 +1016,38 @@ P(Z \geq 1) = 1 - P(Z=0) = 1 - 0.00019 = 0.99981
 $$
 Finally, the expectation of our random variable is $E(Z) = .25(30) = 7.5$.
 :::
+
+::: {.example}
+We'll close out the section with one final example that is a little less straight forward (but very interesting). Suppose a casino has a lottery with a $p = 1/100000$ chance to win. Multiple winners are possible, such that one person winning does not affect the odds of another person winning. There are 10000 gamblers who play this lottery every time. If these gamblers return to the casino every week for 10 years (520 weeks), what is the probability that at least one gambler wins this lottery twice during the period? 
+
+We will first need the probability that a single gambler wins the lottery twice. That is, if we call the number of wins $Z$ then we will need $P(Z \geq 2)$. To do this, we will calculate $P(Z=0)$ and $P(Z=1)$. Here we have $n = 520$ - corresponding to 520 weekly attempts over 10 years - and $p = 1/100000$, so
+
+$$
+P(Z=0) = p(0) = {520 \choose 0} \left(\frac{1}{100000}\right)^0\left(1-\frac{1}{100000}\right)^{520-0} \approx 0.99481\\
+P(Z=1) = p(1) = {520 \choose 1} \left(\frac{1}{100000}\right)^1\left(1-\frac{1}{100000}\right)^{520-1} \approx 0.00517
+$$
+Note that I've used a computer for these calculations, and if you wish to work through the problem yourself, I suggest you use one as well. In order to calculate $P(Z \geq 2)$, we proceed as in the previous examples.
+
+$$
+P(Z \geq 2) = 1 - (P(Z = 0) + P(Z=1)) = 1 - .99998 = 0.00002
+$$
+Now many people might stop there, and conclude that the probability we seek is $0.00002$. However, we aren't looking for the probability that a _single_ person wins the casino lottery, we are looking for the probability that one person out of the 10000 weekly gamblers wins twice. Now we have another binomial distribution, this time each gambler is a Bernoulli random variable - each with $p = 0.00002$ of winning the lottery twice. 
+
+First let's calculate the probability that no gamblers win twice. With $p = 0.00002$ and $n = 10000$,
+
+$$
+p(0) = {10000 \choose 0} (0.00002)^0(1-0.00002)^{10000-0} \approx 0.81873
+$$
+Therefore, the probability that 1 or more gamblers wins this lottery twice is
+
+$$
+1 - 0.81873 = 0.18127
+$$
+Indeed, that is a low probability, but it is much much higher than the probability for a single person. Sometimes during the chaotic news cycle, we catch the story of an individual who won some lottery twice. Our minds jump directly to the probability of an individual winning the lottery. It's a perfectly human thing to do, but the probability is indeed much higher when considering the entire population of lottery players. Isn't that interesting!? And we've learned it all thanks to the binomial distribution.
+
+:::
+
+### The poisson distribution
+The poisson distribution is the pmf of a random variable representing the count of something in a fixed time period - e.g. the number of people entering a building  in an hour, the number of requests recieved in a week, etc. Here we shall refer to a random variable with a poisson distribution as a poisson random variable. As you will see this is also one of my favorite distributions (although you are probably noticing by now that nearly every distribution is one of my favorite distributions). The neat thing about the poisson distribution is it is derived entirely from the binomial distribution. We will unpack the intuition here.
+
+Suppose we were interested in counting the number of cars that pass through an intersection in a given day.
