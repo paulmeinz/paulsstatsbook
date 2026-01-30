@@ -68,6 +68,8 @@ eq:binomexpectation
 eq:binomvariance
 exm:unlabeled-div-30
 exm:unlabeled-div-31
+exm:unlabeled-div-32
+eq:poisson
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -89,3 +91,4 @@ the-variance-of-a-discrete-random-variable
 some-common-discrete-distributions
 the-bernoulli-distribution
 the-binomial-distribution
+the-poisson-distribution
