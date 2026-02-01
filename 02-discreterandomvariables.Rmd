@@ -948,7 +948,7 @@ Var(Z) = Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p(1-p) = np(1-p)
 (\#eq:binomvariance)
 $$
 
-For each random variable, we add a $p(1-p$, so $Var(Z) = np(1-p)$. Let's close this section out with a few examples of the binomial distribution. 
+For each random variable, we add a $p(1-p)$, so $Var(Z) = np(1-p)$. Let's close this section out with a few examples of the binomial distribution. 
 
 ::: {.example}
 Suppose we are flipping 4 fair coins - each with $p=1/2$ probability of flipping heads. Further suppose that we assign $H$ the value of 1 and $T$ the value of zero, and sum the flipped outcomes. Our new random variable has a space of $\{0,1,2,3,4\}$. Let's call this new (binomial) random variable $Z$. In this case, what is the probability of flipping zero heads - $P(Z = 0)$? What is the probability of flipping _at least_ 1 head - $P(Z \geq 1)$? What are the expectation and variance of this new random variable $Z$.
@@ -1054,7 +1054,7 @@ Suppose we were interested in counting the number of cars that pass through an i
 
 If the probability (call it $p_1$) of a car appearing in an interval is constant across the intervals, and the occurrence of a car doesn't change the likelihood another car will appear later (the car appearance events are independent), then you can think of our counting method as a binomial distribution. In this case, we would have a random variable with a $B(10,p)$ distribution because we would be summing 10 Bernoulli random variables. However, if you are tracking to this point, you will probably have noticed that *this is not a very good way to count*. You would end up counting a maximum of 10 cars, and if more than one car appeared during an interval 10 could certainly be an underestimate.
 
-We could make our counting a little more accurate if we increased the number of intervals - say to 20. In this case the interval would be shortened, so the probability that a car appeared in a given interval would get smaller. That is, we now have a random variable with a $B(20, p_2)$ where $p_2 < p_1$. This is *still not a very good way to count*, but it is a little bit better. Because our interval is smaller, the chance that two cars appear during the same interval is reduced, and furthermore, we can now get a maximum of 20 cars if a car appears in each interval.
+We could make our counting a little more accurate if we divided the time period into more intervals - say to 20. In this case the intervals would be shortened, so the probability that a car appeared in a given interval would get smaller. That is, we now have a random variable with a $B(20, p_2)$ where $p_2 < p_1$. This is *still not a very good way to count*, but it is a little bit better. Because our interval is smaller, the chance that two cars appear during the same interval is reduced, and furthermore, we can now get a maximum of 20 cars if a car appears in each interval.
 
 Suppose we continue with this logic of splitting the time period into smaller and smaller intervals - e.g. $B(30, p_3)$, $B(100, p_4)$, $B(1000, p_5)$ with $p_5 < p_4 < p_3 < p_2 < p_1$, and so on. Eventually, we would make the intervals so small that the occurrence of two cars in the same interval would be virtually impossible. Our method would then be equivalent to a count of cars over the time period.
 
@@ -1070,7 +1070,9 @@ P(X = x) = p(x) =
 \end{cases}
 (\#eq:poisson)
 $$
-Where $\lambda$ is the average rate of appearance over the fixed time period in question - e.g. the average number of cars that appear over the time period, the average number of people entering a building over a time period, etc. At an abstract level, if we think about the binomial distributions with more and more intervals, $\lambda$ is the expectation of a binomial distribution with a very very large number of intervals and a very small $p$. Moreover, recall that $e$ represents a special number that can be found on most calculators. It is roughly equal to 2.71828. You should not memorize this number. You should just use your calculator. 
+Where the parameter $\lambda$ is the average rate of appearance over the fixed time period in question - e.g. the average number of cars that appear over the time period, the average number of people entering a building over a time period, etc. At an abstract level, if we think about the binomial distributions with more and more intervals, $\lambda$ is the expectation of a binomial distribution with a very very large number of intervals and a very small $p$. Moreover, recall that $e$ represents a special number that can be found on most calculators. It is roughly equal to 2.71828. You should not memorize this number. You should just use your calculator. 
+
+Note one further thing about our poisson random variable. Specifically, the support of random variable with a poisson distribution is any integer greater than, or equal to, zero. As such, we have finally arrived at an example of a discrete random variable with a space that is discrete and countable, but infinite. We will have to get clever in calculating certain probabilities with the poisson pmf, and the examples we work through later will elucidate this. 
 
 Indeed, I'll admit that the poisson pmf doesn't look much like a binomial distribution. You can rest assured that it is derived from the binomial, however. There are a couple of "rigorous" (I try to avoid this word for our purposes but sometimes it's unavoidable) derivations of the binomial distribution that you will encounter if you journey in mathematics beyond this book. They are a wonderful demonstration of how mathematics can be made arbitrarily difficult. The first could be grasped by Calculus 1 student, and the second would require some background in differential equations and a lot of patience. Both are very interesting.
 
@@ -1079,5 +1081,47 @@ The expectation and variance of random variable with a poisson distribution are 
 $$
 E(X) = Var(X) = \lambda
 $$
-In words, the variance and expectation of $X$ are equal to our lower-case lambda.
+In words, the variance and expectation of $X$ are equal to our lower-case lambda. Having specified the poisson pmf, variance, and expectation, let's work out some examples.
 
+::: {.example}
+Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of _at least one_ car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
+
+We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable $X$. Here we have an average rate - $\lambda = 10$, and the first question asks what is $P(X = 10)$. So
+
+$$
+\begin{align}
+p(10) = \frac{\lambda^{10}}{10!} e^{-\lambda} &= \frac{10^{10}}{10!} e^{-10} \\
+&= \frac{10\cdot10^{9}}{10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
+&= \frac{10^{9}}{9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
+&= \frac{10^{9}}{9!} e^{-10} = 0.12511
+\end{align}
+$$
+Thus, $P(X = 10) = 0.12511$. The second part of the question is a bit tricky, but we shall implement a strategy we saw demonstrated in the examples for the binomial distribution. Here we are seeking to calculate $P(X\geq1)$. Our random variable is countably infinite, so we can't just calculate probabilities for each value greater than zero and sum them. However, recall that the poisson distribution is a pmf, and one of the properties of a pmf is that - given the space of a random variable ($S$) - then $P(S) = 1$. Therefore,
+
+$$
+\begin{align}
+P(X\geq1) &= 1 - P(X = 0) \\
+&= 1 - \frac{10^{0}}{0!} e^{-10} \\
+&= 1 - \frac{1}{1} e^{-10} = 0.9999546
+\end{align}
+$$
+In other words, there's a pretty strong chance you'll see at least one car between 5pm and 6pm at the intersection.
+
+Finally, we shall make quick work of the last part of the question. Now that we know we are working with a poisson random variable, we know that the mean and variance are each equal to $\lambda$. Thus, $E(X) = Var(X) = 10$.
+:::
+
+As we noted before, the parameter $\lambda$ may be thought of as the expectation of a binomial random variable with a very large $n$ and a small $p$. Therefore, may not be surprised to learn that we can sometimes approximate particularly difficult binomial calculations with a poisson pmf. 
+
+::: {.example}
+Suppose we want to calculate ${1000 \choose 1} .001^{1}(1-.001)^{1000-1}$. You'll hopefully recognize this by now as the calculation of $P(X=1)$ for $X \sim B(1000,.001)$. In this case, $n$ is large and $p$ is small, so we can use a poisson distribution to approximate the computation. For the exact calculation we have
+
+$$
+{1000 \choose 1} .001^{1}(1-.001)^{1000-1} = 0.3680635
+$$
+First, we can calculate the $\lambda$ we need by calculating the expectation of our binomial distribution. That is $E(X) = 1000(.001) = 1$. In other words, if our binomial random variable represented an fixed amount of time divided into 1000 intervals - each with $p = .001$ of an event occurring, then the average number of events would be 1. We will therefore use $\lambda = 1$ in our approximation. So
+
+$$
+\frac{1^{1}}{1!} e^{-1} = 0.3678794
+$$
+which is indeed very close to the actual value of our binomial computation.
+:::
