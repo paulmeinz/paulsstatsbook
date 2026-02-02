@@ -1125,3 +1125,46 @@ $$
 $$
 which is indeed very close to the actual value of our binomial computation.
 :::
+
+### Practice Problems
+1. What is the expectation of a random variable with space = $\{0,1\}$ and $p = .15$ of the random process resulting in one?
+
+2. Suppose we have three independent random variables as in problem 1 above. What is the expectation of their sum, and what is the variance of their sum?
+
+3. Given five coins, how many different ways can you flip exactly 2 heads? If the probability of flipping heads on each coin is .5, what is the probability of one of the aforementioned ways? What if the probability of getting heads were $p = .25$ on each coin?
+
+4. How many different ways can you draw 5 cards from a deck of 52 cards? (Hint: This is a bit outside the scope of the current discussion. Think about a novel way of "drawing" cards where you throw the deck up in the air and count the number of cards that land face up.)
+
+5. Suppose the probability of winning a bingo game is .10. A particularly exciting person plays 20 games of bingo. What is the probability they they win zero games? What is the probability that they win *at least* one game?
+
+6. Suppose June the cat goes outside 3 times a day - seven days a week. When she goes outside, she has a probability of .20, that she'll catch a moth. What is the probability that she catches two or more moths in a day? What is the expected value and variance of the number of moths June will catch in a day?
+
+7. From the last problem, determine the probability that June has at least 1 day in a week where she catches two moths (a.k.a. a very good day for an apex predator)?
+
+8. A researcher goes into the quad at the same time every day and counts students who pass left-to-right over a specific point. Over many observational periods, She has determined that, on average, 20 students pass over the point. What is the probability that 10 students pass over the point in a given observational period? What is the expectation and variance of this random variable? 
+
+9. In the problem above, suppose that a second researcher counts students who pass right-to-left during the same observational period. He finds that 5 students on average pass right to left during the period. Given this information, what is the expected value of the count of students passing over the point - regardless of direction?
+
+10. Estimate the probability of a sum of 4 from random variable with $X \sim B(10000,.0001)$.
+
+### Practice Problem Answers
+
+1. $0.15$
+
+2. $0.45$, $0.3825$
+
+3. $10$, $.5^5$, $.25^2\cdot.75^3$ 
+
+4. $2598960$
+
+5. $0.12158$, $0.87842$
+
+6. $0.104$, $0.6$, $0.48$
+
+7. $0.53637$
+
+8. $0.00582$, $20$, $20$
+
+9. $E(X_{left}) + E(X_{right}) = 20 + 5 = 25$
+
+10. $0.01533$
