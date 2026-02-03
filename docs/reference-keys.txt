@@ -94,3 +94,5 @@ some-common-discrete-distributions
 the-bernoulli-distribution
 the-binomial-distribution
 the-poisson-distribution
+practice-problems
+practice-problem-answers
