@@ -1,0 +1,45 @@
+# Continuous Random Variables
+In the last chapter, we learned about discrete random variables, expectation and variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most special and wonderful distributions, which, for some reason, has a very benign name - the normal distribution.
+
+## Probability Density and the Continuous Random Variable
+We'll begin this discussion with a demonstration of the difficulty in describing probability for continuous random variables. Suppose we are trying to define a probability distribution for a continuous random variable that has it's support on the values - $0 \leq X \leq 1$. In the last section, we described a method for defining a pmf where we take a probability mass of 1 and spread it around over the support of the values of $X$. Then, for all the $n$ values in the support of $X$, we can sum them up to the value of 1, e.g.,
+
+$$
+\sum_{i = 1}^{n} p(x_i) = 1
+$$
+
+As it turns out, we can't do this for continuous variables because, unlike discrete random variables, the values in their space aren't countable. Turning our attention back to our random variable with space $0 \leq X \leq 1$, let's try to count all the values between 0 and 1. Suppose we enumerate (or believe we have enumerated) all the values, e.g.,
+
+$$
+0.12345...\\
+0.23467...\\
+0.24777...\\
+0.86672...\\
+0.99952...
+$$
+
+We line our list up with the natural numbers and believe that we can count the numbers between zero and one. 
+
+$$
+1) \:\: 0.12345...\\
+2) \:\: 0.23467...\\
+3) \:\: 0.24777...\\
+4) \:\: 0.86672...\\
+5) \:\: 0.99952...
+$$
+
+But to our surprise (or maybe to our non-surprise) there will *always* be a number we missed during our enumeration. Note the underlined numbers in our list below.
+
+$$
+1) \:\: 0.\underline{1}2345...\\
+2) \:\: 0.2\underline{3}467...\\
+3) \:\: 0.24\underline{7}77...\\
+4) \:\: 0.866\underline{7}2...\\
+5) \:\: 0.9995\underline{2}...
+$$
+
+We specify a new number $0.abcde$ such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we make sure that $a \neq 1$, $b \neq 3$, $c \neq 7$, $d \neq 7$, and $e \neq 2$. This ensures that our number is different from any number in the list above because its first digit differs from that of the first number, second digit differs from that of the second number, and so on. This means that no matter how certain we were in our enumeration, we would always have to go back and account for a newly discovered number. Thus, the numbers between and including 0 and 1 are not countable.
+
+The logic described above can be attributed to Georg Cantor - a famous set theory mathematician. Why is it important for our purposes? Well, it tells us that we can't assign probabilities to every value in a range of 0 and 1 such that $\sum_{i = 1}^{n} p(x_i) = 1$. The values between and including 0 and 1 *aren't countable* and therefore we'll have little luck describing them with a summation. 
+
+

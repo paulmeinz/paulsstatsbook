@@ -1048,19 +1048,19 @@ Indeed, that is a low probability, but it is much much higher than the probabili
 :::
 
 ### The poisson distribution
-The poisson distribution is the pmf of a random variable representing the count of something in a fixed time period - e.g. the number of people entering a building in an hour, the number of requests received in a week, etc. Here we shall refer to a random variable with a poisson distribution as a poisson random variable. As you will see, the poisson distribution is strongly related to the binomial distribution. In fact, it's derived from it. We will unpack the intuition here.
+The poisson distribution is the pmf of a random variable representing the count of something in a fixed time period - e.g. the number of people entering a building in an hour, the number of requests received in a week, etc. Here we shall refer to a random variable with a poisson distribution as a poisson random variable. As you will see, the poisson distribution is related to the binomial distribution. In fact, it's derived from it. We will unpack the intuition here.
 
 Suppose we were interested in counting the number of cars that pass through an intersection during the same 1 hour period every Monday. Let's further suppose that we aren't particularly good at counting, so instead we divide the time period into 10 equal intervals. If a car appears during an interval we assign a 1 to the interval and wait for the next interval to start. It doesn't matter how many cars appear in a given interval. We simply assign the interval a 1 if *any number* of cars appear. Otherwise, we assign a zero. At the end we sum up all our 1's and 0's across the intervals to get a count of cars.
 
-If the probability (call it $p_1$) of a car appearing in an interval is constant across the intervals, and the occurrence of a car doesn't change the likelihood another car will appear later (the car appearance events are independent), then you can think of our counting method as a binomial distribution. In this case, we would have a random variable with a $B(10,p)$ distribution because we would be summing 10 Bernoulli random variables. However, if you are tracking to this point, you will probably have noticed that *this is not a very good way to count*. You would end up counting a maximum of 10 cars, and if more than one car appeared during an interval 10 could certainly be an underestimate.
+If the probability (call it $p_1$) of a car appearing in an interval is constant across the intervals, and the occurrence of a car doesn't change the likelihood another car will appear later (the car appearance events are independent), then you can think of our counting method as a binomial distribution. In this case, we would have 10 Bernoulli random variables reflecting each interval - each with the same probability of a car appearing. Our sum would therefore be a random variable with a $B(10,p)$ distribution. However, if you are tracking to this point, you will probably have noticed that *this is not a very good way to count*. You would end up counting a maximum of 10 cars, and if more than one car appeared during an interval 10 could certainly be an underestimate.
 
 We could make our counting a little more accurate if we divided the time period into more intervals - say to 20. In this case the intervals would be shortened, so the probability that a car appeared in a given interval would get smaller. That is, we now have a random variable with a $B(20, p_2)$ where $p_2 < p_1$. This is *still not a very good way to count*, but it is a little bit better. Because our interval is smaller, the chance that two cars appear during the same interval is reduced, and furthermore, we can now get a maximum of 20 cars if a car appears in each interval.
 
-Suppose we continue with this logic of splitting the time period into smaller and smaller intervals - e.g. $B(30, p_3)$, $B(100, p_4)$, $B(1000, p_5)$ with $p_5 < p_4 < p_3 < p_2 < p_1$, and so on. Eventually, we would make the intervals so small that the occurrence of two cars in the same interval would be virtually impossible. Our method would then be equivalent to a count of cars over the time period.
+Suppose we continue with this logic of splitting the time period into smaller and smaller intervals - e.g. $B(30, p_3)$, $B(100, p_4)$, $B(1000, p_5)$ with $p_5 < p_4 < p_3 < p_2 < p_1$, and so on. Eventually, we would make the intervals so small that the occurrence of two cars in the same interval would be virtually impossible. Our method would then be equivalent to a count of cars over the time period (of course at this point we may question whether or not our interval method is actually easier than counting).
 
-This is the fundamental logic behind the poisson distribution. We divide up a fixed amount of time into an infinite (or extraordinarily large) number of intervals and we treat each interval - with very small probability $p$ that an event will occur - as a Bernoulli random variable. The sum of these Bernoulli random variables would reflect a count because the intervals are so small such that the chance of two events occurring in the same interval is virtually zero.
+This is the fundamental logic behind the poisson distribution. We divide up a fixed amount of time into an infinite (or extraordinarily large) number of intervals and we treat each interval - with very small probability $p$ that an event will occur - as a Bernoulli random variable. The sum of these Bernoulli random variables reflects a count because the intervals are so small such that the chance of two events occurring in the same interval is virtually zero.
 
-With the above in mind, suppose we have a random variable $X$ that represents the count of something. The pmf of this random variable is
+With the above in mind, suppose we have a random variable $X$ that represents the count of something. The pmf of this poisson random variable is
 
 $$
 P(X = x) = p(x) = 
@@ -1081,12 +1081,12 @@ The expectation and variance of random variable with a poisson distribution are 
 $$
 E(X) = Var(X) = \lambda
 $$
-In words, the variance and expectation of $X$ are equal to our lower-case lambda. Having specified the poisson pmf, variance, and expectation, let's work out some examples.
+In words, the variance and expectation of $X$ are equal to our lower-case lambda. 
 
 ::: {.example}
 Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of _at least one_ car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
 
-We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable $X$. Here we have an average rate - $\lambda = 10$, and the first question asks what is $P(X = 10)$. So
+We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable $X$. Here we have an average rate - $\lambda = 10$, and the first part asks what is $P(X = 10)$. So
 
 $$
 \begin{align}

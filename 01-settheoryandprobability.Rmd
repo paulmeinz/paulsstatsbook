@@ -25,7 +25,7 @@ $$
 
 The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. Note that I will occasionally drop the $x$ and $|$ when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth. 
 
-That said, it is time to turn our attention towards the outcome of our random experiment. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. The _outcome_ of our experiment is a single item from our sample space, and we will talk about outcomes in terms of _events_. Events are described by a *subset* of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might say the event is $C = \{A, B, C\}$, and if our outcome lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will referred to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset by:
+That said, it is time to turn our attention towards the outcome of our random experiment. Suppose we are randomly drawing a single item from our sample space $S = \{A, B, C, D, E\}$. The _outcome_ of our experiment is a single item from our sample space, and we will talk about outcomes in terms of _events_. Events are described by a *subset* of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might say the event is $C = \{A, B, C\}$, and if our outcome lands in the that subset (as either A, B, or C), then we shall say the event "occurred". For the sake of brevity, and positivity, I will refer to the occurrence of an event as a "success" (congratulations all around!). You can indicate a set is a subset by:
 
 $$ C \subset S 
 (\#eq:subset) $$
@@ -49,7 +49,7 @@ This *union operator* ($\cup$) takes the unique elements of both sets and puts t
 Here's another example, suppose we are interested in if our outcome falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the element was A or B:
 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
-Our random experiment would be successful if our outcome was A OR B. 
+Our random experiment would be successful if the outcome was A OR B. 
 :::
 
 Indeed, the union operator helps us figure out the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important operator. 
