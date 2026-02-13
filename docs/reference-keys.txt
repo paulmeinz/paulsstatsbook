@@ -96,3 +96,5 @@ the-binomial-distribution
 the-poisson-distribution
 practice-problems
 practice-problem-answers
+continuous-random-variables
+probability-density-and-the-continuous-random-variable
