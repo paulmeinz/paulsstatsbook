@@ -23,7 +23,7 @@ Note that $P(X = x)$ and $p(x)$ mean the same thing - hence the equal sign. Afte
 
 1. All the outcomes $x$ in the space of $X$ have a probability $0 \leq p(x) \leq 1$. That is, all the outcomes in the space of $X$ must have a probability from 0 to 1. The set of outcomes for which $p(x) > 0$ is called the **support** of $X$.
 
-2. Given the space $S$ of a random variable, $P(S)$ = 1. In other words, if we are conducting a random experiment by drawing a value from the space of $X$ (the set of all numeric outcomes for $X$), the probability that it lands in $S$ is 1. This hearkens back to \@ref(eq:setprop) in the previous section.
+2. Given $n$ outcomes in the space of $X$, the sum of their probabilities equals 1 - e.g., $p(x_1)\:+...+\:p(x_n) = 1$. In other words, if we are conducting a random experiment by drawing a value from the space of $X$ (the set of all numeric outcomes for $X$), the probability that it lands in $S$ is 1. This hearkens back to \@ref(eq:setprop) in the previous section.
 
 In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of $X$). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. In this case, each outcome would have a probability from 0 to 1, and these values would sum to 1. 
 
