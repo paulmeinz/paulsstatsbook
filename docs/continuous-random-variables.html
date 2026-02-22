@@ -149,37 +149,52 @@ statistics course.|</p>" />
 <p>In the last chapter, we learned about discrete random variables, expectation and variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most special and wonderful distributions, which, for some reason has a very benign name - the normal distribution.</p>
 <div id="probability-density-and-the-continuous-random-variable" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Probability Density and the Continuous Random Variable<a href="continuous-random-variables.html#probability-density-and-the-continuous-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We’ll begin this discussion with a demonstration of the difficulty in describing probability for continuous random variables. Suppose we are trying to define a probability distribution for a continuous random variable that has it’s support on the values - <span class="math inline">\(0 \leq X \leq 1\)</span>. Here we are referring to support as we have for discrete random variables: All the outcomes in this range have <span class="math inline">\(p(x) &gt; 0\)</span>. In the last section, we described a method for defining a pmf where we take a probability mass of 1 and spread it around over the support of the values of <span class="math inline">\(X\)</span>. Recall that one of the properties of a probability mass function was that, for <span class="math inline">\(n\)</span> outcomes in the space of a discrete variable <span class="math inline">\(X\)</span>,</p>
+<p>We’ll start our discussion by highlighting the difficulty in describing probability for continuous random variables. Suppose we are trying to define a probability distribution for a continuous random variable that has some probability for each value in - <span class="math inline">\(0 \leq X \leq 1\)</span>. That is, all the outcomes in the range from 0 to 1 (including 0 and 1) have <span class="math inline">\(p(x) &gt; 0\)</span>. Further suppose that we proceed as we would for a discrete random variable. That is, we take a probability mass of 1 and spread it around over the support of the values of <span class="math inline">\(X\)</span>.</p>
+<p>Because of the properties of a pmf, we would need to make sure that for all the <span class="math inline">\(n\)</span> outcomes in the space of <span class="math inline">\(X\)</span>,</p>
 <p><span class="math display">\[
 \sum_{i = 1}^{n} p(x_i) = 1
 \]</span></p>
-<p>We might be inclined to create a probability distribution with the same property for our continuous random variable. As it turns out, we can’t do this for continuous variables because because the values in their space aren’t countable. Turning our attention back to our random variable with space <span class="math inline">\(0 \leq X \leq 1\)</span>, let’s try to count all the values between 0 and 1. Suppose we enumerate (or believe we have enumerated) all the values, e.g.,</p>
+<p>As it turns out, we can’t do this for continuous variables because the values in their space aren’t countable. In other words, we can’t list out all the values of a continuous random variable, and therefore, it’s not possible to ensure this property holds. Let’s dig into this a little further to make it clearer. Turning our attention back to our random variable with space <span class="math inline">\(0 \leq X \leq 1\)</span>, let’s try to count all the values between 0 and 1. Suppose we enumerate (or believe we have enumerated) all the values, e.g.,</p>
 <p><span class="math display">\[
-0.12345...\\
-0.23467...\\
-0.24777...\\
-0.86672...\\
-0.99952...
+0.123451...\\
+0.234672...\\
+0.247773...\\
+0.866724...\\
+0.999525...
 \]</span></p>
 <p>We line our list up with the natural numbers and begin counting the numbers between zero and one.</p>
 <p><span class="math display">\[
-1) \:\: 0.12345...\\
-2) \:\: 0.23467...\\
-3) \:\: 0.24777...\\
-4) \:\: 0.86672...\\
-5) \:\: 0.99952...
+1) \:\: 0.123451...\\
+2) \:\: 0.234672...\\
+3) \:\: 0.247773...\\
+4) \:\: 0.866724...\\
+5) \:\: 0.999525...
 \]</span></p>
 <p>But to our surprise (or maybe to our non-surprise) there will <em>always</em> be a number we missed during our enumeration. Note the underlined numbers in our list below.</p>
 <p><span class="math display">\[
-1) \:\: 0.\underline{1}2345...\\
-2) \:\: 0.2\underline{3}467...\\
-3) \:\: 0.24\underline{7}77...\\
-4) \:\: 0.866\underline{7}2...\\
-5) \:\: 0.9995\underline{2}...
+1) \:\: 0.\underline{1}23451...\\
+2) \:\: 0.2\underline{3}4672...\\
+3) \:\: 0.24\underline{7}773...\\
+4) \:\: 0.866\underline{7}24...\\
+5) \:\: 0.9995\underline{2}5...
 \]</span></p>
-<p>We can specify a new number <span class="math inline">\(0.abcde\)</span> such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we make sure that <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(b \neq 3\)</span>, <span class="math inline">\(c \neq 7\)</span>, <span class="math inline">\(d \neq 7\)</span>, and <span class="math inline">\(e \neq 2\)</span>. Thus the first digit differs from that of the first number in our list, the second digit differs from that of the second number in our list, and so on. Our number is therefore different from each of the enumerated numbers. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number. They simply cannot be counted.</p>
-<p>The logic described above can be attributed to Georg Cantor - a famous set theory mathematician. It is indeed intriguing, but why is it important for our purposes? Well, it tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes because the outcomes aren’t countable. And, therefore, a pmf for a continuous random variable would fail the property that <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
-<p>As it turns out, we will define continuous probability by assigning probability to <em>ranges</em> of our random variable. We do this by assigning what is called a <strong>probability density</strong> to each value of our continuous random variable.</p>
+<p>We can specify a new number <span class="math inline">\(0.abcde\)</span> such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(b \neq 3\)</span>, <span class="math inline">\(c \neq 7\)</span>, <span class="math inline">\(d \neq 7\)</span>, and <span class="math inline">\(e \neq 2\)</span>. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number. They simply cannot be counted.</p>
+<p>The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing, but why is it important for our purposes? Well, it tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes because we can’t list out the outcomes. And, therefore, we couldn’t ensure we’ve attained the important property of <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
+<p>As it turns out, we get around this conundrum by assigning probabilities to <em>ranges</em> of our continuous random variable. We do this with a <strong>probability density function</strong>. A probability density function describes the amount of probability per unit <span class="math inline">\(x\)</span> at a given point. This is not an immediately accessible point, so we’ll dig deeper into this concept as we have in the past - through an example. Let’s define a probability density function</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+1 &amp; 0 \leq x \leq 1 \\
+0 &amp; Everywhere \: else
+\end{cases}
+\]</span></p>
+<p>This function assigns a value of 1 probability density to any value - <span class="math inline">\(0 \leq x \leq 1\)</span>. Anywhere else it assigns a value of 0. Thus, suppose our value of <span class="math inline">\(x - .1\)</span>, then</p>
+<p><span class="math display">\[
+f(.1) = 1
+\]</span></p>
+<p>Let’s refer to units of probability mass with the abbreviation - <span class="math inline">\(pm\)</span> - and let’s assume that the units of <span class="math inline">\(x\)</span> are <span class="math inline">\(u\)</span> (short for units of x). The value of 1 from the equation above has the units <span class="math inline">\(pm/u\)</span>, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point <span class="math inline">\(x = .1\)</span>. Now let’s talk about how such a function assigns probability to a range of x. First, let’s take a look at the plot of our probability density function</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Indeed, it is a very boring plot - just a straight line.</p>
 
 </div>
 </div>
