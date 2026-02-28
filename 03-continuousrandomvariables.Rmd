@@ -1,8 +1,8 @@
 # Continuous Random Variables
-In the last chapter, we learned about discrete random variables, expectation and variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most special and wonderful distributions, and it has a very benign name: The normal distribution.
+In the last chapter, we learned about discrete random variables, expectations, variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most useful, prolific, and oddly named distributions: The normal distribution.
 
 ## Probability Density and the Continuous Random Variable
-Before we jump into the definition of a continuous random variable, it is important to highlight the difficulty in describing their probability distributions. Suppose we are trying to define a probability distribution for a continuous random variable that has some probability for each value in - $0 \leq X \leq 1$. That is, all the outcomes in the range from 0 to 1 (including 0 and 1) have $p(x) > 0$. Further suppose that we proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over the support of the values of $X$. That is to say, we want to define a probability mass function for our continuous random variable.  
+Before we jump into the definition of a continuous random variable, we will need to take a dive into describing probability for a continuous set of outcomes. As you will see, it turns out to be less straight forward. Suppose we are trying to define a probability distribution for a set of outcomes - e.g., $0 \leq X \leq 1$. That is, we want all the outcomes in the range from 0 to 1 (including 0 and 1) to have $p(x) > 0$. Further suppose that we proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over of the values in the range. That is to say, we want to define a probability mass function for our continuous random variable.  
 
 Take a moment to glance back and the properties of a discrete random variable (if you don't remember them). Specifically, over the $n$ outcomes in the space of $X$, a pmf must have
 
@@ -10,17 +10,13 @@ $$
 \sum_{i = 1}^{n} p(x_i) = 1
 $$
 
-As it turns out, we can't do this for continuous variables because the values in their space aren't countable. That is, we can't list them out in an orderly fashion (e.g. like we could for the Bernoulli, binomial, and poisson distributions). And, because of this fact, there's just no way to ensure that we've satisfied the property listed above. Let's dig into this a little further to make it clear. Turning our attention back to our random variable with space $0 \leq X \leq 1$, let's try to count all the values between 0 and 1. Suppose we enumerate (or believe we have enumerated) all the values, e.g.,
+As it turns out, this property will be quite difficult to attain - because the values in a continuous range aren't countable. That is, we can't list them out in an orderly fashion (e.g. like we could for the Bernoulli, binomial, and poisson distributions). Let's dig into this a little further to make it clear. Turning our attention back to our random variable with space $0 \leq X \leq 1$, let's try to count all the values between 0 and 1. Suppose we've listed (or believe we have listed) all the values in the range, e.g.,
 
 $$
-0.123451...\\
-0.234672...\\
-0.247773...\\
-0.866724...\\
-0.999525...
+0.123451..., \:0.234672...,\:0.247773...,\:0.866724...,\:0.999525...
 $$
 
-We line our list up with the natural numbers and begin counting the numbers between zero and one. 
+We line our list up with the natural numbers and begin counting. 
 
 $$
 1) \:\: 0.123451...\\
@@ -42,9 +38,9 @@ $$
 
 We can specify a new number $0.abcde$ such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that $a \neq 1$, $b \neq 3$, $c \neq 7$, $d \neq 7$, and $e \neq 2$. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would *always work*. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.
 
-The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing, but why is it important for our purposes? Well, it tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - $p(x_1)$ - over the set of outcomes because we can't list out the outcomes. And, therefore, we couldn't ensure we've attained the important property of $\sum_{i = 1}^{n} p(x_i) = 1$.  
+The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? Well, it tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - $p(x_1)$ - over the set of outcomes because we can't list them out. And, therefore, we can't ensure we've attained the important property of $\sum_{i = 1}^{n} p(x_i) = 1$.  
 
-As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable. We do this with a **probability density function**. A probability density function describes the amount of probability per unit $x$ at a given point. This point may not be immediately understandable, so we'll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function
+As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable, and we do this with a **probability density function**. A probability density function describes the amount of probability per unit $x$ at a given point in a continuous range. We'll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function
 
 $$
 f(x) = 
@@ -54,22 +50,25 @@ f(x) =
 \end{cases}
 $$
 
-This function assigns a value of 1 probability density to any value - $0 \leq x \leq 1$. Anywhere else it assigns a value of 0. Let's refer to units of probability mass with the abbreviation - $pm$ - and let's assume that the units of $x$ are $u$ (short for units of x). Suppose our value of $x - .1$, then
+This function assigns a value of 1 probability density to any value - $0 \leq x \leq 1$. Anywhere else it assigns a value of 0. Let's refer to units of probability mass with the abbreviation - $pm$ - and let's assume that the units of $x$ are $u$ (short for units of x). Suppose our value of $x = .25$, then
 
 $$
 f(.25) = 1 
 $$
 
-The value of 1 from the equation above has the units $pm/u$, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point $x = .1$. Now let's talk about how such a function assigns probability to a range of x. First, let's take a look at the plot of our probability density function
+The value of 1 from the equation above has the units $pm/u$, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point $x = .1$. Now let's talk about how such a function assigns probability to a range of x. First, let's take a look at the plot of our probability density function.
 
 ```{r, echo = FALSE}
-a <- data.frame(x = c(0), 
-                y = c(1),
-                x_end = 1,
-                y_end = 1)
+a <- data.frame(x = c(0,1), 
+                y = c(1,0),
+                x_end = c(1,1.5),
+                y_end = c(1,0))
 
 b <- data.frame(x = c(0,1), 
                 y = c(1,1))
+
+d <- data.frame(x = c(1), 
+                y = c(0))
                 
 
 ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
@@ -77,20 +76,21 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
   ggplot2::scale_y_continuous(limits = c(0,2)) +
   ggplot2::scale_x_continuous(limits = c(0,1.5)) +
   ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
-  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y))
+  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
 
 
 ```
 
-Indeed, it is a very boring plot - just a straight line - but hold onto your shorts. We're going to calculate an area under that line! Let's calculate the area/space under the line from $0 \leq x \leq .25$. Take a look at the plot below for clarity. We are going to calculate the area of the rectangle with $f(x)$ as the top, the origin as the bottom, and sides at $x = 0$ and $x = .1$, respectively. 
+Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under the $f(x)$ line from $0 \leq x \leq .25$. Take a look at the plot below for clarity. Note the rectangle with diagonal lines through it. We are going to calculate the area of this rectangle - with $f(x)$ as the top, the origin as the bottom, and sides at $x = 0$ and $x = .25$, respectively. 
 
 ```{r, echo = FALSE}
 
 a <- seq(-.25,1, by = .05)
-b <- data.frame(x = c(0,.25,0,0), 
-                y = c(1,0,0,0),
-                x_end = c(1,.25,.25,0),
-                y_end = c(1,1,0,1))
+b <- data.frame(x = c(0,.25,0,0,1), 
+                y = c(1,0,0,0,0),
+                x_end = c(1,.25,.25,0,1.5),
+                y_end = c(1,1,0,1,0))
 
 df <- data.frame(x = ifelse(a < 0, abs(a), 0), 
                  y = ifelse(a < 0, 0, a), 
@@ -102,6 +102,10 @@ b <- data.frame(rbind(b,df))
 
 c <- data.frame(x = c(0,1), 
                 y = c(1,1))
+
+
+d <- data.frame(x = c(1), 
+                y = c(0))
                 
 
 ggplot2::ggplot(b, ggplot2::aes(x = x, y = y)) +
@@ -109,7 +113,39 @@ ggplot2::ggplot(b, ggplot2::aes(x = x, y = y)) +
   ggplot2::scale_y_continuous(limits = c(0,2)) +
   ggplot2::scale_x_continuous(limits = c(0,1.5)) +
   ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
-  ggplot2::geom_point(data = c, ggplot2::aes(x=x,y=y))
+  ggplot2::geom_point(data = c, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
 
 
 ```
+
+The equation for calculating the area of a rectangle is the length of the base (call it $B$) times the height (call it $H$) - $BH = area$. Here the length of the base is $.25$, and the height of our rectangle is $f(.25)=1$. Also note the units: The length is in $u$ (units of x) and the height is in probability density - $pm/u$ - probability mass per unit $x$. Now let's calculate the area, (but first recall the rules for unit cancellation):
+
+$$
+area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
+$$
+
+The units of $x$ cancel out, and therefore, the units of our calculated area are $pm$ (probability mass). That is to say, our probability density function has effectively assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. If we had calculated the area under the whole curve where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \eq x \leq .25$. This is precisely what we were looking for at the start of the section.
+
+There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function
+
+$$
+f(x) =
+\begin{cases}
+e^{-x} & x \geq 0 \\
+0 & x<0
+\end{cases}
+$$
+When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated. 
+
+```{r echo = FALSE}
+x <- seq(0,5,.05)
+y <- exp(-x)
+z <- data.frame(x,y)
+
+ggplot2::ggplot(data = z, ggplot2::aes(x=x,y=y))+
+  ggplot2::geom_point() +
+  ggplot2::geom_line()
+```
+
+We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also one. This function in particular is an instantiation of an *exponential distribution*. The means by which we calculate the area under a given probability density function (and a function generally) is called *integration* 

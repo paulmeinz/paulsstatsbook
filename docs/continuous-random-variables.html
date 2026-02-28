@@ -146,23 +146,19 @@ statistics course.|</p>" />
             <section class="normal" id="section-">
 <div id="continuous-random-variables" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Continuous Random Variables<a href="continuous-random-variables.html#continuous-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the last chapter, we learned about discrete random variables, expectation and variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most special and wonderful distributions, and it has a very benign name: The normal distribution.</p>
+<p>In the last chapter, we learned about discrete random variables, expectations, variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most useful, prolific, and oddly named distributions: The normal distribution.</p>
 <div id="probability-density-and-the-continuous-random-variable" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Probability Density and the Continuous Random Variable<a href="continuous-random-variables.html#probability-density-and-the-continuous-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before we jump into the definition of a continuous random variable, it is important to highlight the difficulty in describing their probability distributions. Suppose we are trying to define a probability distribution for a continuous random variable that has some probability for each value in - <span class="math inline">\(0 \leq X \leq 1\)</span>. That is, all the outcomes in the range from 0 to 1 (including 0 and 1) have <span class="math inline">\(p(x) &gt; 0\)</span>. Further suppose that we proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over the support of the values of <span class="math inline">\(X\)</span>. That is to say, we want to define a probability mass function for our continuous random variable.</p>
+<p>Before we jump into the definition of a continuous random variable, we will need to take a dive into describing probability for a continuous set of outcomes. As you will see, it turns out to be less straight forward. Suppose we are trying to define a probability distribution for a set of outcomes - e.g., <span class="math inline">\(0 \leq X \leq 1\)</span>. That is, we want all the outcomes in the range from 0 to 1 (including 0 and 1) to have <span class="math inline">\(p(x) &gt; 0\)</span>. Further suppose that we proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over of the values in the range. That is to say, we want to define a probability mass function for our continuous random variable.</p>
 <p>Take a moment to glance back and the properties of a discrete random variable (if you don’t remember them). Specifically, over the <span class="math inline">\(n\)</span> outcomes in the space of <span class="math inline">\(X\)</span>, a pmf must have</p>
 <p><span class="math display">\[
 \sum_{i = 1}^{n} p(x_i) = 1
 \]</span></p>
-<p>As it turns out, we can’t do this for continuous variables because the values in their space aren’t countable. That is, we can’t list them out in an orderly fashion (e.g. like we could for the Bernoulli, binomial, and poisson distributions). And, because of this fact, there’s just no way to ensure that we’ve satisfied the property listed above. Let’s dig into this a little further to make it clear. Turning our attention back to our random variable with space <span class="math inline">\(0 \leq X \leq 1\)</span>, let’s try to count all the values between 0 and 1. Suppose we enumerate (or believe we have enumerated) all the values, e.g.,</p>
+<p>As it turns out, this property will be quite difficult to attain - because the values in a continuous range aren’t countable. That is, we can’t list them out in an orderly fashion (e.g. like we could for the Bernoulli, binomial, and poisson distributions). Let’s dig into this a little further to make it clear. Turning our attention back to our random variable with space <span class="math inline">\(0 \leq X \leq 1\)</span>, let’s try to count all the values between 0 and 1. Suppose we’ve listed (or believe we have listed) all the values in the range, e.g.,</p>
 <p><span class="math display">\[
-0.123451...\\
-0.234672...\\
-0.247773...\\
-0.866724...\\
-0.999525...
+0.123451..., \:0.234672...,\:0.247773...,\:0.866724...,\:0.999525...
 \]</span></p>
-<p>We line our list up with the natural numbers and begin counting the numbers between zero and one.</p>
+<p>We line our list up with the natural numbers and begin counting.</p>
 <p><span class="math display">\[
 1) \:\: 0.123451...\\
 2) \:\: 0.234672...\\
@@ -179,8 +175,8 @@ statistics course.|</p>" />
 5) \:\: 0.9995\underline{2}5...
 \]</span></p>
 <p>We can specify a new number <span class="math inline">\(0.abcde\)</span> such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(b \neq 3\)</span>, <span class="math inline">\(c \neq 7\)</span>, <span class="math inline">\(d \neq 7\)</span>, and <span class="math inline">\(e \neq 2\)</span>. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would <em>always work</em>. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.</p>
-<p>The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing, but why is it important for our purposes? Well, it tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes because we can’t list out the outcomes. And, therefore, we couldn’t ensure we’ve attained the important property of <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
-<p>As it turns out, we get around this conundrum by assigning probabilities to <em>ranges</em> of our continuous random variable. We do this with a <strong>probability density function</strong>. A probability density function describes the amount of probability per unit <span class="math inline">\(x\)</span> at a given point. This point may not be immediately understandable, so we’ll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function</p>
+<p>The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it’s one of my favorite proofs of all time!), but why is it important for our purposes? Well, it tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes because we can’t list them out. And, therefore, we can’t ensure we’ve attained the important property of <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
+<p>As it turns out, we get around this conundrum by assigning probabilities to <em>ranges</em> of our continuous random variable, and we do this with a <strong>probability density function</strong>. A probability density function describes the amount of probability per unit <span class="math inline">\(x\)</span> at a given point in a continuous range. We’ll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function</p>
 <p><span class="math display">\[
 f(x) =
 \begin{cases}
@@ -188,14 +184,30 @@ f(x) =
 0 &amp; Everywhere \: else
 \end{cases}
 \]</span></p>
-<p>This function assigns a value of 1 probability density to any value - <span class="math inline">\(0 \leq x \leq 1\)</span>. Anywhere else it assigns a value of 0. Let’s refer to units of probability mass with the abbreviation - <span class="math inline">\(pm\)</span> - and let’s assume that the units of <span class="math inline">\(x\)</span> are <span class="math inline">\(u\)</span> (short for units of x). Suppose our value of <span class="math inline">\(x - .1\)</span>, then</p>
+<p>This function assigns a value of 1 probability density to any value - <span class="math inline">\(0 \leq x \leq 1\)</span>. Anywhere else it assigns a value of 0. Let’s refer to units of probability mass with the abbreviation - <span class="math inline">\(pm\)</span> - and let’s assume that the units of <span class="math inline">\(x\)</span> are <span class="math inline">\(u\)</span> (short for units of x). Suppose our value of <span class="math inline">\(x = .25\)</span>, then</p>
 <p><span class="math display">\[
 f(.25) = 1
 \]</span></p>
-<p>The value of 1 from the equation above has the units <span class="math inline">\(pm/u\)</span>, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point <span class="math inline">\(x = .1\)</span>. Now let’s talk about how such a function assigns probability to a range of x. First, let’s take a look at the plot of our probability density function</p>
+<p>The value of 1 from the equation above has the units <span class="math inline">\(pm/u\)</span>, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point <span class="math inline">\(x = .1\)</span>. Now let’s talk about how such a function assigns probability to a range of x. First, let’s take a look at the plot of our probability density function.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
-<p>Indeed, it is a very boring plot - just a straight line - but hold onto your shorts. We’re going to calculate an area under that line! Let’s calculate the area/space under the line from <span class="math inline">\(0 \leq x \leq .25\)</span>. Take a look at the plot below for clarity. We are going to calculate the area of the rectangle with <span class="math inline">\(f(x)\)</span> as the top, the origin as the bottom, and sides at <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(x = .1\)</span>, respectively.</p>
+<p>Indeed, it is a very boring plot - just a horizontal line where <span class="math inline">\(f(x) = 1\)</span> - but now we are going to do something magical. We’re going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let’s stick with <span class="math inline">\(x = .25\)</span> and calculate the area under the <span class="math inline">\(f(x)\)</span> line from <span class="math inline">\(0 \leq x \leq .25\)</span>. Take a look at the plot below for clarity. Note the rectangle with diagonal lines through it. We are going to calculate the area of this rectangle - with <span class="math inline">\(f(x)\)</span> as the top, the origin as the bottom, and sides at <span class="math inline">\(x = 0\)</span> and <span class="math inline">\(x = .25\)</span>, respectively.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>The equation for calculating the area of a rectangle is the length of the base (call it <span class="math inline">\(B\)</span>) times the height (call it <span class="math inline">\(H\)</span>) - <span class="math inline">\(BH = area\)</span>. Here the length of the base is <span class="math inline">\(.25\)</span>, and the height of our rectangle is <span class="math inline">\(f(.25)=1\)</span>. Also note the units: The length is in <span class="math inline">\(u\)</span> (units of x) and the height is in probability density - <span class="math inline">\(pm/u\)</span> - probability mass per unit <span class="math inline">\(x\)</span>. Now let’s calculate the area, (but first recall the rules for unit cancellation):</p>
+<p><span class="math display">\[
+area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
+\]</span></p>
+<p>The units of <span class="math inline">\(x\)</span> cancel out, and therefore, the units of our calculated area are <span class="math inline">\(pm\)</span> (probability mass). That is to say, our probability density function has effectively assigned a 25% probability to the range <span class="math inline">\(0 \leq x \leq .25\)</span>. Put another way, we have <span class="math inline">\(P(0\leq X\leq.25) = .25\)</span>. If we had calculated the area under the whole curve where <span class="math inline">\(f(x) = 1\)</span>, then we would find that the area is 1. That is, there is a 100% chance that our random variable <span class="math inline">\(X\)</span> falls in the range <span class="math inline">\(0 \eq x \leq .25\)</span>. This is precisely what we were looking for at the start of the section.</p>
+<p>There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function</p>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+e^{-x} &amp; x \geq 0 \\
+0 &amp; x&lt;0
+\end{cases}
+\]</span>
+When we look at its plot (below) it becomes apparent that calculating the area under it’s curve is a bit more complicated.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>We can’t just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also one. This function in particular is an instantiation of an <em>exponential distribution</em>. The means by which we calculate the area under a given probability density function (and a function generally) is called <em>integration</em></p>
 
 </div>
 </div>
