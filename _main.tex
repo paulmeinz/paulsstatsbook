@@ -180,7 +180,7 @@ R = \{x\, | \, 0 \leq x \leq 1 \}
 
 The inclusion criteria for the set is written after the \(|\) in the curly braces. The \(|\) can be read loosely as meaning ``where'', so reading the whole thing in the curly braces left to right you get x \emph{where} \(0 \leq x \leq 1\). Therefore, our set is all the \(x\)'s from 0 to 1. Note that I will occasionally drop the \(x\) and \(|\) when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth.
 
-That said, it is time to turn our attention towards the outcome of our random experiment. Suppose we are randomly drawing a single item from our sample space \(S = \{A, B, C, D, E\}\). The \emph{outcome} of our experiment is a single item from our sample space, and we will talk about outcomes in terms of \emph{events}. Events are described by a \emph{subset} of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might say the event is \(C = \{A, B, C\}\), and if our outcome lands in the that subset (as either A, B, or C), then we shall say the event ``occurred''. For the sake of brevity, and positivity, I will referred to the occurrence of an event as a ``success'' (congratulations all around!). You can indicate a set is a subset by:
+That said, it is time to turn our attention towards the outcome of our random experiment. Suppose we are randomly drawing a single item from our sample space \(S = \{A, B, C, D, E\}\). The \emph{outcome} of our experiment is a single item from our sample space, and we will talk about outcomes in terms of \emph{events}. Events are described by a \emph{subset} of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might say the event is \(C = \{A, B, C\}\), and if our outcome lands in the that subset (as either A, B, or C), then we shall say the event ``occurred''. For the sake of brevity, and positivity, I will refer to the occurrence of an event as a ``success'' (congratulations all around!). You can indicate a set is a subset by:
 
 \[ C \subset S 
 \label{eq:subset} \]
@@ -202,7 +202,7 @@ This \emph{union operator} (\(\cup\)) takes the unique elements of both sets and
 Here's another example, suppose we are interested in if our outcome falls into \(C_1 = \{A\}\) or \(C_2 = \{B\}\). Then our event would occur if the element was A or B:
 
 \[ \{A\}\:\cup\:\{B\} = \{A,B\} \]
-Our random experiment would be successful if our outcome was A OR B.
+Our random experiment would be successful if the outcome was A OR B.
 \end{example}
 
 Indeed, the union operator helps us figure out the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important operator.
@@ -861,7 +861,7 @@ Note that \(P(X = x)\) and \(p(x)\) mean the same thing - hence the equal sign. 
 \item
   All the outcomes \(x\) in the space of \(X\) have a probability \(0 \leq p(x) \leq 1\). That is, all the outcomes in the space of \(X\) must have a probability from 0 to 1. The set of outcomes for which \(p(x) > 0\) is called the \textbf{support} of \(X\).
 \item
-  Given the space \(S\) of a random variable, \(P(S)\) = 1. In other words, if we are conducting a random experiment by drawing a value from the space of \(X\) (the set of all numeric outcomes for \(X\)), the probability that it lands in \(S\) is 1. This hearkens back to \eqref{eq:setprop} in the previous section.
+  Given \(n\) outcomes in the space of \(X\), the sum of their probabilities equals 1 - e.g., \(p(x_1)\:+...+\:p(x_n) = 1\). In other words, if we are conducting a random experiment by drawing a value from the space of \(X\) (the set of all numeric outcomes for \(X\)), the probability that it lands in \(S\) is 1. This hearkens back to \eqref{eq:setprop} in the previous section.
 \end{enumerate}
 
 In plain language these two properties mean that we can define the pmf of a random variable by taking a total of one unit of probability and spreading it across a set of outcomes (the support of \(X\)). For example, you might give .25 probability to a value of 1, .5 to a value of 2, and .25 to a value of 3. In this case, each outcome would have a probability from 0 to 1, and these values would sum to 1.
@@ -1798,7 +1798,7 @@ Returning to our previous example with \(n = 3\), we can now quickly calculate t
 Then if we cancel out common multiples in the numerator and denominator, we get
 
 \[
-\frac{3}{1} = 3
+\frac{3 \cdot 2 \cdot 1}{1 \cdot 2 \cdot 1} = \frac{3}{1} = 3
 \]
 
 which is exactly what we were looking for.
@@ -1848,19 +1848,55 @@ E(Z) = E(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p = np
 \label{eq:binomexpectation}
 \]
 
-where \(\sum_{i=1}^{n}p\) means that for each \(X_i\) we add another \(p\). The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is \(p(1-p)\), so
+where \(\sum_{i=1}^{n}p\) means that for each \(X_i\) we add another \(p\), and as such, \(E(X) = np\). The logic behind the variance is very similar. Our Bernoulli random variables are independent, so we can apply property 4 of the variance. Recall that the variance of a Bernoulli random variable is \(p(1-p)\), so
 
 \[
 Var(Z) = Var(\sum_{i=1}^{n}X_i) = \sum_{i=1}^{n}p(1-p) = np(1-p)
 \label{eq:binomvariance}
 \]
 
-We shall close this chapter out with a few more examples of the binomial distribution and its usefulness in calculating probabilities.
+For each random variable, we add a \(p(1-p)\), so \(Var(Z) = np(1-p)\). Let's close this section out with a few examples of the binomial distribution.
+
+\begin{example}
+Suppose we are flipping 4 fair coins - each with \(p=1/2\) probability of flipping heads. Further suppose that we assign \(H\) the value of 1 and \(T\) the value of zero, and sum the flipped outcomes. Our new random variable has a space of \(\{0,1,2,3,4\}\). Let's call this new (binomial) random variable \(Z\). In this case, what is the probability of flipping zero heads - \(P(Z = 0)\)? What is the probability of flipping \emph{at least} 1 head - \(P(Z \geq 1)\)? What are the expectation and variance of this new random variable \(Z\).
+
+For the first part of the question, we have \(n = 4\), \(p = 1/2\), and \(z = 0\), so let's plug these into the pmf for a binomial distribution.
+
+\[
+\begin{align}
+P(Z = 0) &= {4 \choose 0} 1/2^0(1-1/2)^{4-0} \\
+&= \frac{4!}{0!(4-0)!}(1/2)^0(1-1/2)^{4-0} \\
+&= \frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}(1/2)^0(1-1/2)^{4-0}
+\end{align}
+\]
+
+Notice how the factors are the same for the top and bottom of \(\frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}\), so we can cancel out all the common factors and get 1. Then
+
+\[
+\begin{align}
+&= (1)(1/2)^0(1-1/2)^{4-0} \\
+&= (1)(1/2)^0(1/2)^{4} \\
+&= (1/2)^{4} = 1/16
+\end{align}
+\]
+where the last step follows because a number raised to the 0th power is 1. Therefore, \(P(Z = 0) = 1/16\). The second part follows from this first part of the question. Let's call the space of our random variable \(S = \{0,1,2,3,4\}\). Note that the set \(\{Z \geq 1\} = \{1,2,3,4\}\) is the complement of \(\{Z = 0\}\). Therefore, we can use equation \eqref{eq:pcomplement}.
+
+\[
+P(Z \geq 1) = 1 - P(Z = 0) = 1 - 1/16 = 15/16
+\]
+Finally the expectation and variance of this random variable is
+
+\[
+E(Z) = np = 4(1/2) = 2
+Var(Z) = np(1-p) = 4(1/2)(1-1/2) = 1
+\]
+respectively.
+\end{example}
 
 \begin{example}
 Suppose there are 30 students in a particularly difficult course at College of Learning (a preeminent college). Over many many years, researchers at the college determined that the probability of passing this very difficult course is about .25. What is the probability of 0 students passing the course, and what is the probability of at least 1 student passing the course? What is the expectation of the number of students passing?
 
-This question looks like a problem the binomial distribution can solve. Here we have \(p = .25\) and \(n=30\). Our binomial distribution therefore looks like this:
+Here we have \(p = .25\) and \(n=30\). Our binomial distribution therefore looks like this:
 
 \[
 p(x) = 
@@ -1874,9 +1910,271 @@ p(x) =
 With regards to the first part of the question, we have \(z = 0\), and the probability is calculated
 
 \[
-P(Z = 1) = p(z) = {30 \choose 0} .25^z(1-.25)^{30-z}
+\begin{align}
+P(Z = 0) &= {30 \choose 0} .25^0(1-.25)^{30-0} \\
+&=\frac{30!}{0!(30-0)!}(.75)^{30} \\
+&=\frac{30!}{30!}(.75)^{30} = .00019
+\end{align}
 \]
+\(P(Z=0) = 0.00019\) (after some rounding), and we can proceed with the second part as we did in the last example.
+
+\[
+P(Z \geq 1) = 1 - P(Z=0) = 1 - 0.00019 = 0.99981
+\]
+Finally, the expectation of our random variable is \(E(Z) = .25(30) = 7.5\).
 \end{example}
+
+\begin{example}
+We'll close out the section with one final example that is a little less straight forward (but very interesting). Suppose a casino has a lottery with a \(p = 1/100000\) chance to win. Multiple winners are possible, such that one person winning does not affect the odds of another person winning. There are 10000 gamblers who play this lottery every time. If these gamblers return to the casino every week for 10 years (520 weeks), what is the probability that at least one gambler wins this lottery twice during the period?
+
+We will first need the probability that a single gambler wins the lottery twice. That is, if we call the number of wins \(Z\) then we will need \(P(Z \geq 2)\). To do this, we will calculate \(P(Z=0)\) and \(P(Z=1)\). Here we have \(n = 520\) - corresponding to 520 weekly attempts over 10 years - and \(p = 1/100000\), so
+
+\[
+P(Z=0) = p(0) = {520 \choose 0} \left(\frac{1}{100000}\right)^0\left(1-\frac{1}{100000}\right)^{520-0} \approx 0.99481\\
+P(Z=1) = p(1) = {520 \choose 1} \left(\frac{1}{100000}\right)^1\left(1-\frac{1}{100000}\right)^{520-1} \approx 0.00517
+\]
+Note that I've used a computer for these calculations, and if you wish to work through the problem yourself, I suggest you use one as well. In order to calculate \(P(Z \geq 2)\), we proceed as in the previous examples.
+
+\[
+P(Z \geq 2) = 1 - (P(Z = 0) + P(Z=1)) = 1 - .99998 = 0.00002
+\]
+Now many people might stop there, and conclude that the probability we seek is \(0.00002\). However, we aren't looking for the probability that a \emph{single} person wins the casino lottery, we are looking for the probability that one person out of the 10000 weekly gamblers wins twice. Now we have another binomial distribution, this time each gambler is a Bernoulli random variable - each with \(p = 0.00002\) of winning the lottery twice.
+
+First let's calculate the probability that no gamblers win twice. With \(p = 0.00002\) and \(n = 10000\),
+
+\[
+p(0) = {10000 \choose 0} (0.00002)^0(1-0.00002)^{10000-0} \approx 0.81873
+\]
+Therefore, the probability that 1 or more gamblers wins this lottery twice is
+
+\[
+1 - 0.81873 = 0.18127
+\]
+Indeed, that is a low probability, but it is much much higher than the probability for a single person. Sometimes during the chaotic news cycle, we catch the story of an individual who won some lottery twice. Our minds jump directly to the probability of an individual winning the lottery. It's a perfectly human thing to do, but the probability is indeed much higher when considering the entire population of lottery players. Isn't that interesting!? And we've learned it all thanks to the binomial distribution.
+\end{example}
+
+\subsection{The poisson distribution}\label{the-poisson-distribution}
+
+The poisson distribution is the pmf of a random variable representing the count of something in a fixed time period - e.g.~the number of people entering a building in an hour, the number of requests received in a week, etc. Here we shall refer to a random variable with a poisson distribution as a poisson random variable. As you will see, the poisson distribution is related to the binomial distribution. In fact, it's derived from it. We will unpack the intuition here.
+
+Suppose we were interested in counting the number of cars that pass through an intersection during the same 1 hour period every Monday. Let's further suppose that we aren't particularly good at counting, so instead we divide the time period into 10 equal intervals. If a car appears during an interval we assign a 1 to the interval and wait for the next interval to start. It doesn't matter how many cars appear in a given interval. We simply assign the interval a 1 if \emph{any number} of cars appear. Otherwise, we assign a zero. At the end we sum up all our 1's and 0's across the intervals to get a count of cars.
+
+If the probability (call it \(p_1\)) of a car appearing in an interval is constant across the intervals, and the occurrence of a car doesn't change the likelihood another car will appear later (the car appearance events are independent), then you can think of our counting method as a binomial distribution. In this case, we would have 10 Bernoulli random variables reflecting each interval - each with the same probability of a car appearing. Our sum would therefore be a random variable with a \(B(10,p)\) distribution. However, if you are tracking to this point, you will probably have noticed that \emph{this is not a very good way to count}. You would end up counting a maximum of 10 cars, and if more than one car appeared during an interval 10 could certainly be an underestimate.
+
+We could make our counting a little more accurate if we divided the time period into more intervals - say to 20. In this case the intervals would be shortened, so the probability that a car appeared in a given interval would get smaller. That is, we now have a random variable with a \(B(20, p_2)\) where \(p_2 < p_1\). This is \emph{still not a very good way to count}, but it is a little bit better. Because our interval is smaller, the chance that two cars appear during the same interval is reduced, and furthermore, we can now get a maximum of 20 cars if a car appears in each interval.
+
+Suppose we continue with this logic of splitting the time period into smaller and smaller intervals - e.g.~\(B(30, p_3)\), \(B(100, p_4)\), \(B(1000, p_5)\) with \(p_5 < p_4 < p_3 < p_2 < p_1\), and so on. Eventually, we would make the intervals so small that the occurrence of two cars in the same interval would be virtually impossible. Our method would then be equivalent to a count of cars over the time period (of course at this point we may question whether or not our interval method is actually easier than counting).
+
+This is the fundamental logic behind the poisson distribution. We divide up a fixed amount of time into an infinite (or extraordinarily large) number of intervals and we treat each interval - with very small probability \(p\) that an event will occur - as a Bernoulli random variable. The sum of these Bernoulli random variables reflects a count because the intervals are so small such that the chance of two events occurring in the same interval is virtually zero.
+
+With the above in mind, suppose we have a random variable \(X\) that represents the count of something. The pmf of this poisson random variable is
+
+\[
+P(X = x) = p(x) = 
+\begin{cases}
+\frac{\lambda^x}{x!} e^{-\lambda} & x = 0,1,2,3,4,... \\
+0 & x < 0 
+\end{cases}
+\label{eq:poisson}
+\]
+Where the parameter \(\lambda\) is the average rate of appearance over the fixed time period in question - e.g.~the average number of cars that appear over the time period, the average number of people entering a building over a time period, etc. At an abstract level, if we think about the binomial distributions with more and more intervals, \(\lambda\) is the expectation of a binomial distribution with a very very large number of intervals and a very small \(p\). Moreover, recall that \(e\) represents a special number that can be found on most calculators. It is roughly equal to 2.71828. You should not memorize this number. You should just use your calculator.
+
+Note one further thing about our poisson random variable. Specifically, the support of random variable with a poisson distribution is any integer greater than, or equal to, zero. As such, we have finally arrived at an example of a discrete random variable with a space that is discrete and countable, but infinite. We will have to get clever in calculating certain probabilities with the poisson pmf, and the examples we work through later will elucidate this.
+
+Indeed, I'll admit that the poisson pmf doesn't look much like a binomial distribution. You can rest assured that it is derived from the binomial, however. There are a couple of ``rigorous'' (I try to avoid this word for our purposes but sometimes it's unavoidable) derivations of the binomial distribution that you will encounter if you journey in mathematics beyond this book. They are a wonderful demonstration of how mathematics can be made arbitrarily difficult. The first could be grasped by Calculus 1 student, and the second would require some background in differential equations and a lot of patience. Both are very interesting.
+
+The expectation and variance of random variable with a poisson distribution are simple to remember. Their derivation are just slightly beyond our grasp, so I'll write them here. If \(X\) is a poisson random variable then
+
+\[
+E(X) = Var(X) = \lambda
+\]
+In words, the variance and expectation of \(X\) are equal to our lower-case lambda.
+
+\begin{example}
+Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of \emph{at least one} car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
+
+We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable \(X\). Here we have an average rate - \(\lambda = 10\), and the first part asks what is \(P(X = 10)\). So
+
+\[
+\begin{align}
+p(10) = \frac{\lambda^{10}}{10!} e^{-\lambda} &= \frac{10^{10}}{10!} e^{-10} \\
+&= \frac{10\cdot10^{9}}{10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
+&= \frac{10^{9}}{9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
+&= \frac{10^{9}}{9!} e^{-10} = 0.12511
+\end{align}
+\]
+Thus, \(P(X = 10) = 0.12511\). The second part of the question is a bit tricky, but we shall implement a strategy we saw demonstrated in the examples for the binomial distribution. Here we are seeking to calculate \(P(X\geq1)\). Our random variable is countably infinite, so we can't just calculate probabilities for each value greater than zero and sum them. However, recall that the poisson distribution is a pmf, and one of the properties of a pmf is that - given the space of a random variable (\(S\)) - then \(P(S) = 1\). Therefore,
+
+\[
+\begin{align}
+P(X\geq1) &= 1 - P(X = 0) \\
+&= 1 - \frac{10^{0}}{0!} e^{-10} \\
+&= 1 - \frac{1}{1} e^{-10} = 0.9999546
+\end{align}
+\]
+In other words, there's a pretty strong chance you'll see at least one car between 5pm and 6pm at the intersection.
+
+Finally, we shall make quick work of the last part of the question. Now that we know we are working with a poisson random variable, we know that the mean and variance are each equal to \(\lambda\). Thus, \(E(X) = Var(X) = 10\).
+\end{example}
+
+As we noted before, the parameter \(\lambda\) may be thought of as the expectation of a binomial random variable with a very large \(n\) and a small \(p\). Therefore, may not be surprised to learn that we can sometimes approximate particularly difficult binomial calculations with a poisson pmf.
+
+\begin{example}
+Suppose we want to calculate \({1000 \choose 1} .001^{1}(1-.001)^{1000-1}\). You'll hopefully recognize this by now as the calculation of \(P(X=1)\) for \(X \sim B(1000,.001)\). In this case, \(n\) is large and \(p\) is small, so we can use a poisson distribution to approximate the computation. For the exact calculation we have
+
+\[
+{1000 \choose 1} .001^{1}(1-.001)^{1000-1} = 0.3680635
+\]
+First, we can calculate the \(\lambda\) we need by calculating the expectation of our binomial distribution. That is \(E(X) = 1000(.001) = 1\). In other words, if our binomial random variable represented an fixed amount of time divided into 1000 intervals - each with \(p = .001\) of an event occurring, then the average number of events would be 1. We will therefore use \(\lambda = 1\) in our approximation. So
+
+\[
+\frac{1^{1}}{1!} e^{-1} = 0.3678794
+\]
+which is indeed very close to the actual value of our binomial computation.
+\end{example}
+
+\subsection{Practice Problems}\label{practice-problems}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What is the expectation of a random variable with space = \(\{0,1\}\) and \(p = .15\) of the random process resulting in one?
+\item
+  Suppose we have three independent random variables as in problem 1 above. What is the expectation of their sum, and what is the variance of their sum?
+\item
+  Given five coins, how many different ways can you flip exactly 2 heads? If the probability of flipping heads on each coin is .5, what is the probability of one of the aforementioned ways? What if the probability of getting heads were \(p = .25\) on each coin?
+\item
+  How many different ways can you draw 5 cards from a deck of 52 cards? (Hint: This is a bit outside the scope of the current discussion. Think about a novel way of ``drawing'' cards where you throw the deck up in the air and count the number of cards that land face up.)
+\item
+  Suppose the probability of winning a bingo game is .10. A particularly exciting person plays 20 games of bingo. What is the probability they they win zero games? What is the probability that they win \emph{at least} one game?
+\item
+  Suppose June the cat goes outside 3 times a day - seven days a week. When she goes outside, she has a probability of .20, that she'll catch a moth. What is the probability that she catches two or more moths in a day? What is the expected value and variance of the number of moths June will catch in a day?
+\item
+  From the last problem, determine the probability that June has at least 1 day in a week where she catches two moths (a.k.a. a very good day for an apex predator)?
+\item
+  A researcher goes into the quad at the same time every day and counts students who pass left-to-right over a specific point. Over many observational periods, She has determined that, on average, 20 students pass over the point. What is the probability that 10 students pass over the point in a given observational period? What is the expectation and variance of this random variable?
+\item
+  In the problem above, suppose that a second researcher counts students who pass right-to-left during the same observational period. He finds that 5 students on average pass right to left during the period. Given this information, what is the expected value of the count of students passing over the point - regardless of direction?
+\item
+  Estimate the probability of a sum of 4 from random variable with \(X \sim B(10000,.0001)\).
+\end{enumerate}
+
+\subsection{Practice Problem Answers}\label{practice-problem-answers}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(0.15\)
+\item
+  \(0.45\), \(0.3825\)
+\item
+  \(10\), \(.5^5\), \(.25^2\cdot.75^3\)
+\item
+  \(2598960\)
+\item
+  \(0.12158\), \(0.87842\)
+\item
+  \(0.104\), \(0.6\), \(0.48\)
+\item
+  \(0.53637\)
+\item
+  \(0.00582\), \(20\), \(20\)
+\item
+  \(E(X_{left}) + E(X_{right}) = 20 + 5 = 25\)
+\item
+  \(0.01533\)
+\end{enumerate}
+
+\chapter{Continuous Random Variables}\label{continuous-random-variables}
+
+In the last chapter, we learned about discrete random variables, expectations, variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most useful, prolific, and oddly named distributions: The normal distribution.
+
+\section{Probability Density and the Continuous Random Variable}\label{probability-density-and-the-continuous-random-variable}
+
+A continuous random variable is similar to the discrete random variables we discussed in the last chapter. However, the way we define the set of outcomes and the way we attribute probability to those outcomes is different. Continuous random variables are defined first and foremost by their \emph{space} - which is not countable or finite in the way the discrete spaces are (more on this in a moment). For example, we may define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., \(0 \leq X \leq 1\). Indeed, defining the space is the easy part. The tricky part is describing the randomness of a continuous variable in the form of a probability distribution.
+
+Let's explore this endeavor a bit deeper with the range - \(0 \leq X \leq 1\). Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable. Take a moment to glance back and the properties of a discrete random variable (if you don't remember them). Specifically, over the \(n\) outcomes in the space of \(X\), a pmf must have
+
+\[
+\sum_{i = 1}^{n} p(x_i) = 1
+\]
+
+As it turns out, this property will be quite difficult to attain - because the values in a continuous range aren't countable. That is, we can't list them out in an orderly fashion (e.g.~like we could for the Bernoulli, binomial, and poisson distributions). Let's dig into this a little further to make it clear. Turning our attention back to our random variable with space \(0 \leq X \leq 1\), let's try to count all the values between 0 and 1. Suppose we've listed (or believe we have listed) all the values in the range, e.g.,
+
+\[
+0.123451..., \:0.234672...,\:0.247773...,\:0.866724...,\:0.999525...
+\]
+
+We line our list up with the natural numbers and begin counting.
+
+\[
+1) \:\: 0.123451...\\
+2) \:\: 0.234672...\\
+3) \:\: 0.247773...\\
+4) \:\: 0.866724...\\
+5) \:\: 0.999525...
+\]
+
+But to our surprise (or maybe to our non-surprise) there will \emph{always} be a number we missed during our enumeration. Note the underlined numbers in our list below.
+
+\[
+1) \:\: 0.\underline{1}23451...\\
+2) \:\: 0.2\underline{3}4672...\\
+3) \:\: 0.24\underline{7}773...\\
+4) \:\: 0.866\underline{7}24...\\
+5) \:\: 0.9995\underline{2}5...
+\]
+
+We can specify a new number \(0.abcde\) such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that \(a \neq 1\), \(b \neq 3\), \(c \neq 7\), \(d \neq 7\), and \(e \neq 2\). Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would \emph{always work}. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.
+
+The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? Well, it tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - \(p(x_1)\) - over the set of outcomes because we can't list them out. And, therefore, we can't ensure we've attained the important property of \(\sum_{i = 1}^{n} p(x_i) = 1\).
+
+As it turns out, we get around this conundrum by assigning probabilities to \emph{ranges} of our continuous random variable, and we do this with a \textbf{probability density function}. A probability density function describes the amount of probability per unit \(x\) at a given point in a continuous range. We'll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function
+
+\[
+f(x) = 
+\begin{cases}
+1 & 0 \leq x \leq 1 \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+This function assigns a value of 1 probability density to any value - \(0 \leq x \leq 1\). Anywhere else it assigns a value of 0. Let's refer to units of probability mass with the abbreviation - \(pm\) - and let's assume that the units of \(x\) are \(u\) (short for units of x). Suppose our value of \(x = .25\), then
+
+\[
+f(.25) = 1 
+\]
+
+The value of 1 from the equation above has the units \(pm/u\), e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point \(x = .1\). Now let's talk about how such a function assigns probability to a range of x. First, let's take a look at the plot of our probability density function.
+
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-11-1.pdf}}
+
+Indeed, it is a very boring plot - just a horizontal line where \(f(x) = 1\) - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with \(x = .25\) and calculate the area under the \(f(x)\) line from \(0 \leq x \leq .25\). Take a look at the plot below for clarity. Note the rectangle with diagonal lines through it. We are going to calculate the area of this rectangle - with \(f(x)\) as the top, the origin as the bottom, and sides at \(x = 0\) and \(x = .25\), respectively.
+
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-12-1.pdf}}
+
+The equation for calculating the area of a rectangle is the length of the base (call it \(B\)) times the height (call it \(H\)) - \(BH = area\). Here the length of the base is \(.25\), and the height of our rectangle is \(f(.25)=1\). Also note the units: The length is in \(u\) (units of x) and the height is in probability density - \(pm/u\) - probability mass per unit \(x\). Now let's calculate the area, (but first recall the rules for unit cancellation):
+
+\[
+area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
+\]
+
+The units of \(x\) cancel out, and therefore, the units of our calculated area are \(pm\) (probability mass). That is to say, our probability density function has effectively assigned a 25\% probability to the range \(0 \leq x \leq .25\). Put another way, we have \(P(0\leq X\leq.25) = .25\). If we had calculated the area under the whole curve where \(f(x) = 1\), then we would find that the area is 1. That is, there is a 100\% chance that our random variable \(X\) falls in the range \(0 \eq x \leq .25\). This is precisely what we were looking for at the start of the section.
+
+There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function
+
+\[
+f(x) =
+\begin{cases}
+e^{-x} & x \geq 0 \\
+0 & x<0
+\end{cases}
+\]
+When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated.
+
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-13-1.pdf}}
+
+We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also one. This function in particular is an instantiation of an \emph{exponential distribution}. The means by which we calculate the area under a given probability density function (and a function generally) is called \emph{integration}
 
 \bibliography{book.bib,packages.bib}
 
