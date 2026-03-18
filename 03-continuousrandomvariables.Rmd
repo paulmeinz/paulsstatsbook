@@ -86,7 +86,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ from 0 to 1 - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under $f(x)$ line from $0 \leq x \leq .25$. For clarity, take a look at the the rectangle in the plot below with the diagonal lines through it. We are going to calculate the area of this rectangle - with $f(x)$ as the top, the origin as the bottom, and sides at $x = 0$ and $x = .25$, respectively. 
+Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ from 0 to 1 - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under the $f(x)$ line from $0 \leq x \leq .25$. Take a look at the the rectangle with the diagonal lines through it in the plot below. The area to which we are referring is bordered by $f(x)$ at the top, the x-axis at the bottom, and vertical lines at $x = 0$ and $x = .25$, respectively. 
 
 ```{r, echo = FALSE}
 
@@ -123,24 +123,24 @@ ggplot2::ggplot(b, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-The equation for calculating the area of a rectangle is the length of the base (call it $B$) times the height (call it $H$) - $BH = area$. Here the length of the base is $.25$, and the height of our rectangle is $f(.25)=1$. Also note the units: The length is in $u$ (units of x) and the height is in probability density - $pm/u$ - probability mass per unit $x$. Now let's calculate the area, (recall the rules for unit cancellation):
+Recall that the equation for calculating the area of a rectangle is the length of the base (call it $B$) times the height (call it $H$) - $BH = area$. Here the length of the base is $.25$, and the height of our rectangle is $f(.25)=1$. Also note the units: The length has units - $u$ (units of x) - and the height has units of probability density - $pm/u$ - probability mass per unit $x$. Therefore (recall the rules for unit cancellation):
 
 $$
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 $$
 
-The units of $x$ cancel out, and therefore, the units of our calculated area are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. If we had calculated the area under the whole curve where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \eq x \leq .25$. This is precisely what we were looking for at the start of the section.
+We get an area of .25, but the story of the calculation is in the units of this value. In our computation above, the units of $x$ cancel out, and therefore, the units of our calculated area are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. If we had calculated the area under the whole curve where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This is precisely what we were looking for at the start of the section.
 
 There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function
 
 $$
 f(x) =
 \begin{cases}
-e^{-x} & x \geq 0 \\
+e^{-x} & 0 \leq x \leq \infty \\
 0 & x<0
 \end{cases}
 $$
-When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated. 
+This function in particular is an example of an *exponential distribution*. When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated. 
 
 ```{r echo = FALSE}
 x <- seq(0,5,.05)
@@ -152,4 +152,10 @@ ggplot2::ggplot(data = z, ggplot2::aes(x=x,y=y))+
   ggplot2::geom_line()
 ```
 
-We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also equal to 1. That is, $P(0 < X < \infty) = 1$. This function in particular is an example of an *exponential distribution*. The means by which we calculate the area under a given probability density function (and a function generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail.   
+We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. Given some function, $f(x)$, integration is indicated by
+
+$$
+\int_{a}^{b} f(x) \,dx
+$$
+
+The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve $f(x)$ from a to b. In our example above, we calculated the integral of $f(x)$ from x = 0 to x = .25. 
