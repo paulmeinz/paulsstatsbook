@@ -98,3 +98,4 @@ practice-problems
 practice-problem-answers
 continuous-random-variables
 probability-density-and-the-continuous-random-variable
+practice-problems-1

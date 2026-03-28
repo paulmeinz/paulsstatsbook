@@ -1,10 +1,10 @@
 # Continuous Random Variables
-In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I'm excited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.
+In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I'm  aexcited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.
 
 ## Probability Density and the Continuous Random Variable
-As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are defined first and foremost by their **space** - in which an outcome may take on any value in a continuous range of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., $0 \leq X \leq 1$, or all the values on the real number line, e.g., $-\infty < x < \infty$. Continuous random variables are prolific within the behavioral sciences: Age, height, and reaction time can all be thought of as continuous random variables. 
+As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished first and foremost by their **space** - wherein an outcome may take on any value in a *continuous range* of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., $0 \leq X \leq 1$, or all the values on the real number line, e.g., $-\infty < x < \infty$. Continuous random variables are prolific within the behavioral sciences: For example, age, height, and reaction time can all be thought of as continuous random variables. 
 
-As it turns out, defining a probability distribution for a continuous random variable is a bit more tricky than the discrete case. Indeed, the difficulty arises from the definition of continuous spaces. Let's explore this a bit more by considering a random variable with the space - $0 \leq X \leq 1$. Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We could take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable. 
+To fully specify a continuous random variable, we shall again need a set of rules describing its randomness, a.k.a., a probability distribution. This is where things get tricky. As you will see the difficulty arises from our aforementioned definition of continuous spaces. Let's explore this by considering a random variable with the space - $0 \leq X \leq 1$. Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We could take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable. 
 
 Take a moment to glance back at the properties of a discrete random variable (if you don't remember them). Specifically, over the $n$ outcomes in the space of $X$, a pmf must have
 
@@ -40,9 +40,9 @@ $$
 
 We can specify a new number $0.abcde$ such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that $a \neq 1$, $b \neq 3$, $c \neq 7$, $d \neq 7$, and $e \neq 2$. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would *always work*. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.
 
-The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - $p(x_1)$ - over the set of outcomes _because we can't list them out_. And, therefore, we can't ensure we've attained the important property of $\sum_{i = 1}^{n} p(x_i) = 1$.  
+The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - $p(x_1)$ - over the set of outcomes _because we can't list the outcomes out_. And, therefore, we can't ensure we've attained the important property of $\sum_{i = 1}^{n} p(x_i) = 1$.  
 
-As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable, and we do this with a **probability density function**. A probability density function describes the amount of probability (a.k.a. probability mass) _per unit_ $x$ at a given point in a continuous range. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that $X$ falls below the value of $.5$, e.g., $P(X < .5)$. We'll dig deeper into this concept as we have in the past - through an example. 
+As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable, and we do this with a **probability density function** (pdf). A probability density function describes the amount of probability (sometimes referred to here as *probability mass*) _per unit_ $x$ at a given point in a continuous range. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that $X$ falls below the value of $.5$, e.g., $P(X < .5)$. We'll dig deeper into this concept as we have in the past - through an example. 
 
 Suppose we have a probability density function
 
@@ -60,7 +60,7 @@ $$
 f(.25) = 1 
 $$
 
-The value of 1 from the equation above has the units $pm/u$, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit $x$ at exactly the point $x = .25$. Now let's talk about how such a function assigns probability to a range of x. Take a look at the plot of our probability density function below.
+The value of 1 from our pdf is a probability density which has the units $pm/u$, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit $x$ at exactly the point $x = .25$. Now let's talk about how such a function assigns probability to a range of x. Take a look at the plot of our probability density function below.
 
 ```{r, echo = FALSE}
 a <- data.frame(x = c(0,1), 
@@ -86,7 +86,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ from 0 to 1 - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under the $f(x)$ line from $0 \leq x \leq .25$. Take a look at the the rectangle with the diagonal lines through it in the plot below. The area to which we are referring is bordered by $f(x)$ at the top, the x-axis at the bottom, and vertical lines at $x = 0$ and $x = .25$, respectively. 
+Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ from 0 to 1. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under the $f(x)$ line from $0 \leq x \leq .25$. Take a look at the the rectangle with the diagonal lines through it in the plot below. The area to which we are referring is bordered by $f(x)$ at the top, the x-axis at the bottom, and vertical lines at $x = 0$ and $x = .25$, respectively. 
 
 ```{r, echo = FALSE}
 
@@ -123,13 +123,13 @@ ggplot2::ggplot(b, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Recall that the equation for calculating the area of a rectangle is the length of the base (call it $B$) times the height (call it $H$) - $BH = area$. Here the length of the base is $.25$, and the height of our rectangle is $f(.25)=1$. Also note the units: The length has units - $u$ (units of x) - and the height has units of probability density - $pm/u$ - probability mass per unit $x$. Therefore (recall the rules for unit cancellation):
+Recall that the equation for calculating the area of a rectangle is the length of the base (call it $B$) times the height (call it $H$) - $BH = area$. Here the length of the base is $.25$, and the height of our rectangle is $f(.25)=1$. Also note the units: The length has units - $u$ (units of x) - and the height has units of probability density - $pm/u$ - probability mass per unit $x$. Therefore
 
 $$
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 $$
 
-We get an area of .25, but the story of the calculation is in the units of this value. In our computation above, the units of $x$ cancel out, and therefore, the units of our calculated area are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. If we had calculated the area under the whole curve where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This is precisely what we were looking for at the start of the section.
+We get an area of .25, but the story of the calculation is in the units of this value. The units of $x$ cancel out, and the units of our calculated area are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. Indeed, if calculate the area under the whole curve (line) where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This mimics the property of pmfs we discussed at the start of this section.
 
 There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function
 
@@ -152,10 +152,51 @@ ggplot2::ggplot(data = z, ggplot2::aes(x=x,y=y))+
   ggplot2::geom_line()
 ```
 
-We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. Given some function, $f(x)$, integration is indicated by
+We can't just calculate this area as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function more generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. Given some function, $f(x)$, integration is indicated by
 
 $$
 \int_{a}^{b} f(x) \,dx
 $$
 
-The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve $f(x)$ from a to b. In our example above, we calculated the integral of $f(x)$ from x = 0 to x = .25. 
+The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve $f(x)$ from a to b. In our first example above, we calculated the integral of $f(x)$ from x = 0 to x = .25. In terms of our probability set operator, and given some pdf, we observe that
+
+$$
+P(a < X < b) = \int_{a}^{b} f(x) \, dx
+$$
+That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. We have learned this simply for the sake of notation. Sometimes I shall refer to the probability of some event via an integral as opposed to the probability set operator.
+
+The properties of a pdf are analogous to the discrete case. Specifically
+
+1. $f(x) \geq 0$. The values for which $f(x) > 0$ are referred to as the **support** of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: $f(x)$ can be greater than 1. 
+
+2. $\int_{-\infty}^{\infty} f(x) \, dx = 1$. Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity in the integral to make things easier notation wise. They specify an integral from the smallest number to the highest number in the space of $X$. 
+
+Now, let's return to our simple pdf from the beginning of this section
+
+$$
+f(x) = 
+\begin{cases}
+1 & 0 \leq x \leq 1 \\
+0 & Everywhere \: else
+\end{cases}
+$$
+Note that this function has all the properties of a pdf - $f(x) \geq 1$ and $\int_{-\infty}^{\infty} f(x) \, dx = 1$. The area under $f(x)$ from 0 to 1 is equal to 1, and everywhere else the area is equal to zero. That is to say, over the entire space of $X$ the area under the curve is equal to 1. This particular function is an example of a *continuous uniform distribution*. The functions assign a constant probability density over the support of $X$ and are analogous to the discrete uniform distribution. Here's another example that assigns $\frac{1}{2}$ density from 0 to 2.
+
+$$
+f(x) = 
+\begin{cases}
+1/2 & 0 \leq x \leq 2 \\
+0 & Everywhere \: else
+\end{cases}
+$$
+
+### Practice Problems
+
+For the next few problems describe if the function is *not* a pdf and explain why
+
+1. $f(x) = x$ from $-1 < x < 1$ and zero everywhere else.
+
+2. $f(x) = 2$ from $0 < x < 1/2$ and zero everywhere else.
+
+3. $f(x) = x$ from $0 < x < \sqrt{2}$ and zero everywhere else (Hint: draw the plot).
+

@@ -173,7 +173,7 @@ E(X) = \sum_{i=1}^{5} x_ip(x_i) &= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5p(x_
 &= \frac{15}{5} = 3
 \end{align}
 $$
-We've multiplied each value in the space of our random variable $X$ by its probability and summed the values. The result of our computation is 3 - $E(x) = 3$ - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of $X$. In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the $x$ axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.  
+We've multiplied each value in the space of our random variable $X$ by its probability and summed the values. The result of our computation is 3 - $E(X) = 3$ - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of $X$. In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the $x$ axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.  
 
 ```{r, echo = FALSE}
 a <- data.frame(x = c(1,2,3,4,5), 
@@ -191,7 +191,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Now suppose each of those bars has _mass_ (a.k.a. probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. $E(X)$ can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+Now suppose each of those bars has _mass_ (a.k.a., probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. $E(X)$ can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
 :::
 
 That said, we shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some _function_ of a random variable. In other words, we may apply some function to the outcomes in the space of $X$ and then calculate an expectation. For example, we might have
