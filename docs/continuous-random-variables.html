@@ -125,7 +125,9 @@ statistics course.|</p>" />
 <li class="chapter" data-level="3.1" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html#probability-density-and-the-continuous-random-variable"><i class="fa fa-check"></i><b>3.1</b> Probability Density and the Continuous Random Variable</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html#practice-problems-1"><i class="fa fa-check"></i><b>3.1.1</b> Practice Problems</a></li>
+<li class="chapter" data-level="3.1.2" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html#practice-problem-answers-1"><i class="fa fa-check"></i><b>3.1.2</b> Practice Problem Answers</a></li>
 </ul></li>
+<li class="chapter" data-level="3.2" data-path="continuous-random-variables.html"><a href="continuous-random-variables.html#cumulative-distribution-functions-independence-and-expectations"><i class="fa fa-check"></i><b>3.2</b> Cumulative Distribution Functions, Independence, and Expectations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -149,12 +151,12 @@ statistics course.|</p>" />
             <section class="normal" id="section-">
 <div id="continuous-random-variables" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Continuous Random Variables<a href="continuous-random-variables.html#continuous-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I’m aexcited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.</p>
+<p>In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I’m excited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.</p>
 <div id="probability-density-and-the-continuous-random-variable" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Probability Density and the Continuous Random Variable<a href="continuous-random-variables.html#probability-density-and-the-continuous-random-variable" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished first and foremost by their <strong>space</strong> - wherein an outcome may take on any value in a <em>continuous range</em> of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., <span class="math inline">\(0 \leq X \leq 1\)</span>, or all the values on the real number line, e.g., <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>. Continuous random variables are prolific within the behavioral sciences: For example, age, height, and reaction time can all be thought of as continuous random variables.</p>
+<p>As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished first and foremost by their <strong>space</strong> - wherein an outcome may take on any value in a <em>continuous range</em> of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., <span class="math inline">\(0 \leq X \leq 1\)</span>, or all the values on the real number line, e.g., <span class="math inline">\(-\infty &lt; x &lt; \infty\)</span>. Continuous random variables are prolific within the behavioral sciences: Age, height, and reaction time, for example, can all be thought of as continuous random variables.</p>
 <p>To fully specify a continuous random variable, we shall again need a set of rules describing its randomness, a.k.a., a probability distribution. This is where things get tricky. As you will see the difficulty arises from our aforementioned definition of continuous spaces. Let’s explore this by considering a random variable with the space - <span class="math inline">\(0 \leq X \leq 1\)</span>. Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We could take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable.</p>
-<p>Take a moment to glance back at the properties of a discrete random variable (if you don’t remember them). Specifically, over the <span class="math inline">\(n\)</span> outcomes in the space of <span class="math inline">\(X\)</span>, a pmf must have</p>
+<p>Take a moment to glance back at the properties of a probability mass function (if you don’t remember them). Specifically, over the <span class="math inline">\(n\)</span> outcomes in the space of a discrete random variable <span class="math inline">\(X\)</span>, a pmf must have</p>
 <p><span class="math display">\[
 \sum_{i = 1}^{n} p(x_i) = 1
 \]</span></p>
@@ -178,10 +180,11 @@ statistics course.|</p>" />
 4) \:\: 0.866\underline{7}24...\\
 5) \:\: 0.9995\underline{2}5...
 \]</span></p>
-<p>We can specify a new number <span class="math inline">\(0.abcde\)</span> such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(b \neq 3\)</span>, <span class="math inline">\(c \neq 7\)</span>, <span class="math inline">\(d \neq 7\)</span>, and <span class="math inline">\(e \neq 2\)</span>. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would <em>always work</em>. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.</p>
-<p>The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it’s one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes <em>because we can’t list the outcomes out</em>. And, therefore, we can’t ensure we’ve attained the important property of <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
-<p>As it turns out, we get around this conundrum by assigning probabilities to <em>ranges</em> of our continuous random variable, and we do this with a <strong>probability density function</strong> (pdf). A probability density function describes the amount of probability (sometimes referred to here as <em>probability mass</em>) <em>per unit</em> <span class="math inline">\(x\)</span> at a given point in a continuous range. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that <span class="math inline">\(X\)</span> falls below the value of <span class="math inline">\(.5\)</span>, e.g., <span class="math inline">\(P(X &lt; .5)\)</span>. We’ll dig deeper into this concept as we have in the past - through an example.</p>
-<p>Suppose we have a probability density function</p>
+<p>We can specify a new number <span class="math inline">\(0.abcde\)</span> such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that <span class="math inline">\(a \neq 1\)</span>, <span class="math inline">\(b \neq 3\)</span>, <span class="math inline">\(c \neq 7\)</span>, <span class="math inline">\(d \neq 7\)</span>, and <span class="math inline">\(e \neq 2\)</span>. Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our number is therefore different from each of the numbers in our list. This method of finding a new number would <em>always work</em>. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.</p>
+<p>The logic described above, credited to Georg Cantor a famous set theorist, is indeed intriguing (in fact it’s one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can’t specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can’t sum the probability of each outcome - <span class="math inline">\(p(x_1)\)</span> - over the set of outcomes <em>because we can’t list the outcomes out</em>. And, therefore, we can’t ensure we’ve attained the important property of <span class="math inline">\(\sum_{i = 1}^{n} p(x_i) = 1\)</span>.</p>
+<p>As it turns out, we get around this conundrum by assigning probabilities to <em>ranges</em> of our continuous random variable, and we do this with something called a <strong>probability density function</strong> (pdf). A probability density function describes the amount of probability (sometimes referred to here as <em>probability mass</em>) <em>per unit</em> <span class="math inline">\(x\)</span> at a given point in a continuous range. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that <span class="math inline">\(X\)</span> falls below the value of <span class="math inline">\(.5\)</span>, e.g., <span class="math inline">\(P(X &lt; .5)\)</span>. We’ll dig deeper into this concept as we have in the past - through an example.</p>
+<div class="example">
+<p><span id="exm:firstdensity" class="example"><strong>Example 3.1  </strong></span>Suppose we have a probability density function</p>
 <p><span class="math display">\[
 f(x) =
 \begin{cases}
@@ -189,7 +192,7 @@ f(x) =
 0 &amp; Everywhere \: else
 \end{cases}
 \]</span></p>
-<p>This function assigns a value of 1 probability density to any value - <span class="math inline">\(0 \leq x \leq 1\)</span>. Anywhere else it assigns a value of 0. Let’s refer to units of probability mass with the abbreviation - <span class="math inline">\(pm\)</span> - and let’s assume that the units of <span class="math inline">\(x\)</span> are <span class="math inline">\(u\)</span> (short for units of x). Suppose our value of <span class="math inline">\(x = .25\)</span>, then</p>
+<p>This function assigns a value of 1 probability density to any value - <span class="math inline">\(0 \leq x \leq 1\)</span>. Anywhere else it assigns a value of 0. Let’s refer to units of probability mass (or probability) with the abbreviation - <span class="math inline">\(pm\)</span> - and let’s assume that the units of <span class="math inline">\(x\)</span> are <span class="math inline">\(u\)</span> (short for units of x). Suppose our value of <span class="math inline">\(x = .25\)</span>, then</p>
 <p><span class="math display">\[
 f(.25) = 1
 \]</span></p>
@@ -201,7 +204,8 @@ f(.25) = 1
 <p><span class="math display">\[
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 \]</span></p>
-<p>We get an area of .25, but the story of the calculation is in the units of this value. The units of <span class="math inline">\(x\)</span> cancel out, and the units of our calculated area are <span class="math inline">\(pm\)</span> (probability mass). That is to say, our probability density function has assigned a 25% probability to the range <span class="math inline">\(0 \leq x \leq .25\)</span>. Put another way, we have <span class="math inline">\(P(0\leq X\leq.25) = .25\)</span>. Indeed, if calculate the area under the whole curve (line) where <span class="math inline">\(f(x) = 1\)</span>, then we would find that the area is 1. That is, there is a 100% chance that our random variable <span class="math inline">\(X\)</span> falls in the range <span class="math inline">\(0 \leq x \leq .25\)</span>. This mimics the property of pmfs we discussed at the start of this section.</p>
+<p>We get an area of .25, but the story of the calculation is in the units of this value. The units of <span class="math inline">\(x\)</span> cancel out, and the units of our calculated is ultimately <span class="math inline">\(pm\)</span> (probability mass). That is to say, our probability density function has assigned a 25% probability to the range <span class="math inline">\(0 \leq x \leq .25\)</span>. Put another way, we have <span class="math inline">\(P(0\leq X\leq.25) = .25\)</span>. Indeed, if calculate the area under the whole curve (line) where <span class="math inline">\(f(x) = 1\)</span>, then we would find that the area is 1. That is, there is a 100% chance that our random variable <span class="math inline">\(X\)</span> falls in the range <span class="math inline">\(0 \leq x \leq .25\)</span>. This mimics the property of pmfs we discussed at the start of this section.</p>
+</div>
 <p>There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function</p>
 <p><span class="math display">\[
 f(x) =
@@ -210,18 +214,19 @@ e^{-x} &amp; 0 \leq x \leq \infty \\
 0 &amp; x&lt;0
 \end{cases}
 \]</span>
-This function in particular is an example of an <em>exponential distribution</em>. When we look at its plot (below) it becomes apparent that calculating the area under it’s curve is a bit more complicated.</p>
+This function is an example of an <em>exponential distribution</em>. When we look at its plot (below) it becomes apparent that calculating the area under it’s curve is a bit more complicated.</p>
 <p><img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
-<p>We can’t just calculate this area as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also equal to 1. That is, <span class="math inline">\(P(0 &lt; X &lt; \infty) = 1\)</span>. The means by which we calculate the area under a given probability density function (and a function more generally) is called <strong>integration</strong>. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. Given some function, <span class="math inline">\(f(x)\)</span>, integration is indicated by</p>
+<p>We can’t just calculate this area as we did with our rectangular region. More advanced techniques (that you might learn in Calculus 2) do show that the area under the curve of this function is equal to 1. That is, <span class="math inline">\(P(0 &lt; X &lt; \infty) = 1\)</span>. The means by which we calculate the area under a given probability density function (and a function more generally) is called <strong>integration</strong>. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail.</p>
+<p>Given some function, <span class="math inline">\(f(x)\)</span>, integration is indicated by</p>
 <p><span class="math display">\[
-\int_{a}^{b} f(x) \,dx
+area \:=\int_{a}^{b} f(x) \,dx
 \]</span></p>
 <p>The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve <span class="math inline">\(f(x)\)</span> from a to b. In our first example above, we calculated the integral of <span class="math inline">\(f(x)\)</span> from x = 0 to x = .25. In terms of our probability set operator, and given some pdf, we observe that</p>
 <p><span class="math display">\[
 P(a &lt; X &lt; b) = \int_{a}^{b} f(x) \, dx
 \]</span>
-That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. We have learned this simply for the sake of notation. Sometimes I shall refer to the probability of some event via an integral as opposed to the probability set operator.</p>
-<p>The properties of a pdf are analogous to the discrete case. Specifically</p>
+That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. Indeed for our purposes, it is important for you to know this at a high level. You shall not - except where you skills will allow - be asked to do an integral in this book. However, it’s helpful to know what an integral is and what a probability density is. It will make our foray into continuous distributions much more interesting.</p>
+<p>Next we turn our attention to the properties of a pdf, which are analogous to the discrete case. Specifically</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f(x) \geq 0\)</span>. The values for which <span class="math inline">\(f(x) &gt; 0\)</span> are referred to as the <strong>support</strong> of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: <span class="math inline">\(f(x)\)</span> can be greater than 1.</p></li>
 <li><p><span class="math inline">\(\int_{-\infty}^{\infty} f(x) \, dx = 1\)</span>. Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity in the integral to make things easier notation wise. They specify an integral from the smallest number to the highest number in the space of <span class="math inline">\(X\)</span>.</p></li>
@@ -244,14 +249,61 @@ f(x) =
 \]</span></p>
 <div id="practice-problems-1" class="section level3 hasAnchor" number="3.1.1">
 <h3><span class="header-section-number">3.1.1</span> Practice Problems<a href="continuous-random-variables.html#practice-problems-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For the next few problems describe if the function is <em>not</em> a pdf and explain why</p>
+<p>For the next few problems describe if the function is <em>not</em> a pdf and explain why. It will be helpful to draw a plot of each function and recall (or look-up) calculations for geometric shapes.</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(f(x) = x\)</span> from <span class="math inline">\(-1 &lt; x &lt; 1\)</span> and zero everywhere else.</p></li>
 <li><p><span class="math inline">\(f(x) = 2\)</span> from <span class="math inline">\(0 &lt; x &lt; 1/2\)</span> and zero everywhere else.</p></li>
 <li><p><span class="math inline">\(f(x) = x\)</span> from <span class="math inline">\(0 &lt; x &lt; \sqrt{2}\)</span> and zero everywhere else (Hint: draw the plot).</p></li>
 </ol>
-
+<p>Given the pdf below. For problems 4-7 calculate the probability that an outcome of a random experiment falls in the specified range.
+<span class="math display">\[
+f(x) =
+\begin{cases}
+1/2 &amp; 0 \leq x \leq 2 \\
+0 &amp; Everywhere \: else
+\end{cases}
+\]</span></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>What is <span class="math inline">\(P(0 &lt; X &lt; .25)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(P(1 &lt; X &lt; 2)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(P(.25 &lt; X &lt; 1)\)</span>?</p></li>
+<li><p>What is <span class="math inline">\(P(X &gt; 2)\)</span></p></li>
+<li><p>This problem may be tough. Don’t get discouraged. Given the pdf</p></li>
+</ol>
+<p><span class="math display">\[
+f(x) =
+\begin{cases}
+x &amp; 0 \leq x \leq \sqrt{2} \\
+0 &amp; Everywhere \: else
+\end{cases}
+\]</span></p>
+<p>Describe a function - <span class="math inline">\(F(x)\)</span> - that takes a value of <span class="math inline">\(x\)</span> and returns <span class="math inline">\(P(0 &lt; X &lt; x)\)</span>. Think about the area of a triangle.</p>
 </div>
+<div id="practice-problem-answers-1" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Practice Problem Answers<a href="continuous-random-variables.html#practice-problem-answers-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(f(-1) = -1\)</span>, so this function can’t be a pdf because <span class="math inline">\(-1 &lt; 0\)</span>.</li>
+<li>This function would work as a probability density.</li>
+<li>This function would work as a probability density.</li>
+<li>1/8</li>
+<li>1/2</li>
+<li>3/8</li>
+<li>0</li>
+<li><span class="math inline">\(\frac{1}{2}xf(x) = \frac{1}{2}xx = \frac{1}{2}x^2\)</span>. If you got that part, well done! If you didn’t, no worries it was tricky. Now there’s a subtle point that must be made which I would not have fully expected you to notice (because of my explanations). The density is zero after <span class="math inline">\(\sqrt(2)\)</span> and before zero. After <span class="math inline">\(\sqrt(2)\)</span> there is zero area under the density curve and therefore zero additional probability added. In other words,</li>
+</ol>
+<p><span class="math display">\[
+F(x) =
+\begin{cases}
+0 &amp; x &lt; 0 \\
+\frac{1}{2}x^2 &amp; 0 \leq x \leq \sqrt{2} \\
+1 &amp; \sqrt{2} &lt; x
+\end{cases}
+\]</span></p>
+</div>
+</div>
+<div id="cumulative-distribution-functions-independence-and-expectations" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Cumulative Distribution Functions, Independence, and Expectations<a href="continuous-random-variables.html#cumulative-distribution-functions-independence-and-expectations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
 </div>
 </div>
             </section>

@@ -72,6 +72,7 @@ exm:unlabeled-div-32
 eq:poisson
 exm:unlabeled-div-33
 exm:unlabeled-div-34
+exm:firstdensity
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -99,3 +100,5 @@ practice-problem-answers
 continuous-random-variables
 probability-density-and-the-continuous-random-variable
 practice-problems-1
+practice-problem-answers-1
+cumulative-distribution-functions-independence-and-expectations
