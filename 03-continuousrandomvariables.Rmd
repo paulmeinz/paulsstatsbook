@@ -42,7 +42,7 @@ We can specify a new number $0.abcde$ such that a, b, c, d, and e are numbers be
 
 The logic described above, credited to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - $p(x_1)$ - over the set of outcomes _because we can't list the outcomes out_. And, therefore, we can't ensure we've attained the important property of $\sum_{i = 1}^{n} p(x_i) = 1$.  
 
-As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable, and we do this with something called a **probability density function** (pdf). A probability density function describes the amount of probability (sometimes referred to here as *probability mass*) _per unit_ $x$ at a given point in a continuous range. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that $X$ falls below the value of $.5$, e.g., $P(X < .5)$. We'll dig deeper into this concept as we have in the past - through an example. 
+As it turns out, we get around this conundrum by assigning probabilities to *ranges* of our continuous random variable, and we frequently do this with something called a **probability density function** (pdf). A probability density function describes the amount of probability (sometimes referred to here as *probability mass*) _per unit_ $x$ at a given point. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that $X$ falls below the value of $.5$, e.g., $P(X < .5)$. We'll dig deeper into this concept as we have in the past - through an example. 
 
 ::: {.example #firstdensity}
 
@@ -131,7 +131,7 @@ $$
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 $$
 
-We get an area of .25, but the story of the calculation is in the units of this value. The units of $x$ cancel out, and the units of our calculated is ultimately $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. Indeed, if calculate the area under the whole curve (line) where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This mimics the property of pmfs we discussed at the start of this section.
+We get an area of .25, but the story of the calculation is in the units of this value. Note how the units of $x$ cancel out, and the units of our calculated value are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. Indeed, if we calculate the area under the whole curve (line) where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This mimics the property of pmfs we discussed at the start of this section.
 
 :::
 
@@ -156,7 +156,7 @@ ggplot2::ggplot(data = z, ggplot2::aes(x=x,y=y))+
   ggplot2::geom_line()
 ```
 
-We can't just calculate this area as we did with our rectangular region. More advanced techniques (that you might learn in Calculus 2) do show that the area under the curve of this function is equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function more generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. 
+We can't just calculate this area as we did with our rectangular region. More advanced techniques (that you would learn in Calculus 2) do show that the area under the curve of this function is equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function more generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. 
 
 Given some function, $f(x)$, integration is indicated by
 
@@ -169,13 +169,13 @@ The values a and b indicate the starting point and the ending point for the inte
 $$
 P(a < X < b) = \int_{a}^{b} f(x) \, dx
 $$
-That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. Indeed for our purposes, it is important for you to know this at a high level. You shall not - except where you skills will allow - be asked to do an integral in this book. However, it's helpful to know what an integral is and what a probability density is. It will make our foray into continuous distributions much more interesting. 
+That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. Indeed for our purposes, it is important for you to know this at a high level. You shall not - except where your skills will allow - be asked to do an integral in this book. However, it's helpful to know what an integral is and what a probability density is. It will make our foray into continuous distributions much more interesting. 
 
 Next we turn our attention to the properties of a pdf, which are analogous to the discrete case. Specifically
 
 1. $f(x) \geq 0$. The values for which $f(x) > 0$ are referred to as the **support** of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: $f(x)$ can be greater than 1. 
 
-2. $\int_{-\infty}^{\infty} f(x) \, dx = 1$. Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity in the integral to make things easier notation wise. They specify an integral from the smallest number to the highest number in the space of $X$. 
+2. $\int_{-\infty}^{\infty} f(x) \, dx = 1$. Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity for the integral to make things easier notation wise. Any value outside the space of the random variable $X$ is assigned a probability density of zero. That is to say, the ranges of "infinity" outside the space of $X$ have probability zero, and therefore, writing negative and positive infinity doesn't change the outcome of the integral/area calculation. 
 
 Now, let's return to our simple pdf from the beginning of this section
 
@@ -186,6 +186,7 @@ f(x) =
 0 & Everywhere \: else
 \end{cases}
 $$
+
 Note that this function has all the properties of a pdf - $f(x) \geq 1$ and $\int_{-\infty}^{\infty} f(x) \, dx = 1$. The area under $f(x)$ from 0 to 1 is equal to 1, and everywhere else the area is equal to zero. That is to say, over the entire space of $X$ the area under the curve is equal to 1. This particular function is an example of a *continuous uniform distribution*. The functions assign a constant probability density over the support of $X$ and are analogous to the discrete uniform distribution. Here's another example that assigns $\frac{1}{2}$ density from 0 to 2.
 
 $$
@@ -243,7 +244,7 @@ Describe a function - $F(x)$ - that takes a value of $x$ and returns $P(0 < X < 
 5. 1/2
 6. 3/8
 7. 0
-8. $\frac{1}{2}xf(x) = \frac{1}{2}xx = \frac{1}{2}x^2$. If you got that part, well done! If you didn't, no worries it was tricky. Now there's a subtle point that must be made which I would not have fully expected you to notice (because of my explanations). The density is zero after $\sqrt(2)$ and before zero. After $\sqrt(2)$ there is zero area under the density curve and therefore zero additional probability added. In other words, 
+8. $\frac{1}{2}xf(x) = \frac{1}{2}xx = \frac{1}{2}x^2$. If you got that part, well done! If you didn't, no worries it was tricky. Now there's a subtle point that must be made which I would not have fully expected you to notice (because of my explanations; not because of any shortcomings you may have). The density is zero after $\sqrt(2)$ and before zero. After $\sqrt(2)$ there is zero area under the density curve and therefore zero additional probability added. In other words, 
 
 $$
 F(x) = 
@@ -255,3 +256,25 @@ F(x) =
 $$
 
 ## Cumulative Distribution Functions, Independence, and Expectations
+As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). For some value of a random variable, a cdf takes a value of $x$ and returns $P(X < x)$. That is to say, it tells us the probability that the outcome of a random experiment falls below a value $x$. We often refer to these functions with a capital $F$ to distinguish it from a probability density $f$, e.g.
+
+$$
+F(x) = P(X < x) = \int_{\infty}^{x} f(t) \, dt
+(\#eq:cdfs)
+$$
+Don't get too hung up on the $t$ on the right hand side of the equation above. In this context, $f(t)$ is a probability density function. We have used $t$ here to make it clear that $x$ refers to the upper value in the area calculation (e.g. the integral). $F(x)$ is the cdf corresponding to $f(t)$. It gives us a convenient way to calculate the amount of probability below the pdf - $f(t)$ - up to the given value of $x$. Also note, that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
+
+::: {.example}
+Let's return to our first ever probability density. 
+
+$$
+f(x) = 
+\begin{cases}
+1 & 0 \leq x \leq 1 \\
+0 & Everywhere \: else
+\end{cases}
+$$
+
+We would like to calculate a cdf for our random variable X.
+
+:::
