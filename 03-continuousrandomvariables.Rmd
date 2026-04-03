@@ -256,13 +256,13 @@ F(x) =
 $$
 
 ## Cumulative Distribution Functions, Independence, and Expectations
-As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). For some value of a random variable, a cdf takes a value of $x$ and returns $P(X < x)$. That is to say, it tells us the probability that the outcome of a random experiment falls below a value $x$. We often refer to these functions with a capital $F$ to distinguish it from a probability density $f$, e.g.
+As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). Given a random variable with a probability density function, $f(x)$, a cdf determines the area under the density curve less than a given value of $x$. That is to say, it tells us the probability that the outcome of a random experiment falls below a value of $x$ - $P(X < x)$. We often refer to these functions with a capital $F$ to distinguish them from a probability density $f$. In other words,
 
 $$
-F(x) = P(X < x) = \int_{\infty}^{x} f(t) \, dt
+F(x) = P(X < x)
 (\#eq:cdfs)
 $$
-Don't get too hung up on the $t$ on the right hand side of the equation above. In this context, $f(t)$ is a probability density function. We have used $t$ here to make it clear that $x$ refers to the upper value in the area calculation (e.g. the integral). $F(x)$ is the cdf corresponding to $f(t)$. It gives us a convenient way to calculate the amount of probability below the pdf - $f(t)$ - up to the given value of $x$. Also note, that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
+Note that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
 
 ::: {.example}
 Let's return to our first ever probability density. 
