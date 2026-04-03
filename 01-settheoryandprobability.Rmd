@@ -143,7 +143,7 @@ $$ C^c = \{5 \leq x < 7\}^c = \{7 \leq x \leq 10\} $$
 
 The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset $C$, and the bottom line represents the complement. The open circle at the end of our subset $C$ indicates that the value 7 is not included in its range. The elements of C are strictly less than 7. This is in contrast to the complement line below - which has a solid black dot indicating 7's inclusion due to its exclusion from $C$. Thus the complement of $C$ ranges from 7 to 10.
 
-```{r, echo = FALSE}
+```{r fig1, echo = FALSE, fig.cap = "Plotting a Complement"}
 x <- c(5,7)
 y <- c(.3,.3)
 C <- data.frame(x,y)
@@ -184,7 +184,7 @@ The previous introduction to sets was dedicated to a random experiment where we 
 
 To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (experiment) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we flip two counts. The sample space would be all the possible permutations of heads and tails from the two flips. It helps to draw draw a _tree diagram_ to get the gist of it.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Example Tree Diagram for Two Coin Flips"}
 a <- data.frame(x = c(1,2,3,1,2,3,1,2,3,1,2,3), 
                 y = c(1,1.5,1.75,1,1.5,1.25,1,.75,1,1,.75,.50),
                 grp = c('A','A','A','B','B','B','C','C','C','D','D','D'),
@@ -402,7 +402,7 @@ The probability of $C_1$ given that $C_2$ has occurred is 1/2.
 
 The computation isn't too hard (although it may be at first), but the interpretation of conditional probability can certainly be tricky. It's worth unpacking our last example a bit more. One way to envision the last example is to think of a probability pie (stick with me here). In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Probabilities before C2 occured"}
 x <- c(1/3,1/3,1/3)
 y <- as.factor(c(1,2,3))
 C <- data.frame(x,y)
@@ -423,7 +423,7 @@ print(lines)
 
 Now, we are learn that the event $C_2 = \{1,2\}$ has occurred. Put another way, we now know that the outcome from our random experiment has landed _somewhere_ in $C_2$. The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. One might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given $C_2$ occurred - is 1/2. Because $C_2$ occurred, the probability of $C_1$ increased from 1/3 to 1/2.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Conditional probability now that C2 has occurred"}
 x <- c(1/3,1/3,1/3)
 y <- as.factor(c(1,2,3))
 C <- data.frame(x,y)

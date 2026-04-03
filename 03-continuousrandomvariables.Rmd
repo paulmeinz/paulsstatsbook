@@ -64,7 +64,7 @@ $$
 
 The value of 1 from our pdf is a probability density which has the units $pm/u$, e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit $x$ at exactly the point $x = .25$. Now let's talk about how such a function assigns probability to a range of x. Take a look at the plot of our probability density function below.
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Boring"}
 a <- data.frame(x = c(0,1), 
                 y = c(1,0),
                 x_end = c(1,1.5),
@@ -90,7 +90,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 Indeed, it is a very boring plot - just a horizontal line where $f(x) = 1$ from 0 to 1. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with $x = .25$ and calculate the area under the $f(x)$ line from $0 \leq x \leq .25$. Take a look at the the rectangle with the diagonal lines through it in the plot below. The area to which we are referring is bordered by $f(x)$ at the top, the x-axis at the bottom, and vertical lines at $x = 0$ and $x = .25$, respectively. 
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, fig.cap = "Area under the density"}
 
 a <- seq(-.25,1, by = .05)
 b <- data.frame(x = c(0,.25,0,0,1), 
@@ -256,7 +256,7 @@ F(x) =
 $$
 
 ## Cumulative Distribution Functions, Independence, and Expectations
-As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). Given a random variable with a probability density function, $f(x)$, a cdf determines the area under the density curve less than a given value of $x$. That is to say, it tells us the probability that the outcome of a random experiment falls below a value of $x$ - $P(X < x)$. We often refer to these functions with a capital $F$ to distinguish them from a probability density $f$. In other words,
+As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). Given a random variable with a probability density function, $f(x)$, a cdf determines the area under the density curve left of (less than) a given value of $x$. That is to say, it tells us $P(X < x)$. We often refer to these functions with a capital $F$ to distinguish them from their corresponding pdf $f$. In other words,
 
 $$
 F(x) = P(X < x)
@@ -265,7 +265,7 @@ $$
 Note that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
 
 ::: {.example}
-Let's return to our first ever probability density. 
+Let's return to our first ever probability density (it was so long ago!). 
 
 $$
 f(x) = 
@@ -275,6 +275,67 @@ f(x) =
 \end{cases}
 $$
 
-We would like to calculate a cdf for our random variable X.
+We would like to calculate a cdf for our random variable $X$, and for that purpose, it helps to look at a graph and calculate a few values. Take a look at the very boring graph of our pdf again.
 
-:::
+```{r, echo = FALSE, fig.cap = "Very Boring"}
+a <- data.frame(x = c(0,1), 
+                y = c(1,0),
+                x_end = c(1,1.5),
+                y_end = c(1,0))
+
+b <- data.frame(x = c(0,1), 
+                y = c(1,1))
+
+d <- data.frame(x = c(1), 
+                y = c(0))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = a, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::scale_y_continuous(limits = c(0,2)) +
+  ggplot2::scale_x_continuous(limits = c(0,1.5)) +
+  ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
+  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
+
+```
+
+Suppose we want to calculate $P(X < x)$ for several specified values of $x$ - .25, .5, .75, and 1. Call each of these values $x1$, $x2$, $x3$ and $x4$, respectively. We would like to calculate the area under the pdf from $-\infty$ up to each of these values. In the figure below, I've drawn a vertical line corresponding to each $x_i$, we shall need to calculate the area under $f(x)$ up to each one of those lines.
+
+```{r, echo = FALSE, fig.cap = "Very Very Boring"}
+a <- data.frame(x = c(0,1), 
+                y = c(1,0),
+                x_end = c(1,1.5),
+                y_end = c(1,0))
+
+b <- data.frame(x = c(0,1), 
+                y = c(1,1))
+
+d <- data.frame(x = c(1), 
+                y = c(0))
+
+e <- data.frame (x = c(.25,.5,.75,1), 
+                y = c(0,0,0,0),
+                x_end = c(.25,.5,.75,1),
+                y_end = c(1,1,1,1))
+
+f <- data.frame(x = c(.25,.5,.75,1),
+                y = c(1.125,1.125,1.125,1.125),
+                text = c('x1', 'x2' ,'x3', 'x4'))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = a, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::geom_segment(data = e, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::geom_text(data = f, ggplot2::aes(x = x, y = y, label = text)) +
+  ggplot2::scale_y_continuous(limits = c(0,2)) +
+  ggplot2::scale_x_continuous(limits = c(0,1.5)) +
+  ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
+  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
+
+```
+
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. We are again calculating the area of rectangles. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) above by its height (in this case, $1$). That is to say, we can proceed as in \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to 1. That's not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, so we can safely assume that the area under the curve for any value less than zero is zero. 
+
+Okay, so we shall proceed as we did in \@ref(exm:firstdensity). The calculations are written out in the table below.
