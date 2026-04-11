@@ -1,7 +1,10 @@
 h1:set-theory-and-probability Set Theory and Probability
 h2:sets-and-sample-spaces Sets and Sample Spaces
 h3:repeated-samples Repeated Samples
+fig:echo Example Tree Diagram for Two Coin Flips
 h2:what-is-probability What is probability?
 h2:conditional-probability-and-independence Conditional Probability and Independence
+fig:echo Probabilities before C2 occured
+fig:echo Conditional probability now that C2 has occurred
 h2:extended-examples-of-probability Extended Examples of Probability
 

@@ -84,9 +84,9 @@ exm:firstdensity
 fig:unnamed-chunk-10
 fig:unnamed-chunk-11
 eq:cdfs
-exm:unlabeled-div-35
 fig:unnamed-chunk-13
 fig:unnamed-chunk-14
+fig:unnamed-chunk-16
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book

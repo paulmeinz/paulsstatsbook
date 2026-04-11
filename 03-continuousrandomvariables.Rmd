@@ -264,7 +264,7 @@ F(x) = P(X < x)
 $$
 Note that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
 
-::: {.example}
+::: {.example #uniform_density}
 Let's return to our first ever probability density (it was so long ago!). 
 
 $$
@@ -296,11 +296,14 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
   ggplot2::scale_x_continuous(limits = c(0,1.5)) +
   ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
   ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
-  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white') +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::theme_bw()
 
 ```
 
-Suppose we want to calculate $P(X < x)$ for several specified values of $x$ - .25, .5, .75, and 1. Call each of these values $x1$, $x2$, $x3$ and $x4$, respectively. We would like to calculate the area under the pdf from $-\infty$ up to each of these values. In the figure below, I've drawn a vertical line corresponding to each $x_i$, we shall need to calculate the area under $f(x)$ up to each one of those lines.
+Suppose we want to calculate $P(X < x)$ for several specified values of $x$ - .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. We would like to calculate the area under the pdf from $-\infty$ up to each of these values. In the figure below, I've drawn a vertical line corresponding to each $x_i$, we shall need to calculate the area under $f(x)$ up to each one of those lines.
 
 ```{r, echo = FALSE, fig.cap = "Very Very Boring"}
 a <- data.frame(x = c(0,1), 
@@ -332,10 +335,69 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
   ggplot2::scale_x_continuous(limits = c(0,1.5)) +
   ggplot2::labs(y = "y (pm/u)", x = "x (u)") +
   ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
-  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white')
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white') +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::theme_bw()
 
 ```
 
-Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. We are again calculating the area of rectangles. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) above by its height (in this case, $1$). That is to say, we can proceed as in \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to 1. That's not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, so we can safely assume that the area under the curve for any value less than zero is zero. 
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. We are again calculating the area of rectangles. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) above by its height (in this case, $1$). That is to say, we can proceed as in \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to our value of $x$. That's not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
 
 Okay, so we shall proceed as we did in \@ref(exm:firstdensity). The calculations are written out in the table below.
+
+```{r, echo = FALSE}
+x <- c(.25,.5,.75,1)
+y <- c(1,1,1,1)
+q <- x * y
+
+sample_space <- data.frame(x,y,q)
+names(sample_space) <- c('Base - x', 'Height - f(x)','P(X < x) - Base x Height')
+
+x <- flextable::flextable(sample_space)
+x <- flextable::align(x, align = 'center', part = 'body')
+x <- flextable::align(x, align = 'center', part = 'header')
+x <- flextable::bg(x, bg = 'gray', part = 'header')
+x
+```
+
+Now, let's plot each of our values of $x$ and it's corresponding $P(X < x)$. Ultimately this will help us figure out the cdf of $f(x)$. We have four $(x,y)$ coordinates - $(.25, P(X < .25))$, $(.50, P(X < .50))$,$(.75, P(x < .75))$, and $(1, P(X < 1))$. If we plot each and connect each with a line, we get
+
+```{r, echo = FALSE, fig.cap = "The (almost) cdf of f(x)"}
+a <- data.frame(x = c(0,.25,.5,.75,1), 
+                y = c(0,.25,.5,.75,1))
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_point(shape = 21, color = 'black', fill = 'black') +
+  ggplot2::geom_line() +
+  ggplot2::xlim(c(0,2)) +
+  ggplot2::ylim(c(0,2)) +
+  ggplot2::theme_bw() +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::labs(y = "P(X < x)", x = "x")
+
+```
+
+Looking at the plot above, and considering our earlier computations, we might begin to think that $P(x < X) = x$. We would be correct. The cdf of $f(x)$ is
+
+$$
+P(X < x) = F(x) = 
+\begin{cases}
+0 & x < 0 \\
+x & 0 \leq x \leq 1 \\
+1 & x > 1
+\end{cases}
+$$
+
+Indeed, when calculating our areas earlier, we simply multiplied each value of x by $f(x) = 1$. In other words, $P(X < x) = x(1) = x$. Furthermore, for any value below 0, $f(x)$ has zero density, so $P(X < 0) = 0$. If our value of $x$ is greater than 1 on the other hand, then $P(X < x) = 1$. There is no additional area under the curve for values above 1. Thus we are only left with the area between 0 and 1 when calculating $P(X < x)$, and $P(X < 1) = 1$. 
+With our new-found cdf, we can easily calculate P(X < x). For example, given the values 0.11, 0.512, and 0.98, then
+
+$$
+P(X < 0.11) = F(.11) = 0.11 \\
+P(X < 0.512) = F(0.512) = 0.512 \\
+P(X < 0.98) = F(0.98) = 0.98
+$$
+:::
+
+In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next example we frame the intuition of a some common scenarios. If you've forgotten, now may be the time to review your set notation for continuous sample spaces.
