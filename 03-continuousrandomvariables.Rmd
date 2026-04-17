@@ -400,4 +400,44 @@ P(X < 0.98) = F(0.98) = 0.98
 $$
 :::
 
-In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next example we frame the intuition of a some common scenarios. If you've forgotten, now may be the time to review your set notation for continuous sample spaces.
+In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next examples, we frame the intuition of a some common scenarios. If you've forgotten, now may be the time to review your set notation for continuous sample spaces.
+
+The examples shall use a continuous random variable - $X$ - with an exponential pdf (a.k.a., an exponential distribution), e.g., 
+
+$$
+f(x) = 
+\begin{cases}
+e^{-x} & x \geq 0 \\
+0 & x < 0 
+\end{cases}
+$$
+
+The exponential pdf has the cdf 
+
+$$
+P(X < x) = F(x) = 
+\begin{cases}
+1-e^{-x} & x \geq 0 \\
+0 & x < 0 
+\end{cases}
+$$
+
+The 
+
+```{r, echo = FALSE, fig.cap = "The pdf and cdf for our example"}
+x <- seq(0,10, by = .1)
+y <- rep(c("f(x)","F(x)"), each = length(x))
+pdf <- exp(-x)
+cdf <- 1-exp(-x)
+outs <- c(pdf,cdf)
+plot_data <- data.frame(outs, y, x)
+
+ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = outs)) +
+  ggplot2::geom_point() +
+  ggplot2::geom_line() +
+  ggplot2::theme_bw() +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::facet_wrap(~ y)
+
+```
