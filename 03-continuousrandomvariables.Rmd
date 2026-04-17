@@ -422,18 +422,17 @@ P(X < x) = F(x) =
 \end{cases}
 $$
 
-The 
+You can see the pdf and the cdf plotted side by side (respectively) in the figure below. Note how the area under the curve for the pdf declines as $x$ gets larger. For example, there's more area under the pdf from 0 to 2.5 than there is from 2.5 to 5. Intuitively speaking, this explains the shape of the cumulative distribution function on the right. If we are calculating $P(X < x)$, incremental increases in $x$ near zero are going to result in relatively large increases in the area under the curve to the left of $x$. Thus the cdf - which represents $P(X < x)$ - increases rapidly for values of $x$ that are closer to zero. Then as $x$ gets larger, incremental increases don't add much area, so $P(X < x)$ grows much slower until it levels out. At very large values of $x$ it will be very close to 1.
 
 ```{r, echo = FALSE, fig.cap = "The pdf and cdf for our example"}
 x <- seq(0,10, by = .1)
-y <- rep(c("f(x)","F(x)"), each = length(x))
+y <- rep(c("f(x)","P(X < x) = F(x)"), each = length(x))
 pdf <- exp(-x)
 cdf <- 1-exp(-x)
 outs <- c(pdf,cdf)
 plot_data <- data.frame(outs, y, x)
 
 ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = outs)) +
-  ggplot2::geom_point() +
   ggplot2::geom_line() +
   ggplot2::theme_bw() +
   ggplot2::geom_vline(xintercept = 0) +
@@ -441,3 +440,61 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = outs)) +
   ggplot2::facet_wrap(~ y)
 
 ```
+
+::: {.example #uniform_density}
+Suppose we are working with our previously described exponentially distributed random variable, and we would like to know the probability that the outcome of a random experiment falls between 2 and 3. That is, we would like to know $P(2 < X < 3)$. Using our cdf, we could easily calculate $P(X < 3)$ but that would include all the probability mass in the region below 2. That's not what we want. Thankfully, we can still work with our cdf. In the solution that follows below, we shall approach the problem in two ways - one using set notation and another that leans on intuition and graphs.
+
+Take a close look at the range of $X < 3$. It can actually be written as the union of two mutually exclusive events, e.g.,
+
+$$
+\{X < 3\} = \{X < 2\} \cup \{2 \leq X < 3\}
+$$
+We have two mutually exclusive events which means we can use the law of addition \@ref(eq:addlaw) to get what we need! To see how, notice that (because the law of addition)
+
+$$
+P(\{X < 2\} \cup \{2 \leq X < 3\}) = P(X < 3) \\
+P(X < 2) + P(2 \leq X < 3) = P(X < 3)
+$$
+Note I dropped the curly braces in the second line for the sake of simplicity. We can now subtract $P(X < 2)$ from both sides and voila
+
+$$
+\begin{align}
+P(2 \leq X < 3) &= P(X < 3) - P(X < 2) \\
+P(2 \leq X < 3) &= F(3) - F(2) \\
+P(2 \leq X < 3) &= 1-e^{-3} - (1 - e^{-2}) \\
+P(2 \leq X < 3) &= 1-e^{-3} - 1 + e^{-2} \\
+P(2 \leq X < 3) &= e^{-2}-e^{-3} \approx 0.08555
+\end{align}
+$$
+From the above, we can conclude that given some $a$ and $b$, we can calculate $P(a < X < b)$ by
+
+$$
+P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
+(\#eq:fundamental)
+$$
+Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion in the section before this - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. If you continue your studies in mathematics, the equation above isn't just special to probability and statistics. In fact, it's one part of a very important theorem that has earned a special name - the Fundamental Theorem of Calculus.
+
+Now that we've worked with sets, we shall turn our attention to an intuitive approach. 
+
+```{r, echo = FALSE, fig.cap = "The pdf and cdf for our example"}
+x <- seq(0,10, by = .1)
+linx <- seq(0,3, by = .01)
+pdf <- exp(-x)
+plot_data <- data.frame(pdf, x)
+
+lins <- data.frame(x_start = linx, y_start = 0, x_end = linx, y_end = exp(-linx))
+
+ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = pdf)) +
+  ggplot2::geom_line() +
+  ggplot2::theme_bw() +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::geom_segment(data = lins, ggplot2::aes(x = x_start, 
+                                                  y = y_start, 
+                                                  xend = x_end, 
+                                                  yend = y_end))
+
+```
+
+
+:::
