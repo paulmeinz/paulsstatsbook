@@ -1083,7 +1083,7 @@ E(X) = Var(X) = \lambda
 $$
 In words, the variance and expectation of $X$ are equal to our lower-case lambda. 
 
-::: {.example}
+::: {.example #poissoninf}
 Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of _at least one_ car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
 
 We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable $X$. Here we have an average rate - $\lambda = 10$, and the first part asks what is $P(X = 10)$. So
