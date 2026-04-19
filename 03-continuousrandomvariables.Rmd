@@ -437,11 +437,12 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = outs)) +
   ggplot2::theme_bw() +
   ggplot2::geom_vline(xintercept = 0) +
   ggplot2::geom_hline(yintercept = 0) +
-  ggplot2::facet_wrap(~ y)
+  ggplot2::facet_wrap(~ y) +
+  ggplot2::labs(y = 'Density - f(x)')
 
 ```
 
-::: {.example #uniform_density}
+::: {.example #exp}
 Suppose we are working with our previously described exponentially distributed random variable, and we would like to know the probability that the outcome of a random experiment falls between 2 and 3. That is, we would like to know $P(2 < X < 3)$. Using our cdf, we could easily calculate $P(X < 3)$ but that would include all the probability mass in the region below 2. That's not what we want. Thankfully, we can still work with our cdf. In the solution that follows below, we shall approach the problem in two ways - one using set notation and another that leans on intuition and graphs.
 
 Take a close look at the range of $X < 3$. It can actually be written as the union of two mutually exclusive events, e.g.,
@@ -463,7 +464,7 @@ P(2 \leq X < 3) &= P(X < 3) - P(X < 2) \\
 P(2 \leq X < 3) &= F(3) - F(2) \\
 P(2 \leq X < 3) &= 1-e^{-3} - (1 - e^{-2}) \\
 P(2 \leq X < 3) &= 1-e^{-3} - 1 + e^{-2} \\
-P(2 \leq X < 3) &= e^{-2}-e^{-3} \approx 0.08555
+P(2 \leq X < 3) &= e^{-2}-e^{-3} = 0.08555
 \end{align}
 $$
 From the above, we can conclude that given some $a$ and $b$, we can calculate $P(a < X < b)$ by
@@ -472,29 +473,76 @@ $$
 P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
 (\#eq:fundamental)
 $$
-Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion in the section before this - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. If you continue your studies in mathematics, the equation above isn't just special to probability and statistics. In fact, it's one part of a very important theorem that has earned a special name - the Fundamental Theorem of Calculus.
+Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion in the section before this - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. If you continue your studies in mathematics, the equation above isn't just special to probability and statistics. In fact, it's one part of a very important theorem that is so important it has a fancy name - the Fundamental Theorem of Calculus.
 
-Now that we've worked with sets, we shall turn our attention to an intuitive approach. 
+Now that we've worked with sets, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the curve left of the value 3 (e.g., $x < 3$). As we have learned, it represents $P(X < 3)$. The area between the two vertical lines at the values 2 and 3 under the curve represents $P(2 < X < 3)$, and the area to the left of 2 represents $P(X < 2)$. Looking at the two regions, one can see that $P(X < 2)$ and $P(2 < X < 3)$ combine (sum) to $P(X < 3)$. We shall need to subtract out the area left of 2 to get our desired value.
 
-```{r, echo = FALSE, fig.cap = "The pdf and cdf for our example"}
+```{r, echo = FALSE, fig.cap = "P(X < 3)"}
 x <- seq(0,10, by = .1)
 linx <- seq(0,3, by = .01)
 pdf <- exp(-x)
+Area <- ifelse(linx < 2, 'P(X < 2)', 'P(X < 3)')
 plot_data <- data.frame(pdf, x)
+verts <- data.frame(x = c(2,3), y = c(0,0),
+                        xend = c(2,3), yend = exp(-c(2,3)))
 
-lins <- data.frame(x_start = linx, y_start = 0, x_end = linx, y_end = exp(-linx))
+
+lins <- data.frame(x_start = linx, y_start = 0, x_end = linx, y_end = exp(-linx),
+                   Area)
 
 ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = pdf)) +
-  ggplot2::geom_line() +
   ggplot2::theme_bw() +
   ggplot2::geom_vline(xintercept = 0) +
   ggplot2::geom_hline(yintercept = 0) +
   ggplot2::geom_segment(data = lins, ggplot2::aes(x = x_start, 
                                                   y = y_start, 
                                                   xend = x_end, 
-                                                  yend = y_end))
+                                                  yend = y_end),
+                        color = 'gray') +
+  ggplot2::geom_segment(data = verts, ggplot2::aes(x = x, y = y,
+                        xend = xend, yend = yend)) +
+  ggplot2::geom_line() +
+  ggplot2::labs(y = 'Density - f(x)') +
+  ggplot2::annotate('segment',x = 3, y = .25, xend = 2.5, yend = 0.05,
+                    arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"))) +
+  ggplot2::annotate('text', x = 3, y = .3, label = 'P(2 < X < 3)') +
+  ggplot2::annotate('segment',x = 2, y = .5, xend = 1, yend = 0.25,
+                    arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"))) +
+  ggplot2::annotate('text', x = 2, y = .55, label = 'P(X < 2)') +
+  ggplot2::scale_x_continuous(breaks = 0:10)
 
 ```
+:::
 
+The equation we learned in the last example will be important for our work with cdfs. Let's dig into a couple more common scenarios.
+
+::: {.example}
+Let's continue using our aforementioned pdf/cdf. Suppose we would like to know the probability that $P(X > 3)$. One may (yet again!) think we are in a conundrum because of the form of our cdf. Nevertheless, we can again use set notation to make our approach clear.
+
+Note that the support of $X$ is $X \geq 0$, and therefore, $P(X \geq 0) = 1$. That is to say, a random experiment would have a 100% chance of yielding a value greater than or equal to 0. Also, observe that
+
+$$
+\{0 < X\} = \{0 \leq X \leq 3\} \cup \{3 < X\} 
+$$
+In English: {0 < X} is the union of two mutually exclusive sets - $0 \leq X \leq 3$ and $3 < X}$. We can once again use the law of addition to get our desired probability.
+
+$$
+\begin{align}
+\{0 < X\} &= \{0 \leq X \leq 3\} \cup \{3 < X\} \\
+P(\{0 < X\}) &= P(\{0 \leq X \leq 3\} \cup \{3 < X\}) \\
+1 &= P(0 \leq X \leq 3) + P(3 < X) \\
+1 - P(0 \leq X \leq 3) &= P(3 < X)
+\end{align}
+$$
+This means that all we need is $P(0 \leq X \leq 3)$ and we will be able to calculate our desired probability. Looking at the pdf of $X$, one can see that there is no area below the curve for $x$ less than zero (that is, $f(x) = 0$). In other words, $P(0 \leq X \leq 3)$ is equal to $P(X < 3)$, and we know the latter because of our cdf. Specifically 
+
+$$
+\begin{align}
+1 - P(0 \leq X \leq 3) &= P(3 < X) \\
+1 - F(3) &= P(3 < X) \\
+1 - (1 - e^{-3}) &= P(3 < x) \\
+P(3 < x) &= 0.04978  
+\end{align}
+$$
 
 :::
