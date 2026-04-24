@@ -256,6 +256,9 @@ F(x) =
 $$
 
 ## Cumulative Distribution Functions, Independence, and Expectations
+
+### Cumulative Distribution Functions
+
 As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a **cumulative distribution function** (cdf). Given a random variable with a probability density function, $f(x)$, a cdf determines the area under the density curve left of (less than) a given value of $x$. That is to say, it tells us $P(X < x)$. We often refer to these functions with a capital $F$ to distinguish them from their corresponding pdf $f$. In other words,
 
 $$
@@ -264,7 +267,7 @@ F(x) = P(X < x)
 $$
 Note that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
 
-::: {.example #uniform_density}
+::: {.example #cumulative}
 Let's return to our first ever probability density (it was so long ago!). 
 
 $$
@@ -553,7 +556,7 @@ P(X > x) = 1 - F(x)
 $$
 :::
 
-Although we have derived a couple of equations together, you are hopefully beginning to get a sense for the **process** of using the cdf. We can, in general, find the area under the curve of a pdf by adding or subtracting appropriate values of the cdf. You can determine what to add and subtract but using set notation or by visualizing the regions under consideration. Let's hammer this process home with one more example.
+Although we have derived a couple of equations together, you are hopefully beginning to get a sense for the *process* of using the cdf. We can, in general, find the area under the curve of a pdf by adding or subtracting appropriate values of the cdf. You can determine what to add and subtract but using set notation or by visualizing the regions under consideration. Let's hammer this process home with one more example.
 
 ::: {.example}
 Suppose we are interested in the probability that our random experiment falls below 1 or above three. That is to say, we are interested in the event - {X < 1} OR {X > 3}. The two probabilities are depicted in the figure below by the gray area under our exponential pdf.
@@ -586,14 +589,14 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = pdf)) +
   ggplot2::labs(y = 'Density - f(x)') +
   ggplot2::annotate('segment',x = 3, y = .25, xend = 3.5, yend = 0.01,
                     arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"))) +
-  ggplot2::annotate('text', x = 3, y = .3, label = 'P(3 < X)') +
+  ggplot2::annotate('text', x = 3, y = .3, label = 'P(X > 3)') +
   ggplot2::annotate('segment',x = 2, y = .5, xend = 1, yend = 0.25,
                     arrow = ggplot2::arrow(length = ggplot2::unit(0.3, "cm"))) +
   ggplot2::annotate('text', x = 2, y = .55, label = 'P(X < 2)') +
   ggplot2::scale_x_continuous(breaks = 0:10)
 
 ```
-Our intuitive approach suggests that we can simply add the two areas up to get our desired probability. That is
+Our intuitive approach suggests that we can simply add the two areas up to get our desired probability. That is,
 
 $$
 \begin{align}
@@ -601,4 +604,8 @@ P(X < 2) + P(X > 3) &= F(2) + (1 - F(3)) \\
 &= 1- e^{-2} + (1 - 1 - e(-3)) = 0.81497
 \end{align}
 $$
+Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3}$ are mutually exclusive. In other words, we can add their corresponding probabilities. 
 :::
+
+### Expectation and Variance of a Continuous Random Variable.
+To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. 

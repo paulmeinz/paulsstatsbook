@@ -84,6 +84,7 @@ exm:firstdensity
 fig:unnamed-chunk-10
 fig:unnamed-chunk-11
 eq:cdfs
+exm:cumulative
 fig:unnamed-chunk-13
 fig:unnamed-chunk-14
 fig:unnamed-chunk-16
@@ -124,3 +125,5 @@ probability-density-and-the-continuous-random-variable
 practice-problems-1
 practice-problem-answers-1
 cumulative-distribution-functions-independence-and-expectations
+cumulative-distribution-functions
+expectation-and-variance-of-a-continuous-random-variable.
