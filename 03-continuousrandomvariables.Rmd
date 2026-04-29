@@ -301,7 +301,6 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
   ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white') +
   ggplot2::geom_vline(xintercept = 0) +
-  ggplot2::geom_hline(yintercept = 0) +
   ggplot2::theme_bw()
 
 ```
@@ -608,4 +607,102 @@ Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
-To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. 
+To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly.
+
+The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is the same. We'll walk through it right now. Consider the probability density function
+
+$$
+f(x) = 
+\begin{cases}
+x & 0 \leq x \leq \sqrt{2} \\
+0 & Everywhere\: else 
+\end{cases}
+$$
+
+This probability density function is plotted below and it's not massively different from the first density we talked about. This time we're looking at a triangle region under the pdf (maybe take a second verify that $f(x)$ has all the required properties of a pdf).
+
+```{r, echo = FALSE, fig.cap = "Triangle pdf"}
+a <- data.frame(x = c(0,sqrt(2)), 
+                y = c(0,0),
+                x_end = c(sqrt(2),2.5),
+                y_end = c(sqrt(2),0))
+
+b <- data.frame(x = c(0,sqrt(2)), 
+                y = c(0,sqrt(2)))
+
+d <- data.frame(x = c(sqrt(2)), 
+                y = c(0))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = a, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::scale_y_continuous(limits = c(0,2)) +
+  ggplot2::scale_x_continuous(limits = c(0,2.5)) +
+  ggplot2::labs(y = "Density", x = "x") +
+  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white') +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::theme_bw()
+
+```
+
+The cdf of this probability density function is 
+
+$$
+F(x) = 
+\begin{cases}
+\frac{x^2}{2} & 0 \leq x \leq \sqrt{2} \\
+0 & Everywhere\: else 
+\end{cases}
+$$
+Recall, that with regards to the discrete case, the expectation is calculated by multiplying each value of $X$ by its corresponding probability $p(x)$ and summing the results. That is, if there are $n$ outcomes in the space of $X$,
+
+$$
+E(X) = \sum_{i = 1}^{n}x_ip(x_i)
+$$
+Let's try something similar, we are going to divide the area under our pdf into parts. The area of each of these regions will act analogously to our p(x). For example, in the plot below, I've divided the area under the pdf into four regions - each corresponding to a range of $x$ of equivalent length. Each of the regions has the width $\frac{1}{4}\sqrt{2}$.  
+
+```{r, echo = FALSE, fig.cap = "Triangle pdf divided into 4"}
+a <- data.frame(x = c(0,sqrt(2)), 
+                y = c(0,0),
+                x_end = c(sqrt(2),2.5),
+                y_end = c(sqrt(2),0))
+
+b <- data.frame(x = c(0,sqrt(2)), 
+                y = c(0,sqrt(2)))
+
+d <- data.frame(x = c(sqrt(2)), 
+                y = c(0))
+
+e <- data.frame(x = c(sqrt(2)/4, 2*sqrt(2)/4, 3*sqrt(2)/4, 4*sqrt(2)/4),
+                y = c(0,0,0,0),
+                x_end = c(sqrt(2)/4, 2*sqrt(2)/4, 3*sqrt(2)/4, 4*sqrt(2)/4),
+                y_end = c(sqrt(2)/4, 2*sqrt(2)/4, 3*sqrt(2)/4, 4*sqrt(2)/4))
+                
+
+ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = a, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::geom_segment(data = e, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::scale_y_continuous(limits = c(0,2)) +
+  ggplot2::scale_x_continuous(limits = c(0,2.5)) +
+  ggplot2::labs(y = "Density", x = "x") +
+  ggplot2::geom_point(data = b, ggplot2::aes(x=x,y=y)) +
+  ggplot2::geom_point(data = d, ggplot2::aes(x=x,y=y), shape = 21, fill = 'white') +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::theme_bw()
+
+```
+
+The area of each of these four regions corresponds to the probability that $X$ falls within its corresponding range of $x$. For example, the first region represents $P(X < \frac{1}{4}\sqrt{2})$ and the last region represents $P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2})$. Using \@ref(eq:fundamental), we can calculate the latter as
+
+$$
+\begin{align}
+P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2}) &= P(X < \frac{4}{4}\sqrt{2}) - P(X < \frac{3}{4}\sqrt{2}) \\
+&= F(\sqrt{2}) - F(\frac{3}{4}\sqrt{2}) \\
+&= \frac{(\sqrt{2})^2}{2} - \frac{(3/4 \cdot \sqrt{2})^2}{2} \\
+&= \frac{2}{2} - \frac{9/16 \cdot 2}{2} \\
+&= 1 - \frac{9/8}{2} \\
+&= 1 - \frac{9}{16} = \frac{7}{16}
+\end{align}
+$$
