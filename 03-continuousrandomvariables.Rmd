@@ -354,12 +354,14 @@ y <- c(1,1,1,1)
 q <- x * y
 
 sample_space <- data.frame(x,y,q)
-names(sample_space) <- c('Base - x', 'Height - f(x)','P(X < x) - Base x Height')
+names(sample_space) <- c('Base: x', 'Height: f(x)','P(X < x): Base x Height')
 
 x <- flextable::flextable(sample_space)
 x <- flextable::align(x, align = 'center', part = 'body')
 x <- flextable::align(x, align = 'center', part = 'header')
 x <- flextable::bg(x, bg = 'gray', part = 'header')
+x <- flextable::hline(x)
+x <- flextable::autofit(x)
 x
 ```
 
@@ -660,9 +662,21 @@ Recall, that with regards to the discrete case, the expectation is calculated by
 $$
 E(X) = \sum_{i = 1}^{n}x_ip(x_i)
 $$
-Let's try something similar, we are going to divide the area under our pdf into parts. The area of each of these regions will act analogously to our p(x). For example, in the plot below, I've divided the area under the pdf into four regions - each corresponding to a range of $x$ of equivalent length. Each of the regions has the width $\frac{1}{4}\sqrt{2}$.  
+Let's try something similar, first we'll divide the support of our random variable $X$ into four equal ranges - each with width $\frac{1}{4}\sqrt{2}$. Specifically,
+
+$$
+\{0 < X < \frac{1}{4}\sqrt{2}\}, \:
+\{\frac{1}{4}\sqrt{2}\ < X < \frac{2}{4}\sqrt{2}\}, \:
+\{\frac{2}{4}\sqrt{2}\ < X < \frac{3}{4}\sqrt{2}\}, \:
+\{\frac{3}{4}\sqrt{2}\ < X < \frac{4}{4}\sqrt{2}\}
+$$
+where I haven't simplified the fractions to highlight the four equal regions. Next, we'll choose any value from each of the four ranges. Call each $x_i^*$ - where $i$ corresponds to range 1 through 4. For the sake of simplicity, let's select the middle value of each range - $\frac{1}{8}\sqrt{2} , \: \frac{3}{8}\sqrt{2}, \: \frac{5}{8}\sqrt{2}, \: $ and $\frac{7}{8}\sqrt{2}$, respectively. The ranges and our $x_i^*$s are depicted in the figure below.
 
 ```{r, echo = FALSE, fig.cap = "Triangle pdf divided into 4"}
+f <- data.frame(x = c(sqrt(2) * 1/8, sqrt(2) * 3/8, sqrt(2) * 5/8, sqrt(2) * 7/8),
+                y = c(0,0,0,0),
+                labels = c('x*1','x*2','x*3','x*4'))
+
 a <- data.frame(x = c(0,sqrt(2)), 
                 y = c(0,0),
                 x_end = c(sqrt(2),2.5),
@@ -683,6 +697,8 @@ e <- data.frame(x = c(sqrt(2)/4, 2*sqrt(2)/4, 3*sqrt(2)/4, 4*sqrt(2)/4),
 ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_segment(data = a, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
   ggplot2::geom_segment(data = e, ggplot2::aes(x = x, y = y, xend = x_end, yend = y_end)) +
+  ggplot2::geom_point(data = f, ggplot2::aes(x = x, y=y)) +
+  ggplot2::geom_text(data = f, ggplot2::aes(x=x, y=y, label= labels), nudge_y = .1) +
   ggplot2::scale_y_continuous(limits = c(0,2)) +
   ggplot2::scale_x_continuous(limits = c(0,2.5)) +
   ggplot2::labs(y = "Density", x = "x") +
@@ -694,7 +710,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-The area of each of these four regions corresponds to the probability that $X$ falls within its corresponding range of $x$. For example, the first region represents $P(X < \frac{1}{4}\sqrt{2})$ and the last region represents $P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2})$. Using \@ref(eq:fundamental), we can calculate the latter as
+As we have learned, the area under the pdf for a range corresponds to the probability that $X$ falls in that range. For example, the area under the pdf for the first range is $P(X < \frac{1}{4}\sqrt{2})$ and for the last range it is $P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2})$. Using \@ref(eq:fundamental), we can calculate the latter as
 
 $$
 \begin{align}
@@ -706,3 +722,95 @@ P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2}) &= P(X < \frac{4}{4}\sqrt{2}) -
 &= 1 - \frac{9}{16} = \frac{7}{16}
 \end{align}
 $$
+Putting it all together, we shall calculate the corresponding probability for each range, multiply each by it's corresponding $x_i^*$, and then sum the resulting values. In other words, call each range $R_i$ for simplicity, and
+
+$$
+\sum_{i = 1}^{4} x_1^*P(R_i)
+$$
+The equation above looks awfully similar to our equation for the expectation of a discrete random variable. Let's do the calculation for our four ranges and their corresponding $x_i^*$s.
+
+$$
+\begin{align}
+\sum_{i = 1}^{4} x_1^*P(R_i) &= x_1^*P(R_1) + x_2^*P(R_2) + x^*_3P(R_3) + x^*_4P(R_4) \\
+&= x_1^*\frac{1}{16} + x_2^*\frac{3}{16} + x_3^*\frac{5}{16} + x_4^*\frac{7}{16} \\
+&= (\frac{1}{8}\sqrt{2})\frac{1}{16} + (\frac{3}{8}\sqrt{2})\frac{3}{16} +(\frac{5}{8}\sqrt{2})\frac{5}{16} + (\frac{7}{8}\sqrt{2})\frac{7}{16} \\
+&=\sqrt2\frac{21}{32} = 0.92808
+\end{align}
+$$
+I've skipped some of the computational details of the calculation, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be $\frac{2}{3}\sqrt{2}$, so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of $X$ into smaller ranges and performing the calculation again with new $x_i$s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of $E(X)$. The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
+
+```{r, echo = FALSE, fig.cap = "Improving Approximations"}
+apx <- function(n) {
+  rng <- sqrt(2)/n
+  mid <- rng/2
+  x <- seq(0, sqrt(2), by = rng)
+  probs <- (x^2)/2
+  probs <- diff(probs)
+  xi <- (x + mid)[1:length(x)-1]
+  E <- t(xi) %*% (probs)
+  vals <- list(n, rng, E)
+  }
+
+x <- c(1:10,20,50,100,1000)
+diff <- c(apx(1)[[2]],apx(2)[[2]],apx(3)[[2]], apx(4)[[2]], apx(5)[[2]], apx(6)[[2]], 
+          apx(7)[[2]],apx(8)[[2]],apx(9)[[2]],apx(10)[[2]], apx(20)[[2]], apx(50)[[2]],
+          apx(100)[[2]], apx(1000)[[2]])
+E <- c(apx(1)[[3]],apx(2)[[3]],apx(3)[[3]], apx(4)[[3]], apx(5)[[3]], apx(6)[[3]], 
+          apx(7)[[3]],apx(8)[[3]],apx(9)[[3]],apx(10)[[3]], apx(20)[[3]], apx(50)[[3]],
+          apx(100)[[3]], apx(1000)[[3]])
+
+act <- rep(sqrt(2)*2/3, times = 14)
+table <- data.frame(round(x,5),round(diff,5), round(E,5), round(E - act,5))
+names(table) <- c('Number of Ranges', 'Range Width', 'Approximate E(X)', 'Difference from Actual')
+x <- flextable::flextable(table)
+x <- flextable::autofit(x)
+x <- flextable::align(x, align = "center", part = 'body')
+x <- flextable::hline(x)
+x <- flextable::bg(x, bg = 'gray', part = 'header')
+x
+
+```
+
+With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small range, multiply it by a value of $x$ in that extremely small range, and then sum the resulting values. We would end up with the value of $E(X)$.
+
+Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. It may therefore be unsurprising to learn that the expectation of a continuous random variable has the same previously discussed properties as that of a discrete random variable. That is 
+
+::: {.theorem #expcont name="Some Properties of the Continuous Expectation"}
+If $a$ and $b$ are constants, then
+
+1. $E(b) = b$
+
+2. $E(aX) = aE(X)$
+
+3. More generally, $E(aX + b) = aE(X) + E(b)$
+
+If $X_1$ and $X_2$ are random variables, then 
+
+4. $E(aX_1 + bX_2)$ = $aE(X_1) + bE(X_2)$
+:::
+
+Indeed, continuous random variables also share the previously discussed properties of the discrete variance. That is,
+
+::: {.theorem #contvar name="Some Properties of the Continous Variance"}
+If $a$ and $b$ are constants, then
+
+1. $Var(b) = 0$
+
+2. $Var(aX) = a^2Var(X)$
+
+3. More generally, $Var(aX + b) = a^2Var(X) + Var(b) = a^2Var(X) + 0$
+
+If $X_1$ and $X_2$ are random variables, **and they are independent**, then 
+
+4. $Var(aX_1 + bX_2)$ = $a^2Var(X_1) + b^2Var(X_2)$
+:::
+
+Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
+
+::: {.example}
+Let's work with the random variable $X$ that we defined this section. As stated above, it has $E(X) = \frac{2}{3}\sqrt{2}$. Suppose we are given a random variable - $Y \sim B(10,1/2)$ - and we would like to know $E(X + Y)$. Our properties make this calculation a breeze.
+
+$$
+E(X + Y) = E(X) + E(Y) = \frac{2}{3}\sqrt{2} + 10\frac{1}{2} = \frac{2}{3}\sqrt{2} + 5
+$$
+:::

@@ -929,7 +929,7 @@ $$
 $$
 as we observed before when we calculated the probability by hand. The binomial distribution is often referenced as $B(n,p)$ - where $n$ and $p$ are parameters. To indicate the distribution of $X$ we would write $X \sim B(n,p)$, meaning $X$ is a random variable with a binomial distribution, a.k.a., a binomial random variable. Not all distributions have a special symbol, but when they do we will also sometimes use the shorthand above.
 
-We now turn our attention to the expectation and variance of a binomial random variable. Our random variable - call it $Z$ - is just the sum of $n$ indepndent Bernoulli random variables with parameter $p$, so the expectation is calculated as
+We now turn our attention to the expectation and variance of a binomial random variable. Our random variable - call it $Z$ - is just the sum of $n$ independent Bernoulli random variables with parameter $p$, so the expectation is calculated as
 
 $$
 E(Z) = E(\sum_{i=1}^{n}X_i)
