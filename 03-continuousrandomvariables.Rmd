@@ -809,7 +809,7 @@ If $X_1$ and $X_2$ are random variables, **and they are independent**, then
 4. $Var(aX_1 + bX_2)$ = $a^2Var(X_1) + b^2Var(X_2)$
 :::
 
-Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
+Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation aexd variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
 
 ::: {.example}
 Let's work with the random variable $X$ that we defined this section. As stated above, it has $E(X) = \frac{2}{3}\sqrt{2}$. Suppose we are given a random variable - $Y \sim B(10,1/2)$ - and we would like to know $E(X + Y)$. Our properties make this calculation a breeze.
