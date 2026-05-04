@@ -131,7 +131,7 @@ $$
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 $$
 
-We get an area of .25, but the story of the calculation is in the units of this value. Note how the units of $x$ cancel out, and the units of our calculated value are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. Indeed, if we calculate the area under the whole curve (line) where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq .25$. This mimics the property of pmfs we discussed at the start of this section.
+We get an area of .25, but the story of the calculation is in the units of this value. Note how the units of $x$ cancel out, and the units of our calculated value are $pm$ (probability mass). That is to say, our probability density function has assigned a 25% probability to the range $0 \leq x \leq .25$. Put another way, we have $P(0\leq X\leq.25) = .25$. Indeed, if we calculate the area under the whole curve (line) where $f(x) = 1$, then we would find that the area is 1. That is, there is a 100% chance that our random variable $X$ falls in the range $0 \leq x \leq 1$. This mimics the property of pmfs we discussed at the start of this section.
 
 :::
 
@@ -158,13 +158,13 @@ ggplot2::ggplot(data = z, ggplot2::aes(x=x,y=y))+
 
 We can't just calculate this area as we did with our rectangular region. More advanced techniques (that you would learn in Calculus 2) do show that the area under the curve of this function is equal to 1. That is, $P(0 < X < \infty) = 1$. The means by which we calculate the area under a given probability density function (and a function more generally) is called **integration**. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail. 
 
-Given some function, $f(x)$, integration is indicated by
+Given some function, $f(x)$, the operation of integration is denoted
 
 $$
 area \:=\int_{a}^{b} f(x) \,dx
 $$
 
-The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve $f(x)$ from a to b. In our first example above, we calculated the integral of $f(x)$ from x = 0 to x = .25. In terms of our probability set operator, and given some pdf, we observe that
+The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve $f(x)$ from a to b. In our first example above, we calculated the integral of $f(x)$ from $x = 0$ to $x = .25$. In terms of our probability set operator, and given some pdf, we observe that
 
 $$
 P(a < X < b) = \int_{a}^{b} f(x) \, dx
@@ -173,7 +173,7 @@ That is to say, in the context of a pdf (and a continuous random variable), the 
 
 Next we turn our attention to the properties of a pdf, which are analogous to the discrete case. Specifically
 
-1. $f(x) \geq 0$. The values for which $f(x) > 0$ are referred to as the **support** of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: $f(x)$ can be greater than 1. 
+1. For all values of $x$ in the space of $X$, $f(x) \geq 0$. The values for which $f(x) > 0$ are referred to as the **support** of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: $f(x)$ can be greater than 1. 
 
 2. $\int_{-\infty}^{\infty} f(x) \, dx = 1$. Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity for the integral to make things easier notation wise. Any value outside the space of the random variable $X$ is assigned a probability density of zero. That is to say, the ranges of "infinity" outside the space of $X$ have probability zero, and therefore, writing negative and positive infinity doesn't change the outcome of the integral/area calculation. 
 
@@ -187,7 +187,7 @@ f(x) =
 \end{cases}
 $$
 
-Note that this function has all the properties of a pdf - $f(x) \geq 1$ and $\int_{-\infty}^{\infty} f(x) \, dx = 1$. The area under $f(x)$ from 0 to 1 is equal to 1, and everywhere else the area is equal to zero. That is to say, over the entire space of $X$ the area under the curve is equal to 1. This particular function is an example of a *continuous uniform distribution*. The functions assign a constant probability density over the support of $X$ and are analogous to the discrete uniform distribution. Here's another example that assigns $\frac{1}{2}$ density from 0 to 2.
+Note that this function has all the properties of a pdf - $f(x) \geq 1$ and $\int_{-\infty}^{\infty} f(x) \, dx = 1$. The area under $f(x)$ from 0 to 1 is equal to 1, and everywhere else the area is equal to zero. That is to say, over the entire space of $X$ the area under the curve is equal to 1. This particular function is an example of a *continuous uniform distribution*. These functions assign a constant probability density over the support of $X$ and are analogous to the discrete uniform distribution. Here's another example that assigns $\frac{1}{2}$ density from 0 to 2.
 
 $$
 f(x) = 
@@ -305,7 +305,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Suppose we want to calculate $P(X < x)$ for several specified values of $x$ - .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. We would like to calculate the area under the pdf from $-\infty$ up to each of these values. In the figure below, I've drawn a vertical line corresponding to each $x_i$, we will endeavor to calculate the area under $f(x)$ up to each one of those lines.
+Suppose we want to calculate $P(X < x)$ for several specified values of $x$, say, .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. To calculate $P(X < x_i)$, we will need to determine the area under the pdf from $-\infty$ up to the given value of $x_i$. In the figure below, I've drawn a vertical line corresponding to each $x_i$. We will endeavor to calculate the area under $f(x)$ up to each one of those lines, and this will give us a idea of the cdf of $x$.
 
 ```{r, echo = FALSE, fig.cap = "Very Very Boring"}
 a <- data.frame(x = c(0,1), 
@@ -344,17 +344,18 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. We are again calculating the area of rectangles. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to our value of $x$. That's not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. Each area of interest is a rectangle. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) in the figure above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to the value of $x_i$ which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
 
-We shall therefore proceed as we did in \@ref(exm:firstdensity). The calculations are written out in the table below.
+We shall therefore proceed as we did in example \@ref(exm:firstdensity). The calculations are written out in the table below.
 
 ```{r, echo = FALSE}
+ranges <- c('P(X < .25)','P(X < .50)','P(X < .75)','P(X < 1)')
 x <- c(.25,.5,.75,1)
 y <- c(1,1,1,1)
 q <- x * y
 
-sample_space <- data.frame(x,y,q)
-names(sample_space) <- c('Base: x', 'Height: f(x)','P(X < x): Base x Height')
+sample_space <- data.frame(ranges, x,y,q)
+names(sample_space) <- c('Range','Base: x', 'Height: f(x)','P(X < x): Base x Height')
 
 x <- flextable::flextable(sample_space)
 x <- flextable::align(x, align = 'center', part = 'body')
@@ -383,7 +384,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Looking at the plot above, and considering our earlier computations, we might begin to think that $P(x < X) = x$. We would be correct. The cdf of $f(x)$ is
+Looking at the plot above, and considering our earlier computations, we might begin to think that $P(x < X) = x$. That is to say, the probability that $P(X < x_i)$ is $x_i$. This assertion would be correct. The cdf of $f(x)$ is
 
 $$
 P(X < x) = F(x) = 
@@ -394,8 +395,9 @@ x & 0 \leq x \leq 1 \\
 \end{cases}
 $$
 
-Indeed, when calculating our areas earlier, we simply multiplied each value of x by $f(x) = 1$. In other words, $P(X < x) = x(1) = x$. Furthermore, for any value below 0, $f(x)$ has zero density, so $P(X < 0) = 0$. If our value of $x$ is greater than 1 on the other hand, then $P(X < x) = 1$. There is no additional area under the curve for values above 1. Thus we are only left with the area between 0 and 1 when calculating $P(X < x)$, and $P(X < 1) = 1$. 
-With our new-found cdf, we can easily calculate P(X < x). For example, given the values 0.11, 0.512, and 0.98, then
+For any value below 0, $f(x)$ has zero density, so $P(X < 0) = 0$. On the other hand, if our value of $x$ is greater than 1, then $P(X < x) = 1$. There is no additional area under the curve for values above 1, so $P(X < x)$ does not get any larger after that. For all other values, $P(X < x) = x$ 
+
+Our new-found cdf makes computations easier. For example, given the values 0.11, 0.512, and 0.98, then
 
 $$
 P(X < 0.11) = F(.11) = 0.11 \\
@@ -406,7 +408,7 @@ $$
 
 In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next examples, we frame the intuition of a some common scenarios. If you've forgotten, now may be the time to review your set notation for continuous sample spaces.
 
-The examples shall use a continuous random variable - $X$ - with an exponential pdf (a.k.a., an exponential distribution), e.g., 
+The examples we work through shall use a continuous random variable - $X$ - with an exponential pdf (a.k.a., an exponential distribution), e.g., 
 
 $$
 f(x) = 
@@ -447,14 +449,15 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = outs)) +
 ```
 
 ::: {.example #exp}
-Suppose we are working with our previously described exponentially distributed random variable, and we would like to know the probability that the outcome of a random experiment falls between 2 and 3. That is, we would like to know $P(2 < X < 3)$. Using our cdf, we could easily calculate $P(X < 3)$ but that would include all the probability mass in the region below 2. That's not what we want, but as you will see, we can still work with our cdf to get what we need. In the solution that follows, we shall approach the problem in two ways - one using set notation and another that leans on intuition and graphs.
+Suppose we are working with our previously described exponentially distributed random variable, and we would like to know the probability that the outcome of a random experiment falls between 2 and 3. That is, we would like to know $P(2 < X < 3)$. Using our cdf, we could easily calculate $P(X < 3)$ but that would include all the probability mass in the region below 2. That's not what we want, but we can still work with our cdf to get what we need. In the solution that follows, we shall approach the problem in two ways - one using set notation and another that leans on intuition and graphs.
 
 First, take a close look at the event $X < 3$. It can actually be written as the union of two mutually exclusive events, e.g.,
 
 $$
 \{X < 3\} = \{X < 2\} \cup \{2 \leq X < 3\}
 $$
-We have two mutually exclusive events which means we can use the law of addition \@ref(eq:addlaw) to get what we need! To see how, notice that
+
+This means that we can use the law of addition \@ref(eq:addlaw) to get what we need! To see how, notice that
 
 $$
 P(\{X < 2\} \cup \{2 \leq X < 3\}) = P(X < 3) \\
@@ -471,7 +474,8 @@ P(2 \leq X < 3) &= 1-e^{-3} - 1 + e^{-2} \\
 P(2 \leq X < 3) &= e^{-2}-e^{-3} = 0.08555
 \end{align}
 $$
-From the above, we can conclude that given some $a$ and $b$, $P(a < X < b)$ can be calculated by
+
+Indeed, in general, given some $a$ and $b$, $P(a < X < b)$ can be calculated by
 
 $$
 P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
@@ -479,7 +483,7 @@ P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
 $$
 Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion in the section before this - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. .
 
-Now that we've worked the problem out with sets, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the exponential pdf left of the value 3 (e.g., $x < 3$). As we have learned, it represents $P(X < 3)$. The area between the two vertical lines at the values 2 and 3 under the curve represents $P(2 < X < 3)$, and the area to the left of 2 represents $P(X < 2)$. Looking at the two regions, one can see that $P(X < 2)$ and $P(2 < X < 3)$ combine (sum) to $P(X < 3)$. We shall need to subtract out the area left of 2 to get our desired value.
+Now that we've worked the problem out with sets, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the exponential pdf left of the value 3 (e.g., $X < 3$). As we have learned, it represents $P(X < 3)$. The area between the two vertical lines at the values 2 and 3 under the curve represents $P(2 < X < 3)$, and the area to the left of 2 represents $P(X < 2)$. Looking at the two regions, one can see that $P(X < 2)$ and $P(2 < X < 3)$ combine (sum) to $P(X < 3)$. We shall need to subtract out the area left of 2 to get our desired value.
 
 ```{r, echo = FALSE, fig.cap = "P(X < 3)"}
 x <- seq(0,10, by = .1)
@@ -529,7 +533,7 @@ Note that the support of $X$ is $X \geq 0$, and therefore, $P(X \geq 0) = 1$. Th
 $$
 \{X > 0\} = \{0 \leq X \leq 3\} \cup \{X > 3\} 
 $$
-In English: {0 < X} is the union of two mutually exclusive sets - $0 \leq X \leq 3$ and $X < 3$. We can once again use the law of addition to get our desired probability.
+In English: $\{0 < X\}$ is the union of two mutually exclusive sets - $0 \leq X \leq 3$ and $X < 3$. We can once again use the law of addition to get our desired probability.
 
 $$
 \begin{align}
@@ -539,13 +543,13 @@ P(\{X > 0\}) &= P(\{0 \leq X \leq 3\} \cup \{X > 3\}) \\
 1 - P(0 \leq X \leq 3) &= P(X > 3)
 \end{align}
 $$
-This means that all we need is $P(0 \leq X \leq 3)$ and we will be able to calculate our desired probability. Looking at the pdf of $X$, one can see that there is no area below the curve for $x$ less than zero (that is, $f(x) = 0$). In other words, the area under the pdf from 0 to 3 would be equivalent to the area under the curve from three all the way down to $-\infty$. Put another way, $P(0 \leq X \leq 3)$ is equal to $P(X < 3)$, and we know the latter because of our cdf. Specifically 
+This means that all we need is $P(0 \leq X \leq 3)$ and we will be able to calculate our desired probability. Looking at the pdf of $X$, one can see that there is no area below the curve for $X$ less than zero. In other words, the area under the pdf from 0 to 3 would be equivalent to the area under the curve from three all the way down to $-\infty$. Put another way, $P(0 \leq X \leq 3)$ is equal to $P(X < 3)$, and we know the latter because of our cdf. Specifically 
 
 $$
 \begin{align}
-1 - P(0 \leq X \leq 3) &= P(X > 3) \\
-1 - F(3) &= P(X > 3) \\
-1 - (1 - e^{-3}) &= P(X > 3) \\
+P(X > 3) &= 1 - P(0 \leq X \leq 3) \\
+P(X > 3) &= 1 - F(3) \\
+P(X > 3) &= 1 - (1 - e^{-3}) \\
 P(X > 3) &= 0.04978  
 \end{align}
 $$
@@ -557,10 +561,10 @@ P(X > x) = 1 - F(x)
 $$
 :::
 
-Although we have derived a couple of equations together, you are hopefully beginning to get a sense for the *process* of using the cdf. We can, in general, find the area under the curve of a pdf by adding or subtracting appropriate values of the cdf. You can determine what to add and subtract but using set notation or by visualizing the regions under consideration. Let's hammer this process home with one more example.
+Although we have derived a couple of equations together, you are hopefully beginning to get a sense for the *process* of using the cdf. We can, in general, find the area under the curve of a pdf by adding or subtracting appropriate values of the cdf. You can determine what to add and subtract by using set notation or by visualizing the regions under consideration. Let's hammer this process home with one more example.
 
 ::: {.example}
-Suppose we are interested in the probability that our random experiment falls below 1 or above three. That is to say, we are interested in the event - {X < 1} OR {X > 3}. The two probabilities are depicted in the figure below by the gray area under our exponential pdf.
+Suppose we are interested in the probability that our random experiment falls below 1 or above three. That is to say, we are interested in the event - $\{X < 1\}$ OR $\{X > 3\}$. The two probabilities are depicted in the figure below by the gray area under our exponential pdf.
 
 ```{r, echo = FALSE, fig.cap = "P(X < 2) or P(X > 3)"}
 x <- seq(0,10, by = .1)
@@ -611,7 +615,7 @@ Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3
 ### Expectation and Variance of a Continuous Random Variable.
 To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly.
 
-The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is the same. We'll walk through it right now. Consider the probability density function
+The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is the similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
 $$
 f(x) = 
@@ -648,7 +652,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-The cdf of this probability density function is 
+The cdf of this probability density function is
 
 $$
 F(x) = 
@@ -657,12 +661,12 @@ F(x) =
 0 & Everywhere\: else 
 \end{cases}
 $$
-Recall, that with regards to the discrete case, the expectation is calculated by multiplying each value of $X$ by its corresponding probability $p(x)$ and summing the results. That is, if there are $n$ outcomes in the space of $X$,
+I've used integration techniques to get this equation, but you can derive it from the equation for the area of a triangle. Recall, that with regards to the discrete case, the expectation is calculated by multiplying each outcome of $X$ by its corresponding probability $p(x)$ and summing the results. That is, if there are $n$ outcomes in the space of $X$,
 
 $$
 E(X) = \sum_{i = 1}^{n}x_ip(x_i)
 $$
-Let's try something similar, first we'll divide the support of our random variable $X$ into four equal ranges - each with width $\frac{1}{4}\sqrt{2}$. Specifically,
+Let's try something similar for our continuous random variable, first we'll divide the support of our random variable $X$ into four equal ranges - each with width $\frac{1}{4}\sqrt{2}$. Specifically,
 
 $$
 \{0 < X < \frac{1}{4}\sqrt{2}\}, \:
@@ -670,7 +674,7 @@ $$
 \{\frac{2}{4}\sqrt{2}\ < X < \frac{3}{4}\sqrt{2}\}, \:
 \{\frac{3}{4}\sqrt{2}\ < X < \frac{4}{4}\sqrt{2}\}
 $$
-where I haven't simplified the fractions to highlight the four equal regions. Next, we'll choose any value from each of the four ranges. Call each $x_i^*$ - where $i$ corresponds to range 1 through 4. For the sake of simplicity, let's select the middle value of each range - $\frac{1}{8}\sqrt{2} , \: \frac{3}{8}\sqrt{2}, \: \frac{5}{8}\sqrt{2}, \: $ and $\frac{7}{8}\sqrt{2}$, respectively. The ranges and our $x_i^*$s are depicted in the figure below.
+where I haven't simplified the fractions to highlight the four equal regions. Next, we'll choose any value from each of the four ranges. Call each $x_i^*$ - where $i$ corresponds to range 1 through 4. For the sake of simplicity, let's select the middle value of each range - $\frac{1}{8}\sqrt{2} , \: \frac{3}{8}\sqrt{2}, \: \frac{5}{8}\sqrt{2}, \:$ and $\frac{7}{8}\sqrt{2}$, respectively. The ranges and our $x_i^*$s are depicted in the figure below.
 
 ```{r, echo = FALSE, fig.cap = "Triangle pdf divided into 4"}
 f <- data.frame(x = c(sqrt(2) * 1/8, sqrt(2) * 3/8, sqrt(2) * 5/8, sqrt(2) * 7/8),
@@ -771,7 +775,7 @@ x
 
 ```
 
-With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small range, multiply it by a value of $x$ in that extremely small range, and then sum the resulting values. We would end up with the value of $E(X)$.
+With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small ranges, multiply each by a value of $x$ in that extremely small range, and then sum the resulting values. With a set of infinitesimally small ranges, this would give us $E(X)$.
 
 Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. It may therefore be unsurprising to learn that the expectation of a continuous random variable has the same previously discussed properties as that of a discrete random variable. That is 
 
@@ -789,7 +793,7 @@ If $X_1$ and $X_2$ are random variables, then
 4. $E(aX_1 + bX_2)$ = $aE(X_1) + bE(X_2)$
 :::
 
-Indeed, continuous random variables also share the previously discussed properties of the discrete variance. That is,
+And, continuous random variables also share the previously discussed properties of the discrete variance. That is,
 
 ::: {.theorem #contvar name="Some Properties of the Continous Variance"}
 If $a$ and $b$ are constants, then
