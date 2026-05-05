@@ -278,7 +278,7 @@ f(x) =
 \end{cases}
 $$
 
-We would like to calculate a cdf for our random variable $X$, and for that purpose, it helps to look at a graph and calculate a few values. Take a look at the very boring graph of our pdf again.
+We would like to determine the cdf for our random variable $X$, and for that purpose, it helps to look at a graph and calculate a few values. Take a look at the very boring graph of our pdf again.
 
 ```{r, echo = FALSE, fig.cap = "Very Boring"}
 a <- data.frame(x = c(0,1), 
@@ -305,7 +305,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Suppose we want to calculate $P(X < x)$ for several specified values of $x$, say, .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. To calculate $P(X < x_i)$, we will need to determine the area under the pdf from $-\infty$ up to the given value of $x_i$. In the figure below, I've drawn a vertical line corresponding to each $x_i$. We will endeavor to calculate the area under $f(x)$ up to each one of those lines, and this will give us a idea of the cdf of $x$.
+Suppose we want to calculate $P(X < x)$ for several specified values of $x$, say, .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. To calculate $P(X < x_i)$, we will need to determine the area under the pdf from $-\infty$ up to the given value of $x_i$. In the figure below, I've drawn a vertical line corresponding to each $x_i$. We will endeavor to calculate the area under $f(x)$ up to each one of those lines. When we are done, this will give us an idea of the cdf of $x$.
 
 ```{r, echo = FALSE, fig.cap = "Very Very Boring"}
 a <- data.frame(x = c(0,1), 
@@ -533,7 +533,7 @@ Note that the support of $X$ is $X \geq 0$, and therefore, $P(X \geq 0) = 1$. Th
 $$
 \{X > 0\} = \{0 \leq X \leq 3\} \cup \{X > 3\} 
 $$
-In English: $\{0 < X\}$ is the union of two mutually exclusive sets - $0 \leq X \leq 3$ and $X < 3$. We can once again use the law of addition to get our desired probability.
+In English: $\{X > 0\}$ is the union of two mutually exclusive sets - $0 \leq X \leq 3$ and $X < 3$. We can once again use the law of addition to get our desired probability.
 
 $$
 \begin{align}
@@ -613,7 +613,7 @@ Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
-To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly.
+To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
 
 The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is the similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
@@ -809,7 +809,7 @@ If $X_1$ and $X_2$ are random variables, **and they are independent**, then
 4. $Var(aX_1 + bX_2)$ = $a^2Var(X_1) + b^2Var(X_2)$
 :::
 
-Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation aexd variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
+Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
 
 ::: {.example}
 Let's work with the random variable $X$ that we defined this section. As stated above, it has $E(X) = \frac{2}{3}\sqrt{2}$. Suppose we are given a random variable - $Y \sim B(10,1/2)$ - and we would like to know $E(X + Y)$. Our properties make this calculation a breeze.
@@ -818,3 +818,6 @@ $$
 E(X + Y) = E(X) + E(Y) = \frac{2}{3}\sqrt{2} + 10\frac{1}{2} = \frac{2}{3}\sqrt{2} + 5
 $$
 :::
+
+### Independence of Continuous Random Variables
+The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs.  

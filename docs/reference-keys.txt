@@ -132,3 +132,4 @@ practice-problem-answers-1
 cumulative-distribution-functions-independence-and-expectations
 cumulative-distribution-functions
 expectation-and-variance-of-a-continuous-random-variable.
+independence-of-continuous-random-variables
