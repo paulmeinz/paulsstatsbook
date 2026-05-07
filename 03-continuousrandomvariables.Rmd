@@ -741,7 +741,7 @@ $$
 &=\sqrt2\frac{21}{32} = 0.92808
 \end{align}
 $$
-I've skipped some of the computational details of the calculation, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be $\frac{2}{3}\sqrt{2}$, so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of $X$ into smaller ranges and performing the calculation again with new $x_i$s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of $E(X)$. The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
+I've skipped some of the computational details, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be $\frac{2}{3}\sqrt{2}$, so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of $X$ into smaller ranges and performing the calculation again with new $x_i$s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of $E(X)$. The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
 
 ```{r, echo = FALSE, fig.cap = "Improving Approximations"}
 apx <- function(n) {
@@ -809,7 +809,7 @@ If $X_1$ and $X_2$ are random variables, **and they are independent**, then
 4. $Var(aX_1 + bX_2)$ = $a^2Var(X_1) + b^2Var(X_2)$
 :::
 
-Because of the equivalence described above, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
+In light of the above equivalence, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
 
 ::: {.example}
 Let's work with the random variable $X$ that we defined this section. As stated above, it has $E(X) = \frac{2}{3}\sqrt{2}$. Suppose we are given a random variable - $Y \sim B(10,1/2)$ - and we would like to know $E(X + Y)$. Our properties make this calculation a breeze.
@@ -820,4 +820,16 @@ $$
 :::
 
 ### Independence of Continuous Random Variables
-The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs.  
+The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll focus on independence. Later in this book, we'll discuss dependence a little bit more in the context of correlation and normally distributed random variables (we'll learn about normal distributions in the next section).
+
+Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. Then, just as with discrete random variables    
+
+$$
+P(A \cap B) = P(A)P(B)
+$$
+
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively.
+
+::: {example.}
+
+:::
