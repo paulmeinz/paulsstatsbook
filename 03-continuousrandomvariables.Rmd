@@ -344,7 +344,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. Each area of interest is a rectangle. This means that we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) in the figure above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to the value of $x_i$ which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. For the region $0 \leq X \leq 1$, we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) in the figure above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to the value of $x_i$ which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
 
 We shall therefore proceed as we did in example \@ref(exm:firstdensity). The calculations are written out in the table below.
 
@@ -384,7 +384,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Looking at the plot above, and considering our earlier computations, we might begin to think that $P(x < X) = x$. That is to say, the probability that $P(X < x_i)$ is $x_i$. This assertion would be correct. The cdf of $f(x)$ is
+Looking at the plot above, and considering our earlier computations, we might begin to think that $P(x < X) = x$. That is to say, the probability that $P(X < x_i)$ is $x_i$. This assertion would be correct for the region $0 \leq X \leq 1$. Put another way, the cdf of $f(x)$ is
 
 $$
 P(X < x) = F(x) = 
@@ -395,7 +395,7 @@ x & 0 \leq x \leq 1 \\
 \end{cases}
 $$
 
-For any value below 0, $f(x)$ has zero density, so $P(X < 0) = 0$. On the other hand, if our value of $x$ is greater than 1, then $P(X < x) = 1$. There is no additional area under the curve for values above 1, so $P(X < x)$ does not get any larger after that. For all other values, $P(X < x) = x$ 
+For any value below 0, $f(x)$ has zero density (the height of any rectangle in that region is zero), so $P(X < 0) = 0$. On the other hand, if our value of $x$ is greater than 1, then $P(X < x) = 1$. There is no area under the pdf for values above 1, so $P(X < x)$ just includes the area in the region between (and including) 0 and 1. For all other values, $P(X < x) = x$ 
 
 Our new-found cdf makes computations easier. For example, given the values 0.11, 0.512, and 0.98, then
 
@@ -403,6 +403,8 @@ $$
 P(X < 0.11) = F(.11) = 0.11 \\
 P(X < 0.512) = F(0.512) = 0.512 \\
 P(X < 0.98) = F(0.98) = 0.98
+P(X < -100) = 0
+P(X < 10) = 1
 $$
 :::
 
@@ -615,7 +617,7 @@ Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3
 ### Expectation and Variance of a Continuous Random Variable.
 To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
 
-The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is the similar to the discrete case. We'll walk through it right now. Consider the probability density function
+The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
 $$
 f(x) = 
@@ -820,9 +822,9 @@ $$
 :::
 
 ### Independence of Continuous Random Variables
-The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll focus on independence. Later in this book, we'll discuss dependence a little bit more in the context of correlation and normally distributed random variables (we'll learn about normal distributions in the next section).
+The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll focus on independence. Later in this book, we'll discuss dependence in the context of correlation and normally distributed random variables (we'll learn about normal distributions in the next section).
 
-Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. Then, just as with discrete random variables    
+Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Then   
 
 $$
 P(A \cap B) = P(A)P(B)
