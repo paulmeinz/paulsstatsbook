@@ -615,24 +615,88 @@ Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3
 :::
 
 ### Independence of Continuous Random Variables
-The interpretation of independence in the context of continuous random variables is quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll frame an intuition then talk about (the ease of) calculating probabilities with independent continuous random variables. Later in this book, we'll discuss dependence in the context of linear correlation.
+The intuition of independence in the context of continuous random variables is quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll frame an intuition then talk about (the ease of) calculating probabilities with independent continuous random variables. Later in this book, we'll discuss dependence in the context of linear correlation.
 
-Take a moment to recall our discussion of independence in the context of discrete random variables. In that exploration, we found that two variables - e.g., $X_1$ and $X_2$ - are dependent if the probability of a particular outcome in the space of $X_1$ changes with an outcome in the space of $X_2$ (or visa versa). For instance, we discussed the sum of two dice and how the value of the first roll can impact the probability of getting certain sums.
+Take a moment to recall our discussion of independence in the context of discrete random variables. In that exploration, we found that two variables - e.g., $X_1$ and $X_2$ - are dependent if the probability of a particular outcome in the space of $X_1$ changes with an outcome in the space of $X_2$ (or visa versa). For instance, we discussed the sum of two dice and how the value of the first roll ($X_1$) can impact the probability of getting certain sums ($X_2$).
 
-The continuous case is not far off from the discrete interpretation. That is to say, given two dependent continuous random variables - $X_1$ and $X_2$ - $P(X_1 < x_1)$ will change with outcomes of $X_2$. With the powers of integration, it is possible to calculate the cumulative distribution of $X_1$ given some outcome of $X_2$. That is, we can calculate $P(X_1 < x_1 | X_2 = x_2)$. Now, as an example, suppose 
+The intuition for dependence in the case of the continuous random variable is the same. That is to say, given two dependent continuous random variables - $X_1$ and $X_2$ - the cdf of $X_1$ will change given an outcome in the space of $X_2$. Indeed, with the powers of integration, it is possible to calculate and visualize how the cdf of $X_1$ changes given some outcome value of $X_2$. That is, we can calculate $P(X_1 < x_1 | X_2 = x_2)$. With that said, I would like to formally request that you hold onto your mathematical shorts. In the next example we are going to do just that (except we'll skip the actual integration part).
 
+::: {.example} 
+Now, suppose we are given two dependent random variables - $X_1$ and $X_2$. Further suppose that $X_2$ has all it's support between and including 0 and 1. Skipping the steps to integration (and ignoring the pdf of $X_1$ and $X_2$), let's assume the cdf of $X_1$ given an outcome of $X_2$ looks like this
 
+$$
+P(X_1 < x_1 | X_2 = x_2) = F(x_1|x_2) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1x_2}{1 + 2x_2} & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases} 
+$$
+Now, this may be a bit overwhelming at first (it's your first continuous conditional probability after all), but we'll unpack it. First look to the left of the equal sign before the curly brace. Recall that the $|$ in the context of conditional probability means "given". $P(X_1 < x_1 | X_2 = x_2)$ and $F(x_1|x_2)$ are just two different ways of referencing the cdf of $X_1$ *given* some value $x_2$. Next, take a look to the right of the curly brace. As we discussed in the last section, these are the rules for the conditional cdf of $X_1$. The rule in the top row says that there is zero chance that $X_1$ falls below 0. The rule in the bottom row says that there is a 100% chance that $X_1$ falls below any value greater than 1. Put another way, a random experiment with $X_1$ is guaranteed to fall at or below 1. Now take a look at the rule in the middle row. Notice how there are two variables referenced - $x_1$ and $x_2$. It is this rule that will tell us how the cdf of $X_1$ *changes* with specified outcomes of $X_2$. We'll choose a value $0 \leq x_2 \leq 1$ and plug it into the middle rule. For example, let's take the values $x_2 = 0$ and $x_2 = 1$. Thus, for $x_2 = 0$
 
-Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Then   
+$$
+P(X_1 < x_1 | X_2 = 0) = F(x_1|0) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1(0)}{1 + 2(0)} = x_1^2 & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases}
+$$
+That is, we set $x_2 = 0$ and the middle rule changed to $x^2$. On the other hand, for $x_2 = 1$
+
+$$
+P(X_1 < x_1 | X_2 = 1) = F(x_1|1) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1(1)}{1 + 2(1)} = \frac{x_1^2+2x_1}{3} & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases}
+$$
+We set $x_2 = 1$ and the rule changed to $\frac{x_1^2+2x_1}{3}$. To hammer the point home, let's calculate $P(X_1 < 1/2| X_2 = x_2)$ for both the cases described above. For the case $x_2 = 0$
+
+$$
+P(X_1 < 1/2|x_2 = 0) = (1/2)^2 = 1/4
+$$
+and for the case $x_2 = 1$
+
+$$
+P(X_1 < 1/2|x_2 = 1) = \frac{(1/2)^2 + 2(1/2)}{3} = \frac{5/4}{3} = \frac{5}{12}
+$$
+Notice how the probabilities change given different values of $x_2$. Indeed, if we plot the cdfs for each a set of values of $x_2$, we shall also find that the cdfs look different as well. In the figure below, you can see the plot of $P(X_1 < x_1| X_2 = x_2)$ for values of $x_2$ equal to 0, 1/3, and 1, respectively. Note that we've ignored the plot above 1 and below 0, so you won't see it here. Each of the aforementioned conditional cdfs is represented by a different line pattern (the middle line is the cdf corresponding to $x_2 = 1/3$). Notice how they progress to a probability of 1 on a different path - dependent on the value of outcome of $X_2$.
+
+```{r, echo = FALSE, fig.cap = "Changing cdfs!"}
+cdf <- function(x1,x2) {
+  p <- (x1^2 + 2*x1*x2)/(1 + 2*x2)
+  p
+}
+
+x <- seq(0,1, by = 0.005)
+probs <- c(cdf(x,0), cdf(x,1/3), cdf(x,1))
+x2s <- rep(c('0','1/3','1'), each = 201)
+plot_data <- data.frame(x, x2s, probs)
+
+ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = probs, linetype = x2s)) +
+  ggplot2::theme_bw() +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::geom_line() +
+  ggplot2::labs(y = 'P(X1 < x1 | X2 = x2)', x = 'x1', linetype = 'Value of x2')
+
+```
+Thus, a good intuition for continuous random variables is similar to the one we built up for discrete random variables. The cdf of one continuous random variable changes with particular values of another random variable. 
+
+:::
+
+Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring.
 
 $$
 P(A \cap B) = P(A)P(B)
 $$
 
-where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively.
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case.
 
 ::: {example.}
-
+Suppose we are working with two 
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.

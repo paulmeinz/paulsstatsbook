@@ -96,11 +96,13 @@ exm:unlabeled-div-34
 eq:infinitycont
 exm:unlabeled-div-35
 fig:unnamed-chunk-19
+exm:unlabeled-div-36
 fig:unnamed-chunk-20
 fig:unnamed-chunk-21
+fig:unnamed-chunk-22
 thm:expcont
 thm:contvar
-exm:unlabeled-div-36
+exm:unlabeled-div-37
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -131,5 +133,5 @@ practice-problems-1
 practice-problem-answers-1
 cumulative-distribution-functions-independence-and-expectations
 cumulative-distribution-functions
-expectation-and-variance-of-a-continuous-random-variable.
 independence-of-continuous-random-variables
+expectation-and-variance-of-a-continuous-random-variable.
