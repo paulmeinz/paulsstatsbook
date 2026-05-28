@@ -611,7 +611,28 @@ P(X < 2) + P(X > 3) &= F(2) + (1 - F(3)) \\
 &= 1- e^{-2} + (1 - 1 - e(-3)) = 0.81497
 \end{align}
 $$
-Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3}$ are mutually exclusive. In other words, we can add their corresponding probabilities. 
+Indeed, the law of addition supports our assertion because ${X < 2}$ and ${X > 3}$ are mutually exclusive sets. In other words, we can add their corresponding probabilities. 
+:::
+
+### Independence of Continuous Random Variables
+The interpretation of independence in the context of continuous random variables is quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll frame an intuition then talk about (the ease of) calculating probabilities with independent continuous random variables. Later in this book, we'll discuss dependence in the context of linear correlation.
+
+Take a moment to recall our discussion of independence in the context of discrete random variables. In that exploration, we found that two variables - e.g., $X_1$ and $X_2$ - are dependent if the probability of a particular outcome in the space of $X_1$ changes with an outcome in the space of $X_2$ (or visa versa). For instance, we discussed the sum of two dice and how the value of the first roll can impact the probability of getting certain sums.
+
+The continuous case is not far off from the discrete interpretation. That is to say, given two dependent continuous random variables - $X_1$ and $X_2$ - $P(X_1 < x_1)$ will change with outcomes of $X_2$. With the powers of integration, it is possible to calculate the cumulative distribution of $X_1$ given some outcome of $X_2$. That is, we can calculate $P(X_1 < x_1 | X_2 = x_2)$. Now, as an example, suppose 
+
+
+
+Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Then   
+
+$$
+P(A \cap B) = P(A)P(B)
+$$
+
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively.
+
+::: {example.}
+
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
@@ -821,17 +842,3 @@ E(X + Y) = E(X) + E(Y) = \frac{2}{3}\sqrt{2} + 10\frac{1}{2} = \frac{2}{3}\sqrt{
 $$
 :::
 
-### Independence of Continuous Random Variables
-The interpretation of independence in the context of continuous random variables is (again!) quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll focus on independence. Later in this book, we'll discuss dependence in the context of correlation and normally distributed random variables (we'll learn about normal distributions in the next section).
-
-Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Then   
-
-$$
-P(A \cap B) = P(A)P(B)
-$$
-
-where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively.
-
-::: {example.}
-
-:::
