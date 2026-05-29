@@ -691,18 +691,42 @@ Now we direct out attention towards independence, and the convenience of working
 
 $$
 P(A \cap B) = P(A)P(B)
+(\#eq:indcont)
 $$
 
 where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case.
 
 ::: {example.}
-Suppose we are working with two 
+Suppose we are working with two independent random variables - $X$ and $Y$ - each with the same pdf that looks like this
+
+$$
+f_X(a) = f_Y(a) = 
+\begin{cases}
+e^{-a} & a \geq 0 \\
+0 & a < 0
+\end{cases}
+$$
+Thus, for each function, we input a value of $a$ and it returns a density. In previous sections, we've seen that the cdf for $X$ and $Y$ is
+
+$$
+P(X < a) = F_X(a) = F_Y(x) =
+\begin{cases}
+1 - e^{-a} & a \qeq 0
+0 a < 0
+\end{cases}
+$$
+Now let's say that we are conducting a random experiment, and we are interested in the probability that $X < 1$ and $Y < 1$. Because these two random variables are independent, equation \@ref(eq:indcont) will work nicely.
+
+$$
+P({X < 1} \cap {Y < 1}) = P(X < 1)P(Y < 1) = (1-e^{-1})(1-e^{-1})
+$$
+We simply multiply the two probabilities together.
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
-To this point, we have seen many similarities between continuous and discrete random variables - particularly in how they are defined. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
+To this point, we have seen many similarities between continuous and discrete random variables. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
 
-The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
+The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are (again) beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
 $$
 f(x) = 
@@ -748,11 +772,13 @@ F(x) =
 0 & Everywhere\: else 
 \end{cases}
 $$
+
 I've used integration techniques to get this equation, but you can derive it from the equation for the area of a triangle. Recall, that with regards to the discrete case, the expectation is calculated by multiplying each outcome of $X$ by its corresponding probability $p(x)$ and summing the results. That is, if there are $n$ outcomes in the space of $X$,
 
 $$
 E(X) = \sum_{i = 1}^{n}x_ip(x_i)
 $$
+
 Let's try something similar for our continuous random variable, first we'll divide the support of our random variable $X$ into four equal ranges - each with width $\frac{1}{4}\sqrt{2}$. Specifically,
 
 $$
@@ -813,6 +839,7 @@ P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2}) &= P(X < \frac{4}{4}\sqrt{2}) -
 &= 1 - \frac{9}{16} = \frac{7}{16}
 \end{align}
 $$
+
 Putting it all together, we shall calculate the corresponding probability for each range, multiply each by it's corresponding $x_i^*$, and then sum the resulting values. In other words, call each range $R_i$ for simplicity, and
 
 $$

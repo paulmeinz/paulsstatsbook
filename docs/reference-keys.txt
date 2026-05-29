@@ -98,6 +98,7 @@ exm:unlabeled-div-35
 fig:unnamed-chunk-19
 exm:unlabeled-div-36
 fig:unnamed-chunk-20
+eq:indcont
 fig:unnamed-chunk-21
 fig:unnamed-chunk-22
 thm:expcont
