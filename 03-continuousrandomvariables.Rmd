@@ -268,7 +268,7 @@ $$
 Note that you may also see $F(x) = P(X \leq x)$ in other literature. This is an equivalent way of writing the equation above.
 
 ::: {.example #cumulative}
-Let's return to our first ever probability density (it was so long ago!). 
+In order to get a better understanding of cdfs, it helps to derive one. We don't want to get involved with complicated integrals, so let's return to our first ever probability density (it was so long ago!). 
 
 $$
 f(x) = 
@@ -305,7 +305,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Suppose we want to calculate $P(X < x)$ for several specified values of $x$, say, .25, .5, .75, and 1. Call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. To calculate $P(X < x_i)$, we will need to determine the area under the pdf from $-\infty$ up to the given value of $x_i$. In the figure below, I've drawn a vertical line corresponding to each $x_i$. We will endeavor to calculate the area under $f(x)$ up to each one of those lines. When we are done, this will give us an idea of the cdf of $x$.
+Suppose we want to calculate $P(X < x)$ for several specified values of $x$, say, .25, .5, .75, and 1. For the purposes of clarity, let's call each of these values $x_1$, $x_2$, $x_3$ and $x_4$, respectively. In the figure below, I've drawn a vertical line corresponding to each $x_i$. To calculate $P(X < x_i)$, we will need to determine the area under the pdf from $-\infty$ up to the line corresponding to the value of $x_i$. When we are done with our calculations, we will have a better idea of the cdf of $x$.
 
 ```{r, echo = FALSE, fig.cap = "Very Very Boring"}
 a <- data.frame(x = c(0,1), 
@@ -344,7 +344,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. For the region $0 \leq X \leq 1$, we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) in the figure above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to the value of $x_i$ which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.  
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. For the region $0 \leq X \leq 1$, we simply need to multiply the length of the base of each of the rectangles (in this case $x_i$) in the figure above by its height (in this case, $1$). That is to say, we can proceed as in example \@ref(exm:firstdensity). But before we do that, note that we are calculating the area under the pdf for *all* values less than $x$. For example, in the case of $x_1 = .25$, we will need to calculate the area under the curve from $-\infty$ all the way up to the value of $x_i$ which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., $f(x) = 0$, so we can safely assume that the area under the curve for any value less than zero is zero.   
 
 We shall therefore proceed as we did in example \@ref(exm:firstdensity). The calculations are written out in the table below.
 
@@ -397,18 +397,18 @@ $$
 
 For any value below 0, $f(x)$ has zero density (the height of any rectangle in that region is zero), so $P(X < 0) = 0$. On the other hand, if our value of $x$ is greater than 1, then $P(X < x) = 1$. There is no area under the pdf for values above 1, so $P(X < x)$ just includes the area in the region between (and including) 0 and 1. For all other values, $P(X < x) = x$ 
 
-Our new-found cdf makes computations easier. For example, given the values 0.11, 0.512, and 0.98, then
+Our new-found cdf makes computations easier. For example, given the values 0.11, 0.512, 0.98,, -100, 10 then
 
 $$
 P(X < 0.11) = F(.11) = 0.11 \\
 P(X < 0.512) = F(0.512) = 0.512 \\
-P(X < 0.98) = F(0.98) = 0.98
-P(X < -100) = 0
+P(X < 0.98) = F(0.98) = 0.98 \\
+P(X < -100) = 0 \\
 P(X < 10) = 1
 $$
 :::
 
-In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next examples, we frame the intuition of a some common scenarios. If you've forgotten, now may be the time to review your set notation for continuous sample spaces.
+In practice, we will sometimes want to know the probability of $X$ falling in a range dissimilar from the cdf. We may want to know, for example, $P(a < X < b)$ or $P(X > a)$. In our next examples, we frame the intuition of a some common scenarios. Now may be the time to review sets for continuous sample spaces if you've forgotten.
 
 The examples we work through shall use a continuous random variable - $X$ - with an exponential pdf (a.k.a., an exponential distribution), e.g., 
 
@@ -483,9 +483,9 @@ $$
 P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
 (\#eq:fundamental)
 $$
-Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion in the section before this - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. .
+Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated $P(2 \leq X < 3)$, and we have just provided an equation for $P(2 < X < 3)$. However, recall our brief discussion at the start of this section - $P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)$. .
 
-Now that we've worked the problem out with sets, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the exponential pdf left of the value 3 (e.g., $X < 3$). As we have learned, it represents $P(X < 3)$. The area between the two vertical lines at the values 2 and 3 under the curve represents $P(2 < X < 3)$, and the area to the left of 2 represents $P(X < 2)$. Looking at the two regions, one can see that $P(X < 2)$ and $P(2 < X < 3)$ combine (sum) to $P(X < 3)$. We shall need to subtract out the area left of 2 to get our desired value.
+Now that we've worked the problem out with set theory, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the exponential pdf left of the value 3 (e.g., $X < 3$). As we have learned, it represents $P(X < 3)$. The area between the two vertical lines at the values 2 and 3 under the curve represents $P(2 < X < 3)$, and the area to the left of 2 represents $P(X < 2)$. Looking at the two regions, one can see that $P(X < 2)$ and $P(2 < X < 3)$ combine (sum) to $P(X < 3)$. We shall need to subtract out the area left of 2 to get our desired value.
 
 ```{r, echo = FALSE, fig.cap = "P(X < 3)"}
 x <- seq(0,10, by = .1)
@@ -525,7 +525,7 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = pdf)) +
 That is to say, we will need to subtract $F(2)$ from $F(3)$ to get the area in the region corresponding to $P(2 < X < 3)$
 :::
 
-The equation we learned in the last example will be important for our work with cdfs. Let's dig into a couple more common scenarios.
+The equation we learned in the last example will be important for our work with cdfs. Let's dig into a couple more scenarios.
 
 ::: {.example}
 Let's continue using our aforementioned pdf/cdf. Suppose we would like to know the probability that $P(X > 3)$. One may (yet again!) think we are in a conundrum because of the form of our cdf. Nevertheless, we can again use set notation to make our approach clear.
@@ -619,7 +619,7 @@ The intuition of independence in the context of continuous random variables is q
 
 Take a moment to recall our discussion of independence in the context of discrete random variables. In that exploration, we found that two variables - e.g., $X_1$ and $X_2$ - are dependent if the probability of a particular outcome in the space of $X_1$ changes with an outcome in the space of $X_2$ (or visa versa). For instance, we discussed the sum of two dice and how the value of the first roll ($X_1$) can impact the probability of getting certain sums ($X_2$).
 
-The intuition for dependence in the case of the continuous random variable is the same. That is to say, given two dependent continuous random variables - $X_1$ and $X_2$ - the cdf of $X_1$ will change given an outcome in the space of $X_2$. Indeed, with the powers of integration, it is possible to calculate and visualize how the cdf of $X_1$ changes given some outcome value of $X_2$. That is, we can calculate $P(X_1 < x_1 | X_2 = x_2)$. With that said, I would like to formally request that you hold onto your mathematical shorts. In the next example we are going to do just that (except we'll skip the actual integration part).
+The intuition for dependence in the case of the continuous random variable is similar. That is to say, given two dependent continuous random variables - $X_1$ and $X_2$ - the cdf of $X_1$ will change given an outcome in the space of $X_2$. Indeed, with the powers of integration, it is possible to calculate and visualize how the cdf of $X_1$ changes given some outcome value of $X_2$. That is, we can calculate $P(X_1 < x_1 | X_2 = x_2)$. With that said, I would like to formally request that you hold onto your mathematical shorts. In the next example we are going to do just that (except we'll skip the actual integration part).
 
 ::: {.example} 
 Now, suppose we are given two dependent random variables - $X_1$ and $X_2$. Further suppose that $X_2$ has all it's support between and including 0 and 1. Skipping the steps to integration (and ignoring the pdf of $X_1$ and $X_2$), let's assume the cdf of $X_1$ given an outcome of $X_2$ looks like this
@@ -694,7 +694,7 @@ P(A \cap B) = P(A)P(B)
 (\#eq:indcont)
 $$
 
-where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case.
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of variable.
 
 ::: {example.}
 Suppose we are working with two independent random variables - $X$ and $Y$ - each with the same pdf that looks like this
@@ -711,8 +711,8 @@ Thus, for each function, we input a value of $a$ and it returns a density. In pr
 $$
 P(X < a) = F_X(a) = F_Y(x) =
 \begin{cases}
-1 - e^{-a} & a \qeq 0
-0 a < 0
+1 - e^{-a} & a \geq 0\\
+0 & a < 0
 \end{cases}
 $$
 Now let's say that we are conducting a random experiment, and we are interested in the probability that $X < 1$ and $Y < 1$. Because these two random variables are independent, equation \@ref(eq:indcont) will work nicely.
@@ -724,7 +724,7 @@ We simply multiply the two probabilities together.
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
-To this point, we have seen many similarities between continuous and discrete random variables. As you will see, the expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, then it would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
+To this point, we have seen that independence has a very similar interpretation for the continuous case. Indeed the similarities between discrete and continuous random variables do not end there! The expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, the pdf would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
 
 The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are (again) beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
@@ -855,7 +855,7 @@ $$
 &=\sqrt2\frac{21}{32} = 0.92808
 \end{align}
 $$
-I've skipped some of the computational details, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be $\frac{2}{3}\sqrt{2}$, so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of $X$ into smaller ranges and performing the calculation again with new $x_i$s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of $E(X)$. The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
+I've skipped some of the computational details, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be $\frac{2}{3}\sqrt{2}$, so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of $X$ into smaller ranges and performing the calculation again with new $x_i$s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of $E(X)$. Note that I've used the middle value of each range for $x_i$. The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
 
 ```{r, echo = FALSE, fig.cap = "Improving Approximations"}
 apx <- function(n) {
