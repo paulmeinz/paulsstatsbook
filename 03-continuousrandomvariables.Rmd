@@ -933,3 +933,114 @@ E(X + Y) = E(X) + E(Y) = \frac{2}{3}\sqrt{2} + 10\frac{1}{2} = \frac{2}{3}\sqrt{
 $$
 :::
 
+### Practice Problems
+
+Consider the pdf and cdf below for the random variable $X$ and do your best to calculate the probabilities in questions 1 through 6.
+
+$$
+f(x) = \begin{cases}
+0 & x < -1/2 \\
+1  & -1/2 \leq x \leq 1/2 \\
+0 & x > 1/2
+\end{cases}
+$$
+
+$$
+P(X < x) = F(x) = \begin{cases}
+0 & x < -1/2 \\
+x + 1/2 & -1/2 \leq x \leq 1/2 \\
+1 & x > 1/2
+\end{cases}
+$$
+
+1. $P(X < 0)$
+
+2. $P(X < 1/2)$
+
+3. $P(-1/4 < X < 1/8)$
+
+4. $P(\{X > 1/4\} \: \cup \: \{X < -1/4\})$
+
+5. $P(\{X > 1/4\} \: \cap \: \{X < -1/4\})$
+
+6. $P(X < 10000)$
+
+Consider the pdf and cdf below for the random variable $X$ and do your best to calculate the probabilities in questions 7 through 10. Note: Don't feel the obligation to calculate $e^-x$. Just leave it in that form.
+
+$$
+f(x) = \begin{cases}
+0 & x < 0 \\
+e^{-x} & x \geq 0
+\end{cases}
+$$
+
+$$
+P(X < x) = F(x) = \begin{cases}
+0 & x < 0 \\
+1-e^{-x} & x \geq 0
+\end{cases}
+$$
+
+7. $P(0 < X < 1 \: \cup \: X > 2)$
+
+8. $P(X > 1)$
+
+9. $P(1 < X < 4 \: \cap \: X > 3)$
+
+10. $P(X = 1)$ (Hint: $X = 1$ may also be written using $\leq$ inequalities)
+
+11. Suppose $P(X > x) = e^{-x/2}$. What is the cdf of $X$?
+
+12. Suppose we had three random variables - $X$, $Y$, and $Z$ - each with the pdf/cdf of questions 1 through 6. On a given random experiment, what is the probability that $X > 1/4$, $Y < 1/4$, and $Z < 1/4$? What is the probability that exactly two of the three outcomes are above 1/4?
+
+13. Consider the probability density for the random variable $X$ below. Draw the plot of the density. Based on the plot what is $E(X)$? Why?
+
+
+$$
+f(x) = \begin{cases}
+0 & x < 0 \\
+1 & 0 \leq x \leq 1 \\
+0 & x > 1
+\end{cases}
+$$
+
+14. Consider the probability density for the random variable $Y$ below. Draw the plot of the density. Based on the plot what is $E(Y)$? Does this variable have a larger or smaller variance than the variable in question 12? Why or why not?
+
+$$
+f(y) = \begin{cases}
+0 & y < 0 \\
+1/2 & 0 \leq y \leq 2 \\
+0 & y > 2
+\end{cases}
+$$
+
+Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each with $E(X_1) = 4$ and $E(X_2) = 2$, and variances of $1$ and $3$, respectively. Furthermore, we know that $P(X_1 < 1| X_2 = 1) = 1/3$ and $P(X_1< 1 | X_2 = 2) = 1/8$. Using the properties you've learned in this section, try your best to answer the questions below. Note if the properties learned here do not apply.
+
+15. What is $E(X_1) + E(X_2)$?
+
+16. What is $Var(2X_2)$?
+
+17. What is $Var(X_1 + X_2)$?
+
+18. What is $E(X_1) + E(Y)$ where $Y$ is a poisson random variable with $\lambda = 5$.
+
+### Practice Problem Answers
+
+1. 1/2
+2. 1
+3. 3/8
+4. 1/2
+5. 0
+6. 1
+7. $e^{-1} + e^{-2}$
+8. $e^{-1}$
+9. $e^{-3}-e^{-4}$
+10. 0 (WEIRD!)
+11. $1 - e^{-x/2}$
+12. 9/64, 9/64
+13. 1/2; Why? Because if you put a wedge right under 1/2, it looks like the plot would balance.
+14. 1; Yes, it does have a larger variance than the variable in question 13 because its probability density is much more spread out.
+15. 6
+16. 4
+17. The properties we learned in this section won't work for this one. The two variables do not appear to be independent.
+18. 9

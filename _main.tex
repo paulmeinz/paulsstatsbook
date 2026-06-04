@@ -37,6 +37,7 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 % Correct order of tables after \paragraph or \subparagraph
 \usepackage{etoolbox}
@@ -125,9 +126,9 @@ Many textbooks in mathematics begin with a useful high level overview of the con
 
 \section{Why I wrote this book}\label{why-i-wrote-this-book}
 
-First and foremost, I wrote this book because I'm excited about statistics (really excited; who writes a textbook for fun?), and I want other people to be excited about statistics too.
+I wrote this book because I'm excited about statistics (really excited; who writes a textbook for fun?), and I want other people to be excited about statistics too.
 
-The second and most important reason I wrote this textbook is because I would have appreciated a deeper mathematical understanding when I was learning statistics. Indeed, as a graduate student in Psychology, I became very comfortable with the applied end of statistics. I nevertheless found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. I did eventually pick up semi-mathematical ``explanations'' for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. This book is therefore meant to teach the a deeper mathematical theory \emph{in addition to} the application of statistics. My hope is that some curious student (like myself long ago) can have their curiosity assuaged.
+During my years as an academic, I became very comfortable with the applied end of statistics. I nevertheless found myself approaching statistics like a recipe book, e.g., if you have this type of data, it should be analyzed in this way. I did eventually pick up semi-mathematical ``explanations'' for why certain analyses were appropriate, and although these explanations were accurate (in a sense) they were sometimes quite amorphous. I have grown to appreciate the concrete and exact nature of mathematics - particularly the field of mathematical statistics. This book is therefore meant to teach some deeper mathematical theory \emph{in addition to} the application of statistics. My hope is that some curious student (like myself long ago) can have their curiosity assuaged.
 
 \section{What content to expect in this book}\label{what-content-to-expect-in-this-book}
 
@@ -155,42 +156,42 @@ This book is a working document. It was created based on some hand written notes
 
 \chapter{Set Theory and Probability}\label{set-theory-and-probability}
 
-In the course of research, behavioral scientists will often take samples of human behavior, e.g., a survey of a group of people, measurements of reaction time, etc. These samples will take some \emph{outcome}, and most of us understand and have observed the inherent randomness of this act. That is to say, you might take the exact same sample in a carefully controlled circumstance and get different results every time.
+In the course of research, behavioral scientists will often take samples of human behavior, e.g., a survey of a group of people, measurements of reaction time, etc. These samples will take some \emph{outcome}, and most of us understand and have observed the inherent randomness of this act. That is to say, you might take multiple samples in a carefully controlled circumstance and get different results every time.
 
-Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstances, and each time the outcome may change. This is referred to as a \textbf{random experiment}. In order to familiarize you with some introductory concepts around probability, we're going to start in this context of a random experiment. First, we'll learn about sets and set theory in order to describe our \textbf{sample space}. This will also be useful in describing the form that outcomes of a random experiment may take. Then we'll more concretely define the randomness of our experiment by talking about \textbf{probability} - the quantification of randomness.
+Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstances, and each time the outcome may change. This process is commonly referred to as a \textbf{random experiment}. In order to familiarize you with some introductory concepts around probability, we're going to start within the context of a random experiment. First, we'll learn about sets and set theory in order to describe our \textbf{sample space}. This be useful in describing the form that outcomes of a random experiment may take. Then we'll more concretely define the randomness of our experiment by talking about \textbf{probability} - the quantification of randomness.
 
 \section{Sets and Sample Spaces}\label{sets-and-sample-spaces}
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This is referred to as the \textbf{sample space}. Suppose we have five different possible outcomes in our sample space: A, B, C, D, and E. Let's call this sample space \(S\). Then we would describe it like this:
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This set of outcomes is referred to as the \textbf{sample space}. For example, suppose we have five different possible outcomes in our sample space - A, B, C, D, and E. For simplicity sake, Let's refer to this set of outcomes as \(S\) (\(S\) for Sample!). Then we would describe our set like this:
 
 \[
 S = \{A, B, C, D, E\}
 \label{eq:discreteset}
 \]
-That is to say we'll describe the set \(S\) with curly braces, and on the inside of the curly braces, there shall be a list of \emph{distinct} elements of our set. The sample space above is an example of a \textbf{discrete} sample space - meaning it either contains a finite number of elements or it is \emph{countable}. In this case, the sample space has a finite number of elements (five to be exact), so we can call it discrete.
+That is to say we'll describe \(S\) with curly braces surrounding a list of \emph{distinct} elements in the set. The set \(S\) is an example of a \textbf{discrete} sample space - meaning it either contains a finite number of elements or it is \emph{countable}. In this case, the sample space has a finite number of elements (five to be exact), so we can call it discrete.
 
 Describing and identifying a discrete sample space that is countable but \emph{infinite} (has an infinite number of elements) is much more difficult. My hope is you can gain a small sense for it from my explanation here. We'll see examples of it later, so it's worth a brief consideration. Specifically, a discrete sample space can also contain an \emph{infinite} number of elements - so long as those elements can be lined up one-to-one with the natural numbers (e.g., 1, 2, 3, 4, \ldots). That is, the elements can be ``counted'', albeit infinitely and forever. This is probably not the most intuitive definition for people who don't think about mathematics every day (it certainly wasn't for me). In a more reachable sense, a discrete sample space has elements with nothing in between them. In \(S\) above, there is nothing in between A and B, for example. If your discrete set had an infinite number of elements, you could order them by some criteria and line them up with the natural numbers. After this alignment, you could find nothing between the first and second elements (or any given sequential pair for that matter). You could just keep counting without worrying that you missed something.
 
-In addition to the discrete sample spaces above, we may also find ourselves sampling from a \textbf{continuous} sample space, e.g., all the values between and including 0 and 1 (e.g \(0 \leq x \leq 1\)). Since you can't enumerate all the values of a continuous sample space as we did with \(S\) (people have ``tried''; we'll talk about one such example later), we use a different form of notation. Suppose we have a continuous sample space \(R\), then we would specify it as
+In addition to the discrete sample spaces above, we may also find ourselves sampling from a \textbf{continuous} sample space, for example, all the values between and including 0 and 1 (e.g., \(0 \leq x \leq 1\)). Since you can't enumerate all the values of a continuous sample space as we did with \(S\) (people have ``tried''; we'll talk about one such example later), we use a different form of notation. Suppose we have a sample space consisting of all the values between and including 0 and 1. Like the discrete case, we'll give the set a name. In this case \(R\) seems like a nice name (\(R\) for Research!), and we will describe \(R\) as
 
 \[
 R = \{x\, | \, 0 \leq x \leq 1 \}
 \label{eq:continuousset}
 \]
 
-The inclusion criteria for the set is written after the \(|\) in the curly braces. The \(|\) can be read loosely as meaning ``where'', so reading the whole thing in the curly braces left to right you get x \emph{where} \(0 \leq x \leq 1\). Therefore, our set is all the \(x\)'s from 0 to 1. Note that I will occasionally drop the \(x\) and \(|\) when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth.
+The inclusion criteria for the set is written after the \(|\) in the curly braces. The \(|\) can be read loosely as meaning ``where'', so reading the whole thing in the curly braces left to right you get x \emph{where} \(0 \leq x \leq 1\). Therefore, our set is all the \(x\)'s from 0 to 1. Note that I will drop the \(x\) and \(|\) when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth.
 
-That said, it is time to turn our attention towards the outcome of our random experiment. Suppose we are randomly drawing a single item from our sample space \(S = \{A, B, C, D, E\}\). The \emph{outcome} of our experiment is a single item from our sample space, and we will talk about outcomes in terms of \emph{events}. Events are described by a \emph{subset} of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might say the event is \(C = \{A, B, C\}\), and if our outcome lands in the that subset (as either A, B, or C), then we shall say the event ``occurred''. For the sake of brevity, and positivity, I will refer to the occurrence of an event as a ``success'' (congratulations all around!). You can indicate a set is a subset by:
+Now, suppose we conduct a random experiment with our previously described sample space \(S = \{A, B, C, D, E\}\). The \emph{outcome} of our experiment is the single item from the sample space identified via our random process (e.g., a random draw with eyes closed, a dart board with a blind fold; etc.). In practice, we will frequently talk about outcomes in terms of \emph{events}. Events are described by a \emph{subset} of distinct elements from the sample space. That is, they may be one or more outcomes combined. For example, we might describe an event as \(C = \{A, B, C\}\), and if our outcome (a single item) lands in the that subset (it is either A, B, or C), we shall say the event ``occurred''. For the sake of brevity, and positivity, I will frequently refer to the occurrence of an event as a ``success'' (congratulations all around!). You can indicate a set is a subset by:
 
 \[ C \subset S 
 \label{eq:subset} \]
 
 In this case, we are saying \(C\) is a subset of \(S\). We might also, for example say that our event is a single element/outcome \(C_1 = \{A\}\) or the entire sample space \(C_2 = \{A,B,C,D,E\}\). We can be as creative as we would like to be, so long as the event is in our sample space.
 
-Indeed, in practice we might want to get a little more creative in terms of the outcomes of our random experiment. Let's talk about a slightly more complicated scenario.
+Indeed, in practice we might want to get a little more creative in terms of the outcomes and events associated with our random experiment. For example, we might be interested in the combination of events, the overlap in events, or some other scenario. The next few examples will describe (at a basic level) how we might ``combine'' events in different ways.
 
 \begin{example}
-Suppose we have two events \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\), and we are interested in whether or not our outcome lands in \(C_1\) or \(C_2\). It's helpful here to consider the circumstances where we this event would occur. Namely, If the instantiation of our outcome was an A, B, C, or D, then we would be successful (success!). That is to say, we've taken all the unique outcomes of either set and combined them into a new set. If our outcome lands in that new subset, we can be confident that \(C_1\) or \(C_2\) occurred. There's a handy symbol that indicates this operation:
+Suppose we have two events \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\), and we are interested in whether or not our outcome lands in \(C_1\) \emph{or} \(C_2\). Let us first consider the circumstances where our experiment would result in a success. We might reason that if the outcome of our random process was an A, B, C, or D, then our outcome will have landed in one of the two sets. Specifically, if our outcome were an A, then it has landed in \(C_1\); a B or C, then it has landed in \(C_1\) and \(C_2\); and a D, then it has landed in \(C_2\). That is to say, we could take the unique outcomes of either set and combine them into a new set. If our outcome lands in that new subset, we can be confident that \(C_1\) or \(C_2\) occurred. There's a handy symbol that indicates this operation:
 
 \[ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
 \label{eq:union} \]
@@ -199,16 +200,15 @@ Suppose we have two events \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\), and we a
 This \emph{union operator} (\(\cup\)) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with \emph{or}. If the event of interest is our outcome landing in \(C_1\) OR \(C_2\), then we would be successful if the event landed in the union of the two sets, e.g., all the unique elements from both sets.
 
 \begin{example}
-Here's another example, suppose we are interested in if our outcome falls into \(C_1 = \{A\}\) or \(C_2 = \{B\}\). Then our event would occur if the element was A or B:
+Here's another example, suppose we are interested in whether or not our outcome falls into \(C_1 = \{A\}\) or \(C_2 = \{B\}\). Then our event would occur if the result of our random process were an A or B. Using our newfangled union operator, we can write the union of these two sets as
 
 \[ \{A\}\:\cup\:\{B\} = \{A,B\} \]
-Our random experiment would be successful if the outcome was A OR B.
 \end{example}
 
-Indeed, the union operator helps us figure out the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important operator.
+Thus, the union operator helps us determine the conditions for success when we are interested in the occurrence of one event OR another. Let us now turn our attention to another equally important circumstance.
 
 \begin{example}
-Suppose we have our two previously described events - \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\) - each a subset of \(S\). Lets further say that we are interested in whether or not both events occur as a result of our random experiment. That is, we shall be successful if our outcome falls in both \(C_1\) AND \(C_2\). We are therefore interested in the \emph{shared} elements of our two events. Specifically, just by eyeballing the sets above, B and C are shared by the two events \(C_1\) and \(C_2\), but if we were unfortunate enough to draw a D or an A, game over. The \emph{intersect operator} will help us signify this process:
+Suppose we have our two previously described events - \(C_1 = \{A,B,C\}\) and \(C_2 = \{B,C,D\}\) - each a subset of \(S\). Let's further say that we are interested in whether or not both events occur as a result of our random experiment. That is, we shall be successful if our outcome falls in both \(C_1\) AND \(C_2\). We are therefore interested in the set of \emph{shared} elements of our two events. Specifically, just by eyeballing the sets above, B and C are shared by the two events \(C_1\) and \(C_2\), but if we were unfortunate enough to draw a D or an A, game over. The \emph{intersect operator} will help us signify this process:
 
 \[ C_1 \cap C_2 = \{A,B,C\} \cap \{B,C,D\} = \{B,C\} 
 \label{eq:intersect}\]
@@ -288,13 +288,19 @@ The two sets only overlap at exactly \(x = 2\), so their intersect is just a set
 \end{example}
 
 \begin{example}
+
 Suppose we have a sample space \(Q = \{x\,|\, 5 \leq x \leq 10\}\) and define \(C \subset Q\) where \(C = \{x\,|\, 5 \leq x < 7\}\). That is to say, \(C\) is a subset of Q, and its interval includes the lower side (5) but it doesn't include the upper side (7). What is the complement of \(C\)?
 
 \[ C^c = \{5 \leq x < 7\}^c = \{7 \leq x \leq 10\} \]
 
 The complement includes 7 up to 10. In the plot below, you can see a visual depiction of this. The top line represents the subset \(C\), and the bottom line represents the complement. The open circle at the end of our subset \(C\) indicates that the value 7 is not included in its range. The elements of C are strictly less than 7. This is in contrast to the complement line below - which has a solid black dot indicating 7's inclusion due to its exclusion from \(C\). Thus the complement of \(C\) ranges from 7 to 10.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-1-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:fig1}Plotting a Complement}]{_main_files/figure-latex/fig1-1.pdf}}
+\caption{\label{fig:fig1}Plotting a Complement}
+\end{figure}
+
 \end{example}
 
 \begin{example}
@@ -310,7 +316,11 @@ The previous introduction to sets was dedicated to a random experiment where we 
 
 To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (experiment) from a fair coin. Our sample space would be \(S = \{H, T\}\) where \(H\) is ``heads'', and \(T\) is ``tails''. Now let's suppose we flip two counts. The sample space would be all the possible permutations of heads and tails from the two flips. It helps to draw draw a \emph{tree diagram} to get the gist of it.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-2-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-1}Example Tree Diagram for Two Coin Flips}]{_main_files/figure-latex/unnamed-chunk-1-1.pdf}}
+\caption{\label{fig:unnamed-chunk-1}Example Tree Diagram for Two Coin Flips}
+\end{figure}
 
 You can follow the branches of the tree above to see each possible permutation of the two flips. For example, suppose the first flip was heads, you would follow the line at the first node (on the left) up the the ``H'' (heads) node. Then at the ``heads'' node, the next flip could either be an ``H'' (heads) or a ``T'' (tails), corresponding to the top and second from the top nodes on the right. Going down each branch, top-to-bottom, we get all the possible permutations of our two flips - \(\{HH,HT,TH,TT\}\). Our random experiment is now a selection from this new sample space.
 
@@ -380,7 +390,6 @@ Observe that:
 
 Look back at the definition of our two-coin flip space, and you'll see why I'm right about this. So then we can do this:
 
-\[
 \begin{align} 
 P(C \cup \{TT\}) &= P(S) = 1 \\
 P(C) + P(\{TT\}) &= 1 \\
@@ -388,7 +397,7 @@ P(C) + P(\{TT\}) - P(\{TT\}) &= 1 - P(\{TT\}) \\
 P(C) &= 1 - P(\{TT\}) \\
 P(C) &= 1 - \frac{1}{4} = \frac{3}{4}
 \end{align}
-\]
+
 \end{example}
 
 Thus, without listing out all the permutations of heads and tails for our two coins, we've calculated what we need. That is to say, sometimes it's much easier to calculate the probability of the complement (in the case above TT) of our event of interest and subtract the probability from 1. More formally, to calculate the probability of some event \(C\), we could take its complement \(C^c\). Then
@@ -407,13 +416,11 @@ P(C^c) = \frac{1}{11} + \frac{1}{11} + \frac{1}{11} = \frac{3}{11}
 \]
 And therefore
 
-\[
 \begin{align}
 P(C) &= 1 - P(C^c) \\
 P(C) &= 1 - \frac{3}{11} \\
 P(C) &= \frac{8}{11}
 \end{align}
-\]
 Much easier!
 \end{example}
 
@@ -449,23 +456,20 @@ P(C_2) = P(\{2,3\}) = P(2) + P(3) \\
 
 So if we applied our first version of the law of addition, then
 
-\[ 
+ 
 \begin{align}
 P(C_1 \cup C_2) &= P(C_1) + P(C_2) \\
 &= P(1) + P(2) + P(2) + P(3) \\
 &= P(1) + 2P(2) + P(1)
 \end{align}
-\]
 
 We have one too many \(P(2)\)s! Indeed, if we counted the probability of 2 twice, we would end up with a nonsensical value of 4/3 (e.g., \(1/3 + 2 \times 1/3 + 1/3\)). So let's put it all together using the second (more complete) law of addition. Recall that we assigned a probability of 1/3 to each element in our sample space
 
-\[
 \begin{align}
 P(C_1 \cup C_2) &= P(C_1) + P(C_2) - P(C_1 \cap C_2) \\
 P(C_1 \cup C_2) &= P(\{1,2\}) + P(\{2,3\}) - P(\{2\}) \\
 P(C_1 \cup C_2) &= \frac{2}{3} + \frac{2}{3} - \frac{1}{3} = 1
 \end{align}
-\]
 
 Fixed!
 \end{example}
@@ -513,11 +517,19 @@ The probability of \(C_1\) given that \(C_2\) has occurred is 1/2.
 
 The computation isn't too hard (although it may be at first), but the interpretation of conditional probability can certainly be tricky. It's worth unpacking our last example a bit more. One way to envision the last example is to think of a probability pie (stick with me here). In the pie chart below, observe how each of the individual outcomes is assigned an equivalent amount of area. That is, each gets 1/3 of the total probability.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-3-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-2}Probabilities before C2 occured}]{_main_files/figure-latex/unnamed-chunk-2-1.pdf}}
+\caption{\label{fig:unnamed-chunk-2}Probabilities before C2 occured}
+\end{figure}
 
 Now, we are learn that the event \(C_2 = \{1,2\}\) has occurred. Put another way, we now know that the outcome from our random experiment has landed \emph{somewhere} in \(C_2\). The wedge in our pie chart corresponding to outcome 3 is removed. You can see this in the pie chart below (it's now white). Observe that the two remaining outcomes - 1 or 2 - have an equal amount of probability assigned to them. One might intuit that, in the present circumstance, each of the two outcomes would occur about half the time. Indeed, the result of our calculation confirmed this. The conditional probability of getting a 1 - given \(C_2\) occurred - is 1/2. Because \(C_2\) occurred, the probability of \(C_1\) increased from 1/3 to 1/2.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-4-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-3}Conditional probability now that C2 has occurred}]{_main_files/figure-latex/unnamed-chunk-3-1.pdf}}
+\caption{\label{fig:unnamed-chunk-3}Conditional probability now that C2 has occurred}
+\end{figure}
 
 \begin{example}
 Let's take a look at an example that will give us another view of things. Suppose we flip two coins and, as in previous examples, our sample space is \(S = \{TT,TH,HT,HH\}\). Like before, our probability set operator assigns to each a probability of 1/4. In this case, what is the probability of getting a head on the second flip - given we've flipped a head on the first?
@@ -550,14 +562,12 @@ Indeed, we already observed that the \(P(C_2)\) (head on second flip) was 1/2, a
 
 The occurrence of B doesn't change the probability of A; the probability of A occurring, given B occurred, is unchanged. As I promised at the end of the last section, independence and conditional probability give us a new way of calculating P(A \cap B), and it's hidden in our equations for conditional probability. Specifically
 
-\[
 \begin{align}
 \frac{P(A \cap B)}{P(B)} &= P(A|B) \\
 P(B)\frac{P(A \cap B)}{P(B)} &= P(A|B)\,P(B) \\
 P(A \cap B) &= P(A|B)\,P(B)
 \label{eq:lawofmultiplication}
 \end{align}
-\]
 The last line above - \(P(A \cap B) = P(A|B)\,P(B)\) - is known as the \textbf{law of multiplication}. It gives us another way to calculate the \(P(A \cap B)\). For our purposes, this law finds it's greatest use in the case of events that are independent. Recall from above that in the case of independent events - \(P(A|B) = P(A)\). Therefore the law of multiplication becomes
 
 \[
@@ -810,13 +820,11 @@ We shall need the probability of getting a sum of 3 AND rolling a 1 on the first
   We can calculate \(P(A \cap B)\) in a couple of ways. First we can lean on our intuition a bit. Looking at the table above, we see that there is only one way to roll a 1 on the first die AND produce a sum of three - \(\{1\,2\}\). The probability of this event is 1/16. If we are having difficulty leaning on our intuition, we have learned the tools to calculate \(P\{A \cap B\}\).
 \end{enumerate}
 
-\[
 \begin{align}
 P\{A \cap B\} &= P(\{1\,1, 1\,2, 1\,3, 1\,4\} \cap \{1\,2,2\,1\}) \\
 &= P(\{1\,2\}) \\
 &= 1/16
 \end{align}
-\]
 
 Now we can calculate the probability of B given A:
 
@@ -1012,19 +1020,21 @@ This is an example of a \textbf{discrete uniform distribution}. Given n outcomes
 
 Now let's calculate the expectation of this random variable.
 
-\[
 \begin{align}
 E(X) = \sum_{i=1}^{5} x_ip(x_i) &= x_1p(x_1)+x_2p(x_2)+x_3p(x_3)+x_4p(x_4)+5p(x_5) \\
 &= 1p(1)+2p(2)+3p(3)+4p(4)+5p(5) \\
 &= (1)\frac{1}{5}+(2)\frac{1}{5}+(3)\frac{1}{5}+(4)\frac{1}{5}+(5)\frac{1}{5} \\
 &= \frac{15}{5} = 3
 \end{align}
-\]
-We've multiplied each value in the space of our random variable \(X\) by its probability and summed the values. The result of our computation is 3 - \(E(x) = 3\) - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of \(X\). In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the \(x\) axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.
+We've multiplied each value in the space of our random variable \(X\) by its probability and summed the values. The result of our computation is 3 - \(E(X) = 3\) - but what does that mean exactly? Well let's explore the idea of expectation further by plotting the pmf of \(X\). In the figure below, the probability of each outcome is plotted. You can see the outcomes of the random variable labelled on the \(x\) axis, and probability of each is represented by the bar height. In this case, each outcome is equally likely, so the bars are of equal height.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-6-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-5}A Plot of Our PMF}]{_main_files/figure-latex/unnamed-chunk-5-1.pdf}}
+\caption{\label{fig:unnamed-chunk-5}A Plot of Our PMF}
+\end{figure}
 
-Now suppose each of those bars has \emph{mass} (a.k.a. probability mass), and further suppose we'll place our wedge under the \(x\) axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. \(E(X)\) can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+Now suppose each of those bars has \emph{mass} (a.k.a., probability mass), and further suppose we'll place our wedge under the \(x\) axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. \(E(X)\) can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
 \end{example}
 
 That said, we shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some \emph{function} of a random variable. In other words, we may apply some function to the outcomes in the space of \(X\) and then calculate an expectation. For example, we might have
@@ -1061,14 +1071,12 @@ p(x) =
 \]
 Now let's calculate the expectation of \(f(X)\). Watch the underlined values for a little bit of algebra review.
 
-\[
 \begin{align}
 E(X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= \underline{1}\:p(x_1)+\underline{1}\:p(x_2)+\underline{1}\:p(x_3)+\underline{1}\:p(x_4)+\underline{1}\:p(x_5) \\
 &= \underline{1}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
 &= \underline{1}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
 &= \underline{1}(1) = 1
 \end{align}
-\]
 The second line of this calculation was made possible by the distributive property of multiplication. That made the computation easier because we note that the sum of probabilities over the space of \(X\) is equal to 1 (see the third line; and see the properties of a discrete random variable at the start of this chapter).
 \end{example}
 
@@ -1085,25 +1093,22 @@ p(x) =
 \end{cases}
 \]
 
-\[
 \begin{align}
 E(2X) = \sum_{i=1}^{5} f(x_i)p(x_i) &= 2p(x_1)+4p(x_2)+6p(x_3)+8p(x_4)+10p(x_5) \\
 &= (2)\frac{1}{5} + (4)\frac{1}{5} + (6)\frac{1}{5} + (8)\frac{1}{5} + (10)\frac{1}{5} \\
 &= \frac{30}{5} = 6
 \end{align}
-\]
+
 \end{example}
 
 The astute observer might notice an interesting trend in the last two examples. In example \ref{exm:exp1}, we saw that our function which converts the whole space of \(X\) into 1 had the expectation of 1. Indeed, looking back at the computation, we could perform that computation for any constant, e.g., if \(a\) is a constant, and \(f(X) = a\), then
 
-\[
 \begin{align}
 E(a) = \sum_{i=1}^{5} ap(x_i) &= \underline{a}\:p(x_1)+\underline{a}\:p(x_2)+\underline{a}\:p(x_3)+\underline{a}\:p(x_4)+\underline{a}\:p(x_5) \\
 &= \underline{a}\:[p(x_1) + p(x_2) + p(x_3) + p(x_4) + p(x_5)] \\
 &= \underline{a}\:[\frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5} + \frac{1}{5}] \\
 &= \underline{a}(1) = a
 \end{align}
-\]
 
 In other words, we would get the value of our constant every time. Similarly, in \ref{exm:exp2}, recall that the original expectation of \(X\) was 3. Our function \(f(X) = 2X\) had the expectation of \(2\times3 = 6\). That is, we multiplied \(X\) by 2 and got back 2 times its expectation.
 
@@ -1317,12 +1322,10 @@ p(z) =
 \]
 Now, after that slog (you can imagine it being much worse), are in a position to calculate the expectation of \(Z = X_1 + X_2\)
 
-\[
 \begin{align}
 E(a) = \sum_{z}^{} zp(z) &= 0\:p(x_1)+1\:p(x_2)+2\:p(x_3) \\
 &= 0\frac{1}{4} + 1\frac{1}{2} + 2\frac{1}{4} = \frac{2}{4} + \frac{2}{4} = 1 \\
 \end{align}
-\]
 
 The usefulness of the fourth property now comes into view. Observe that \(E(X_1) = E(X_2) = 1/2\) (calculate this on your own; you can do it!). So, by property 4
 
@@ -1374,22 +1377,18 @@ p(x) =
 
 Reviewing the equation for the variance, it is apparent we shall first need to calculate \(\mu\) for \(X\) before we can do any calculation of the variance. Knowing what we know about the expected value and the balancing point of probability mass, I think we would be pretty safe to guess that the expectation of \(X\) is 1. Nevertheless, let's calculate it really quick
 
-\[
 \begin{align}
 E(X) = \sum_{i=1}^{3} x_ip(x_i) &= 0\frac{1}{8}+ 1\frac{3}{4} + 2\frac{1}{8} \\
 &= \frac{6}{8} + \frac{2}{8} = 1
 \end{align}
-\]
 
 Our intuition was indeed correct - \(E(X) = 1\). We shall now turn our attention to calculating the variance of \(X\)
 
-\[
 \begin{align}
 Var(X) = \sum_{i=1}^{3} (x_1-\mu)^2p(x_i) &= (x_1-\mu)^2p(x_1) + (x_2-\mu)^2p(x_2) + (x_3-\mu)^2p(x_3) \\
 &= (0 - 1)^2\frac{1}{8} + (1-1)^2\frac{1}{8} + (2-1)^2\frac{1}{8} \\
 &= (-1)^2\frac{1}{8} + 0 + 1^2\frac{1}{8} = \frac{1}{4}
 \end{align}
-\]
 Thus, \(Var(X) = 1/4\).
 
 We should stop here and take a breath. In the last two sections, you've calculated your very first mean and variance of a random variable. Congratulations! These concepts may seem a little disconnected from our work as behavioral scientists, but they will make some wonderful things clear later on. I promise.
@@ -1416,30 +1415,26 @@ p(x) =
 \]
 Next, in order to calculate \(Var(2X)\), we will first need \(E(2X)\). I'll just go ahead and give you the fact that \(E(2X) = 2\), but you should calculate this for yourself as well (you have all the tools, skill, and excitement to do it!). Next we'll apply our new equation
 
-\[
 \begin{align}
 Var(2X) = \sum_{i=1}^{3} (f(x_i)-\mu_f)^2p(x_i) &= (f(x_1)-\mu_f)^2p(x_1) + (f(x_2)-\mu_f)^2p(x_2) + (f(x_3)-\mu_f)^2p(x_3) \\
 &= (0 - 2)^2\frac{1}{8} + (2-2)^2\frac{1}{8} + (4-2)^2\frac{1}{8} \\
 &= (-2)^2\frac{1}{8} + 0 + 2^2\frac{1}{8} = 1
 \end{align}
-\]
 Observe that the variance of our random variable \(2X\) is larger than \(X\). To understand why, let's take a look at the probability mass functions of \(X\) and \(2X\).
 
 The top plot below is the pmf of \(X\), with the vertical line representing \(E(X)\). The height of each bar represents the probability mass assigned to a particular value on the \(x\)-axis - in the space of \(X\). For example, \(1/8\) mass sits on top of the value 0. The bottom plot is the pmf of \(2X\) - as if we created a new random variable as \(x\) but with each of the outcomes multiplied by 2. That is, for example, instead of \(1/8\) probability sitting on top of 2, it now sits on top of 4. In this case, the vertical line represents \(E(2X)\). Note how the mass for \(2X\) now sits on the values of 0, 2, and 4 (the outcomes after we have applied \(f(x)\)). And, it's pmf is spread out further around its expectation. It is \emph{dispersed} more widely than the probability mass of \(X\). Indeed, this is an intuitive (although maybe not perfectly exact) way of thinking about variance: A random variable with a larger variance will tend to have it's probability mass spread out more. Therefore, it is not surprising that the \(Var(X) < Var(2X)\). In fact, this is precisely the sort of behavior we would want out of a measure of variance!
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-8-1.pdf}}
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-9-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-7}Plot of the Distribution of X}]{_main_files/figure-latex/unnamed-chunk-7-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-8}Plot of the Districution of 2X}]{_main_files/figure-latex/unnamed-chunk-8-1.pdf}}
 
 We shall observe one more thing about our last two examples. In the first example we found \(Var(X) = 1/4\) and in the second example, we found \(Var(2X) = 1\). Indeed, you may not have noticed this quickly (I didn't when I first learned this stuff), but
 
-\[
 \begin{align}
 Var(2X) &= 1 \\
 &= 4\frac{1}{4} \\
 &= 2^2\frac{1}{4} \\
 &= 2^2Var(X)
 \end{align}
-\]
 Because \(Var(X) = 1/4\). I might have lost you there. In words, it looks like the variance of \(2X\) is simply \(2^2\) times the variance of \(X\). If we did this a few more times, you might begin to think that, given some value \(c\), the variance of \(cX\) is just \(c^2Var(X)\). Indeed this is true in general (for random variables that have a variance). Like the expectation, the variance also has some useful properties. They are listed below:
 
 \begin{theorem}[Some Properties of the Variance]
@@ -1487,6 +1482,7 @@ Var(aX+b) = (1)Var(X) + 0 = Var(X)
 \]
 
 \begin{example}
+
 Suppose we have a random variable \(X\) with \(E(X) = 1/2\), \(Var(X) = 1/4\), and pmf
 
 \[
@@ -1504,7 +1500,12 @@ Var(X + 5) = Var(X) + 0 = 1/4
 Why didn't adding a constant to \(X\) change it's variance? As is often the case, it's easier to see why by visualizing some pmfs. In the plot below, you will see two pmfs. The first (blueish) is the pmf of \(X\), and the second (redish) is the pmf of \(X+5\) - as if we created a new random variable and pmf by adding 5 to each outcome of \(X\). The vertical lines represent \(E(X)\) and \(E(X+5)\) respectively. Do you see how the plot of \(X+5\) is simply the pmf of \(X\) shifted to the right? We can see the bars of \(X+%
 \) are still equivalently ``spread'' out but at a new location on the number line. Indeed, the values in the \(X+5\) pmf are just as close to their expectation compared to \(X\), so the variance calculation would not turn out differently (I invite you to convince yourself of this by using equation \eqref{eq:discretevariancef}.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-10-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-9}Variances are unchanged by numberline shifts}]{_main_files/figure-latex/unnamed-chunk-9-1.pdf}}
+\caption{\label{fig:unnamed-chunk-9}Variances are unchanged by numberline shifts}
+\end{figure}
+
 \end{example}
 
 Let's do a few more examples using properties 1 through 3, and then we'll move on to the fourth.
@@ -1556,12 +1557,10 @@ We will again work with the random variables in example \ref{exm:expectationsum}
 
 Recall that the variables \(X_1\) and \(X_2\) are independent. This means that property 4 applies, and we shall use it. First let's calculate the variance of \(X_1\) (which will also be the variance of \(X_2\))
 
-\[
 \begin{align}
 Var(X_1) = \sum_{x}^{} &= (0-\frac{1}{2})^2p(0) + (1-\frac{1}{2})^2p(x_2) \\
 &= 0 + \frac{1}{4} \\ &= \frac{1}{4}
 \end{align}
-\]
 And, therefore, by property 4, the variance of \(Z\) is
 
 \[
@@ -1651,7 +1650,6 @@ p & x = 1 \\
 
 Now let's calculate the variance with this as reference.
 
-\[
 \begin{align}
 Var(X) = \sum_{x} (x - \mu)^2p(x) &= (x-p)^2p(x) \\
 &= (1-p)^2p + (0-p)^2(1-p) \\
@@ -1659,10 +1657,8 @@ Var(X) = \sum_{x} (x - \mu)^2p(x) &= (x-p)^2p(x) \\
 &= p(1-p)^2 + p^2(1-p) \\
 &= p(1-p)(1-p) + p(p)(1-p)
 \end{align}
-\]
 Note that we just rearranged terms from the 3rd to 4th line. On the 5th line we wrote out the squares as multiplications. Now, we'll stop here and point something out. This equation has two terms - one before the + and one after. Each of these terms has a common factor of \(p(1-p)\). We're going to use the magic of the distributive property. Watch the underlines below.
 
-\[
 \begin{align}
 &= \underline{p(1-p)}(1-p) + p\underline{(p)(1-p)} \\
 &= \underline{p(1-p)}[(1-p) + p] \\
@@ -1671,7 +1667,6 @@ Note that we just rearranged terms from the 3rd to 4th line. On the 5th line we 
 &= p(1-p)
 \end{align}
 \label{eq:bernvariance}
-\]
 The variance of a Bernoulli random variable is therefore \(p(1-p)\). These equations help us quickly calculate important aspects of Bernoulli distributions, but they will also help us derive the expectation and variance of our next important distribution. An example will kick us off.
 
 \begin{example}
@@ -1703,14 +1698,12 @@ The key observation here is that their \emph{sum} represents the number of succe
 \]
 then the sum of their outcomes would be the number of winning lotto tickets. For example, if we had 3 winners, we would get three ones and 97 zeros. The total sum would be 3. Indeed, we know how to calculate the expectation of a sum of random variables thanks to the properties of the expectation.
 
-\[
 \begin{align}
 E(\sum_{i=1}^{100} X_i) &= E(X_1) + E(X_2) + E(X_3) + ... + E(X_{100}) \\
 &= p + p + p + ... + p \\
 &= 100p \\
 &= 100(.01) = 1 \\
 \end{align}
-\]
 The lotto ticket enthusiast shall expect to have 1 winning ticket on average. That's not a stupendously lucrative hobby, but who says hobbies have to be profitable.
 
 To close out this example, let's think about \(\sum_{i=1}^{100} X_i\). The sum of these random variables is itself a random variable. Call it \(Z\). Note that we have already looked at similar variables as in examples \ref{exm:expectationsum} and \ref{exm:dice}. Although, we were able to determine the expectation of this variable \(Z\) using our knowledge of the expectation and Bernoulli random variables, we do not know its pmf.
@@ -1737,14 +1730,12 @@ P(\{0\,0\,1\})=(P(X_1 = 0)P(X_2 = 0)P(X_3 = 1) = 2/3 \times 2/3 \times 1/3 = 4/2
 \]
 Therefore each has the exact same probability, and by the law of addition, \(P(Y) = 4/27 + 4/27 + 4/27 = 12/27 = 4/9\). Importantly, note how each of the combinations has exactly the same probability. This is because each has the same number of successes and the same number of non-successes. A little algebra helps to see this. Let's take a closer look at the combination - \(\{0\,1\,0\}\).
 
-\[
 \begin{align}
 P(\{1\,0\,0\})=(P(X_1 = 0)P(X_2 = 1)P(X_3 = 0) &= (1-p)p(1-p) \\
 &= p(1-p)(1-p) \\
 &= p^1(1-p)^2 \\
 &= (1/3)^1(1-1/3)^2
 \end{align}
-\]
 Note that the second line from the top is just a rearrangement of factors thanks to the commutative property of multiplication. Looking carefully, we see that we have \(p^1\) because we have 1 success, and we have \((1-p)^2\) because we have two non-successes. You could rearrange the factors of the other combinations and get the same result. That is to say, each outcome has the same probability because they have the same number of successes and non-successes.
 \end{example}
 
@@ -1788,12 +1779,10 @@ This equation is often symbolically referenced as \({n \choose z}\). That is
 \begin{example}
 Returning to our previous example with \(n = 3\), we can now quickly calculate the number of ways to get a sum of 1.
 
-\[
 \begin{align}
 {3 \choose 1} &= \frac{3!}{1!(3-1)!} \\
 &= \frac{3 \cdot 2 \cdot 1}{1 \cdot 2 \cdot 1}
 \end{align}
-\]
 
 Then if we cancel out common multiples in the numerator and denominator, we get
 
@@ -1836,7 +1825,7 @@ The \({n \choose z}\) gives us the number of ways to get a value of z, and the \
 \]
 as we observed before when we calculated the probability by hand. The binomial distribution is often referenced as \(B(n,p)\) - where \(n\) and \(p\) are parameters. To indicate the distribution of \(X\) we would write \(X \sim B(n,p)\), meaning \(X\) is a random variable with a binomial distribution, a.k.a., a binomial random variable. Not all distributions have a special symbol, but when they do we will also sometimes use the shorthand above.
 
-We now turn our attention to the expectation and variance of a binomial random variable. Our random variable - call it \(Z\) - is just the sum of \(n\) indepndent Bernoulli random variables with parameter \(p\), so the expectation is calculated as
+We now turn our attention to the expectation and variance of a binomial random variable. Our random variable - call it \(Z\) - is just the sum of \(n\) independent Bernoulli random variables with parameter \(p\), so the expectation is calculated as
 
 \[
 E(Z) = E(\sum_{i=1}^{n}X_i)
@@ -1862,23 +1851,19 @@ Suppose we are flipping 4 fair coins - each with \(p=1/2\) probability of flippi
 
 For the first part of the question, we have \(n = 4\), \(p = 1/2\), and \(z = 0\), so let's plug these into the pmf for a binomial distribution.
 
-\[
 \begin{align}
 P(Z = 0) &= {4 \choose 0} 1/2^0(1-1/2)^{4-0} \\
 &= \frac{4!}{0!(4-0)!}(1/2)^0(1-1/2)^{4-0} \\
 &= \frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}(1/2)^0(1-1/2)^{4-0}
 \end{align}
-\]
 
 Notice how the factors are the same for the top and bottom of \(\frac{4 \cdot 3 \cdot 2 \cdot 1}{1 \cdot 4 \cdot 3 \cdot 2 \cdot 1}\), so we can cancel out all the common factors and get 1. Then
 
-\[
 \begin{align}
 &= (1)(1/2)^0(1-1/2)^{4-0} \\
 &= (1)(1/2)^0(1/2)^{4} \\
 &= (1/2)^{4} = 1/16
 \end{align}
-\]
 where the last step follows because a number raised to the 0th power is 1. Therefore, \(P(Z = 0) = 1/16\). The second part follows from this first part of the question. Let's call the space of our random variable \(S = \{0,1,2,3,4\}\). Note that the set \(\{Z \geq 1\} = \{1,2,3,4\}\) is the complement of \(\{Z = 0\}\). Therefore, we can use equation \eqref{eq:pcomplement}.
 
 \[
@@ -1909,13 +1894,11 @@ p(x) =
 
 With regards to the first part of the question, we have \(z = 0\), and the probability is calculated
 
-\[
 \begin{align}
 P(Z = 0) &= {30 \choose 0} .25^0(1-.25)^{30-0} \\
 &=\frac{30!}{0!(30-0)!}(.75)^{30} \\
 &=\frac{30!}{30!}(.75)^{30} = .00019
 \end{align}
-\]
 \(P(Z=0) = 0.00019\) (after some rounding), and we can proceed with the second part as we did in the last example.
 
 \[
@@ -1991,27 +1974,23 @@ E(X) = Var(X) = \lambda
 In words, the variance and expectation of \(X\) are equal to our lower-case lambda.
 
 \begin{example}
-Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of \emph{at least one} car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
+\protect\hypertarget{exm:poissoninf}{}\label{exm:poissoninf}Suppose the average number of cars passing through an intersection between 5pm and 6pm is 10. What is the probability of exactly 10 cars passing through the intersection? What is the probability of \emph{at least one} car passing through the intersection? And, finally, what is the mean and variance of the random variable representing car count? We shall deal with each of these in turn.
 
 We are calculating probabilities for the count of an event (cars passing) that has a constant rate of occurrence over a given time period. The poisson distribution will do the trick! Call our random variable \(X\). Here we have an average rate - \(\lambda = 10\), and the first part asks what is \(P(X = 10)\). So
 
-\[
 \begin{align}
 p(10) = \frac{\lambda^{10}}{10!} e^{-\lambda} &= \frac{10^{10}}{10!} e^{-10} \\
 &= \frac{10\cdot10^{9}}{10\cdot9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
 &= \frac{10^{9}}{9\cdot8\cdot7\cdot6\cdot5\cdot4\cdot3\cdot2\cdot1} e^{-10} \\
 &= \frac{10^{9}}{9!} e^{-10} = 0.12511
 \end{align}
-\]
 Thus, \(P(X = 10) = 0.12511\). The second part of the question is a bit tricky, but we shall implement a strategy we saw demonstrated in the examples for the binomial distribution. Here we are seeking to calculate \(P(X\geq1)\). Our random variable is countably infinite, so we can't just calculate probabilities for each value greater than zero and sum them. However, recall that the poisson distribution is a pmf, and one of the properties of a pmf is that - given the space of a random variable (\(S\)) - then \(P(S) = 1\). Therefore,
 
-\[
 \begin{align}
 P(X\geq1) &= 1 - P(X = 0) \\
 &= 1 - \frac{10^{0}}{0!} e^{-10} \\
 &= 1 - \frac{1}{1} e^{-10} = 0.9999546
 \end{align}
-\]
 In other words, there's a pretty strong chance you'll see at least one car between 5pm and 6pm at the intersection.
 
 Finally, we shall make quick work of the last part of the question. Now that we know we are working with a poisson random variable, we know that the mean and variance are each equal to \(\lambda\). Thus, \(E(X) = Var(X) = 10\).
@@ -2087,19 +2066,21 @@ which is indeed very close to the actual value of our binomial computation.
 
 \chapter{Continuous Random Variables}\label{continuous-random-variables}
 
-In the last chapter, we learned about discrete random variables, expectations, variance, and some common distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn about one of the most useful, prolific, and oddly named distributions: The normal distribution.
+In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I'm excited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.
 
 \section{Probability Density and the Continuous Random Variable}\label{probability-density-and-the-continuous-random-variable}
 
-A continuous random variable is similar to the discrete random variables we discussed in the last chapter. However, the way we define the set of outcomes and the way we attribute probability to those outcomes is different. Continuous random variables are defined first and foremost by their \emph{space} - which is not countable or finite in the way the discrete spaces are (more on this in a moment). For example, we may define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., \(0 \leq X \leq 1\). Indeed, defining the space is the easy part. The tricky part is describing the randomness of a continuous variable in the form of a probability distribution.
+As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished first and foremost by their \textbf{space} - wherein an outcome may take on any value in a \emph{continuous range} of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., \(0 \leq X \leq 1\), or all the values on the real number line, e.g., \(-\infty < x < \infty\). Continuous random variables are prolific within the behavioral sciences: Age, height, and reaction time, for example, can all be thought of as continuous random variables.
 
-Let's explore this endeavor a bit deeper with the range - \(0 \leq X \leq 1\). Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable. Take a moment to glance back and the properties of a discrete random variable (if you don't remember them). Specifically, over the \(n\) outcomes in the space of \(X\), a pmf must have
+To fully specify a continuous random variable, we shall again need a set of rules describing its randomness, a.k.a., a probability distribution. This is where things get tricky. As you will see the difficulty arises from our aforementioned definition of continuous spaces. Let's explore this by considering a random variable with the space - \(0 \leq X \leq 1\). Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We could take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable.
+
+Take a moment to glance back at the properties of a probability mass function (if you don't remember them). Specifically, over the \(n\) outcomes in the space of a discrete random variable \(X\), a pmf must have
 
 \[
 \sum_{i = 1}^{n} p(x_i) = 1
 \]
 
-As it turns out, this property will be quite difficult to attain - because the values in a continuous range aren't countable. That is, we can't list them out in an orderly fashion (e.g.~like we could for the Bernoulli, binomial, and poisson distributions). Let's dig into this a little further to make it clear. Turning our attention back to our random variable with space \(0 \leq X \leq 1\), let's try to count all the values between 0 and 1. Suppose we've listed (or believe we have listed) all the values in the range, e.g.,
+This property will be quite difficult to attain in the continuous case - because, as we will see, the values in a continuous range aren't countable. That is, we can't list them out in an orderly fashion (e.g., like we could for the Bernoulli, binomial, and poisson distributions). Turning our attention back to our random variable with space \(0 \leq X \leq 1\), let's try to count all the values between 0 and 1. Suppose we've listed (or believe we have listed) all the values in the range, e.g.,
 
 \[
 0.123451..., \:0.234672...,\:0.247773...,\:0.866724...,\:0.999525...
@@ -2115,7 +2096,7 @@ We line our list up with the natural numbers and begin counting.
 5) \:\: 0.999525...
 \]
 
-But to our surprise (or maybe to our non-surprise) there will \emph{always} be a number we missed during our enumeration. Note the underlined numbers in our list below.
+But to our surprise (or maybe to our non-surprise) there will \emph{always} be a number we missed during our enumeration. Note the underlined digits in our list below.
 
 \[
 1) \:\: 0.\underline{1}23451...\\
@@ -2125,11 +2106,14 @@ But to our surprise (or maybe to our non-surprise) there will \emph{always} be a
 5) \:\: 0.9995\underline{2}5...
 \]
 
-We can specify a new number \(0.abcde\) such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that \(a \neq 1\), \(b \neq 3\), \(c \neq 7\), \(d \neq 7\), and \(e \neq 2\). Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our new number is therefore different from each of the enumerated numbers. This method of finding a new number would \emph{always work}. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.
+We can specify a new number \(0.abcde\) such that a, b, c, d, and e are numbers between 0 and 9, representing the first through fifth digits, respectively. To make sure our number is new, we ensure that \(a \neq 1\), \(b \neq 3\), \(c \neq 7\), \(d \neq 7\), and \(e \neq 2\). Thus the first digit will differ from that of the first listed number, the second digit will differ from that of the second listed number, and so on. Our number is therefore different from each of the numbers in our list. This method of finding a new number would \emph{always work}. No matter how certain we were in the thoroughness of our list, we would always have to go back and account for a newly discovered number.
 
-The logic described above, attributed to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? Well, it tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - \(p(x_1)\) - over the set of outcomes because we can't list them out. And, therefore, we can't ensure we've attained the important property of \(\sum_{i = 1}^{n} p(x_i) = 1\).
+The logic described above, credited to Georg Cantor a famous set theorist, is indeed intriguing (in fact it's one of my favorite proofs of all time!), but why is it important for our purposes? It tells us that we can't specify probability distributions for continuous random variables in the way that we define them for discrete random variables. You can't sum the probability of each outcome - \(p(x_1)\) - over the set of outcomes \emph{because we can't list the outcomes out}. And, therefore, we can't ensure we've attained the important property of \(\sum_{i = 1}^{n} p(x_i) = 1\).
 
-As it turns out, we get around this conundrum by assigning probabilities to \emph{ranges} of our continuous random variable, and we do this with a \textbf{probability density function}. A probability density function describes the amount of probability per unit \(x\) at a given point in a continuous range. We'll dig deeper into this concept as we have in the past - through an example. Suppose we have a probability density function
+As it turns out, we get around this conundrum by assigning probabilities to \emph{ranges} of our continuous random variable, and we frequently do this with something called a \textbf{probability density function} (pdf). A probability density function describes the amount of probability (sometimes referred to here as \emph{probability mass}) \emph{per unit} \(x\) at a given point. As you will see, the probability density will help us determine the probability of an outcome falling within a given range. For example, it could tell us the probability that \(X\) falls below the value of \(.5\), e.g., \(P(X < .5)\). We'll dig deeper into this concept as we have in the past - through an example.
+
+\begin{example}
+\protect\hypertarget{exm:firstdensity}{}\label{exm:firstdensity}Suppose we have a probability density function
 
 \[
 f(x) = 
@@ -2139,42 +2123,995 @@ f(x) =
 \end{cases}
 \]
 
-This function assigns a value of 1 probability density to any value - \(0 \leq x \leq 1\). Anywhere else it assigns a value of 0. Let's refer to units of probability mass with the abbreviation - \(pm\) - and let's assume that the units of \(x\) are \(u\) (short for units of x). Suppose our value of \(x = .25\), then
+This function assigns a value of 1 probability density to any value - \(0 \leq x \leq 1\). Anywhere else it assigns a value of 0. Let's refer to units of probability mass (or probability) with the abbreviation - \(pm\) - and let's assume that the units of \(x\) are \(u\) (short for units of x). Suppose our value of \(x = .25\), then
 
 \[
 f(.25) = 1 
 \]
 
-The value of 1 from the equation above has the units \(pm/u\), e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit x at exactly the point \(x = .1\). Now let's talk about how such a function assigns probability to a range of x. First, let's take a look at the plot of our probability density function.
+The value of 1 from our pdf is a probability density which has the units \(pm/u\), e.g., probability mass per units of x. That is to say, our probability density function is describing the amount of probability mass per unit \(x\) at exactly the point \(x = .25\). Now let's talk about how such a function assigns probability to a range of x. Take a look at the plot of our probability density function below.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-11-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-10}Boring}]{_main_files/figure-latex/unnamed-chunk-10-1.pdf}}
+\caption{\label{fig:unnamed-chunk-10}Boring}
+\end{figure}
 
-Indeed, it is a very boring plot - just a horizontal line where \(f(x) = 1\) - but now we are going to do something magical. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with \(x = .25\) and calculate the area under the \(f(x)\) line from \(0 \leq x \leq .25\). Take a look at the plot below for clarity. Note the rectangle with diagonal lines through it. We are going to calculate the area of this rectangle - with \(f(x)\) as the top, the origin as the bottom, and sides at \(x = 0\) and \(x = .25\), respectively.
+Indeed, it is a very boring plot - just a horizontal line where \(f(x) = 1\) from 0 to 1. We're going to calculate an area under that line, and that area will be a probability mass! For demonstration sake, let's stick with \(x = .25\) and calculate the area under the \(f(x)\) line from \(0 \leq x \leq .25\). Take a look at the the rectangle with the diagonal lines through it in the plot below. The area to which we are referring is bordered by \(f(x)\) at the top, the x-axis at the bottom, and vertical lines at \(x = 0\) and \(x = .25\), respectively.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-12-1.pdf}}
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-11}Area under the density}]{_main_files/figure-latex/unnamed-chunk-11-1.pdf}}
+\caption{\label{fig:unnamed-chunk-11}Area under the density}
+\end{figure}
 
-The equation for calculating the area of a rectangle is the length of the base (call it \(B\)) times the height (call it \(H\)) - \(BH = area\). Here the length of the base is \(.25\), and the height of our rectangle is \(f(.25)=1\). Also note the units: The length is in \(u\) (units of x) and the height is in probability density - \(pm/u\) - probability mass per unit \(x\). Now let's calculate the area, (but first recall the rules for unit cancellation):
+Recall that the equation for calculating the area of a rectangle is the length of the base (call it \(B\)) times the height (call it \(H\)) - \(BH = area\). Here the length of the base is \(.25\), and the height of our rectangle is \(f(.25)=1\). Also note the units: The length has units - \(u\) (units of x) - and the height has units of probability density - \(pm/u\) - probability mass per unit \(x\). Therefore
 
 \[
 area \: = \: BH \: = \frac{.25\:u}{1} \times \frac{1\:pm}{1\:u} = .25 pm  
 \]
 
-The units of \(x\) cancel out, and therefore, the units of our calculated area are \(pm\) (probability mass). That is to say, our probability density function has effectively assigned a 25\% probability to the range \(0 \leq x \leq .25\). Put another way, we have \(P(0\leq X\leq.25) = .25\). If we had calculated the area under the whole curve where \(f(x) = 1\), then we would find that the area is 1. That is, there is a 100\% chance that our random variable \(X\) falls in the range \(0 \eq x \leq .25\). This is precisely what we were looking for at the start of the section.
+We get an area of .25, but the story of the calculation is in the units of this value. Note how the units of \(x\) cancel out, and the units of our calculated value are \(pm\) (probability mass). That is to say, our probability density function has assigned a 25\% probability to the range \(0 \leq x \leq .25\). Put another way, we have \(P(0\leq X\leq.25) = .25\). Indeed, if we calculate the area under the whole curve (line) where \(f(x) = 1\), then we would find that the area is 1. That is, there is a 100\% chance that our random variable \(X\) falls in the range \(0 \leq x \leq 1\). This mimics the property of pmfs we discussed at the start of this section.
+\end{example}
 
 There we have it, then. The probability density function assigns a probability to a range via the area under its curve. In practice, calculation of this area requires more advanced mathematics than we have demonstrated above. For example, consider the function
 
 \[
 f(x) =
 \begin{cases}
-e^{-x} & x \geq 0 \\
+e^{-x} & 0 \leq x \leq \infty \\
 0 & x<0
 \end{cases}
 \]
-When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated.
+This function is an example of an \emph{exponential distribution}. When we look at its plot (below) it becomes apparent that calculating the area under it's curve is a bit more complicated.
 
-\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-13-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{_main_files/figure-latex/unnamed-chunk-12-1.pdf}}
 
-We can't just calculate length times height as we did with our rectangular region. Rest assured, however, that the area under the curve of this function is also one. This function in particular is an instantiation of an \emph{exponential distribution}. The means by which we calculate the area under a given probability density function (and a function generally) is called \emph{integration}
+We can't just calculate this area as we did with our rectangular region. More advanced techniques (that you would learn in Calculus 2) do show that the area under the curve of this function is equal to 1. That is, \(P(0 < X < \infty) = 1\). The means by which we calculate the area under a given probability density function (and a function more generally) is called \textbf{integration}. The concept of integration is well beyond the scope of this book, so we shall only discuss it briefly and at high level. If you are excited enough to about the concept of integration, you are certainly capable of learning it in more detail.
+
+Given some function, \(f(x)\), the operation of integration is denoted
+
+\[
+area \:=\int_{a}^{b} f(x) \,dx
+\]
+
+The values a and b indicate the starting point and the ending point for the integration. They tell us to calculate the area under the curve \(f(x)\) from a to b. In our first example above, we calculated the integral of \(f(x)\) from \(x = 0\) to \(x = .25\). In terms of our probability set operator, and given some pdf, we observe that
+
+\[
+P(a < X < b) = \int_{a}^{b} f(x) \, dx
+\]
+That is to say, in the context of a pdf (and a continuous random variable), the probability that the outcome of some random experiment falls in a given range from a to b is the integral (area) of the pdf from a to b. Indeed for our purposes, it is important for you to know this at a high level. You shall not - except where your skills will allow - be asked to do an integral in this book. However, it's helpful to know what an integral is and what a probability density is. It will make our foray into continuous distributions much more interesting.
+
+Next we turn our attention to the properties of a pdf, which are analogous to the discrete case. Specifically
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For all values of \(x\) in the space of \(X\), \(f(x) \geq 0\). The values for which \(f(x) > 0\) are referred to as the \textbf{support} of the continuous random variable. This is analogous to the discrete case and pmf. However, note the subtle difference: \(f(x)\) can be greater than 1.
+\item
+  \(\int_{-\infty}^{\infty} f(x) \, dx = 1\). Put in words, the area under the pdf is equal to 1. Here, we use negative infinity and positive infinity for the integral to make things easier notation wise. Any value outside the space of the random variable \(X\) is assigned a probability density of zero. That is to say, the ranges of ``infinity'' outside the space of \(X\) have probability zero, and therefore, writing negative and positive infinity doesn't change the outcome of the integral/area calculation.
+\end{enumerate}
+
+Now, let's return to our simple pdf from the beginning of this section
+
+\[
+f(x) = 
+\begin{cases}
+1 & 0 \leq x \leq 1 \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+Note that this function has all the properties of a pdf - \(f(x) \geq 1\) and \(\int_{-\infty}^{\infty} f(x) \, dx = 1\). The area under \(f(x)\) from 0 to 1 is equal to 1, and everywhere else the area is equal to zero. That is to say, over the entire space of \(X\) the area under the curve is equal to 1. This particular function is an example of a \emph{continuous uniform distribution}. These functions assign a constant probability density over the support of \(X\) and are analogous to the discrete uniform distribution. Here's another example that assigns \(\frac{1}{2}\) density from 0 to 2.
+
+\[
+f(x) = 
+\begin{cases}
+1/2 & 0 \leq x \leq 2 \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+\subsection{Practice Problems}\label{practice-problems-1}
+
+For the next few problems describe if the function is \emph{not} a pdf and explain why. It will be helpful to draw a plot of each function and recall (or look-up) calculations for geometric shapes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(f(x) = x\) from \(-1 < x < 1\) and zero everywhere else.
+\item
+  \(f(x) = 2\) from \(0 < x < 1/2\) and zero everywhere else.
+\item
+  \(f(x) = x\) from \(0 < x < \sqrt{2}\) and zero everywhere else (Hint: draw the plot).
+\end{enumerate}
+
+Given the pdf below. For problems 4-7 calculate the probability that an outcome of a random experiment falls in the specified range.
+\[
+f(x) = 
+\begin{cases}
+1/2 & 0 \leq x \leq 2 \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\item
+  What is \(P(0 < X < .25)\)?
+\item
+  What is \(P(1 < X < 2)\)?
+\item
+  What is \(P(.25 < X < 1)\)?
+\item
+  What is \(P(X > 2)\)
+\item
+  This problem may be tough. Don't get discouraged. Given the pdf
+\end{enumerate}
+
+\[
+f(x) = 
+\begin{cases}
+x & 0 \leq x \leq \sqrt{2} \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+Describe a function - \(F(x)\) - that takes a value of \(x\) and returns \(P(0 < X < x)\). Think about the area of a triangle.
+
+\subsection{Practice Problem Answers}\label{practice-problem-answers-1}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \(f(-1) = -1\), so this function can't be a pdf because \(-1 < 0\).
+\item
+  This function would work as a probability density.
+\item
+  This function would work as a probability density.
+\item
+  1/8
+\item
+  1/2
+\item
+  3/8
+\item
+  0
+\item
+  \(\frac{1}{2}xf(x) = \frac{1}{2}xx = \frac{1}{2}x^2\). If you got that part, well done! If you didn't, no worries it was tricky. Now there's a subtle point that must be made which I would not have fully expected you to notice (because of my explanations; not because of any shortcomings you may have). The density is zero after \(\sqrt(2)\) and before zero. After \(\sqrt(2)\) there is zero area under the density curve and therefore zero additional probability added. In other words,
+\end{enumerate}
+
+\[
+F(x) = 
+\begin{cases}
+0 & x < 0 \\
+\frac{1}{2}x^2 & 0 \leq x \leq \sqrt{2} \\
+1 & \sqrt{2} < x
+\end{cases}
+\]
+
+\section{Cumulative Distribution Functions, Independence, and Expectations}\label{cumulative-distribution-functions-independence-and-expectations}
+
+\subsection{Cumulative Distribution Functions}\label{cumulative-distribution-functions}
+
+As practitioners, we usually won't work directly with the probability density of a continuous random variable. Instead, we will work with something called a \textbf{cumulative distribution function} (cdf). Given a random variable with a probability density function, \(f(x)\), a cdf determines the area under the density curve left of (less than) a given value of \(x\). That is to say, it tells us \(P(X < x)\). We often refer to these functions with a capital \(F\) to distinguish them from their corresponding pdf \(f\). In other words,
+
+\[
+F(x) = P(X < x)
+\label{eq:cdfs}
+\]
+Note that you may also see \(F(x) = P(X \leq x)\) in other literature. This is an equivalent way of writing the equation above.
+
+\begin{example}
+\protect\hypertarget{exm:cumulative}{}\label{exm:cumulative}In order to get a better understanding of cdfs, it helps to derive one. We don't want to get involved with complicated integrals, so let's return to our first ever probability density (it was so long ago!).
+
+\[
+f(x) = 
+\begin{cases}
+1 & 0 \leq x \leq 1 \\
+0 & Everywhere \: else
+\end{cases}
+\]
+
+We would like to determine the cdf for our random variable \(X\), and for that purpose, it helps to look at a graph and calculate a few values. Take a look at the very boring graph of our pdf again.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-13}Very Boring}]{_main_files/figure-latex/unnamed-chunk-13-1.pdf}}
+\caption{\label{fig:unnamed-chunk-13}Very Boring}
+\end{figure}
+
+Suppose we want to calculate \(P(X < x)\) for several specified values of \(x\), say, .25, .5, .75, and 1. For the purposes of clarity, let's call each of these values \(x_1\), \(x_2\), \(x_3\) and \(x_4\), respectively. In the figure below, I've drawn a vertical line corresponding to each \(x_i\). To calculate \(P(X < x_i)\), we will need to determine the area under the pdf from \(-\infty\) up to the line corresponding to the value of \(x_i\). When we are done with our calculations, we will have a better idea of the cdf of \(x\).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-14}Very Very Boring}]{_main_files/figure-latex/unnamed-chunk-14-1.pdf}}
+\caption{\label{fig:unnamed-chunk-14}Very Very Boring}
+\end{figure}
+
+Thankfully, in this case, we won't need any fancy integration techniques to calculate a couple of values. For the region \(0 \leq X \leq 1\), we simply need to multiply the length of the base of each of the rectangles (in this case \(x_i\)) in the figure above by its height (in this case, \(1\)). That is to say, we can proceed as in example \ref{exm:firstdensity}. But before we do that, note that we are calculating the area under the pdf for \emph{all} values less than \(x\). For example, in the case of \(x_1 = .25\), we will need to calculate the area under the curve from \(-\infty\) all the way up to the value of \(x_i\) which is, unfortunately, not a rectangle (oh, the horror!). Thankfully, our pdf says that any value less than 0 has a probability density of 0, e.g., \(f(x) = 0\), so we can safely assume that the area under the curve for any value less than zero is zero.
+
+We shall therefore proceed as we did in example \ref{exm:firstdensity}. The calculations are written out in the table below.
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{0.98in}|p{0.79in}|p{1.03in}|p{1.88in}}
+
+
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}
+
+\multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Range}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Base:\ x}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Height:\ f(x)}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ x):\ Base\ x\ Height}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}\endfirsthead 
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}
+
+\multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Range}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Base:\ x}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Height:\ f(x)}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ x):\ Base\ x\ Height}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}\endhead
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ .25)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.25}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.25}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ .50)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.50}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.50}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ .75)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.75}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.75}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 0.98in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{P(X\ <\ 1)}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 0.79in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.00}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.03in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.88in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.00}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+Now, let's plot each of our values of \(x\) and it's corresponding \(P(X < x)\). Ultimately this will help us get a sense for the cdf of \(f(x)\). In this case, we have four \((x,y)\) coordinates - \((.25, P(X < .25))\), \((.50, P(X < .50))\),\((.75, P(x < .75))\), and \((1, P(X < 1))\). If we plot each and connect each with a line, we get
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-16}The (almost) cdf of f(x)}]{_main_files/figure-latex/unnamed-chunk-16-1.pdf}}
+\caption{\label{fig:unnamed-chunk-16}The (almost) cdf of f(x)}
+\end{figure}
+
+Looking at the plot above, and considering our earlier computations, we might begin to think that \(P(x < X) = x\). That is to say, the probability that \(P(X < x_i)\) is \(x_i\). This assertion would be correct for the region \(0 \leq X \leq 1\). Put another way, the cdf of \(f(x)\) is
+
+\[
+P(X < x) = F(x) = 
+\begin{cases}
+0 & x < 0 \\
+x & 0 \leq x \leq 1 \\
+1 & x > 1
+\end{cases}
+\]
+
+For any value below 0, \(f(x)\) has zero density (the height of any rectangle in that region is zero), so \(P(X < 0) = 0\). On the other hand, if our value of \(x\) is greater than 1, then \(P(X < x) = 1\). There is no area under the pdf for values above 1, so \(P(X < x)\) just includes the area in the region between (and including) 0 and 1. For all other values, \(P(X < x) = x\)
+
+Our new-found cdf makes computations easier. For example, given the values 0.11, 0.512, 0.98,, -100, 10 then
+
+\[
+P(X < 0.11) = F(.11) = 0.11 \\
+P(X < 0.512) = F(0.512) = 0.512 \\
+P(X < 0.98) = F(0.98) = 0.98 \\
+P(X < -100) = 0 \\
+P(X < 10) = 1
+\]
+\end{example}
+
+In practice, we will sometimes want to know the probability of \(X\) falling in a range dissimilar from the cdf. We may want to know, for example, \(P(a < X < b)\) or \(P(X > a)\). In our next examples, we frame the intuition of a some common scenarios. Now may be the time to review sets for continuous sample spaces if you've forgotten.
+
+The examples we work through shall use a continuous random variable - \(X\) - with an exponential pdf (a.k.a., an exponential distribution), e.g.,
+
+\[
+f(x) = 
+\begin{cases}
+e^{-x} & x \geq 0 \\
+0 & x < 0 
+\end{cases}
+\]
+
+The exponential pdf has the cdf
+
+\[
+P(X < x) = F(x) = 
+\begin{cases}
+1-e^{-x} & x \geq 0 \\
+0 & x < 0 
+\end{cases}
+\]
+
+You can see the pdf and the cdf plotted side by side (respectively) in the figure below. Note how the area under the curve for the pdf declines as \(x\) gets larger. For example, there's more area under the pdf from 0 to 2.5 than there is from 2.5 to 5. Intuitively speaking, this explains the shape of the cumulative distribution function on the right. If we are calculating \(P(X < x)\), incremental increases in \(x\) near zero are going to result in relatively large increases in the area under the curve to the left of \(x\). Thus the cdf - which represents \(P(X < x)\) - increases rapidly for values of \(x\) that are closer to zero. Then as \(x\) gets larger, incremental increases don't add much area, so \(P(X < x)\) grows much slower until it levels out. At very large values of \(x\) it will be very close to 1.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-17}The pdf and cdf for our example}]{_main_files/figure-latex/unnamed-chunk-17-1.pdf}}
+\caption{\label{fig:unnamed-chunk-17}The pdf and cdf for our example}
+\end{figure}
+
+\begin{example}
+\protect\hypertarget{exm:exp}{}\label{exm:exp}Suppose we are working with our previously described exponentially distributed random variable, and we would like to know the probability that the outcome of a random experiment falls between 2 and 3. That is, we would like to know \(P(2 < X < 3)\). Using our cdf, we could easily calculate \(P(X < 3)\) but that would include all the probability mass in the region below 2. That's not what we want, but we can still work with our cdf to get what we need. In the solution that follows, we shall approach the problem in two ways - one using set notation and another that leans on intuition and graphs.
+
+First, take a close look at the event \(X < 3\). It can actually be written as the union of two mutually exclusive events, e.g.,
+
+\[
+\{X < 3\} = \{X < 2\} \cup \{2 \leq X < 3\}
+\]
+
+This means that we can use the law of addition \eqref{eq:addlaw} to get what we need! To see how, notice that
+
+\[
+P(\{X < 2\} \cup \{2 \leq X < 3\}) = P(X < 3) \\
+P(X < 2) + P(2 \leq X < 3) = P(X < 3)
+\]
+Where the second line follows from the law of addition. Further note I dropped the curly braces in the second line for the sake of simplicity. We can now subtract \(P(X < 2)\) from both sides and voila
+
+\begin{align}
+P(2 \leq X < 3) &= P(X < 3) - P(X < 2) \\
+P(2 \leq X < 3) &= F(3) - F(2) \\
+P(2 \leq X < 3) &= 1-e^{-3} - (1 - e^{-2}) \\
+P(2 \leq X < 3) &= 1-e^{-3} - 1 + e^{-2} \\
+P(2 \leq X < 3) &= e^{-2}-e^{-3} = 0.08555
+\end{align}
+
+Indeed, in general, given some \(a\) and \(b\), \(P(a < X < b)\) can be calculated by
+
+\[
+P(a < X < b) = P(X < b) - P(X < a) = F(b) - F(a)
+\label{eq:fundamental}
+\]
+Note that a and b were 2 and 3 in our example, respectively. An astute student (and I believe you are an astute student) may notice that in our example we calculated \(P(2 \leq X < 3)\), and we have just provided an equation for \(P(2 < X < 3)\). However, recall our brief discussion at the start of this section - \(P(a \leq X < b) = P(a < X < b) = P(a < X \leq b) = P(a \leq X \leq b)\). .
+
+Now that we've worked the problem out with set theory, we shall turn our attention to an intuitive approach. The gray colored region in the plot below is the area under the exponential pdf left of the value 3 (e.g., \(X < 3\)). As we have learned, it represents \(P(X < 3)\). The area between the two vertical lines at the values 2 and 3 under the curve represents \(P(2 < X < 3)\), and the area to the left of 2 represents \(P(X < 2)\). Looking at the two regions, one can see that \(P(X < 2)\) and \(P(2 < X < 3)\) combine (sum) to \(P(X < 3)\). We shall need to subtract out the area left of 2 to get our desired value.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-18}P(X \textless{} 3)}]{_main_files/figure-latex/unnamed-chunk-18-1.pdf}}
+That is to say, we will need to subtract \(F(2)\) from \(F(3)\) to get the area in the region corresponding to \(P(2 < X < 3)\)
+\end{example}
+
+The equation we learned in the last example will be important for our work with cdfs. Let's dig into a couple more scenarios.
+
+\begin{example}
+Let's continue using our aforementioned pdf/cdf. Suppose we would like to know the probability that \(P(X > 3)\). One may (yet again!) think we are in a conundrum because of the form of our cdf. Nevertheless, we can again use set notation to make our approach clear.
+
+Note that the support of \(X\) is \(X \geq 0\), and therefore, \(P(X \geq 0) = 1\). That is to say, a random experiment would have a 100\% chance of yielding a value greater than or equal to 0 because our pdf has all it's support on zero and above. Also, observe that
+
+\[
+\{X > 0\} = \{0 \leq X \leq 3\} \cup \{X > 3\} 
+\]
+In English: \(\{X > 0\}\) is the union of two mutually exclusive sets - \(0 \leq X \leq 3\) and \(X < 3\). We can once again use the law of addition to get our desired probability.
+
+\begin{align}
+\{X > 0\} &= \{0 \leq X \leq 3\} \cup \{X > 3\} \\
+P(\{X > 0\}) &= P(\{0 \leq X \leq 3\} \cup \{X > 3\}) \\
+1 &= P(0 \leq X \leq 3) + P(X > 3) \\
+1 - P(0 \leq X \leq 3) &= P(X > 3)
+\end{align}
+This means that all we need is \(P(0 \leq X \leq 3)\) and we will be able to calculate our desired probability. Looking at the pdf of \(X\), one can see that there is no area below the curve for \(X\) less than zero. In other words, the area under the pdf from 0 to 3 would be equivalent to the area under the curve from three all the way down to \(-\infty\). Put another way, \(P(0 \leq X \leq 3)\) is equal to \(P(X < 3)\), and we know the latter because of our cdf. Specifically
+
+\begin{align}
+P(X > 3) &= 1 - P(0 \leq X \leq 3) \\
+P(X > 3) &= 1 - F(3) \\
+P(X > 3) &= 1 - (1 - e^{-3}) \\
+P(X > 3) &= 0.04978  
+\end{align}
+Indeed, note the similarity of this approach to example \ref{exm:poissoninf} with the countably infinite space of the Poisson random variable. Our approach to this example can be rephrased generally to
+
+\[
+P(X > x) = 1 - F(x)
+\label{eq:infinitycont}
+\]
+\end{example}
+
+Although we have derived a couple of equations together, you are hopefully beginning to get a sense for the \emph{process} of using the cdf. We can, in general, find the area under the curve of a pdf by adding or subtracting appropriate values of the cdf. You can determine what to add and subtract by using set notation or by visualizing the regions under consideration. Let's hammer this process home with one more example.
+
+\begin{example}
+Suppose we are interested in the probability that our random experiment falls below 1 or above three. That is to say, we are interested in the event - \(\{X < 1\}\) OR \(\{X > 3\}\). The two probabilities are depicted in the figure below by the gray area under our exponential pdf.
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-19}P(X \textless{} 2) or P(X \textgreater{} 3)}]{_main_files/figure-latex/unnamed-chunk-19-1.pdf}}
+Our intuitive approach suggests that we can simply add the two areas up to get our desired probability. That is,
+
+\begin{align}
+P(X < 2) + P(X > 3) &= F(2) + (1 - F(3)) \\ 
+&= 1- e^{-2} + (1 - 1 - e(-3)) = 0.81497
+\end{align}
+Indeed, the law of addition supports our assertion because \({X < 2}\) and \({X > 3}\) are mutually exclusive sets. In other words, we can add their corresponding probabilities.
+\end{example}
+
+\subsection{Independence of Continuous Random Variables}\label{independence-of-continuous-random-variables}
+
+The intuition of independence in the context of continuous random variables is quite similar to that of discrete random variables. A thorough look into the dependence/independence of continuous random variables would require a little too much integration for our needs. Instead, we'll frame an intuition then talk about (the ease of) calculating probabilities with independent continuous random variables. Later in this book, we'll discuss dependence in the context of linear correlation.
+
+Take a moment to recall our discussion of independence in the context of discrete random variables. In that exploration, we found that two variables - e.g., \(X_1\) and \(X_2\) - are dependent if the probability of a particular outcome in the space of \(X_1\) changes with an outcome in the space of \(X_2\) (or visa versa). For instance, we discussed the sum of two dice and how the value of the first roll (\(X_1\)) can impact the probability of getting certain sums (\(X_2\)).
+
+The intuition for dependence in the case of the continuous random variable is similar. That is to say, given two dependent continuous random variables - \(X_1\) and \(X_2\) - the cdf of \(X_1\) will change given an outcome in the space of \(X_2\). Indeed, with the powers of integration, it is possible to calculate and visualize how the cdf of \(X_1\) changes given some outcome value of \(X_2\). That is, we can calculate \(P(X_1 < x_1 | X_2 = x_2)\). With that said, I would like to formally request that you hold onto your mathematical shorts. In the next example we are going to do just that (except we'll skip the actual integration part).
+
+\begin{example}
+Now, suppose we are given two dependent random variables - \(X_1\) and \(X_2\). Further suppose that \(X_2\) has all it's support between and including 0 and 1. Skipping the steps to integration (and ignoring the pdf of \(X_1\) and \(X_2\)), let's assume the cdf of \(X_1\) given an outcome of \(X_2\) looks like this
+
+\[
+P(X_1 < x_1 | X_2 = x_2) = F(x_1|x_2) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1x_2}{1 + 2x_2} & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases} 
+\]
+Now, this may be a bit overwhelming at first (it's your first continuous conditional probability after all), but we'll unpack it. First look to the left of the equal sign before the curly brace. Recall that the \(|\) in the context of conditional probability means ``given''. \(P(X_1 < x_1 | X_2 = x_2)\) and \(F(x_1|x_2)\) are just two different ways of referencing the cdf of \(X_1\) \emph{given} some value \(x_2\). Next, take a look to the right of the curly brace. As we discussed in the last section, these are the rules for the conditional cdf of \(X_1\). The rule in the top row says that there is zero chance that \(X_1\) falls below 0. The rule in the bottom row says that there is a 100\% chance that \(X_1\) falls below any value greater than 1. Put another way, a random experiment with \(X_1\) is guaranteed to fall at or below 1. Now take a look at the rule in the middle row. Notice how there are two variables referenced - \(x_1\) and \(x_2\). It is this rule that will tell us how the cdf of \(X_1\) \emph{changes} with specified outcomes of \(X_2\). We'll choose a value \(0 \leq x_2 \leq 1\) and plug it into the middle rule. For example, let's take the values \(x_2 = 0\) and \(x_2 = 1\). Thus, for \(x_2 = 0\)
+
+\[
+P(X_1 < x_1 | X_2 = 0) = F(x_1|0) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1(0)}{1 + 2(0)} = x_1^2 & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases}
+\]
+That is, we set \(x_2 = 0\) and the middle rule changed to \(x^2\). On the other hand, for \(x_2 = 1\)
+
+\[
+P(X_1 < x_1 | X_2 = 1) = F(x_1|1) = 
+\begin{cases}
+0 & x_1 < 0\\
+\frac{x_1^2 + 2x_1(1)}{1 + 2(1)} = \frac{x_1^2+2x_1}{3} & 0 \leq x_1 \leq 1\\
+1 & x_1 > 1
+\end{cases}
+\]
+We set \(x_2 = 1\) and the rule changed to \(\frac{x_1^2+2x_1}{3}\). To hammer the point home, let's calculate \(P(X_1 < 1/2| X_2 = x_2)\) for both the cases described above. For the case \(x_2 = 0\)
+
+\[
+P(X_1 < 1/2|x_2 = 0) = (1/2)^2 = 1/4
+\]
+and for the case \(x_2 = 1\)
+
+\[
+P(X_1 < 1/2|x_2 = 1) = \frac{(1/2)^2 + 2(1/2)}{3} = \frac{5/4}{3} = \frac{5}{12}
+\]
+Notice how the probabilities change given different values of \(x_2\). Indeed, if we plot the cdfs for each a set of values of \(x_2\), we shall also find that the cdfs look different as well. In the figure below, you can see the plot of \(P(X_1 < x_1| X_2 = x_2)\) for values of \(x_2\) equal to 0, 1/3, and 1, respectively. Note that we've ignored the plot above 1 and below 0, so you won't see it here. Each of the aforementioned conditional cdfs is represented by a different line pattern (the middle line is the cdf corresponding to \(x_2 = 1/3\)). Notice how they progress to a probability of 1 on a different path - dependent on the value of outcome of \(X_2\).
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-20}Changing cdfs!}]{_main_files/figure-latex/unnamed-chunk-20-1.pdf}}
+Thus, a good intuition for continuous random variables is similar to the one we built up for discrete random variables. The cdf of one continuous random variable changes with particular values of another random variable.
+\end{example}
+
+Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two \textbf{independent} random variables \(X\) and \(Y\) with cdfs \(F_X(x)\) and \(F_Y(y)\), respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events \(A\) and \(B\) in the space of \(X\) and \(Y\), respectively, and we would like to know \(P(A \cap B)\). That is to say, we would like to know the probability of A \emph{and} B occurring.
+
+\[
+P(A \cap B) = P(A)P(B)
+\label{eq:indcont}
+\]
+
+where \(P(A)\) and \(P(B)\) would each be calculated using \(F_X(x)\) and \(F_Y(y)\), respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of variable.
+
+Suppose we are working with two independent random variables - \(X\) and \(Y\) - each with the same pdf that looks like this
+
+\[
+f_X(a) = f_Y(a) = 
+\begin{cases}
+e^{-a} & a \geq 0 \\
+0 & a < 0
+\end{cases}
+\]
+Thus, for each function, we input a value of \(a\) and it returns a density. In previous sections, we've seen that the cdf for \(X\) and \(Y\) is
+
+\[
+P(X < a) = F_X(a) = F_Y(x) =
+\begin{cases}
+1 - e^{-a} & a \geq 0\\
+0 & a < 0
+\end{cases}
+\]
+Now let's say that we are conducting a random experiment, and we are interested in the probability that \(X < 1\) and \(Y < 1\). Because these two random variables are independent, equation \eqref{eq:indcont} will work nicely.
+
+\[
+P({X < 1} \cap {Y < 1}) = P(X < 1)P(Y < 1) = (1-e^{-1})(1-e^{-1})
+\]
+We simply multiply the two probabilities together.
+
+\subsection{Expectation and Variance of a Continuous Random Variable.}\label{expectation-and-variance-of-a-continuous-random-variable.}
+
+To this point, we have seen that independence has a very similar interpretation for the continuous case. Indeed the similarities between discrete and continuous random variables do not end there! The expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, the pdf would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
+
+The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are (again) beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
+
+\[
+f(x) = 
+\begin{cases}
+x & 0 \leq x \leq \sqrt{2} \\
+0 & Everywhere\: else 
+\end{cases}
+\]
+
+This probability density function is plotted below and it's not massively different from the first density we talked about. This time we're looking at a triangle region under the pdf (maybe take a second verify that \(f(x)\) has all the required properties of a pdf).
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-21}Triangle pdf}]{_main_files/figure-latex/unnamed-chunk-21-1.pdf}}
+\caption{\label{fig:unnamed-chunk-21}Triangle pdf}
+\end{figure}
+
+The cdf of this probability density function is
+
+\[
+F(x) = 
+\begin{cases}
+\frac{x^2}{2} & 0 \leq x \leq \sqrt{2} \\
+0 & Everywhere\: else 
+\end{cases}
+\]
+
+I've used integration techniques to get this equation, but you can derive it from the equation for the area of a triangle. Recall, that with regards to the discrete case, the expectation is calculated by multiplying each outcome of \(X\) by its corresponding probability \(p(x)\) and summing the results. That is, if there are \(n\) outcomes in the space of \(X\),
+
+\[
+E(X) = \sum_{i = 1}^{n}x_ip(x_i)
+\]
+
+Let's try something similar for our continuous random variable, first we'll divide the support of our random variable \(X\) into four equal ranges - each with width \(\frac{1}{4}\sqrt{2}\). Specifically,
+
+\[
+\{0 < X < \frac{1}{4}\sqrt{2}\}, \:
+\{\frac{1}{4}\sqrt{2}\ < X < \frac{2}{4}\sqrt{2}\}, \:
+\{\frac{2}{4}\sqrt{2}\ < X < \frac{3}{4}\sqrt{2}\}, \:
+\{\frac{3}{4}\sqrt{2}\ < X < \frac{4}{4}\sqrt{2}\}
+\]
+where I haven't simplified the fractions to highlight the four equal regions. Next, we'll choose any value from each of the four ranges. Call each \(x_i^*\) - where \(i\) corresponds to range 1 through 4. For the sake of simplicity, let's select the middle value of each range - \(\frac{1}{8}\sqrt{2} , \: \frac{3}{8}\sqrt{2}, \: \frac{5}{8}\sqrt{2}, \:\) and \(\frac{7}{8}\sqrt{2}\), respectively. The ranges and our \(x_i^*\)s are depicted in the figure below.
+
+\begin{figure}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={\label{fig:unnamed-chunk-22}Triangle pdf divided into 4}]{_main_files/figure-latex/unnamed-chunk-22-1.pdf}}
+\caption{\label{fig:unnamed-chunk-22}Triangle pdf divided into 4}
+\end{figure}
+
+As we have learned, the area under the pdf for a range corresponds to the probability that \(X\) falls in that range. For example, the area under the pdf for the first range is \(P(X < \frac{1}{4}\sqrt{2})\) and for the last range it is \(P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2})\). Using \eqref{eq:fundamental}, we can calculate the latter as
+
+\begin{align}
+P(\frac{3}{4}\sqrt{2} < X < \frac{4}{4}\sqrt{2}) &= P(X < \frac{4}{4}\sqrt{2}) - P(X < \frac{3}{4}\sqrt{2}) \\
+&= F(\sqrt{2}) - F(\frac{3}{4}\sqrt{2}) \\
+&= \frac{(\sqrt{2})^2}{2} - \frac{(3/4 \cdot \sqrt{2})^2}{2} \\
+&= \frac{2}{2} - \frac{9/16 \cdot 2}{2} \\
+&= 1 - \frac{9/8}{2} \\
+&= 1 - \frac{9}{16} = \frac{7}{16}
+\end{align}
+
+Putting it all together, we shall calculate the corresponding probability for each range, multiply each by it's corresponding \(x_i^*\), and then sum the resulting values. In other words, call each range \(R_i\) for simplicity, and
+
+\[
+\sum_{i = 1}^{4} x_1^*P(R_i)
+\]
+The equation above looks awfully similar to our equation for the expectation of a discrete random variable. Let's do the calculation for our four ranges and their corresponding \(x_i^*\)s.
+
+\begin{align}
+\sum_{i = 1}^{4} x_1^*P(R_i) &= x_1^*P(R_1) + x_2^*P(R_2) + x^*_3P(R_3) + x^*_4P(R_4) \\
+&= x_1^*\frac{1}{16} + x_2^*\frac{3}{16} + x_3^*\frac{5}{16} + x_4^*\frac{7}{16} \\
+&= (\frac{1}{8}\sqrt{2})\frac{1}{16} + (\frac{3}{8}\sqrt{2})\frac{3}{16} +(\frac{5}{8}\sqrt{2})\frac{5}{16} + (\frac{7}{8}\sqrt{2})\frac{7}{16} \\
+&=\sqrt2\frac{21}{32} = 0.92808
+\end{align}
+I've skipped some of the computational details, but I imagine your overwhelming curiosity will lead you to calculate each step yourself. Using integral techniques, the exact expectation of our random variable can be calculated to be \(\frac{2}{3}\sqrt{2}\), so our computation above is a pretty good approximation. What's neat is that we can make the approximation better by dividing the support of \(X\) into smaller ranges and performing the calculation again with new \(x_i\)s selected from those ranges. In the table below, I've done just that. The column on the left indicates the number of ranges (1 to 1000), the second column from the left indicates the width of each of those ranges, and the third column indicates the resulting approximation of \(E(X)\). Note that I've used the middle value of each range for \(x_i\). The final column is the approximation's difference from the actual value (subtracting the actual from the approximation).
+
+\global\setlength{\Oldarrayrulewidth}{\arrayrulewidth}
+
+\global\setlength{\Oldtabcolsep}{\tabcolsep}
+
+\setlength{\tabcolsep}{2pt}
+
+\renewcommand*{\arraystretch}{1.5}
+
+
+
+\providecommand{\ascline}[3]{\noalign{\global\arrayrulewidth #1}\arrayrulecolor[HTML]{#2}\cline{#3}}
+
+\begin{longtable}[c]{|p{1.57in}|p{1.17in}|p{1.49in}|p{1.80in}}
+
+
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}
+
+\multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Number\ of\ Ranges}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Range\ Width}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Approximate\ E(X)}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Difference\ from\ Actual}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}\endfirsthead 
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}
+
+\multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Number\ of\ Ranges}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Range\ Width}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Approximate\ E(X)}}}} & \multicolumn{1}{>{\cellcolor[HTML]{BEBEBE}\raggedleft}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{Difference\ from\ Actual}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1.5pt}-}\endhead
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1.41421}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.70711}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.23570}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{2}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.70711}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.88388}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.05893}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{3}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.47140}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.91662}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.02619}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{4}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.35355}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.92808}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.01473}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{5}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.28284}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.93338}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00943}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{6}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.23570}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.93626}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00655}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{7}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.20203}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.93800}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00481}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{8}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.17678}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.93913}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00368}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{9}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.15713}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.93990}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00291}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{10}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.14142}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.94045}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00236}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{20}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.07071}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.94222}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00059}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{50}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.02828}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.94271}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00009}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{100}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.01414}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.94279}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{-0.00002}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\multicolumn{1}{>{\centering}m{\dimexpr 1.57in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{1,000}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.17in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.00141}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.49in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.94281}}}} & \multicolumn{1}{>{\centering}m{\dimexpr 1.8in+0\tabcolsep}}{\textcolor[HTML]{000000}{\fontsize{11}{11}\selectfont{\global\setmainfont{Arial}{0.00000}}}} \\
+
+\noalign{\global\arrayrulewidth 0pt}\arrayrulecolor[HTML]{000000}
+
+\hhline{>{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}->{\arrayrulecolor[HTML]{666666}\global\arrayrulewidth=1pt}-}
+
+
+
+\end{longtable}
+
+
+
+\arrayrulecolor[HTML]{000000}
+
+\global\setlength{\arrayrulewidth}{\Oldarrayrulewidth}
+
+\global\setlength{\tabcolsep}{\Oldtabcolsep}
+
+\renewcommand*{\arraystretch}{1}
+
+With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how \(E(X)\) is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that \(X\) falls in each of our very small ranges, multiply each by a value of \(x\) in that extremely small range, and then sum the resulting values. With a set of infinitesimally small ranges, this would give us \(E(X)\).
+
+Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. It may therefore be unsurprising to learn that the expectation of a continuous random variable has the same previously discussed properties as that of a discrete random variable. That is
+
+\begin{theorem}[Some Properties of the Continuous Expectation]
+\protect\hypertarget{thm:expcont}{}\label{thm:expcont}
+
+If \(a\) and \(b\) are constants, then
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(E(b) = b\)
+\item
+  \(E(aX) = aE(X)\)
+\item
+  More generally, \(E(aX + b) = aE(X) + E(b)\)
+\end{enumerate}
+
+If \(X_1\) and \(X_2\) are random variables, then
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \(E(aX_1 + bX_2)\) = \(aE(X_1) + bE(X_2)\)
+\end{enumerate}
+
+\end{theorem}
+
+And, continuous random variables also share the previously discussed properties of the discrete variance. That is,
+
+\begin{theorem}[Some Properties of the Continous Variance]
+\protect\hypertarget{thm:contvar}{}\label{thm:contvar}
+
+If \(a\) and \(b\) are constants, then
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(Var(b) = 0\)
+\item
+  \(Var(aX) = a^2Var(X)\)
+\item
+  More generally, \(Var(aX + b) = a^2Var(X) + Var(b) = a^2Var(X) + 0\)
+\end{enumerate}
+
+If \(X_1\) and \(X_2\) are random variables, \textbf{and they are independent}, then
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \(Var(aX_1 + bX_2)\) = \(a^2Var(X_1) + b^2Var(X_2)\)
+\end{enumerate}
+
+\end{theorem}
+
+In light of the above equivalence, we will heretofore simply refer to the two theorems above as properties of the expectation and variance, respectively, rather than belonging to some class of discrete or continuous random variables. In other words, we may use the properties of the expectation and variance for random variables generally (if those random variables have expectations and variance; we'll look at an example of a random variable that doesn't have these in the next section).
+
+\begin{example}
+Let's work with the random variable \(X\) that we defined this section. As stated above, it has \(E(X) = \frac{2}{3}\sqrt{2}\). Suppose we are given a random variable - \(Y \sim B(10,1/2)\) - and we would like to know \(E(X + Y)\). Our properties make this calculation a breeze.
+
+\[
+E(X + Y) = E(X) + E(Y) = \frac{2}{3}\sqrt{2} + 10\frac{1}{2} = \frac{2}{3}\sqrt{2} + 5
+\]
+\end{example}
+
+\subsection{Practice Problems}\label{practice-problems-2}
+
+Consider the pdf and cdf below for the random variable \(X\) and do your best to calculate the probabilities in questions 1 through 6.
+
+\[
+f(x) = \begin{cases}
+0 & x < -1/2 \\
+1  & -1/2 \leq x \leq 1/2 \\
+0 & x > 1/2
+\end{cases}
+\]
+
+\[
+P(X < x) = F(x) = \begin{cases}
+0 & x < -1/2 \\
+x + 1/2 & -1/2 \leq x \leq 1/2 \\
+1 & x > 1/2
+\end{cases}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(X < 0)\)
+\item
+  \(P(X < 1/2)\)
+\item
+  \(P(-1/4 < X < 1/8)\)
+\item
+  \(P(\{X > 1/4\} \: \cup \: \{X < -1/4\})\)
+\item
+  \(P(\{X > 1/4\} \: \cap \: \{X < -1/4\})\)
+\item
+  \(P(X < 10000)\)
+\end{enumerate}
+
+Consider the pdf and cdf below for the random variable \(X\) and do your best to calculate the probabilities in questions 7 through 10. Note: Don't feel the obligation to calculate \(e^-x\). Just leave it in that form.
+
+\[
+f(x) = \begin{cases}
+0 & x < 0 \\
+e^{-x} & x \geq 0
+\end{cases}
+\]
+
+\[
+P(X < x) = F(x) = \begin{cases}
+0 & x < 0 \\
+1-e^{-x} & x \geq 0
+\end{cases}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\item
+  \(P(0 < X < 1 \: \cup \: X > 2)\)
+\item
+  \(P(X > 1)\)
+\item
+  \(P(1 < X < 4 \: \cap \: X > 3)\)
+\item
+  \(P(X = 1)\) (Hint: \(X = 1\) may also be written using \(\leq\) inequalities)
+\item
+  Suppose \(P(X > x) = e^{-x/2}\). What is the cdf of \(X\)?
+\item
+  Suppose we had three random variables - \(X\), \(Y\), and \(Z\) - each with the pdf/cdf of questions 1 through 6. On a given random experiment, what is the probability that \(X > 1/4\), \(Y < 1/4\), and \(Z < 1/4\)? What is the probability that exactly two of the three outcomes are above 1/4?
+\item
+  Consider the probability density for the random variable \(X\) below. Draw the plot of the density. Based on the plot what is \(E(X)\)? Why?
+\end{enumerate}
+
+\[
+f(x) = \begin{cases}
+0 & x < 0 \\
+1 & 0 \leq x \leq 1 \\
+0 & x > 1
+\end{cases}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{13}
+\tightlist
+\item
+  Consider the probability density for the random variable \(Y\) below. Draw the plot of the density. Based on the plot what is \(E(Y)\)? Does this variable have a larger or smaller variance than the variable in question 12? Why or why not?
+\end{enumerate}
+
+\[
+f(y) = \begin{cases}
+0 & y < 0 \\
+1/2 & 0 \leq y \leq 2 \\
+0 & y > 2
+\end{cases}
+\]
+
+Suppose we are given two continuous random variables - \(X_1\) and \(X_2\). Each with \(E(X_1) = 4\) and \(E(X_2) = 2\), and variances of \(1\) and \(3\), respectively. Furthermore, we know that \(P(X_1 < 1| X_2 = 1) = 1/3\) and \(P(X_1< 1 | X_2 = 2) = 1/8\). Using the properties you've learned in this section, try your best to answer the questions below. Note if the properties learned here do not apply.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{14}
+\item
+  What is \(E(X_1) + E(X_2)\)?
+\item
+  What is \(Var(2X_2)\)?
+\item
+  What is \(Var(X_1 + X_2)\)?
+\item
+  What is \(E(X_1) + E(Y)\) where \(Y\) is a poisson random variable with \(\lambda = 5\).
+\end{enumerate}
+
+\subsection{Practice Problem Answers}\label{practice-problem-answers-2}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  1/2
+\item
+  1
+\item
+  3/8
+\item
+  1/2
+\item
+  0
+\item
+  1
+\item
+  \(e^{-1} + e^{-2}\)
+\item
+  \(e^{-1}\)
+\item
+  \(e^{-3}-e^{-4}\)
+\item
+  0 (WEIRD!)
+\item
+  \(1 - e^{-x/2}\)
+\item
+  9/64, 9/64
+\item
+  1/2; Why? Because if you put a wedge right under 1/2, it looks like the plot would balance.
+\item
+  1; Yes, it does have a larger variance than the variable in question 13 because its probability density is much more spread out.
+\item
+  6
+\item
+  4
+\item
+  The properties we learned in this section won't work for this one. The two variables do not appear to be independent.
+\item
+  9
+\end{enumerate}
 
 \bibliography{book.bib,packages.bib}
 
