@@ -34,7 +34,7 @@ $$ C \subset S
 
 In this case, we are saying $C$ is a subset of $S$. We might also, for example say that our event is a single element/outcome $C_1 = \{A\}$ or the entire sample space $C_2 = \{A,B,C,D,E\}$. We can be as creative as we would like to be, so long as the event is in our sample space. 
 
-Indeed, in practice we might want to get a little more creative in terms of the outcomes and events associated with our random experiment. For example, we might be interested in a combination of and/or the shared elements of events. We shall therefore need a language to describe more complicated scenarios. The next few examples will describe (at a basic level) how we might "combine" events in different ways. 
+Indeed, in practice we might want to get a little more creative in terms of the outcomes and events associated with our random experiment. For example, we might be interested in a combination of and/or in the shared elements of multiple events. We shall therefore need a language to describe more complicated scenarios. The next few examples will describe (at a basic level) how we might "combine" events in different ways. 
 
 ::: {.example}
 
@@ -55,7 +55,7 @@ Here's another example, suppose we are interested in whether or not our outcome 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
 :::
 
-Hopefully the last two examples gave you a serviceable understanding of the union operator and its function. It is nevertheless important to reiterate that we would use the union operator when we are interested in the occurrence of one event *or* another. In this circumstance, we would be perfectly satisfied with either event occurring. BUT, what if we were interested in whether or not *both* events occurred, that is, whether or not our outcome landed in both $C_1$ *and* $C_2$. We'll talk about that scenario next.
+Hopefully the last two examples gave you a serviceable understanding of the union operator and its function. It is nevertheless important to reiterate that we would use the union operator when we are interested in the occurrence of one event *or* another. In the "or" circumstance, we would be perfectly satisfied with any one event occurring. However, what if we were interested in observing the occurence of *both* events, that is, whether or not our outcome landed in both $C_1$ *and* $C_2$. We'll talk about that scenario next.
 
 ::: {.example}
 
