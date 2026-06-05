@@ -2,11 +2,11 @@
 
 In the course of research, behavioral scientists will often take samples of human behavior, e.g., a survey of a group of people, measurements of reaction time, etc. These samples will take some _outcome_, and most of us understand and have observed the inherent randomness of this act. That is to say, you might take multiple samples in a carefully controlled circumstance and get different results every time.
 
-Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstances, and each time the outcome may change. This process is commonly referred to as a **random experiment**. In order to familiarize you with some introductory concepts around probability, we're going to start within the context of a random experiment. First, we'll learn about sets and set theory in order to describe our **sample space**. This be useful in describing the form that outcomes of a random experiment may take. Then we'll more concretely define the randomness of our experiment by talking about **probability** - the quantification of randomness.
+Statisticians often refer to an analogous circumstance when talking about probability. Suppose we are able to describe all the possible outcomes of our sampling procedure. We take samples over and over again in the same circumstance, and each time the outcome may change. This process is commonly referred to as a **random experiment**. In order to familiarize you with some introductory concepts around probability, we're going to start within the context of a random experiment. First, we'll learn about sets and set theory in order to describe a **sample space**. This be useful in describing the form that outcomes of a random experiment may take. Then we'll more concretely define the randomness of our experiment by talking about **probability** - the quantification of randomness.
 
 ## Sets and Sample Spaces
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This set of outcomes is referred to as the **sample space**. For example, suppose we have five different possible outcomes in our sample space - A, B, C, D, and E. Let's refer to this set of outcomes as $S$ ($S$ for Sample!), and using set notation we would describe it like
+Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. This set of outcomes is referred to as the **sample space**. For example, suppose we have five different possible outcomes in our sample space - A, B, C, D, and E. Let's refer to this set of outcomes as $S$ ($S$ for Sample!). Using set notation, we would describe our sample space like this
 
 $$
 S = \{A, B, C, D, E\}
@@ -23,9 +23,9 @@ R = \{x\, | \, 0 \leq x \leq 1 \}
 (\#eq:continuousset)
 $$
 
-The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. Note that I will (and you can) drop the $x$ and $|$ when it is clear what variable I am referencing. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth. 
+The inclusion criteria for the set is written after the $|$ in the curly braces. The $|$ can be read loosely as meaning "where", so reading the whole thing in the curly braces left to right you get x _where_ $0 \leq x \leq 1$. Therefore, our set is all the $x$'s from 0 to 1. Note that I will (and you can) drop the bit before and including the $|$ when it is clear what variable is referenced. As an aside, continuous sample spaces can be found everywhere in the field of behavioral statistics. For reasons that will become apparent later, we shall nonetheless approach these spaces with slightly less mathematical depth. 
 
-Now, suppose we conduct a random experiment with our previously described sample space $S = \{A, B, C, D, E\}$. The _outcome_ of our experiment is the single item that results from our random process, e.g., a random draw with eyes closed, a dart board with a blind fold, etc. In practice, we will frequently talk about outcomes in terms of _events_. Events are described by a *subset* of distinct elements from the sample space. As opposed to an outcome, they may be one or more items combined. For example, we might describe an event as $C = \{A, B, C\}$, and if our outcome (a single item) lands in the that subset (it is either A, B, or C), we shall say the event "occurred". For the sake of brevity, and positivity, I will frequently refer to the occurrence of an event as a "success" (congratulations all around!). 
+Now, suppose we conduct a random experiment with our previously described sample space $S = \{A, B, C, D, E\}$. The _outcome_ of our experiment is the single item that results from our *random process*, e.g., a random draw with eyes closed, a dart board with a blind fold, etc. In practice, we will frequently talk about outcomes in terms of _events_. Events are described by a *subset* of distinct elements from the sample space. As opposed to an outcome, they may be one or more elements of the sample space. For example, we might describe an event as $C = \{A, B, C\}$, and if our outcome (a single item) lands in the that subset (it is either A, B, or C), we shall say the event "occurred". For the sake of brevity, and positivity, I will frequently refer to the occurrence of an event as a "success" (congratulations all around!). 
 
 You can indicate a set is a subset by:
 
@@ -38,9 +38,9 @@ Indeed, in practice we might want to get a little more creative in terms of the 
 
 ::: {.example}
 
-Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ *or* $C_2$. Let us first consider the circumstances where our experiment would result in a success. We might reason that if the outcome of our random process was an A, B, C, or D, then our outcome will have been a success. Specifically, if our outcome were an A, then it has landed in $C_1$; a B or C, then it has landed in $C_1$ and $C_2$; a D, then it has landed in $C_2$. Any other outcome would result in an non-success (or dare I say, a "failure"). Our outcome must be one of the *unique* elements in either set. 
+Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ *or* $C_2$. Let us first consider the circumstances where our experiment would result in a success. We might reason that if the outcome of our random process was an A, B, C, or D, then our outcome will have been a success. Specifically, if our outcome were an A, then it has landed in $C_1$; a B or C, then it has landed in $C_1$ and $C_2$; or a D, then it has landed in $C_2$. Any other outcome would result in an non-success (or dare I say, a "failure"). Indeed, you'll note that our outcome must be one of the *unique* elements in either set otherwise we're toast. 
 
-Having worked through the logic above, we could therefore take the unique outcomes of either set and combine them into a new set. If our outcome lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
+Following our logic, we could take the unique outcomes of either set and combine them into a new set. If our outcome lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
 
 $$ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\} 
 (\#eq:union) $$
@@ -50,24 +50,26 @@ This **union operator** ($\cup$) takes the unique elements of both sets and puts
 
 ::: {.example}
 
-Here's another example, suppose we are interested in whether or not our outcome falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. Then our event would occur if the result of our random process were an A or a B. Using our newfangled union operator, we can write the union of these two sets as
+Here's another example, suppose we are interested in whether or not our outcome falls into $C_1 = \{A\}$ or $C_2 = \{B\}$. A success would occur if our outcome were either an $A$ or a $B$. Using our newfangled union operator, we can write the union of these two sets as
 
 $$ \{A\}\:\cup\:\{B\} = \{A,B\} $$
 :::
 
-Hopefully the last two examples gave you a serviceable understanding of the union operator and its function. It is nevertheless important to reiterate that we would use the union operator when we are interested in the occurrence of one event *or* another. In the "or" circumstance, we would be perfectly satisfied with any one event occurring. However, what if we were interested in observing the occurence of *both* events, that is, whether or not our outcome landed in both $C_1$ *and* $C_2$. We'll talk about that scenario next.
+which confirms our intuition.
+
+Hopefully the last two examples gave you a serviceable understanding of the union operator and its function. To reiterate: we would use the union operator when we are interested in the occurrence of one event *or* another. In the "or" circumstance, we would be perfectly satisfied with our outcome landing in any single event (e.g., $C_1$). However, what if we were interested in observing the occurrence of *both* events, that is, whether or not our outcome landed in both $C_1$ *and* $C_2$. We'll talk about that scenario next.
 
 ::: {.example}
 
-Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Let's further say that we are interested in whether or not both events occur as a result of our random experiment. Once again, let's think about the circumstance where this might occur. We shall be successful if our outcome falls in both $C_1$ *and* $C_2$. In this case, an outcome of $A$ or $D$ absolutely would not suffice. $A$ is an element of $C_1$ alone and $B$ is an element of $C_2$ alone. Our outcome would have to be either a $B$ or a $C$. 
+Suppose we have our two previously described events - $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$ - each a subset of $S$. Let's further say that we are interested in whether or not both events occur as a result of our random experiment. Once again, let's think about the circumstance where this might occur. We shall be successful if our outcome falls in both $C_1$ *and* $C_2$. In this case, an outcome of $A$ or $D$ would absolutely not suffice. $A$ is an element of $C_1$ alone and $B$ is an element of $C_2$ alone. Our outcome better be $B$ or a $C$. 
 
-We are therefore interested in the set of _shared_ elements of our two events. If we take these share elements and put them into their own set, we will have a set of successful outcomes. The *intersect operator* ($\cap$) will help us signify this process:
+We are therefore interested in the set of _shared_ elements of our two events. If our outcome lands in this set of share elements, then we are sure to be successful. The *intersect operator* ($\cap$) will help us signify this set:
 
 $$ C_1 \cap C_2 = \{A,B,C\} \cap \{B,C,D\} = \{B,C\} 
 (\#eq:intersect)$$
 :::
 
-Unlike $\cup$, the intersect operator represents **and**. It tells us the conditions for success if we would like _both_ events to occur (a.k.a., our outcome landing in both events). This operator can create some interesting scenarios, so it's worthwhile to do another example. 
+In this context, unlike $\cup$, the intersect operator represents **and**. It tells us the conditions for success if we would like _both_ events to occur (a.k.a., our outcome landing in both events). This operator can create some interesting scenarios, so it's worthwhile to do another example. 
 
 ::: {.example}
 
@@ -75,19 +77,17 @@ This time let's define our events to be $C_1 = \{A,B\}$ and $C_2 = \{C,D\}$. Now
 
 $$ C_1 \cap C_2 = \{A, B\} \cap \{C, D\} = \{\} $$
 
-Well, you may have guessed it: Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_, because the sets share no elements. As a result, we get a very special set - a *null set* - $\{\}$ - which is a set with zero elements. 
-
-In the above circumstance, when the intersect of sets results in a null set (a.k.a. they have no overlap), we shall refer to the two sets as **mutually exclusive** - because they share no elements. In terms of probability, mutually exclusive sets can be much easier to work with. We'll talk about this soon.
+Well, you may have guessed it: Our two sets had no overlap. You couldn't possibly draw a single element that landed in _both_, because the sets share no elements. As a result, we get a very special set - a *null set* - $\{\}$ - which is a set with zero elements. In this circumstance (a.k.a. they have no overlap), we shall refer to the two sets as **mutually exclusive** - because they share no elements. In terms of probability, mutually exclusive sets can be much easier to work with. We'll talk about this soon.
 :::
 
-Now you have some understanding of the two main set operators we'll need - the union ($\cup$) and the intersect ($\cap$). We shall need to know a little bit more about the null set, so let's take a slightly deeper look. 
+The union and intersect operators, along with mutual exclusiveness, shall be very important workhorses for describing complicated events. In the next section, you will see that they have an important roll in how we characterize the randomness of our random experiment. At this point, I would feel remiss if I didn't dive into the null set a bit more. It shall also have an important roll in how we calculate randomness, so let's take a look.
 
 ::: {.example}
-It's interesting to see how a null set works with other sets that have elements. For example:
+In particular, it is interesting to contemplate how the null set "interacts" with other sets/events. For example:
 
 $$ \{A,B,C,D,E\} \cap \{\} = \{\} $$ 
 
-A set with elements intersected with a null set is a null set. A set with something in it can share nothing with a set that has no elements at all. This is very similar to multiplying an integer by zero. In fact, when you first start writing set notation, you might be inclined to use arithmetic operators with sets, e.g., $\{A,B,C\} - \{A,B\} = \{C\}$ as opposed to $\{A,B,C\} \cap \{A,B\} = \{C\}$. The null set and intersect gives us a handy way to multiply a set by zero without using $\times$ or 0. 
+A set with elements intersected with a null set is a null set. A set with something in it can share nothing with a set that has no elements at all. This is very similar to multiplying an number by zero. In fact, when you first start writing set notation, you might be inclined to use arithmetic operators with sets, e.g., $\{A,B,C\} - \{A,B\} = \{C\}$ as opposed to $\{A,B,C\} \cap \{A,B\} = \{C\}$. The null set and intersect gives us a handy way to multiply a set by zero without using $\times$ or 0. 
 
 What do you suppose happens when we union a null set with something else? Let's try it out:
 
@@ -103,18 +103,18 @@ The complement of a subset describes all the elements of a sample space _not_ in
 $$ Y^c = \{A,B,C\}^c = \{D,E\} 
 (\#eq:complement)$$
 
-The complement allows for a wider breadth of operations. 
+As you will see, the complement of a set allows us to signify a wider breadth of operations. 
 
 ::: {.example}
-Let's again consider our sample space $S$. Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our outcome could be unsuccessful (we won't use "fail" here; too negative). It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
+Let's again consider our sample space $S$. Suppose we were interested in an event that was NOT in the two subsets $C_1 = \{A,B\}$ or $C_2 =\{C,D\}$. The first thing we would do in this circumstance is maybe consider all the ways our outcome could be unsuccessful. It would be unsuccessful if it landed in $C_1$ or $C_2$. Recall that the $\cup$ (union) gives us the unique elements in both sets. Let's take these two sets and union them into a set $X$ together.
 
 $$ C_1 \cup C_2 = \{A,B,C,D\} = X $$
 
-Now that we have our subset of unsuccessful elements, we just take the complement of that:
+Now that we have our subset of unsuccessful elements, we'll just take the complement of that:
 
 $$ X^c = \{E\} $$
 
-Of course, you might have known the answer to this all along, but it's nice to see the steps broken down exactly. You could have written it all in one go using parentheses to specify order of operations, e.g.:
+Of course, you might have known the answer to this all along, but it's nice to see the steps broken down exactly. We could have written it all in one go using parentheses to specify order of operations, e.g.:
 
 $$ (C_1 \cup C_2)^c = \{A, B, C, D\}^c = \{E\} $$
 
@@ -122,7 +122,7 @@ Notice how we do the operation in the parentheses before taking the complement.
 :::
 
 ::: {.example}
-Let's try one more example with $C_1$ and $C_2$. Let's say we defined a successful outcome as all the things NOT in $C_1$ and $C_2$. Notice the key word "and". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
+Let's try one more example with $C_1$ and $C_2$ from the last example. Let's say we defined a successful outcome as one that does not simultaneously fall in $C_1$ AND $C_2$. Notice the important "AND". Our list of unsuccessful items will be different this time because we are referring to the shared (intersect) of both our subsets. Therefore:
 
 $$ (C_1 \cap C_2)^c = \{\}^c = \{A,B,C,D,E\} $$
 
@@ -189,7 +189,7 @@ There is no simplified way to write this in set notation. Note the intersect of 
 ### Repeated Samples
 The previous introduction to sets was dedicated to a random experiment where we only draw a single element from our sample space. In practice, researchers and statisticians are often sampling/conducting a random experiment repeatedly. In this section we'll talk about how to describe the sample space of an experiment that involves multiple draws. Note, for the purposes of our learning, we shall only be discussing sampling with _replacement_. That is, we will be talking about circumstances where the 1st, 2nd, 3rd, ... , nth outcome gets returned to the sample space prior to the next draw. This is opposed to the circumstance where an outcome of a single sample reduces the size of the sample space each time. For example, suppose we have a sample space, $S = \{A,B,C\}$. On our first experiment, we randomly draw an $A$. In sampling without replacement, the sampling space for the next draw would be $\{B,C\}$ (or $\{A\}^c)$ and in sampling with replacement $A$ would be returned to the space.
 
-To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (experiment) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we flip two counts. The sample space would be all the possible permutations of heads and tails from the two flips. It helps to draw draw a _tree diagram_ to get the gist of it.
+To understand how to describe the sample spaces mentioned above, we'll turn to a good-old-fashioned coin toss (the mainstay of every introductory probability book). Suppose we perform a single flip (experiment) from a fair coin. Our sample space would be $S = \{H, T\}$ where $H$ is "heads", and $T$ is "tails". Now let's suppose we flip two coins. The sample space would be all the possible permutations of heads and tails from the two flips. It helps to draw draw a _tree diagram_ to get the gist of it.
 
 ```{r, echo = FALSE, fig.cap = "Example Tree Diagram for Two Coin Flips"}
 a <- data.frame(x = c(1,2,3,1,2,3,1,2,3,1,2,3), 
@@ -202,12 +202,14 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y, group = grp, label = text)) +
   ggplot2::geom_line() +
   ggplot2::geom_point() +
   ggplot2::geom_label() +
+  ggplot2::theme_bw() +
   ggplot2::theme(axis.ticks = ggplot2::element_blank(), 
                  axis.line = ggplot2::element_blank(),
                  axis.text = ggplot2::element_blank(),
                  axis.title = ggplot2::element_blank(),
                  panel.grid.major = ggplot2::element_blank(),
-                 panel.grid.minor = ggplot2::element_blank())
+                 panel.grid.minor = ggplot2::element_blank()) 
+  
 
 
 ```
@@ -221,7 +223,7 @@ $$ N^k
 
 Note: If we had sampled from several sample spaces, all with a different number of elements, then then we would just multiply the respective element lengths together.
 
-I will end this section with an important discussion on notation. As you can see from \@ref(eq:permutations), the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - $\{HH,HT,TH,TT\}$. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - $\{HH,HT\}$. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g., 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like or similar to $\{H \: on \: 1st \: flip\}$, because I don't have the rest of my natural born life to list permutations (and you don't have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to what probability we are referring to.
+I will end this section with an important discussion on notation. As you can see from \@ref(eq:permutations), the sample space can grow quite rapidly. For example, four coin flips would have a sample space of 16 elements. Consider the two coin sample space - $\{HH,HT,TH,TT\}$. The event of getting a head on the first flip can be described by all the coin flip combinations with heads on the first flip - $\{HH,HT\}$. If our random experiment and outcome fell into this subset, we would indeed have flipped a heads on the first coin. Now consider a circumstance where the sample space is much larger (e.g., 10 coins), it would become quickly untenable to write out all the possible permutations. Instead in some circumstances I may use some short hand like or similar to $\{H \: on \: 1st \: flip\}$, because I don't have the rest of my natural born life to list permutations (and you don't have the rest of your natural born life to read them). Rest assured that these are exactly equivalent, and they shall be associated with the exact same probabilities. Indeed, sometimes the short hand will make it more clear as to which probability we are referring to.
 
 ## What is probability?
 Many of us have an internal sense of this stuff we call probability. In the crisp fall of the California foothills (which is about the time that I'm writing this section), you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability in the random experiment sense. That is, if we did a random experiment over and over again, we might expect some event to occur a percentage of the time. We shall call this percentage a probability. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. Indeed a "percentage of time" greater than 1 or less than zero would be nonsensical.  
