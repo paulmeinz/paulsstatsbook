@@ -6,9 +6,9 @@ Statisticians often refer to an analogous circumstance when talking about probab
 
 ## Sets and Sample Spaces
 
-Before we get into it, we aren't going to learn set theory in it's entirety. That would be overly (and hilariously) ambitious. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. As previously mentioned, this set of potential outcomes is referred to as the **sample space**. 
+In our quest to define sample spaces, the first thing we shall need to learn about are things that statisticians call **sets** - collections or lists of elements. We aren't going to embark on an in depth foray into set theory. That would be overly (and hilariously) ambitious, and I would be horribly unprepared to teach you. What we are going to learn will make understanding later sections easier, get your brain warmed up, and make it a bit easier to understand set notation in other circumstances. 
 
-For example, suppose we have five different possible outcomes (a.k.a., elements) in our sample space - A, B, C, D, and E. Calling our set $S$ ($S$ for Sample!), and using *set notation*, we would describe our sample space like this
+The first step in conducting a random experiment is clearly defining all the possible outcomes of your sampling procedure. As previously mentioned, this *set* of potential outcomes is referred to as the **sample space**. For example, suppose we have five different possible outcomes (a.k.a., elements) in our sample space - A, B, C, D, and E. Calling our set $S$ ($S$ for Sample!), and using *set notation*, we would describe our sample space like this
 
 $$
 S = \{A, B, C, D, E\}
@@ -40,7 +40,7 @@ Indeed, in practice we might want to get a little more creative in terms of the 
 
 ::: {.example}
 
-Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ *or* $C_2$. Let us first consider the circumstances where our experiment would result in a success. We might reason that if the outcome of our random process was an A, B, C, or D, then our outcome will have been a success. Specifically, if our outcome were an A, then it has landed in $C_1$; if it were an a B or C, then it has landed in $C_1$ and $C_2$; and if it were a D, then it has landed in $C_2$. Any other outcome would result in an non-success (or dare I say, a "failure"). Indeed, you'll note that our outcome must be one of the *unique* elements in either set otherwise we're toast. 
+Suppose we have two events $C_1 = \{A,B,C\}$ and $C_2 = \{B,C,D\}$, and we are interested in whether or not our outcome lands in $C_1$ *or* $C_2$. Let us first consider the circumstances where our experiment would result in a success. We might reason that if the outcome of our random process was an A, B, C, or D, then our outcome will have been a success. Specifically, if our outcome were an A, then it has landed in $C_1$; if it were an a B or C, then it has landed in $C_1$ and $C_2$; and if it were a D, then it has landed in $C_2$. Any other outcome would result in an non-success (or dare I say, a "failure"). Indeed, you'll note that our outcome must be one of the *unique* elements in either set. Otherwise we're cooked. 
 
 Following our logic, we could take the unique outcomes of either set and combine them into a new set. If our outcome lands in that new subset, we can be confident that $C_1$ or $C_2$ occurred. There's a handy symbol that indicates this operation:
 
@@ -48,7 +48,7 @@ $$ C_1 \cup C_2 = \{A,B,C\}\:\cup\:\{B,C,D\} = \{A,B,C,D\}
 (\#eq:union) $$
 :::
 
-This **union operator** ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with *or*. If the event of interest is our outcome landing in $C_1$ OR $C_2$, then we would be successful if the event landed in the union of the two sets, e.g., all the unique elements from both sets. 
+This **union operator** ($\cup$) takes the unique elements of both sets and puts them into a set of their own. In this circumstance it is used synonymously with *or*. If the event of interest is our outcome landing in $C_1$ OR $C_2$, then we would be successful if the outcome were a unique element from both sets. 
 
 ::: {.example}
 
@@ -253,6 +253,37 @@ For questions 1 through 7 below, consider the sample space $S = \{A,B,C,D,E,F,G,
 10. Suppose we have a sample space $S = \{A,B,C,D,E\}$ and two events $A = \{A,B,C\}$ and $B = \{C,D\}$. What is $A^c \cap B^c$ What is $(A \cup B)^c$?
 
 For questions 10 through 15 below, consider the sample space $S = \{x| 0 \leq x \leq 10\}$ and the two events $C_1 = \{0 \leq x < 2\}$ and $C_2 = \{2 \leq x < 5\}$
+
+11. What is $C_1 \cap C_2$?
+
+12. What is $C_1 \cup C_2$?
+
+13. What is $C_1^c$?
+
+14. What is $(C_1 \cap C_2)^c$
+
+15. Provide an example of a set $A$ for which $C_1 \cup A = C_1$.
+16. Suppose three standard six-sided dice are rolled. What is the size of the sample space (how many elements) of this experiment?
+17. Suppose a coin is flipped, a six-sided dice is rolled, and a card is drawn at random from a fifty-two card deck. What is the size of this sample space?
+
+### Practice Problem Answers
+1. $\{A,E,F,G,I,J\}$
+2. $\{A,F\}$
+3. $\{B,C,D,H,I,J\}$
+4. Take the complement of $C_1 \cup C_2$, or using parentheses to specify order of operations - $(C_1 \cup C_2)^c$
+5. $\{J\}$
+6. $\{A,E,F,G,I,J\}$
+7. $B$ could contain no elements (the null set) or any subset of elements in $A$.
+8. $B$ would need to equal $A$.
+9. Both are the same - $\{A,B,C,D,E\}$. More generally, $A^c \cup B^c = (A \cap B)^c$
+10. Both equal $\{E\}$. More generally, $A^c \cap B^c = (A \cup B)^c$
+11. $\{2\}$
+12. $\{0 \leq x < 5\}$
+13. $\{2 \leq x \leq 10\}$
+14. $\{0 \leq x < 2\} \cup \{2 < x \leq 10\}$ - everything but 2.
+15. $\{1\}$ would work.
+16. $6^3 = 216$
+17. 624
 
 ## What is probability?
 Many of us have an internal sense of this stuff we call probability. In the crisp fall of the California foothills (which is about the time that I'm writing this section), you can ask a local of Placerville how often the apple orchards get overwhelmed with tourists. More often than not, they will give you some percentage of the time, and this time of the year that percentage will undoubtedly be 100%. You might ask a Sacramento resident how confident they are in their local basketball team winning, and indeed, they may also provide you with something close to a percentage of time (my guess is 15%). The two preceding scenarios are examples of the **relative frequency approach** to probability. In this approach, you can think of probability in the random experiment sense. That is, if we did a random experiment over and over again, we might expect some event to occur a percentage of the time. We shall call this percentage a probability. Within this approach, probabilities can take values anywhere from $0\leq x\leq1$. Indeed a "percentage of time" greater than 1 or less than zero would be nonsensical.  

@@ -113,6 +113,7 @@ set-theory-and-probability
 sets-and-sample-spaces
 repeated-samples
 practice-problems
+practice-problem-answers
 what-is-probability
 conditional-probability-and-independence
 extended-examples-of-probability
@@ -128,14 +129,15 @@ the-bernoulli-distribution
 the-binomial-distribution
 the-poisson-distribution
 practice-problems-1
-practice-problem-answers
+practice-problem-answers-1
 continuous-random-variables
 probability-density-and-the-continuous-random-variable
 practice-problems-2
-practice-problem-answers-1
+practice-problem-answers-2
 cumulative-distribution-functions-independence-and-expectations
 cumulative-distribution-functions
 independence-of-continuous-random-variables
 expectation-and-variance-of-a-continuous-random-variable.
 practice-problems-3
-practice-problem-answers-2
+practice-problem-answers-3
+a-very-special-distribution-and-some-other-ones-that-are-kind-of-cool-too

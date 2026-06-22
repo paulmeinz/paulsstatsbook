@@ -2,7 +2,7 @@
 In the last chapter, we learned about discrete random variables, expectations, variance, and some common discrete distributions. In this chapter we will explore similar concepts for random variables with continuous spaces. We also get to learn (yes, I'm excited) about one of the most useful, prolific, and benignly named distributions: The normal distribution.
 
 ## Probability Density and the Continuous Random Variable
-As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished first and foremost by their **space** - wherein an outcome may take on any value in a *continuous range* of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., $0 \leq X \leq 1$, or all the values on the real number line, e.g., $-\infty < x < \infty$. Continuous random variables are prolific within the behavioral sciences: Age, height, and reaction time, for example, can all be thought of as continuous random variables. 
+As you may have guessed, and as I have alluded to, the way we define a continuous random variable is somewhat different from our approach to discrete variables. Continuous random variables are distinguished in part by their **space** - wherein an outcome may take on any value in a *continuous range* of values. We may, for example, define the set of outcomes for a continuous random variable to be all the values between and including 0 and 1, e.g., $0 \leq X \leq 1$, or all the values on the real number line, e.g., $-\infty < x < \infty$. Continuous random variables are prolific within the behavioral sciences: Age, height, and reaction time, for example, can all be thought of as continuous random variables. 
 
 To fully specify a continuous random variable, we shall again need a set of rules describing its randomness, a.k.a., a probability distribution. This is where things get tricky. As you will see the difficulty arises from our aforementioned definition of continuous spaces. Let's explore this by considering a random variable with the space - $0 \leq X \leq 1$. Suppose we would like to define a probability distribution for this random variable. One (un)reasonable thing to try would be to proceed as we would for a discrete random variable. We could take a probability mass of 1 and spread it around over of the values in the range. That is to say, we could try to define a probability mass function for our continuous random variable. 
 
@@ -1044,3 +1044,5 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 16. 4
 17. The properties we learned in this section won't work for this one. The two variables do not appear to be independent.
 18. 9
+
+## A Very Special Distribution (and Some Other Ones That Are Cool Too)
