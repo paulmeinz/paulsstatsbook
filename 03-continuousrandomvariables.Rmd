@@ -1046,3 +1046,72 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 18. 9
 
 ## A Very Special Distribution (and Some Other Ones That Are Cool Too)
+We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. When we talk about statistics (soon I promise), we will - for various reasons - often work with normal distributions one way or another. As such, it's a good idea to get some understanding for it.
+
+A random variable with a normal distribution - a.k.a., a normally distributed random variable - has a bell-shaped pdf. An example is presented below.
+
+```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
+x <- seq(-2.5, 2.5, by = .01)
+y <- dnorm(x)
+z <- data.frame(x,y)
+
+ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_line() +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::theme_bw() +
+  ggplot2::labs(x = 'x', y = 'Probability Density')
+
+```
+
+The probability density function for a normally distributed random variable is a bit complex, but we'll take a look at it here. Specifically, if $X$ is a normally distributed random variable, then it's pdf is
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
+$$
+and the space of $X$ is negative infinity to positive infinity. In more mathy textbooks, this equation is often written
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma}} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
+$$
+
+where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. These textbooks (I presume) write the pdf equation this way because it makes it easier to see (and write) the exponent of $e$ for the normal distribution. Indeed, gaining a preliminary understanding of this exponent is the key to developing an understanding of the normal distribution. Let's talk about it here. Reviewing the exponent
+
+$$
+-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2
+$$
+notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
+
+```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
+x1 <- seq(-4,4, by = .01)
+x2 <- seq(-8,8, by = .01)
+x3 <- seq(-9,9, by = .01)
+x4 <- seq(-1,5, by = .01)
+x5 <- seq(-3,7, by = .01)
+x6 <- seq(-6,10, by = .01)
+y1 <- dnorm(x1)
+y2 <- dnorm(x2, sd = 2)
+y3 <- dnorm(x3, sd = 3)
+y4 <- dnorm(x4, mean = 2, sd = 1)
+y5 <- dnorm(x5, mean = 2, sd = 2)
+y6 <- dnorm(x6, mean = 2, sd = 3)
+x <- c(x1,x2,x3,x4,x5,x6)
+y <- c(y1,y2,y3,y4,y5,y6)
+mu <- rep(c("mu = 0","mu = 0","mu = 0",
+              "mu = 2","mu = 2","mu = 2"), 
+            c(length(x1), length(x2), length(x3),
+              length(x4), length(x5), length(x6)))
+sigma <- rep(c('sigma = 1', 'sigma = 2', 'sigma = 3',
+            'sigma = 1', 'sigma = 2', 'sigma = 3'), 
+          c(length(x1), length(x2), length(x3),
+            length(x4), length(x5) , length(x6)))
+z <- data.frame(x,y, mu = as.factor(mu), sigma = as.factor(sigma))
+
+ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_line() +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::scale_x_continuous(breaks = c(-8,-6,-4,-2,0,2,4,6,8,10)) +
+  ggplot2::theme_bw() +
+  ggplot2::labs(x = 'x', y = 'Probability Density') +
+  ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
+
+```

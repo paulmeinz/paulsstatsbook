@@ -104,6 +104,8 @@ fig:unnamed-chunk-22
 thm:expcont
 thm:contvar
 exm:unlabeled-div-37
+fig:unnamed-chunk-24
+fig:unnamed-chunk-25
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -140,4 +142,4 @@ independence-of-continuous-random-variables
 expectation-and-variance-of-a-continuous-random-variable.
 practice-problems-3
 practice-problem-answers-3
-a-very-special-distribution-and-some-other-ones-that-are-kind-of-cool-too
+a-very-special-distribution-and-some-other-ones-that-are-cool-too
