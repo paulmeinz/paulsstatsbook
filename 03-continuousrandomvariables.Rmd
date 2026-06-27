@@ -1046,9 +1046,11 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 18. 9
 
 ## A Very Special Distribution (and Some Other Ones That Are Cool Too)
-We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. When we talk about statistics (soon I promise), we will - for various reasons - often work with normal distributions one way or another. As such, it's a good idea to get some understanding for it.
+We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As statisticians, we will - for various reasons - work frequently with normal distributions. It is therefore a good idea to get some understanding for it. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable.
 
-A random variable with a normal distribution - a.k.a., a normally distributed random variable - has a bell-shaped pdf. An example is presented below.
+The normal distribution is often referred to as a "bell curve" because it follows a bell shape. I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with a more concrete description of the normal distribution. Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ of the normally distributed random variable. The distribution is *symmetric* about this point which in general means given some value - $a$ - then $f(\mu - a) = f(\mu + a)$. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below the mean/expectation. 
+
+Next, scan the distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,1)$ opens up like a $\cup$. In other words, the curve is convex. However, after this point $(-1,1)$ the curve opens down towards the $x$-axis. That is to say, it changes to concave. When a curve switches from convex to concave (or vice versa), we call it an *inflection point*. In our example figure below, the normal distribution has two such inflection points at $(-1,1)$ and $(1,1)$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
 
 ```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
 x <- seq(-2.5, 2.5, by = .01)
@@ -1058,17 +1060,27 @@ z <- data.frame(x,y)
 ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_line() +
   ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::geom_vline(xintercept = 0) +
+  ggplot2::geom_point(x = -1, y = dnorm(-1)) +
+  ggplot2::geom_point(x = 1, y = dnorm(1)) +
   ggplot2::theme_bw() +
   ggplot2::labs(x = 'x', y = 'Probability Density')
 
 ```
+In fact, all normal distributions have exactly two inflection points. Suppose $\sigma$ is the standard deviation of our normally distributed random variable (recall the standard deviation is the square root of the variance). The inflection points of a normally distributed random variable are located at exactly - $x = \mu \pm \sigma$. In words, they are located at one standard deviation above or below the mean/expectation of the normally distributed random variable.
 
-The probability density function for a normally distributed random variable is a bit complex, but we'll take a look at it here. Specifically, if $X$ is a normally distributed random variable, then it's pdf is
+We have thus discussed several high level properties of the normal distribution. Namely:
+
+1. It has its expectation at its peak.
+2. It is symmetric about this expectation.
+3. It has inflection points at $x = \mu \pm \sigma$
+
+The the equation for the probability density function of a normally distributed random variable is a bit complex, but we'll take a look at it here. Specifically, if $X$ is a normally distributed random variable, then it's pdf is
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
 $$
-and the space of $X$ is negative infinity to positive infinity. In more mathy textbooks, this equation is often written
+and the space of $X$ is negative infinity to positive infinity. In more mathy (technical term) textbooks, this equation is often written
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi\sigma}} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
