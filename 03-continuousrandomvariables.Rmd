@@ -1071,45 +1071,40 @@ In fact, all normal distributions have exactly two inflection points. Suppose $\
 
 We have thus discussed several high level properties of the normal distribution. Namely:
 
-1. It has its expectation at its peak.
-2. It is symmetric about this expectation.
-3. It has inflection points at $x = \mu \pm \sigma$
+1. The normal distribution has its expectation at its peak/center;
+2. it is symmetric;
+3. and it has inflection points at $x = \mu \pm \sigma$
 
-The the equation for the probability density function of a normally distributed random variable is a bit complex, but we'll take a look at it here. Specifically, if $X$ is a normally distributed random variable, then it's pdf is
+Keep these properties in mind as we delve deeper into the mathematics of the normal distribution. The the equation for the probability density function of a normally distributed random variable is a bit complex, but knowing it will be useful for our discussion. If $X$ is a normally distributed random variable, then it's pdf is
 
 $$
-f(x) = \frac{1}{\sqrt{2\pi\sigma}}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
+f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
 $$
 and the space of $X$ is negative infinity to positive infinity. In more mathy (technical term) textbooks, this equation is often written
 
 $$
-f(x) = \frac{1}{\sqrt{2\pi\sigma}} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
+f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
 $$
 
-where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. These textbooks (I presume) write the pdf equation this way because it makes it easier to see (and write) the exponent of $e$ for the normal distribution. Indeed, gaining a preliminary understanding of this exponent is the key to developing an understanding of the normal distribution. Let's talk about it here. Reviewing the exponent
+where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. Notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution (below the peak) and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
 
-$$
--\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2
-$$
-notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
-
-```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
+```{r, echo = FALSE, fig.cap = "Different locations and spread"}
 x1 <- seq(-4,4, by = .01)
 x2 <- seq(-8,8, by = .01)
 x3 <- seq(-9,9, by = .01)
-x4 <- seq(-1,5, by = .01)
-x5 <- seq(-3,7, by = .01)
-x6 <- seq(-6,10, by = .01)
+x4 <- seq(1,7, by = .01)
+x5 <- seq(-1,9, by = .01)
+x6 <- seq(-4,12, by = .01)
 y1 <- dnorm(x1)
 y2 <- dnorm(x2, sd = 2)
 y3 <- dnorm(x3, sd = 3)
-y4 <- dnorm(x4, mean = 2, sd = 1)
-y5 <- dnorm(x5, mean = 2, sd = 2)
-y6 <- dnorm(x6, mean = 2, sd = 3)
+y4 <- dnorm(x4, mean = 4, sd = 1)
+y5 <- dnorm(x5, mean = 4, sd = 2)
+y6 <- dnorm(x6, mean = 4, sd = 3)
 x <- c(x1,x2,x3,x4,x5,x6)
 y <- c(y1,y2,y3,y4,y5,y6)
 mu <- rep(c("mu = 0","mu = 0","mu = 0",
-              "mu = 2","mu = 2","mu = 2"), 
+              "mu = 4","mu = 4","mu = 4"), 
             c(length(x1), length(x2), length(x3),
               length(x4), length(x5), length(x6)))
 sigma <- rep(c('sigma = 1', 'sigma = 2', 'sigma = 3',
@@ -1127,3 +1122,14 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
 
 ```
+The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the corresponding distribution directly above. Each has $\mu = 4$ as opposed to the $\mu = 0$ of the first. The distributions in the second row are therefore shifted relative to the distributions in the first row. Their peaks/centers are located at 4 as opposed to 0.
+
+The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$.  
+
+Indeed, if $X$ is a normally distributed random variable, then
+
+$$
+E(X) = \mu \\
+Var(X) = \sigma^2
+$$
+Thus $\mu$ is the expected value of $X$ and $\sigma$ is the standard deviation.
