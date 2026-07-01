@@ -687,16 +687,16 @@ Thus, a good intuition for continuous random variables is similar to the one we 
 
 :::
 
-Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring.
+Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Because our two random variables are independent - and therefore so are $A$ and $B$ - we just multiply their two respective probabilities together.
 
 $$
 P(A \cap B) = P(A)P(B)
 (\#eq:indcont)
 $$
 
-where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of variable.
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of random variable. That is to say, if we are given two independent random variables - both discrete, one discrete, or both continuous - then we may use the equation above.
 
-::: {example.}
+::: {.example}
 Suppose we are working with two independent random variables - $X$ and $Y$ - each with the same pdf that looks like this
 
 $$
