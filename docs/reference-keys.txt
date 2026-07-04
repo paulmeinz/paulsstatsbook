@@ -99,11 +99,12 @@ fig:unnamed-chunk-19
 exm:unlabeled-div-36
 fig:unnamed-chunk-20
 eq:indcont
+exm:unlabeled-div-37
 fig:unnamed-chunk-21
 fig:unnamed-chunk-22
 thm:expcont
 thm:contvar
-exm:unlabeled-div-37
+exm:unlabeled-div-38
 fig:unnamed-chunk-24
 fig:unnamed-chunk-25
 you-can-learn-statistics

@@ -687,16 +687,16 @@ Thus, a good intuition for continuous random variables is similar to the one we 
 
 :::
 
-Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring.
+Now we direct out attention towards independence, and the convenience of working with independent random variables. Suppose we are given two **independent** random variables $X$ and $Y$ with cdfs $F_X(x)$ and $F_Y(y)$, respectively. I've used the subscripts on each cdf to make it extra clear to which random variable they belong. Further suppose we are given two events $A$ and $B$ in the space of $X$ and $Y$, respectively, and we would like to know $P(A \cap B)$. That is to say, we would like to know the probability of A *and* B occurring. Because our two random variables are independent - and therefore so are $A$ and $B$ - we just multiply their two respective probabilities together.
 
 $$
 P(A \cap B) = P(A)P(B)
 (\#eq:indcont)
 $$
 
-where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of variable.
+where $P(A)$ and $P(B)$ would each be calculated using $F_X(x)$ and $F_Y(y)$, respectively. Does this look familiar? Indeed it is the same equation we used in the discrete case, and it is generally true regardless of the type of random variable. That is to say, if we are given two independent random variables - both discrete, one discrete, or both continuous - then we may use the equation above.
 
-::: {example.}
+::: {.example}
 Suppose we are working with two independent random variables - $X$ and $Y$ - each with the same pdf that looks like this
 
 $$
@@ -1048,7 +1048,7 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 ## A Very Special Distribution (and Some Other Ones That Are Cool Too)
 We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As you will see, we will - for various reasons - work frequently with normal distributions in our statistical adventures. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable. After that, we'll talk about some other important distributions, although, admittedly, with a little less depth.
 
-The normal distribution is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with a more mathematical description of the normal distribution. Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ of the normally distributed random variable. That is to say, if we put a wedge under the $x$ value at exactly this point, the distribution would balance perfectly. It is also *symmetric* about this center point. At a more intuitive level, this means that the function to the left of the center point is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below is center. 
+I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with a more mathematical description of the normal distribution. The normal distribution is often referred to as a "bell curve" because of its shape. Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ of the normally distributed random variable. That is to say, if we put a wedge under the $x$ value at exactly this point, the distribution would balance perfectly. It is also *symmetric* about this center point. At a more intuitive level, this means that the function to the left of the center point is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below is center. 
 
 Next, scan the distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,1)$ opens up like a $\cup$. In other words, the curve is *convex*. However, after this point $(-1,1)$ the curve opens down towards the $x$-axis. That is to say, it changes to concave. When a curve switches from convex to concave (or vice versa), we call it an **inflection point**. In our example figure below, the normal distribution has two such inflection points at $(-1,1)$ and $(1,1)$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
 
@@ -1071,11 +1071,12 @@ In fact, all normal distributions have exactly two inflection points. Suppose $\
 
 Just by looking at the figure above, we have already learned a great deal about the normal distribution. Namely:
 
-1. It has its expectation at its peak/center.
-2. It is symmetric about this expectation.
-3. It has inflection points at $x = \mu \pm \sigma$
+Now let's take a look its pdf. It is a bit more complex than the pdfs we have been working 
+1. The normal distribution has its expectation at its peak/center;
+2. it is symmetric;
+3. and it has inflection points at $x = \mu \pm \sigma$
 
-Now let's take a look its pdf. It is a bit more complex than the pdfs we have been working with, but we'll unpack it. Specifically, if $X$ is a normally distributed random variable, then it's pdf is
+Keep these properties in mind as we delve deeper into the mathematics of the normal distribution. The the equation for the probability density function of a normally distributed random variable is a bit complex, but knowing it will be useful for our discussion. If $X$ is a normally distributed random variable, then it's pdf is
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
@@ -1086,30 +1087,25 @@ $$
 f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
 $$
 
-where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. These textbooks (I presume) write the pdf equation this way because it makes it easier to see (and write) the exponent of $e$ for the normal distribution. Indeed, gaining a preliminary understanding of this exponent is the key to developing an understanding of the normal distribution. Let's talk about it here. Reviewing the exponent
+where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. Notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution (below the peak) and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
 
-$$
--\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2
-$$
-notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
-
-```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
+```{r, echo = FALSE, fig.cap = "Different locations and spread"}
 x1 <- seq(-4,4, by = .01)
 x2 <- seq(-8,8, by = .01)
 x3 <- seq(-9,9, by = .01)
-x4 <- seq(-1,5, by = .01)
-x5 <- seq(-3,7, by = .01)
-x6 <- seq(-6,10, by = .01)
+x4 <- seq(1,7, by = .01)
+x5 <- seq(-1,9, by = .01)
+x6 <- seq(-4,12, by = .01)
 y1 <- dnorm(x1)
 y2 <- dnorm(x2, sd = 2)
 y3 <- dnorm(x3, sd = 3)
-y4 <- dnorm(x4, mean = 2, sd = 1)
-y5 <- dnorm(x5, mean = 2, sd = 2)
-y6 <- dnorm(x6, mean = 2, sd = 3)
+y4 <- dnorm(x4, mean = 4, sd = 1)
+y5 <- dnorm(x5, mean = 4, sd = 2)
+y6 <- dnorm(x6, mean = 4, sd = 3)
 x <- c(x1,x2,x3,x4,x5,x6)
 y <- c(y1,y2,y3,y4,y5,y6)
 mu <- rep(c("mu = 0","mu = 0","mu = 0",
-              "mu = 2","mu = 2","mu = 2"), 
+              "mu = 4","mu = 4","mu = 4"), 
             c(length(x1), length(x2), length(x3),
               length(x4), length(x5), length(x6)))
 sigma <- rep(c('sigma = 1', 'sigma = 2', 'sigma = 3',
@@ -1127,3 +1123,14 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
 
 ```
+The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the corresponding distribution directly above. Each has $\mu = 4$ as opposed to the $\mu = 0$ of the first. The distributions in the second row are therefore shifted relative to the distributions in the first row. Their peaks/centers are located at 4 as opposed to 0.
+
+The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$.  
+
+Indeed, if $X$ is a normally distributed random variable, then
+
+$$
+E(X) = \mu \\
+Var(X) = \sigma^2
+$$
+Thus $\mu$ is the expected value of $X$ and $\sigma$ is the standard deviation.
