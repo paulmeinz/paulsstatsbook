@@ -1057,11 +1057,11 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 18. 9
 
 ## A Very Special Distribution (and Some Other Ones That Are Cool Too)
-We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As statisticians, we will - for various reasons - work frequently with normal distributions. It is therefore a good idea to get some understanding for it. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable.
+We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As you will see, we will - for various reasons - work frequently with normal distributions in our statistical adventures. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable. After that, we'll talk about some other important distributions, although, admittedly, with a little less depth.
 
-The normal distribution is often referred to as a "bell curve" because it follows a bell shape. I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with a more concrete description of the normal distribution. Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ of the normally distributed random variable. The distribution is *symmetric* about this point which in general means given some value - $a$ - then $f(\mu - a) = f(\mu + a)$. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below the mean/expectation. 
+The normal distribution is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with an equation based description of the normal distribution.  Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ - of the normally distributed random variable. That is to say, if we put a wedge under the $x$ value at exactly this point, the distribution would balance perfectly. It is also *symmetric* about this center point. At a more intuitive level, this means that the function to the left of the center point is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below is center. 
 
-Next, scan the distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,1)$ opens up like a $\cup$. In other words, the curve is convex. However, after this point $(-1,1)$ the curve opens down towards the $x$-axis. That is to say, it changes to concave. When a curve switches from convex to concave (or vice versa), we call it an *inflection point*. In our example figure below, the normal distribution has two such inflection points at $(-1,1)$ and $(1,1)$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
+Next, scan the normal distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,f(-1))$ opens up like a $\cup$. In other words, the curve is *convex* to this point. However, after $(-1,f(-1))$ the curve opens down towards the $x$-axis. That is to say, it changes to *concave*. When a curve switches from convex to concave (or vice versa), we call it an **inflection point**. In our example figure below, the normal distribution has two such inflection points at $(-1,f(-1))$ and $(1,f(1))$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
 
 ```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
 x <- seq(-2.5, 2.5, by = .01)
@@ -1080,7 +1080,7 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
 ```
 In fact, all normal distributions have exactly two inflection points. Suppose $\sigma$ is the standard deviation of our normally distributed random variable (recall the standard deviation is the square root of the variance). The inflection points of a normally distributed random variable are located at exactly - $x = \mu \pm \sigma$. In words, they are located at one standard deviation above or below the mean/expectation of the normally distributed random variable.
 
-We have thus discussed several high level properties of the normal distribution. Namely:
+Just by looking at the figure above, we have already learned a great deal about the normal distribution. Namely:
 
 1. The normal distribution has its expectation at its peak/center;
 2. it is symmetric;
@@ -1095,6 +1095,7 @@ and the space of $X$ is negative infinity to positive infinity. In more mathy (t
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
+(\#eq:normaldensity)
 $$
 
 where the factor to the right of and including "*exp*" is just another way of writing $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$. Notice the two values $\mu$ and $\sigma$. These two values are the parameters of the normal distribution. The value of $\mu$ is the middle point of the distribution (below the peak) and the value of $\sigma$ determines its spread. In the figure below, you can see several examples of normal distributions with various selections of $\mu$ and $\sigma$
@@ -1133,14 +1134,18 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
 
 ```
-The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the corresponding distribution directly above. Each has $\mu = 4$ as opposed to the $\mu = 0$ of the first. The distributions in the second row are therefore shifted relative to the distributions in the first row. Their peaks/centers are located at 4 as opposed to 0.
+The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the distribution in the same column above. However, each has $\mu = 4$ as opposed to the $\mu = 0$ in the first row. The distributions in the second row are therefore shifted relative to the distributions in the first row. Their peaks/centers are located at 4 as opposed to 0.
 
-The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$.  
+The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$. You may have noticed, based on our discussion here and previous sections, the similarity of the parameters $\mu$ and $\sigma$ to the expectation in variance. That is to say, one determines the center of the normal distribution and the other determines its dispersion, spread, or scale.
 
-Indeed, if $X$ is a normally distributed random variable, then
+Indeed, your intuition in this situation would be correct (although if you didn't get such an intuition, that's cool too). If $X$ is a normally distributed random variable, then
 
 $$
 E(X) = \mu \\
 Var(X) = \sigma^2
 $$
+
 Thus $\mu$ is the expected value of $X$ and $\sigma$ is the standard deviation.
+
+Let's now take a more in depth look at the equation. 
+

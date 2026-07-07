@@ -106,6 +106,7 @@ thm:expcont
 thm:contvar
 exm:unlabeled-div-38
 fig:unnamed-chunk-24
+eq:normaldensity
 fig:unnamed-chunk-25
 you-can-learn-statistics
 why-i-wrote-this-book
