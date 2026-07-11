@@ -191,7 +191,7 @@ ggplot2::ggplot(a, ggplot2::aes(x = x, y = y)) +
 
 ```
 
-Now suppose each of those bars has _mass_ (a.k.a., probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. $E(X)$ can therefore be thought as the balancing point of the plot - the place that would perfectly balance the mass of probability for our random variable.
+Now suppose each of those bars has _mass_ (a.k.a., probability mass), and further suppose we'll place our wedge under the $x$ axis such that the mass of the plot balances perfectly. Just by looking at the plot, if we put a wedge directly under the value of 3, there would be equivalent probability mass on either side, and the plot would balance perfectly. Notice that the value of 3 was the result of our expectation computation. $E(X)$ can therefore be thought as the balancing point or *center of mass* of the probability distribution - the place that would perfectly balance the mass of probability for our random variable.
 :::
 
 That said, we shall need to learn a little bit more about the expectation to proceed on our statistical adventure. First let's observe that it is possible to take the expectation of some _function_ of a random variable. In other words, we may apply some function to the outcomes in the space of $X$ and then calculate an expectation. For example, we might have

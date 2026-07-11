@@ -735,7 +735,7 @@ We simply multiply the two probabilities together.
 :::
 
 ### Expectation and Variance of a Continuous Random Variable.
-To this point, we have seen that independence has a very similar interpretation for the continuous case. Indeed the similarities between discrete and continuous random variables do not end there! The expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point of the distribution. If we put a wedge under the distribution at the value of its expectation, the pdf would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
+To this point, we have seen that independence has a very similar interpretation for the continuous case. Indeed the similarities between discrete and continuous random variables do not end there! The expectation and variance are no different in this regard. Like the discrete case, the expectation of a continuous random variable can be thought of as the balancing point - or center of mass - of the distribution. If we put a wedge under the distribution at the value of its expectation, the pdf would balance perfectly. The variance, on the other hand, can also be viewed as a measure of dispersion. A larger variance means the probability density of f(x) is spread out more.
 
 The calculation of a continuous expectation is a bit more complex, and requires integration techniques which are (again) beyond the scope of this book. However, the intuition for the calculation is very similar to the discrete case. We'll walk through it right now. Consider the probability density function
 
@@ -900,9 +900,31 @@ x
 
 ```
 
-With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small ranges, multiply each by a value of $x$ in that extremely small range, and then sum the resulting values. With a set of infinitesimally small ranges, this would give us $E(X)$.
+With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small ranges, multiply each by a value of $x$ in that extremely small range, and then sum the resulting values. With a set of infinitesimally small ranges, this would give us $E(X)$. In practice, this operation of taking smaller and smaller ranges, multiplying, and summing is done via the methods of integration.
 
-Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. It may therefore be unsurprising to learn that the expectation of a continuous random variable has the same previously discussed properties as that of a discrete random variable. That is 
+Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. Now we'll take it one step further. Recall how we could calculate the expectation of some function of a discrete random variable \@ref(eq:discreteexpectationfunction). For example, suppose were were working with the following discrete random variable, and we are interested in the expectation of $f(X) = X + 1$, a.k.a. $E(f(X))$.
+
+$$
+P(X = x) = p(x) = 
+\begin{cases}
+1/2 & x = 0 \\
+1/2 & x = 1  
+\end{cases}
+$$
+Then we would apply the function to each outcome in the space of $X$ and calculate the expectation with the resulting values. That is
+
+$$
+f(0)p(0) + f(1)p(1) = (0 + 1)1/2 + (1 + 1)1/2 = 3/2
+$$
+Now let's work towards an intuition of the computation of $E(f(x))$ in the continuous case. You will also see (intuitively speaking) how similar this computation is to the discrete case. Suppose our variable $X$ were continuous, and we were interested in $E(f(X))$. To estimate this expectation, we would first create $n$ ranges over the space of $X$. Here we'll refer to the ranges with $R_i$ - with $i$ indicating the ith range. Then we take an $x^*_i$ from each range, and apply the function to each - $f(x^*_i)$. As in the discrete case (and our discussion before that), the final step would be multiplying each $f(x^*_i)$ by the probability that $X$ falls in the ith range - $P(R_i)$ - and sum the resulting values. Put more succinctly:
+
+$$
+\sum_{i = 1}^{n} f(x^*_i)P(R_i)
+$$
+
+where we calculate $P(R_i)$ using the cdf of $X$. If we perform this process with very very (extremely) small ranges, then we will find the value of $E(f(X))$. Indeed, in practice, the aforementioned operation is achieved via integration. Note the similarity to the discrete case \@ref(eq:discreteexpectationfunction). Ultimately the interpretation is also the same: $E(f(X))$ is the center of mass of $f(X)$ after the function has been applied to each outcome in the space of $X$.
+
+Given the similarities between the continuous and discrete case, it may therefore be unsurprising (although no biggie if it is surprising) to learn that the expectation of a continuous random variable has the same previously discussed properties as that of a discrete random variable. That is 
 
 ::: {.theorem #expcont name="Some Properties of the Continuous Expectation"}
 If $a$ and $b$ are constants, then
