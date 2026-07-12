@@ -1079,9 +1079,9 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 18. 9
 
 ## A Very Special Distribution (and Some Other Ones That Are Cool Too)
-We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As you will see, we will - for various reasons - work frequently with normal distributions in our statistical adventures. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable. After that, we'll talk about some other important distributions, although, admittedly, with a little less depth.
+We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As you will see, we will - for various reasons - work frequently with normal distributions in our statistical adventures. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable. After that, we'll extend our discussion to other important distributions, although, admittedly, with a little less depth.
 
-The normal distribution is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Let's take a moment to discuss this figure before proceeding with an equation based description of the normal distribution.  Notice how the normal distribution has a maximum (a peak) at it's center. The value of $x$ at this peak is the expectation - $\mu$ - of the normally distributed random variable. That is to say, if we put a wedge under the $x$ value at exactly this point, the distribution would balance perfectly. It is also *symmetric* about this center point. At a more intuitive level, this means that the function to the left of the center point is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf. In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below is center. 
+The normal density - or normal distribution - is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Notice how the it has a maximum (a peak) at it's center, and the density declines the farther values are from this middle point. Now, supposing we put a wedge right under the value where that peak occurs. The distribution would balance perfectly. That is to say, the value of $x$ at the center of the normal distribution (where $f(x)$ is at a maximum) is the center of mass or expectation of the normally distributed random variable. Also note how the normal distribution is *symmetric* about its center of mass. At a more intuitive level, this means that the function to the left of the center is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf (recall $\mu$ is just another way of saying $E(X)$). In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below its center. 
 
 Next, scan the normal distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,f(-1))$ opens up like a $\cup$. In other words, the curve is *convex* to this point. However, after $(-1,f(-1))$ the curve opens down towards the $x$-axis. That is to say, it changes to *concave*. When a curve switches from convex to concave (or vice versa), we call it an **inflection point**. In our example figure below, the normal distribution has two such inflection points at $(-1,f(-1))$ and $(1,f(1))$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
 
@@ -1111,9 +1111,9 @@ Just by looking at the figure above, we have already learned a great deal about 
 Keep these properties in mind as we delve deeper into the mathematics of the normal distribution. The the equation for the probability density function of a normally distributed random variable is a bit complex, but knowing it will be useful for our discussion. If $X$ is a normally distributed random variable, then it's pdf is
 
 $$
-f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}
+f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}, \:\:-\infty < x < \infty
 $$
-and the space of $X$ is negative infinity to positive infinity. In more mathy (technical term) textbooks, this equation is often written
+and the space of $X$ is negative infinity to positive infinity. In more mathy (technical term) textbooks, the pdf is often written
 
 $$
 f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
@@ -1156,9 +1156,9 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
 
 ```
-The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the distribution in the same column above. However, each has $\mu = 4$ as opposed to the $\mu = 0$ in the first row. The distributions in the second row are therefore shifted relative to the distributions in the first row. Their peaks/centers are located at 4 as opposed to 0.
+The normal distributions in the top row of the figure all have $\mu = 0$. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Notice how the distribution on the right is more spread out than the distributions in the first and second columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the distribution in the same column above. The distributions in the second row each have $\mu = 4$ as opposed to the $\mu = 0$ in the first row. As such, their peaks/centers are located at 4 as opposed to 0.
 
-The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$. You may have noticed, based on our discussion here and previous sections, the similarity of the parameters $\mu$ and $\sigma$ to the expectation in variance. That is to say, one determines the center of the normal distribution and the other determines its dispersion, spread, or scale.
+The parameters of $\mu$ and $\sigma$, therefore, control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$. You may have noticed, based on our discussion here and previous sections, the similarity of the parameters $\mu$ and $\sigma$ to the expectation and variance. That is to say, one determines the center of the normal distribution and the other determines its dispersion, spread, or scale.
 
 Indeed, your intuition in this situation would be correct (although if you didn't get such an intuition, that's cool too). If $X$ is a normally distributed random variable, then
 
@@ -1167,7 +1167,103 @@ E(X) = \mu \\
 Var(X) = \sigma^2
 $$
 
-Thus $\mu$ is the expected value of $X$ and $\sigma$ is the standard deviation.
+Thus $\mu$ is the expected value of $X$ and $\sigma$ is the standard deviation. Indeed it is not a coincidence that the two parameters of the normal distribution are (by convention) referred to as $\mu$ and $\sigma$ - which are symbols used more generally to refer to the expectation and standard deviation of *any* random variable. Sometimes when referring to a normally distributed random variable we will use the symbol $X \sim N(\mu, \sigma^2)$ as a shorthand. Important note: the variance - $\sigma^2$ - is used in this notation, not the standard deviation.
 
-Let's now take a more in depth look at the equation. 
+Let's now take a more in depth look at the normal pdf. Direct your attention to the exponent of $e$ in the equation. 
 
+$$
+exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
+$$
+We shall learn a lot about the normal distribution from the term $\frac{x - \mu}{\sigma}$. This term says that to determine the density at some value of $X$ we first subtract the mean/expectation of $X$ from that value and divide by it's standard deviation. That is to say, we calculate the number of standard deviations the particular value - $x$ - is from the mean of the normally distributed random variable $X$. For a given value of $x$, it is often convention to call this value a **z-score**.
+
+::: {.example}
+Suppose we have a normally distributed random variable $X \sim N(10,4)$. We would like to know the z-score of the value 12. First, we are given a *variance* of 4, so we will have to take the square root of the variance to get the standard deviation. Next
+
+$$
+Z = \frac{x - \mu}{\sigma} = \frac{12 - 10}{2} = 1
+$$
+:::
+
+Now, suppose we do the $Z$ score calculation on every value in the space of a normally distributed random variable $X$. That is to say, we create a new random variable that has z-scores as its outcomes. 
+
+$$
+Z = \frac{X - \mu}{\sigma}
+$$
+You may be thinking: What the heck!? We have never discussed creating a *new* random variable before. But we have. We just never called it that. Recall, for example, our discussions of the expectation of discrete random variables. At one point we talked about calculating the expectation of some $f(X)$. In particular, we discussed the following discrete distribution
+
+$$
+p(x) = 
+\begin{cases}
+1/5 & x_1 = 1  \\
+1/5 & x_2 = 2  \\
+1/5 & x_3 = 3  \\
+1/5 & x_4 = 4  \\
+1/5 & x_5 = 5 
+\end{cases}
+$$
+And we sought to calculate the expectation of $E(f(X))$, where $f(X) = 2X$. In words, we wanted to know the expectation of a function that multiplies every value in the space of the random variable $X$ by 2. Thus, we applied this function to every value in the space of $X$ and
+
+$$
+p(x) = 
+\begin{cases}
+1/5 & x_1 = 1 & f(1) = 2(1) = 2 \\
+1/5 & x_2 = 2 & f(2) = 2(2) = 4 \\
+1/5 & x_3 = 3 & f(3) = 2(3) = 6 \\
+1/5 & x_4 = 4 & f(4) = 2(4) = 8 \\
+1/5 & x_5 = 5 & f(5) = 2(5) = 10 
+\end{cases}
+$$
+
+I did not mention it at the time, but what we actually did was create a *new* random variable - one with the space of ${2,4,6,8,10}$ each assigned a probability of 1/5. That is to say, we created a new random variable - call it $Y$ - and
+
+$$
+Y = 2X
+$$
+
+Albeit, the process of creating a new continuous random variable is a bit more mathematically complicated, but the intuition is the same.
+
+Now returning to our normally distributed random variable - $X \sim N(\mu, \sigma^2)$. We shall create a *new* distribution of z-scores. Put another way, if we were to conduct a random experiment with this new random variable, we would get a $z$ in standard deviations, rather than the particular value of $x$. The first thing I will tell you (and I won't prove it) is that this new variable will also be normally distributed. To fully specify this normal distribution, we shall need values of $\mu$ and $\sigma^2$. That is we will need to expectation of $Z$. Recall that $Z$ is a function of $X$, and we have already, on several occasions learned how we might calculate the expectation of a function of $X$.
+
+Specifically, we will use the properties of the expectation and variance we learned in the previous chapters/sections. With regards to $\mu = E(Z)$,
+
+$$
+\begin{align}
+E(Z) &= E(\frac{X - \mu}{\sigma}) \\
+&= \frac{1}{\sigma}E(X - \mu) \\
+&= \frac{1}{\sigma}\left[E(X) - E(\mu)\right] \\
+\end{align}
+$$
+
+Now $\mu$ isn't a random variable. It's a constant, so $E(\mu) = \mu$ and $E(X) = \mu$. Thus,
+
+$$
+\frac{1}{\sigma}\left[\mu - \mu\right] = 0
+$$
+
+The mean of our new z-score random variable is therefore zero. But what about the variance? Well, recalling the properties of the variance
+
+$$
+\begin{align}
+Var(Z) &= Var(\frac{X - \mu}{\sigma}) \\
+&= \frac{1^2}{\sigma^2}Var(X - \mu) \\
+\end{align}
+$$
+
+Again, notice that $\mu$ is a constant, so using the properties of the variance $Var(X - \mu) = Var(X)$. And also note that the variance of our normally distributed random variable $X$ is $\sigma^2$.
+
+$$
+\begin{align}
+&= \frac{1}{\sigma^2}Var(X - \mu) \\
+&= \frac{1}{\sigma^2}Var(X) \\
+&= \frac{1^2}{\sigma^2} \sigma^2 = 1\\
+\end{align}
+$$
+
+Thus, $Z$ - our distribution of z-scores - is a normally distributed random variable with $\mu = 0$ and $\sigma^2 = 1$. If we enter these values into the equation for the normal distribution, we get
+
+$$
+f(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}\left(z\right)^2}, \:\:-\infty < x < \infty
+(\#eq:standard normal)
+$$
+
+which we will call the **standard normal distribution**, a.k.a. $Z \sim N(0,1)$. This is the distribution we get when we calculate a z-score for all values in the space of a normally distributed random variable. Now, I realize that the term "standard normal" sounds a bit redundant, and while I don't generally espouse convention, you'll just have to put up with it here.
