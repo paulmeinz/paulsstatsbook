@@ -779,8 +779,9 @@ The cdf of this probability density function is
 $$
 F(x) = 
 \begin{cases}
+0 & x < 0 \\
 \frac{x^2}{2} & 0 \leq x \leq \sqrt{2} \\
-0 & Everywhere\: else 
+1 & x > \sqrt{2} 
 \end{cases}
 $$
 
@@ -902,7 +903,7 @@ x
 
 With more ranges - and smaller range widths - the value of our approximation gets closer and closer to the actual value. This observation leads us to an intuitive interpretation of how $E(X)$ is calculated for a continuous random variable. Suppose we were to make the ranges extremely small (and the number of ranges very high) and perform the computation above. That is, we take the probability that $X$ falls in each of our very small ranges, multiply each by a value of $x$ in that extremely small range, and then sum the resulting values. With a set of infinitesimally small ranges, this would give us $E(X)$. In practice, this operation of taking smaller and smaller ranges, multiplying, and summing is done via the methods of integration.
 
-Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. Now we'll take it one step further. Recall how we could calculate the expectation of some function of a discrete random variable \@ref(eq:discreteexpectationfunction). For example, suppose were were working with the following discrete random variable, and we are interested in the expectation of $f(X) = X + 1$, a.k.a. $E(f(X))$.
+Indeed, you'll note that the procedure we have just walked through is very similar to the calculation for discrete random variables. Now we'll take it one step further. Recall how we could calculate the expectation of some function of a discrete random variable \@ref(eq:discreteexpectationfunction). For example, suppose were were working with a discrete random variable, and we are interested in the expectation of $f(X) = X + 1$, a.k.a. $E(f(X))$. For the sake of simplicity, let's say our discrete random variable has the pmf
 
 $$
 P(X = x) = p(x) = 
@@ -1047,7 +1048,7 @@ f(y) = \begin{cases}
 \end{cases}
 $$
 
-Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each with $E(X_1) = 4$ and $E(X_2) = 2$, and variances of $1$ and $3$, respectively. Furthermore, we know that $P(X_1 < 1| X_2 = 1) = 1/3$ and $P(X_1< 1 | X_2 = 2) = 1/8$. Using the properties you've learned in this section, try your best to answer the questions below. Note if the properties learned here do not apply.
+Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each with $E(X_1) = 4$ and $E(X_2) = 2$, and variances of $1$ and $3$, respectively. Using the properties you've learned in this section, try your best to answer the questions below. Note if the properties learned here do not apply.
 
 15. What is $E(X_1) + E(X_2)$?
 
