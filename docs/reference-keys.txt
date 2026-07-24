@@ -147,3 +147,4 @@ expectation-and-variance-of-a-continuous-random-variable.
 practice-problems-3
 practice-problem-answers-3
 a-very-special-distribution-and-some-other-cool-distributions-too
+z-table
