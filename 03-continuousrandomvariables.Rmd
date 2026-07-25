@@ -1079,8 +1079,10 @@ Suppose we are given two continuous random variables - $X_1$ and $X_2$. Each wit
 17. The properties we learned in this section won't work for this one. The two variables do not appear to be independent.
 18. 9
 
-## A Very Special Distribution (and some other cool distributions too)
+## A Very Special Distribution (and Some Other Cool Distributions Too)
 We have spent the last couple of sections talking generally about continuous random variables and their distributions. For the final topic of this chapter, we are going to turn our attention towards some commonly occurring probability distributions. The first (and arguably most prolific) distribution we will discuss is the **normal distribution**. As you will see, we will - for various reasons - work frequently with normal distributions in our statistical adventures. Our discussion of the normal distribution shall proceed in two steps. First we will talk about the shape of the normal distribution and some of it's basic properties. Then we will talk about calculating probabilities for a normally distributed random variable. After that, we'll extend our discussion to other important distributions, although, admittedly, with a little less depth.
+
+### The Normal Distribution
 
 The normal density - or normal distribution - is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Notice how it has a maximum (a peak) at it's center, and the density declines the farther values are from this middle point. Now, supposing we put a wedge right under the value where that peak occurs. The distribution would balance perfectly. That is to say, the value of $x$ at the center of the normal distribution (where $f(x)$ is at a maximum) is the center of mass or expectation of the normally distributed random variable. Also note how the normal distribution is *symmetric* about its center of mass. At a more intuitive level, this means that the function to the left of the center is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf (recall $\mu$ is just another way of saying $E(X)$). In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below its center of mass. 
 
@@ -1269,6 +1271,73 @@ $$
 
 which we will call the **standard normal distribution**, a.k.a. $Z \sim N(0,1)$. This is the distribution we get when we calculate a z-score for all values in the space of a normally distributed random variable. Now, I realize that the term "standard normal" sounds a bit redundant, and while I don't always espouse convention, you'll just have to put up with it here.
 
-In practice, we will frequently work with the standard normal distribution. Indeed, when we are hoping to calculate probabilities for a normally distributed random variable, we will use the cdf of the standard normal distribution. And with that said, let's turn our attention to calculating probabilities. In the previous sections, when we were working with continuous random variables, I often gave you an equation for the cdf. You could plug the value of an outcome - $x$ - into that equation and calculate $P(X < x)$. The normal distribution proves a bit more complicated. There is no such equation for the cdf in the case of a normally distributed random variable. Now, this does not mean we can't calculate the area under the normal density (a.k.a., integrate). We just don't have a quick and easy equation for this.
+In practice, we will frequently work with the standard normal distribution. Indeed, when we are hoping to calculate probabilities for a normally distributed random variable, we will use its cdf. 
 
-In the fairly recent past, students were therefore relegated to calculating the probability 
+### The Normal Cumulative Distribution Function
+Although the normal distribution (or normal density) is interesting in of itself, we will frequently work with its cumulative distribution function. Recall in our previous work with cumulative distribution functions, we used an equation to calculate probabilities. We would enter some value into this equation for the cdf, do some computation, and get $P(X < x)$ - where the lower case $x$ is the value we entered into the equation. Sadly, no such function for a normal distribution exists. This (thankfully) does not mean we can't calculate the area under the normal distribution (a.k.a., integrate). It just means that we have to calculate the area by other means. 
+
+In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. For our purposes we will use a table of values (more on that soon). You may also choose to use your favorite statistical computing program (like R or Python). The aforementioned table helps us take a given *z*-score and calculate - $P(Z < z)$. Put another way, it describes the cumulative distribution of the standard normal distribution - the distribution of *z*-scores we calculated just before this discussion. Although we do not know the equation for the normal cdf, it is often referred to as
+
+$$
+\Phi(z) = P(Z < z) 
+(\#eq:normalcdf)
+$$
+
+which is the function that our table of values describes numerically. 
+
+```{r, echo = FALSE, fig.cap = "The Standard Normal PDF and CDF"}
+
+x_1 <- seq(-3,3,by = 0.01)
+y_1 <- dnorm(x_1)
+x_2 <- seq(-3,3,by = 0.01)
+y_2 <- pnorm(x_1)
+pdf <- data.frame(x = x_1, y = y_1, grp = 'The Standard Normal pdf')
+cdf <- data.frame(x = x_2, y = y_2, grp = 'The Standard Normal cdf')
+all_data <- rbind(pdf,cdf)
+all_data$grp <- factor(all_data$grp, levels = c(
+  'The Standard Normal pdf', 'The Standard Normal cdf'
+), ordered = TRUE)
+
+ggplot2::ggplot(all_data, ggplot2::aes(x = x, y = y, color)) +
+  ggplot2::geom_line() +
+  ggplot2::facet_grid(cols = ggplot2::vars(grp)) +
+  ggplot2::labs(x = 'z', y = '') +
+  ggplot2::theme_bw() 
+
+```
+
+
+We will first walk through using the table, and then we'll do a few examples. Suppose we want to determine $P(Z < 0.32)$. The table below presents the first few rows of the *z*-table that we will use for our work. The first column of the table represents the first digit and first decimal of our *z*-value. In our case, we would find the row in this column with the value of 0.3. Each column after the first represents a value of the second decimal place (a.k.a., the hundredths place) from 0.00 all the way to 0.09. Our *z*-value has a 2 in it's second decimal place, so we would scan to the right and use the value under the 0.02 column header. The value in the cell 0.62552. That is to say, $P(Z < 0.32) = 0.62552$. I've also highlighted the value (with a nice gentle teal) in the table to make it a bit easier to see what we are talking about.
+
+```{r, echo = FALSE}
+
+
+table <- data.frame(z = seq(0,.5,by = .1),
+           '0.00' = round(pnorm(seq(0,.5,by = .1)),5),
+           '0.01' = round(pnorm(seq(0.01, 0.51,by = .1)),5),
+           '0.02' = round(pnorm(seq(0.02, 0.52,by = .1)),5),
+           '0.03' = round(pnorm(seq(0.03, 0.53,by = .1)),5),
+           '0.04' = round(pnorm(seq(0.04, 0.54,by = .1)),5),
+           '0.05' = round(pnorm(seq(0.05, 0.55,by = .1)),5),
+           '0.06' = round(pnorm(seq(0.06, 0.56,by = .1)),5),
+           '0.07' = round(pnorm(seq(0.07, 0.57,by = .1)),5),
+           '0.08' = round(pnorm(seq(0.08, 0.58,by = .1)),5),
+           '0.09' = round(pnorm(seq(0.09, 0.59,by = .1)),5)
+           )
+
+names(table) <- c('z', '0.00','0.01','0.02','0.03','0.04','0.05','0.06',
+                  '0.07','0.08','0.09')
+
+x <- flextable::flextable(table)
+x <- flextable::autofit(x)
+x <- flextable::align(x, align = "center", part = 'all')
+x <- flextable::hline(x)
+x <- flextable::vline(x, j = 1)
+x <- flextable::bg(x, bg = 'gray', part = 'header')
+x <- flextable::bg(x, bg = 'gray', j = 1)
+x <- flextable::bg(x, i = 4, j = 4, bg = '#B2EBF2')
+x <- flextable::bold(x, i = 4, j = 4)
+x
+
+```
+

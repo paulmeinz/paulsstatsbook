@@ -2,7 +2,7 @@
 
 # *Z*-Table
 
-```{r, echo = FALSE, fig.cap = "Improving Approximations"}
+```{r, echo = FALSE}
 
 
 table <- data.frame(z = seq(0,4,by = .1),
