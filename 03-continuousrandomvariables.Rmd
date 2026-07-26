@@ -1276,7 +1276,7 @@ In practice, we will frequently work with the standard normal distribution. Inde
 ### The Normal Cumulative Distribution Function
 Although the normal distribution (or normal density) is interesting in of itself, we will frequently work with its cumulative distribution function. Recall in our previous work with cumulative distribution functions, we used an equation to calculate probabilities. We would enter some value into this equation for the cdf, do some computation, and get $P(X < x)$ - where the lower case $x$ is the value we entered into the equation. Sadly, no such function for a normal distribution exists. This (thankfully) does not mean we can't calculate the area under the normal distribution (a.k.a., integrate). It just means that we have to calculate the area by other means. 
 
-In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. For our purposes we will use a table of values (more on that soon). You may also choose to use your favorite statistical computing program (like R or Python). The aforementioned table helps us take a given *z*-score and calculate - $P(Z < z)$. Put another way, it describes the cumulative distribution of the standard normal distribution - the distribution of *z*-scores we calculated just before this discussion. Although we do not know the equation for the normal cdf, it is often referred to as
+In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. For our purposes we will use a table of values (more on that soon). You may also choose to use your favorite statistical computing program (like R or Python). The aforementioned table helps us take a given *z*-score and lookup $P(Z < z)$. Put another way, it describes the cumulative distribution of the standard normal distribution - the distribution of *z*-scores we calculated just before this discussion. Although we do not have a standard equation, the cdf function is often referred to as
 
 $$
 \Phi(z) = P(Z < z) 
@@ -1306,10 +1306,9 @@ ggplot2::ggplot(all_data, ggplot2::aes(x = x, y = y, color)) +
 
 ```
 
+We will first walk through using the standard normal cdf table, and then we'll do a few examples. Suppose we want to determine $P(Z < 0.32)$. The table below presents the first few rows of the *z*-table that we will use for our work. The first column of the table represents the first digit and first decimal of our *z*-value. In our case, we would find the row in this column with the value of 0.3. Each column after the first represents a value of the second decimal place (a.k.a., the hundredths place) from 0.00 all the way to 0.09. Our *z*-value has a 2 in it's second decimal place, so we would scan to the right and use the value under the 0.02 column header. In this case, the value in the cell 0.62552. That is to say, $P(Z < 0.32) = 0.62552$. I've also highlighted the value (with a nice gentle teal) in the table to make it a bit easier to see what we are talking about.
 
-We will first walk through using the table, and then we'll do a few examples. Suppose we want to determine $P(Z < 0.32)$. The table below presents the first few rows of the *z*-table that we will use for our work. The first column of the table represents the first digit and first decimal of our *z*-value. In our case, we would find the row in this column with the value of 0.3. Each column after the first represents a value of the second decimal place (a.k.a., the hundredths place) from 0.00 all the way to 0.09. Our *z*-value has a 2 in it's second decimal place, so we would scan to the right and use the value under the 0.02 column header. The value in the cell 0.62552. That is to say, $P(Z < 0.32) = 0.62552$. I've also highlighted the value (with a nice gentle teal) in the table to make it a bit easier to see what we are talking about.
-
-```{r, echo = FALSE}
+```{r, echo = FALSE, cache = TRUE}
 
 
 table <- data.frame(z = seq(0,.5,by = .1),
@@ -1341,3 +1340,41 @@ x
 
 ```
 
+::: {.example}
+Suppose we are asked to determine $P(X < 3)$ for $X \sim N(2,4)$. Based on that fancy notation, we know that $X$ is a normally distributed random variable - a perfect situation for the standard normal cdf. We will first have to convert our particular value of $x = 3$ into a *z*-score, and then we can figure out the value of $\Phi(z)$.
+
+First note that we are given $\mu = 2$ and $\sigma^2 = 4$. Thus, the standard deviation of $X$ is $\sqrt{4} = 2$. Using this information, let's calculate the *z*-score.
+
+$$
+\frac{3 - \mu}{\sigma} = \frac{3-2}{2} = \frac{1}{2}
+$$
+Now we need to use our fancy table to determine the value of
+
+$$
+\Phi\left(\frac{3 - \mu}{\sigma}\right) = \Phi\left(\frac{1}{2}\right)
+$$
+Our *z*-score has a value of 0.5, so we will go down to the row in the table corresponding to this value. The hundredths place is zero, so we will take the very first value in the row - 0.69146. That is $P(X < 3) = 0.69146$. The distribution of $X$ - with the aforementioned area $P(X < 3)$ highlighted (in a very serene teal) - can be found in the figure below.
+
+```{r, echo = FALSE}
+x <- seq(-4,8, by = 0.01)
+y <- dnorm(x,2,2)
+func_vals <- data.frame(x,y)
+x_0 <- seq(-4,3, by = 0.01)
+y_0 <- rep(0, times = length(x_0))
+y_1 <- dnorm(x_0,2,2)
+lin_vals <- data.frame(x_0,y_0,y_1)
+
+ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = lin_vals, 
+                        ggplot2::aes(x = x_0, y = y_0, xend = x_0, yend = y_1),
+                        color = '#B2EBF2') +
+  ggplot2::geom_line() +
+  ggplot2::geom_segment(x = 3, y = 0, xend = 3, yend = dnorm(3,2,2)) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::labs(y = 'Probability Density', x = 'x') +
+  ggplot2::geom_text(x = 1.1, y = 0.075, label = 'P(X < 3)', size = 5) +
+  ggplot2::theme_bw()
+```
+:::
+
+In the example above, we worked with a value that was greater than its mean. Supposing 
