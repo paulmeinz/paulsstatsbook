@@ -1276,7 +1276,7 @@ In practice, we will frequently work with the standard normal distribution. Inde
 ### The Normal Cumulative Distribution Function
 Although the normal distribution (or normal density) is interesting in of itself, we will frequently work with its cumulative distribution function. Recall in our previous work with cumulative distribution functions, we used an equation to calculate probabilities. We would enter some value into this equation for the cdf, do some computation, and get $P(X < x)$ - where the lower case $x$ is the value we entered into the equation. Sadly, no such function for a normal distribution exists. This (thankfully) does not mean we can't calculate the area under the normal distribution (a.k.a., integrate). It just means that we have to calculate the area by other means. 
 
-In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. For our purposes we will use a table of values (more on that soon). You may also choose to use your favorite statistical computing program (like R or Python). The aforementioned table helps us take a given *z*-score and lookup $P(Z < z)$. Put another way, it describes the cumulative distribution of the standard normal distribution - the distribution of *z*-scores we calculated just before this discussion. Although we do not have a standard equation, the cdf function is often referred to as
+In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. For our purposes we will use a table of values (more on that soon). You may also choose to use your favorite statistical computing program or language (like R or Python). The aforementioned table helps us take a given *z*-score and lookup $P(Z < z)$. Put another way, it describes the cumulative distribution of the standard normal distribution - the distribution of *z*-scores we calculated just before this discussion. Although we do not have a standard equation, the cdf function is often referred to as 
 
 $$
 \Phi(z) = P(Z < z) 
@@ -1353,7 +1353,7 @@ Now we need to use our fancy table to determine the value of
 $$
 \Phi\left(\frac{3 - \mu}{\sigma}\right) = \Phi\left(\frac{1}{2}\right)
 $$
-Our *z*-score has a value of 0.5, so we will go down to the row in the table corresponding to this value. The hundredths place is zero, so we will take the very first value in the row - 0.69146. That is $P(X < 3) = 0.69146$. The distribution of $X$ - with the aforementioned area $P(X < 3)$ highlighted (in a very serene teal) - can be found in the figure below.
+Our *z*-score has a value of 0.5, so we find the row in the table corresponding to this value. Next, the hundredths place is zero, so we take the very first value in that row - 0.69146. That is $P(X < 3) = 0.69146$. The distribution of $X$ - with the aforementioned area $P(X < 3)$ highlighted (in a very serene teal) - can be found in the figure below.
 
 ```{r, echo = FALSE}
 x <- seq(-4,8, by = 0.01)
@@ -1377,4 +1377,94 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
 ```
 :::
 
-In the example above, we worked with a value that was greater than its mean. Supposing 
+In the example above, we worked with a positive *z*-score. In other words, we worked with a value of $x$ that was greater than its expectation. If we worked with a value less than the expectation, we would have ended up with a negative *z*-value. For example, a value of $x = 1$ would have given us $z = -1/2$. You'll note that the *z*-table in this book - which is typically of these tables generally - only presents $P(Z < z)$ for positive values. In fact, the lowest possible probability in the table is $P(Z < 0) = .5$ which is the value we would get for a value of $x$ equal to it's expectation (a.k.a. zero standard deviations from its mean). The table seems to only describe half the standard normal distribution!
+
+Given a negative value, what then are we to do? Well, I will start by saying that *z*-tables are created honoring only 1/2 the standard normal distribution because the normal distribution is symmetric. That is to say, once we know $P(Z < z)$ for all the positive values (half the standard normal distribution), then we can figure out the other half. Because of this wonderful symmetry, there are a couple of useful equations that we'll use when working with the standard normal cdf. I'll list them out here, and then we'll work with them in a couple of examples.
+
+1. $P(Z < \mu) = 0.50$ 
+2. $P(a < Z < b) = P(-b < Z < -a)$
+3. $P(-a < Z < a) = 2(P(Z < z) - 0.5)$
+
+::: {.example}
+Suppose we are given a random variable $X \sim N(1,16)$, and we would like to know $P(X < -3)$. Our *z*-score would be
+
+$$
+\frac{-3-\mu}{\sigma} = \frac{-3-1}{4} = -1
+$$
+Thanks to the equations above, we won't fret over this. The first thing we shall observe is that the area under the standard normal curve from the expectation to the value of 1 is the *same* as the area from -1 to the expectation. In terms of equation 2 above, if $a = -1$ and $b = \mu = 0$, then
+
+$$
+P(a < Z < b) = P(-b < Z < -a)
+$$
+and because $-1(0) = 0$ and $-1(-1) = 1$
+
+$$
+P(-1 < Z < 0) = P(0 < Z < 1)
+$$
+I've plotted this out for you in the figure below. Notice how the areas of two regions (each highlighted in gray and separated by a line at the center of mass) are identical.
+
+```{r, echo = FALSE}
+x <- seq(-3,3, by = 0.01)
+y <- dnorm(x)
+func_vals <- data.frame(x,y)
+x_0 <- seq(-1,1, by = 0.01)
+y_0 <- rep(0, times = length(x_0))
+y_1 <- dnorm(x_0)
+lin_vals <- data.frame(x_0,y_0,y_1)
+
+ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = lin_vals, 
+                        ggplot2::aes(x = x_0, y = y_0, xend = x_0, yend = y_1),
+                        color = 'gray') +
+  ggplot2::geom_line() +
+  ggplot2::geom_segment(x = 1, y = 0, xend = 1, yend = dnorm(1)) +
+  ggplot2::geom_segment(x = -1, y = 0, xend = -1, yend = dnorm(1)) +
+  ggplot2::geom_segment(x = 0, y = 0, xend = 0, yend = dnorm(0)) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::labs(y = 'Probability Density', x = 'z') +
+  ggplot2::scale_x_continuous(breaks = c(-3,-2,-1,0,1,2,3)) +
+  ggplot2::geom_text(x = 0.5, y = 0.15, label = 'P(0 < Z < 1)', size = 5, angle = 90) +
+  ggplot2::geom_text(x = -0.5, y = 0.15, label = 'P(-1 < Z < 0)', size = 5, angle = 90) +
+  ggplot2::theme_bw()
+```
+
+Now, we can calculate the area of $P(0 < Z < 1)$ with our previously learned cdf equations. In particular
+
+$$
+P(0 < Z < 1) = P(Z < 1) - P(Z < 0) = 0.84134 - 0.5 = 0.34134
+$$
+Okay, now comes the  kicker! We will do the final step using set notation and then look at the plot to build an intuition. You'll notice this trick is very similar to the trick we used when deriving how to calculate $P(a < X < b)$ in the previous section. Notice that
+
+$$
+\begin {align}
+P(Z < 0) &= P(\{Z < -1\} \cup \{-1 < Z < 0\}) \\
+P(Z < 0) &= P(Z < -1) + P(-1 < Z < 0) \\
+P(Z < 0) &= P(Z < -1) + 0.34134 \\
+P(Z < 0) - 0.34134 &= P(Z < -1)
+\end {align}
+$$
+Now, we know that $P(Z < 0) = 0.5$, so $P(Z < -1) = .5 - 0.34134 = 0.15866$. And just like that, we didn't need a *z*-table for negative values of *z* (although you would have perhaps appreciated it!). Putting set notation aside, let's look at the figure below. The region highlighted in gray represents $P(Z < -1)$. The whole region less than the expectation - 0 - has half the area/probability. We would need to subtract out that (not highlighted) area from -1 to 0 to get our answer. That's exactly what we just did - thanks to our rules of symmetry. 
+
+```{r, echo = FALSE}
+x <- seq(-3,3, by = 0.01)
+y <- dnorm(x)
+func_vals <- data.frame(x,y)
+x_0 <- seq(-3,-1, by = 0.01)
+y_0 <- rep(0, times = length(x_0))
+y_1 <- dnorm(x_0)
+lin_vals <- data.frame(x_0,y_0,y_1)
+
+ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
+  ggplot2::geom_segment(data = lin_vals, 
+                        ggplot2::aes(x = x_0, y = y_0, xend = x_0, yend = y_1),
+                        color = 'gray') +
+  ggplot2::geom_line() +
+  ggplot2::geom_segment(x = -1, y = 0, xend = -1, yend = dnorm(1)) +
+  ggplot2::geom_segment(x = 0, y = 0, xend = 0, yend = dnorm(0)) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::labs(y = 'Probability Density', x = 'z') +
+  ggplot2::scale_x_continuous(breaks = c(-3,-2,-1,0,1,2,3)) +
+  ggplot2::theme_bw()
+```
+
+:::
