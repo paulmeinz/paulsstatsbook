@@ -113,6 +113,7 @@ eq:standardnormal
 eq:normalcdf
 fig:unnamed-chunk-26
 exm:unlabeled-div-40
+eq:symmetry
 exm:unlabeled-div-41
 you-can-learn-statistics
 why-i-wrote-this-book
