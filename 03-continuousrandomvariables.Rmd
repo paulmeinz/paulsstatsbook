@@ -1379,10 +1379,10 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
 
 In the example above, we worked with a positive *z*-score - a value of $x$ that is greater than its expectation. If we worked with a value less than the expectation, we would have ended up with a negative *z*-value. For example, a value of $x = 1$ would have given us $z = -1/2$. You'll note that the *z*-table in this book - which is typically of these tables generally - only presents $P(Z < z)$ for positive values. In fact, the lowest possible probability in the table is $P(Z < 0) = .5$ which is the value we would get for a value of $x$ equal to it's expectation (a.k.a. zero standard deviations from its mean). The table seems to only describe half the standard normal distribution!
 
-Indeed, *z*-tables are created honoring only 1/2 the standard normal distribution because the normal distribution is symmetric. This wonderful symmetry means that, once we know $P(Z < z)$ for all the positive values (half the standard normal distribution), then we can figure out the other half. More specifically, when it comes to the standard normal distribution
+Indeed, *z*-tables are created honoring only 1/2 the standard normal distribution because the normal distribution is symmetric. This wonderful symmetry means that, once we know $P(Z < z)$ for all the positive values (half the standard normal distribution), then we can figure out the other half. Indeed, when it comes to the *standard* normal distribution
 
 $$
-$P(a < Z < b) = P(-b < Z < -a)$
+P(a < Z < b) = P(-b < Z < -a)
 (\#eq:symmetry)
 $$
 
@@ -1443,7 +1443,7 @@ P(Z < 0) &= P(Z < -1) + 0.34134 \\
 P(Z < 0) - 0.34134 &= P(Z < -1)
 \end {align}
 $$
-Now, according to the *z* table, $P(Z < 0) = 0.5$, so $P(Z < -1) = .5 - 0.34134 = 0.15866$. And just like that, we didn't need a *z*-table for negative values of *z* (although you would have perhaps appreciated it!). Putting set notation aside, let's look at the figure below. The region highlighted in gray represents $P(Z < -1)$. The whole region less than the expectation - 0 - has half the area/probability. We would need to subtract out that (not highlighted) area from -1 to 0 to get our answer. That's exactly what we just did - thanks to symmetry of the standard normal distribution. 
+Now, according to the *z*-table, $P(Z < 0) = 0.5$, so $P(Z < -1) = .5 - 0.34134 = 0.15866$. And just like that, we didn't need a *z*-table for negative values of *z* (although you would have perhaps appreciated it!). Putting set notation aside, let's look at the figure below. The region highlighted in gray represents $P(Z < -1)$. The whole region less than the expectation - 0 - has half the area/probability. We would need to subtract out that (not highlighted) area from -1 to 0 to get our answer. That's exactly what we just did - thanks to symmetry of the standard normal distribution. 
 
 ```{r, echo = FALSE}
 x <- seq(-3,3, by = 0.01)
@@ -1467,5 +1467,11 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
   ggplot2::theme_bw()
 ```
 
+:::
+
+::: {.example}
+Suppose we are working with $X$, a normally distributed random variable with a mean of 5 and a standard deviation of 4. We would like to know $P(0 < X < 10)$. That is to say, we would like to know the probability that a random experiment with $X$ would result in a value between 0 and 10. Our first step, like the examples before, will be to convert the values of 0 and 10 to *z*-scores.
+
+Such a calculation would yield a value of $-1.25$ for $X = 0$ and $1.25$ for $X=10$. 
 :::
 
