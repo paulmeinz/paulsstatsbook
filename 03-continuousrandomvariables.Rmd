@@ -1383,30 +1383,36 @@ Indeed, *z*-tables are created honoring only 1/2 the standard normal distributio
 
 $$
 P(a < Z < b) = P(-b < Z < -a)
-(\#eq:symmetry)
+(\#eq:symmetry1)
+$$
+and
+
+$$
+P(Z < -b) = P(Z > b)
+(\#eq:symmetry2)
 $$
 
-In words, the probability of a given range on one side of the standard normal distribution is the same as the mirrored range on the opposite side. If that doesn't make much sense, no worries. We'll do some examples next to clarify things.
+In words, the last two equations mean that the probability for a given range on one side of the standard normal distribution is the same as the mirrored range on the opposite side. If that doesn't make much sense, no worries. We'll do some examples next to clarify things.
 
 ::: {.example}
-Suppose we are given a random variable $X \sim N(1,16)$, and we would like to know $P(X < -3)$. Our *z*-score would be
+Suppose we are given a random variable $X \sim N(1,16)$, and we would like to know $P(X < -3)$. First we calculate a *z*-score which would be
 
 $$
 \frac{-3-\mu}{\sigma} = \frac{-3-1}{4} = -1
 $$
-A negative value! Unfortunately, this scenario is going to require some additional work. The first thing we will observe is that the area under the standard normal curve from 0 (the expectation) to the value of 1 is the *same* as the area from -1 to the expectation. Put another way, in terms of our equation above, if $a = -1$ and $b = \mu = 0$, then
+A negative value! Unfortunately, this scenario is going to require some additional work (but not much). The first thing we will observe is that the area under the standard normal curve for values greater than 1 is equal to the area under the curve for values less than -1. This is thanks to the symmetry of the standard normal distribution. Specifically, 
 
 $$
-P(a < Z < b) = P(-b < Z < -a) \\
-P(-1 < Z < 0) = P(0 < Z < 1)
+P(Z < -b) = P(Z > b) \\
+P(Z < -1) = P(Z > 1)
 $$
-because $-1(0) = 0$ and $-1(-1) = 1$. I've plotted this out for you in the figure below. Notice how the areas of two regions (each highlighted in gray and separated by a line at the center of mass) are identical.
+Where b = 1. I've plotted this out for you in the figure below. Notice how the areas of two regions (each highlighted in gray) are identical.
 
 ```{r, echo = FALSE}
 x <- seq(-3,3, by = 0.01)
 y <- dnorm(x)
 func_vals <- data.frame(x,y)
-x_0 <- seq(-1,1, by = 0.01)
+x_0 <- c(seq(-3, -1, by = 0.01),seq(1, 3, by = 0.01))
 y_0 <- rep(0, times = length(x_0))
 y_1 <- dnorm(x_0)
 lin_vals <- data.frame(x_0,y_0,y_1)
@@ -1422,34 +1428,34 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
   ggplot2::geom_hline(yintercept = 0) +
   ggplot2::labs(y = 'Probability Density', x = 'z') +
   ggplot2::scale_x_continuous(breaks = c(-3,-2,-1,0,1,2,3)) +
-  ggplot2::geom_text(x = 0.5, y = 0.15, label = 'P(0 < Z < 1)', size = 5, angle = 90) +
-  ggplot2::geom_text(x = -0.5, y = 0.15, label = 'P(-1 < Z < 0)', size = 5, angle = 90) +
+  ggplot2::geom_text(x = 1.5, y = 0.075, label = 'P(Z > 1)', size = 4, angle = -45) +
+  ggplot2::geom_text(x = -1.5, y = 0.075, label = 'P(Z < -1)', size = 4, angle = 45) +
   ggplot2::theme_bw()
 ```
 
-Now, we can calculate the area of $P(0 < Z < 1)$ with our previously learned cdf equations. In particular
+Now, we can calculate the area of $P(Z > 1)$ with our previously learned cdf equations. In particular
 
 $$
-P(0 < Z < 1) = P(Z < 1) - P(Z < 0) = 0.84134 - 0.5 = 0.34134
+P(Z > 1) = 1 - P(Z < 1) = 1 - 0.84134 = 0.15866
 $$
+where $P(Z < 1)$ came from the *z*-table, and we've used the rule for cdfs here \@ref(eq:infinitycont).
+:::
 
-We will do the final step using set notation and then look at the plot to build an intuition. It is very similar to the trick we used when deriving how to calculate $P(a < X < b)$ in the previous section. Notice that
+::: {.example}
+Suppose we are working with $X$, a normally distributed random variable with a mean of 5 and a standard deviation of 4. Furthermore, suppose we would like to know $P(0 < X < 10)$. That is to say, we would like to know the probability that a random experiment with $X$ would result in a value between 0 and 10. Our first step, like the examples before, will be to convert the values of 0 and 10 to *z*-scores.
+
+Such a calculation would yield a value of $-1.25$ for $X = 0$ and $1.25$ for $X=10$. Notice how $z = -1.25$ is the same distance from zero as $z = 1.25$. Each is exactly 1.25 units from the mean of the standard normal distribution - 0. This is a useful observation because symmetry of the standard normal then tell us that
 
 $$
-\begin {align}
-P(Z < 0) &= P(\{Z < -1\} \cup \{-1 < Z < 0\}) \\
-P(Z < 0) &= P(Z < -1) + P(-1 < Z < 0) \\
-P(Z < 0) &= P(Z < -1) + 0.34134 \\
-P(Z < 0) - 0.34134 &= P(Z < -1)
-\end {align}
+P(-1.25 < z < 0) = P(0 < z < 1.25)
 $$
-Now, according to the *z*-table, $P(Z < 0) = 0.5$, so $P(Z < -1) = .5 - 0.34134 = 0.15866$. And just like that, we didn't need a *z*-table for negative values of *z* (although you would have perhaps appreciated it!). Putting set notation aside, let's look at the figure below. The region highlighted in gray represents $P(Z < -1)$. The whole region less than the expectation - 0 - has half the area/probability. We would need to subtract out that (not highlighted) area from -1 to 0 to get our answer. That's exactly what we just did - thanks to symmetry of the standard normal distribution. 
+That is to say, the area under the curve from $-1.25$ to zero is the same as the area under the curve from $0$ to $1.25$. You can see this visually in the figure below.
 
 ```{r, echo = FALSE}
 x <- seq(-3,3, by = 0.01)
 y <- dnorm(x)
 func_vals <- data.frame(x,y)
-x_0 <- seq(-3,-1, by = 0.01)
+x_0 <- seq(-1.25,1.25, by = 0.01)
 y_0 <- rep(0, times = length(x_0))
 y_1 <- dnorm(x_0)
 lin_vals <- data.frame(x_0,y_0,y_1)
@@ -1459,19 +1465,43 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
                         ggplot2::aes(x = x_0, y = y_0, xend = x_0, yend = y_1),
                         color = 'gray') +
   ggplot2::geom_line() +
-  ggplot2::geom_segment(x = -1, y = 0, xend = -1, yend = dnorm(1)) +
+  ggplot2::geom_segment(x = 1.25, y = 0, xend = 1.25, yend = dnorm(1.25)) +
+  ggplot2::geom_segment(x = -1.25, y = 0, xend = -1.25, yend = dnorm(1.25)) +
   ggplot2::geom_segment(x = 0, y = 0, xend = 0, yend = dnorm(0)) +
   ggplot2::geom_hline(yintercept = 0) +
   ggplot2::labs(y = 'Probability Density', x = 'z') +
   ggplot2::scale_x_continuous(breaks = c(-3,-2,-1,0,1,2,3)) +
+  ggplot2::geom_text(x = 0.5, y = 0.15, label = 'P(0 < Z < 1.25)', size = 5, angle = 90) +
+  ggplot2::geom_text(x = -0.5, y = 0.15, label = 'P(-1.25 < Z < 0)', size = 5, angle = 90) +
   ggplot2::theme_bw()
 ```
 
+This means that we only need to figure out $P(0 < Z < 1.25)$ and we will also know $P(-1.25 < Z < 0)$. We have all the tools for that! First, by our previously learned rules for the cdf, we have
+
+$$
+P(0 < Z < 1.25) = P(Z < 1.25) - P(Z < 0)
+$$
+
+$P(Z < 0)$ is 0.5. Indeed, we could gather that fact from the *z*-table. Otherwise, we might also intuit that 0 is the mean/center of mass for the standard normal distribution, and due to symmetry, half the probability lies above and half below this value. Next, we'll need to look-up $P(Z < 1.25)$ in the *z*-table - which we find to be 0.89435. Thus,
+
+$$
+P(Z < 1.25) - P(Z < 0) = 0.89435 - .5 = 0.39534
+$$
+Now $P(-1.25 < Z < 1.25) = P(-1.25 < Z < 0) + P(0 < Z < 1.25)$ because the sets referenced on the right hand side of the equation are mutually exclusive. We also know (due to symmetry) that the two terms on the right hand side of the equation are equal to each other. Therefore, we get
+
+$$
+\begin{align}
+P(-1.25 < Z < 1.25) &= P(-1.25 < Z < 0) + P(0 < Z < 1.25) \\
+&= P(0 < Z < 1.25) + P(0 < Z < 1.25) \\
+&= 2P(0 < Z < 1.25) \\
+&= 2(0.39534) = 0.79068
+\end{align}
+$$
 :::
 
-::: {.example}
-Suppose we are working with $X$, a normally distributed random variable with a mean of 5 and a standard deviation of 4. We would like to know $P(0 < X < 10)$. That is to say, we would like to know the probability that a random experiment with $X$ would result in a value between 0 and 10. Our first step, like the examples before, will be to convert the values of 0 and 10 to *z*-scores.
+You can see how symmetry of the normal distribution makes things a lot easier in terms of our calculations. Let's do a couple more examples to hammer home the logic and intuition.
 
-Such a calculation would yield a value of $-1.25$ for $X = 0$ and $1.25$ for $X=10$. 
+::: {.example}
+Suppose we are given a normal distribution with mean 10 and variance 4, and we are asked to calculate $P(X < 6 \cup X > 14)$. The first thing we'll note here is that 
 :::
 
