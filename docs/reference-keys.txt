@@ -111,7 +111,7 @@ fig:unnamed-chunk-25
 exm:unlabeled-div-39
 eq:standardnormal
 eq:normalcdf
-fig:unnamed-chunk-26
+fig:unnamed-chunk-28
 exm:unlabeled-div-40
 eq:symmetry1
 eq:symmetry2
