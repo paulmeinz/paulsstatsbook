@@ -1086,7 +1086,7 @@ We have spent the last couple of sections talking generally about continuous ran
 
 The normal density - or normal distribution - is often referred to as a "bell curve" because of its shape. I've plotted a normal distribution in the figure below. Notice how it has a maximum (a peak) at it's center, and the density declines the farther values are from this middle point. Now, supposing we put a wedge right under the value where that peak occurs. The distribution would balance perfectly. That is to say, the value of $x$ at the center of the normal distribution (where $f(x)$ is at a maximum) is the center of mass or expectation of the normally distributed random variable. Also note how the normal distribution is *symmetric* about its center of mass. At a more intuitive level, this means that the function to the left of the center is the mirror image of the function to the right. More specifically: given some value - $a$ - then $f(\mu - a) = f(\mu + a)$ - where $f(x)$ is the normal pdf (recall $\mu$ is just another way of saying $E(X)$). In other words, the value of $f(x)$ - our probability density - is the same at equivalent deviations above and below its center of mass. 
 
-Next, scan the normal distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,f(-1))$ opens up like a $\cup$. In other words, the curve is *convex* to this point. However, after $(-1,f(-1))$ the curve opens down towards the $x$-axis. That is to say, it changes to *concave*. When a curve switches from convex to concave (or vice versa), we call it an **inflection point**. In our example figure below, the normal distribution has two such inflection points at $(-1,f(-1))$ and $(1,f(1))$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
+Scan the normal distribution plot from left to right. Notice the curve on the left hand side all the way to the plotted point at $(-1,f(-1))$ opens up like a $\cup$. In other words, the curve is *convex* to this point. However, after $(-1,f(-1))$ the curve opens down towards the $x$-axis. That is to say, it changes to *concave*. When a curve switches from convex to concave (or vice versa), we call it an **inflection point**. In our example figure below, the normal distribution has two such inflection points at $(-1,f(-1))$ and $(1,f(1))$, respectively. In the second, the curve switches from concave to convex and remains that way thereafter.
 
 ```{r, echo = FALSE, fig.cap = "The Normal Distribution"}
 x <- seq(-2.5, 2.5, by = .01)
@@ -1159,7 +1159,7 @@ ggplot2::ggplot(z, ggplot2::aes(x = x, y = y)) +
   ggplot2::facet_grid(cols = ggplot2::vars(sigma), rows = ggplot2::vars(mu))
 
 ```
-Note how the normal distributions in the top row of the figure all have $\mu = 0$, but their values of $\sigma$ differ. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Without any special math, you can see how the distribution in the first column is less spread out than the distributions in the second and third columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the distribution in the same column above. However, note how they are moved slightly to the right on the number line. THis is because these distributions each have $\mu = 4$ as opposed to the $\mu = 0$ in the first row. Their peaks/centers are therefore located at 4 as opposed to 0.
+Note how the normal distributions in the top row of the figure all have $\mu = 0$, but their values of $\sigma$ differ. From left to right, the distributions have $\sigma$ equal to 1, 2, and 3, respectively. Without any special math, you can see how the distribution in the first column is less spread out than the distributions in the second and third columns. Now take a look at the second row. Each distribution in this row has the same value of $\sigma$ as the distribution in the same column above. However, note how they are moved slightly to the right on the number line. This is because these distributions each have $\mu = 4$ as opposed to the $\mu = 0$ in the first row. Their peaks/centers are therefore located at 4 as opposed to 0.
 
 Thus, the parameters of $\mu$ and $\sigma$ control the *location* and the *scale* of the normal distribution. A normal distribution with $\mu = 10$ has a center/peak 15 points to the right of a distribution with $\mu = -5$, and a distribution with $\sigma = 5$ is more spread out than one with $\sigma = 1$. You may have noticed, based on our discussion here and our discussions in previous sections, that the parameters $\mu$ and $\sigma$ are very similar to the expectation and variance. One determines the center of the normal distribution and the other determines its dispersion, spread, or scale.
 
@@ -1177,7 +1177,7 @@ Let's now take a more in depth look at the normal pdf. Direct your attention to 
 $$
 exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]
 $$
-We shall learn a lot about the normal distribution from the term $\frac{x - \mu}{\sigma}$. This term says that to determine the density at some outcome $x$ we first subtract the mean/expectation of $X$ from that value and divide by it's standard deviation. That is to say, we calculate the number of standard deviations the particular value - $x$ - is from the mean of the normally distributed random variable $X$. For a given value of $x$, it is often convention to call this value a **z-score**.
+We shall learn a lot about the normal distribution from the term $\frac{x - \mu}{\sigma}$. This term says that to determine the density at some outcome $x$ we first subtract the mean/expectation of $X$ from that value and divide by it's standard deviation. That is to say, we calculate the number of standard deviations the particular value - $x$ - is from the mean of the normally distributed random variable $X$. By convention, it is common to call this value a **z-score**.
 
 ::: {.example}
 Suppose we have a normally distributed random variable $X \sim N(10,4)$. We would like to know the z-score of the value 12. First, we are given a *variance* of 4, so we will have to take the square root of the variance to get the standard deviation. Next
@@ -1274,9 +1274,9 @@ which we will call the **standard normal distribution**, a.k.a. $Z \sim N(0,1)$.
 In practice, we will frequently work with the standard normal distribution. Indeed, when we are hoping to calculate probabilities for a normally distributed random variable, we will use its cdf. More on that next. 
 
 ### The normal cumulative distribution function
-Recall how we calculate the density for a particular value of a normally distributed random variable, namely, by first calculating a *z*-score. The *z*-score describes how many standard deviations a particular value of our normal random variable - call it $X$ - is from its mean. As it turns out, for some value $x$ of a normally distributed random variable, $P(X < x)$ - the cdf of the normal distribution - is completely determined by how many standard deviations the value $x$ is from its mean. Indeed all normal distributions share this property. 
+Recall how we calculate the density for a particular value of a normally distributed random variable, namely, by first calculating a *z*-score. The *z*-score describes how many standard deviations a particular value of our normal random variable - call it $X$ - is from its mean. As it turns out, for some value $x$ of a normally distributed random variable, $P(X < x)$ (the cdf of the normal distribution) is completely determined by how many standard deviations the value $x$ is from its expectation. Indeed all normal distributions share this property. 
 
-To illustrate this fact, the figure below describes the area under the curve for a normally distributed random variable for the ranges -1 and 1 and -2 and 2 standard deviations, respectively. For all normal distributions, 68.3% of the area under the normal pdf is contained between -1 and 1 standard deviations. Moreover, 95.4% of the area under the curve is contained between -2 and 2 standard deviations. If we were to widen this interval by 2 units - between -3 and 3 standard deviations - then we would find that 99.7% of the area under the curve is contained in this range. Indeed, given any range measured in standard deviations, all normal distributions will have exactly the same area under the pdf in that region.
+To illustrate this fact, the figure below describes the area under the curve for a normally distributed random variable for the ranges -1 and 1 and -2 and 2 standard deviations, respectively. For all normal distributions, 68.3% of the area under the normal pdf is contained between -1 and 1 standard deviations. Moreover, 95.4% of the area under the curve is contained between -2 and 2 standard deviations. If we were to widen this interval by 2 standard deviations - between -3 and 3 - then we would find that 99.7% of the area under the curve is contained in this range. Indeed, given any range measured in standard deviations, all normal distributions will have exactly the same area under the pdf in that region.
 
 
 ```{r, echo = FALSE}
@@ -1316,11 +1316,11 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
   ggplot2::theme_bw()
 ```
 
-Therefore, suppose for a moment that we are working with a normally distributed random variable and we are given some value - $a$. Further suppose that we wish to determine $P(X < a)$. That is to say, we want to determine the probability of a random experiment with $X$ yielding a value less than *a*. Because of the property we discussed in the paragraph above, we will first determine how many standard deviations $a$ is from the expectation of $X$. That is, we will convert $a$ into a *z*-score. The next step will be to determine the area under the curve for standard deviations less than or equal to the *z*-score of $a$. In other words, we will determine $P(Z < z)$. *Z* in this case is the result of our random experiment with $X$ converted to standard deviations, and *z* is the *z*-score we calculated for $a$.
+Thus, suppose for a moment that we are working with a normally distributed random variable and we are given some value - $a$. Further suppose that we wish to determine $P(X < a)$. That is to say, we want to determine the probability of a random experiment with $X$ yielding a value less than *a*. Because of the property we discussed in the paragraph above, we will first determine how many standard deviations $a$ is from the expectation of $X$. That is, we will convert $a$ into a *z*-score. The next step will be to determine the area under the curve for standard deviations less than or equal to this *z*-score. In other words, we will determine $P(Z < z)$. *Z* in this case is our random variable $X$ converted to standard deviations, and *z* is the *z*-score we calculated for our value $a$.
 
-Unfortunately, this is where things get a little tricky. Recall in our previous work with cumulative distribution functions, we used a clearly described equation to calculate $P(X < x)$. No such equation exists in the case of the normal distribution. This (thankfully) does not mean we can't calculate the area under the normal pdf (a.k.a., integrate the normal pdf), but we do have to determine the area by other means. In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. You may ultimately choose to use your favorite statistical computing program or language (like R or Python). For our purposes, however, we will use a table of values. Given some *z*-score, this table of values will provide $P(Z < z)$.
+Unfortunately, this is where things get a little tricky. Recall in our previous work with cumulative distribution functions, we used a clearly described equation to calculate $P(X < x)$. No such equation exists in the case of the normal distribution. This (thankfully) does not mean we can't calculate the area under the normal pdf (a.k.a., integrate the normal pdf), but we do have to determine the area by other means. In the absence of an equation, there are many modern and not so modern ways to describe the normal cumulative distribution function. You may ultimately choose to use your favorite statistical computing program or language (like R or Python). For our purposes, however, we will use a table of values. 
 
-In light of the above, let's first learn how to use this table, and then we'll do some examples to work out the kinks. Suppose the *z*-score for our given value of *a* is 0.32, and we want to determine $P(Z < 0.32)$. The *z* table - a portion of which is presented below - will be the key. The first column of the table represents the first digit and first decimal of this *z*-value. In our case, we would find the row in this column with the value of 0.3. Each column after the first represents a value of the second decimal place (a.k.a., the hundredths place) from 0.00 all the way to 0.09. Our *z*-value has a 2 in it's second decimal place, so we would scan to the right and use the value under the 0.02 column header. The value in the cell is 0.62552. That is to say, $P(Z < 0.32) = 0.62552$, and thus, $P(X < a) = 0.62552$. I've also highlighted the value (with a nice gentle teal) in the table to make it a bit easier to see what we are talking about.
+Although it's a little bit clunky and old school, this table provides an effective way to determine $P(Z < z)$. Suppose the *z*-score for our given value of *a* is 0.32, and we want to determine $P(Z < 0.32)$. The *z*-table - a portion of which is presented below - will be the key. The first column of the table represents the first digit and first decimal of this *z*-value. In our case, we would find the row in this column with the value of 0.3. Each column after the first represents a value of the second decimal place (a.k.a., the hundredths place) from 0.00 all the way to 0.09. Our *z*-value has a 2 in it's second decimal place, so we would scan to the right and use the value under the 0.02 column header. The value in the cell is 0.62552. That is to say, $P(Z < 0.32) = 0.62552$, and thus, $P(X < a) = 0.62552$. I've also highlighted the value (with a nice gentle teal) in the table to make it a bit easier to see what we are talking about.
 
 ```{r, echo = FALSE, cache = TRUE}
 
@@ -1354,7 +1354,7 @@ x
 
 ```
 
-The *z*-table, therefore, helps us to take a given number of standard deviations - $z$ - determine $P(Z < z)$ and ultimately determine $P(X < a)$. Now, recall from our very recent discussion how the standard normal distribution is the result of converting every value of a normally distributed random variable to a *z-score*. The table we just discussed therefore describes the cdf of the standard normal distribution. It provides $P(Z < z)$ for each value of $z$. The cumulative distribution function for the standard normal distribution is, by convention, referenced via the capital phi as opposed to the capital $F$ used for other cdfs.
+The *z*-table, therefore, helps us to take a given number of standard deviations - $z$ - determine $P(Z < z)$ and ultimately determine $P(X < a)$. Now, recall from our very recent discussion how the standard normal distribution is the result of converting every value of a normally distributed random variable to a *z*-score. The *z*-table therefore describes the cdf of the standard normal distribution. It provides $P(Z < z)$ for each value of $z$. The cumulative distribution function for the standard normal distribution is, by convention, referenced via the capital phi as opposed to the capital $F$ used for other cdfs.
 
 $$
 \Phi(z) = P(Z < z) 
@@ -1396,7 +1396,7 @@ Now we need to use our not-so-fancy table to determine the value of
 $$
 P(X < 3) = P(Z < \frac{1}{2}) =\Phi\left(\frac{3 - \mu}{\sigma}\right) = \Phi\left(\frac{1}{2}\right) 
 $$
-Our *z*-score has a value of 0.5, so we find the row in the table corresponding to this value. Next, the hundredths place is zero, so we take the very first value in that row - 0.69146. That is $P(X < 3) = 0.69146$. The distribution of $X$ - with the aforementioned area $P(X < 3)$ highlighted (in a very serene teal) - can be found in the figure below. In short, we first determined how many standard deviations 3 was from the mean of 2. Then, with our *z*-score in hand, we were able to get a probability using the cdf of the standard normal distribution.
+Our *z*-score has a value of 0.5, so we find the row in the table corresponding to this value. Next we note that the hundredths place is zero, and thus use the value in the second column of the table - 0.69146. That is $P(X < 3) = 0.69146$. The distribution of $X$ - with the aforementioned area $P(X < 3)$ highlighted (in a very serene teal) - can be found in the figure below. In short, we first determined how many standard deviations 3 was from the mean of 2. Then, with our *z*-score in hand, we were able to get a probability using the cdf of the standard normal distribution.
 
 ```{r, echo = FALSE}
 x <- seq(-4,8, by = 0.01)
@@ -1420,7 +1420,7 @@ ggplot2::ggplot(func_vals, ggplot2::aes(x = x, y = y)) +
 ```
 :::
 
-In the example above, we worked with a positive *z*-score - a value of $x$ that is greater than its expectation. If we worked with a value less than the expectation, we would have ended up with a negative *z*-value. For example, a value of $x = 1$ would have given us $z = -1/2$. You'll note that the *z*-table in this book - which is typically of these tables generally - only presents $P(Z < z)$ for positive values. In fact, the lowest possible probability in the table is $P(Z < 0) = .5$ which is the value we would get for a value of $x$ equal to it's expectation (a.k.a., zero standard deviations from its mean). To our chagrin, the table seems to only describe half the standard normal distribution!
+In the example above, we worked with a positive *z*-score - a value of $x$ that is greater than its expectation. If we worked with a value less than the expectation, we would have ended up with a negative *z*-value. For example, a value of $x = 1$ would have given us $z = -1/2$. You'll note that the *z*-table in this book - which is typical of these tables generally - only presents $P(Z < z)$ for positive values. In fact, the lowest possible probability in the table is $P(Z < 0) = .5$ which is what we would get for a value of $x$ equal to it's expectation (a.k.a., zero standard deviations from its mean). To our chagrin, the table seems to only describe half the standard normal distribution!
 
 Indeed, *z*-tables are created honoring only 1/2 the standard normal distribution because the normal distribution is symmetric. This wonderful symmetry means that, once we know $P(Z < z)$ for all the positive values (half the standard normal distribution), then we can figure out the other half. Indeed, when it comes to the *standard* normal distribution and *z*-scores
 
@@ -1482,7 +1482,7 @@ Why is this observation important? We can calculate the area of $P(Z > 1)$ with 
 $$
 P(Z > 1) = 1 - P(Z < 1) = 1 - 0.84134 = 0.15866
 $$
-where $P(Z < 1)$ came from the *z*-table, and we've used the rule for cdfs here \@ref(eq:infinitycont).
+where $P(Z < 1)$ came from the *z*-table, and we've used the rule for cdfs here \@ref(eq:infinitycont). Thus, $P(X < -3) = P(Z < -1) = 0.15866$ 
 :::
 
 ::: {.example}
@@ -1493,7 +1493,7 @@ Such a calculation would yield a value of $-1.25$ for $X = 0$ and $1.25$ for $X=
 $$
 P(-1.25 < Z < 1.25) = P(Z < 1.25) - P(Z < -1.25)
 $$
-But, to our chagrin, the value of $P(Z < -1.25)$ will not be in our *z*-table! We could approach this problem in a few ways. One would be to proceed as in the last example and calculate $P(Z < -1.25)$ by calculating $P(Z > 1.25)$. Then the resulting value could be plugged into the equation above. For the purposes of our example, however, we are going to use symmetry in a slightly different way. First notice that
+But, to our chagrin, the value of $P(Z < -1.25)$ will not be in our *z*-table! We could approach this problem in a few ways. One would be to proceed as in the last example and calculate $P(Z < -1.25)$ by calculating $P(Z > 1.25)$. Then the resulting value could be plugged into the equation above. For the purposes of our example, however, we are going to use symmetry in a slightly different way. You may ultimately decide to use whatever method is more intuitive to you. First notice that
 
 $$
 \{-1.25 < Z < 1.25\} = \{-1.25 < Z < 0\} \cup \{0 \leq Z < 1.25\}
@@ -1584,7 +1584,7 @@ There is a 0.04552 chance that $X$ is less than 6 or greater than 14.
 ### Some other cool distributions
 We are now in the final (sub)section before we can officially start statistical inference! And we are going to close it out with a tour of other common continuous distributions we may encounter. This discussion will be less involved than that of the normal distribution. Our goal here is to be familiar with each distribution. This will help us (1) learn some cool things later and (2) be familiar when the time comes to use them on our statistical adventure.
 
-We will first briefly look at the **chi-square distribution**. This distribution has only one parameter, *degrees of freedom* - commonly abbreviated as "df". A random variable with a chi-square distribution has a space of all the positive numbers, e.g., $0 < X < \infty$. When a random variable has a chi-square distribution, we often use the shorthand - $X \sim \chi^2(df)$ - using the chi-square symbol and accompanying degrees of freedom. We won't delve into the equation for the chi-square pdf as we did with the normal distribution, but let's plot a few with differing degrees of freedom.
+We will first briefly look at the **chi-square distribution**. This distribution has only one parameter, *degrees of freedom* - commonly abbreviated as "df". A random variable with a chi-square pdf has a space of all the positive numbers, e.g., $0 < X < \infty$. When a random variable has a chi-square distribution, we often use the shorthand - $X \sim \chi^2(df)$ - a chi-square symbol accompanied by the degrees of freedom in parentheses. We won't delve into the equation for the chi-square pdf as we did with the normal distribution, but let's plot a few with differing degrees of freedom.
 
 
 ```{r, echo = FALSE, warning = FALSE, fig.cap = "Chi-Square Distributions with Varying Degrees of Freedom"}
@@ -1614,13 +1614,42 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = y, linetype = grp,
 
 ```
 
-The expectation of a chi-square distribution is it's degrees of freedom. For example, suppose we had a chi-square distributed random variable - $V$ - with 10 degrees of freedom, then $E(V) = 10$. Indeed, you can see from the figure above how the center of mass for the chi-square distribution moves to the right with greater df. The chi-square distribution is often used during the process of hypothesis testing and statistical inference. It is also used in the derivation of two other very important distributions.
+From the figure above, you can see that with more degrees of freedom, the mass of the chi-square distribution moves to the right. The expectation of a chi-square distribution is it's degrees of freedom. For example, suppose we had a chi-square distributed random variable - $V$ - with 10 degrees of freedom, then $E(V) = 10$. Thus larger degrees of freedom indicate a distribution who's mass is shifted further to the right. The chi-square distribution is often used during the process of hypothesis testing and statistical inference. In fact, we'll see some examples of this later. It is also used in the derivation of two other very important distributions.
 
-In particular, remember way back in the first chapter of this book, where we determined the probability of various sums of two six sided dice. Call the first roll the random variable $X_1$ and the second dice $X_2$ - each with a discrete uniform distribution and six outcomes (the values from 1 to 6). In effect, we were determining the distribution of a new random variable - call it $Z$ - where $Z = X_1 + X_2$. We fully described this random variable $Z$ back in the section 2.2 of this book. Venture back there if your memory is foggy. The fact of the matter is that you can produce all sorts of new random variables by combining other random variables. You might multiply two random variables together, divide them, square root one, and so on. The methods for determining the combination of random variables in this fashion is beyond the scope of this book. Nevertheless, our next (and last) two distributions are combinations of other continuous random variables.
+In particular, remember way back in the first chapter of this book, where we determined the probability of various sums of two six sided dice. Call the first roll the random variable $X_1$ and the second dice $X_2$ - each with a discrete uniform distribution and six outcomes (the values from 1 to 6). In effect, we were determining the distribution of a new random variable - call it $Z$ - where $Z = X_1 + X_2$. We fully described the distribution of this random variable $Z$ back in the section 2.2 of this book - although we did not reference the letter $Z$. Venture back there if your memory is foggy. The fact of the matter is that you can produce all sorts of new random variables by combining them other random variables. You might multiply two random variables together, divide one by the other, square root one and multiply it by the other, and so on. The methods for determining the combination of random variables in this fashion is beyond the scope of this book. Nevertheless, our next (and last) two distributions are combinations of other continuous random variables.
 
 Suppose we have a variable with a standard normal distribution - $W$ - and another random variable with a chi-square distribution - $V$ - with a given df. Further suppose that these random variables are *independent*. We might combine them like this
 
 $$
 \frac{W}{\sqrt{V/df}}
 $$
-In words, we divide the standard normal variable by the square root of the chi-square distributed random variable divided by its df. The resulting distribution is prolific in the field of statistics - the **_t_ distribution**.
+In words, we divide the standard normal variable by the square root of the chi-square distributed random variable divided by its df. The resulting random variable has distribution that is prolific in the field of statistics - the **_t_ distribution**. As you will see later on, the *t*-distribution will be important to statistical analyses that we learn throughout this book, and, throughout other statistics courses/subjects that you may endeavor to learn. The number of degrees of freedom associated with the chi-square distributed random variable - $V$ - determines how spread out the *t*-distribution is. I've plotted a few below. 
+
+```{r, echo = FALSE, warning = FALSE, fig.cap = "Chi-Square Distributions with Varying Degrees of Freedom"}
+x <- seq(-5,5, by = 0.01)
+y_1 <- dt(x, df = 1)
+y_2 <- dt(x, df = 2)
+y_3 <- dt(x, df = 3)
+y_4 <- dt(x, df = 40)
+y_5 <- dt(x, df = 500)
+
+y <- c(y_1, y_2, y_3, y_4, y_5)
+plot_data <- data.frame(y)
+plot_data$x <- x
+plot_data$grp <- rep(c('1 df', '2 df','3 df','40 df','500 df'),
+                     each = length(x))
+
+
+ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = y, linetype = grp,
+                                        color = grp)) +
+  ggplot2::geom_line(linewidth = 0.6) +
+  ggplot2::scale_y_continuous(limits = c(0,.5)) +
+  ggplot2::scale_x_continuous(limits = c(-5,5)) +
+  ggplot2::labs(y = "Density", x = 'X', color = '', linetype = '') +
+  ggplot2::theme_bw()
+
+
+
+```
+
+Notice how distributions with lower degrees of freedom have heavier tails. Indeed, as the df increase, the mass of the distribution becomes more centralized. 
