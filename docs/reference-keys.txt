@@ -120,6 +120,8 @@ exm:unlabeled-div-41
 exm:unlabeled-div-42
 fig:unnamed-chunk-32
 fig:unnamed-chunk-33
+fig:unnamed-chunk-34
+fig:pressure-plot
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book
@@ -160,4 +162,7 @@ a-very-special-distribution-and-some-other-cool-distributions-too
 the-normal-distribution
 the-normal-cumulative-distribution-function
 some-other-cool-distributions
+practice-problems-4
+practice-problem-answers-4
+statistical-inference-inferring-the-expectation-and-variance-of-a-population
 z-table

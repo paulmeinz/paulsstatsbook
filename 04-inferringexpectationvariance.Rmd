@@ -1,0 +1,5 @@
+# Statistical Inference: Inferring the Expectation and Variance of a Population
+
+```{r pressure-plot, echo=FALSE, fig.cap="Get stoked!", out.width="80%", fig.align="center"}
+knitr::include_graphics("images/stand_back.jpg")
+```
