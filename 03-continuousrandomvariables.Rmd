@@ -1689,4 +1689,77 @@ ggplot2::ggplot(plot_data, ggplot2::aes(x = x, y = y, linetype = grp,
 Although we will work with each of the chi-square, *t*, and *F* distributions in less mathematical depth, they will be very important to us as statisticians. Indeed, we will see them frequently when we discuss statistical inference - which (FINALLY) shall be our next topic of discussion!
 
 ### Practice Problems
+
+1. Suppose $X \sim N(5,4)$, what is the probability that a random experiment with $X$ would yield a value less than 7?
+
+2. Suppose $X \sim N(0,1)$, what is $P(X < -1.5)$?
+
+3. Suppose $X \sim N(4,8)$, what is $P(2 < X < 6)$?
+
+4. Suppose $X \sim N(5,1)$, what is $P(4 < X < 7)$?
+
+5. Suppose $X \sim N(0,1)$, what is $P(X < -1.96  \cup X > 1.96)$?
+
+6. Suppose $X \sim N(5,3)$, what is $P(X > 6)$
+
+7. Suppose $X \sim N(3,2)$, what is $P(X > 1)$
+
+8. Consider the equation $z = \frac{x-\mu}{\sigma}$ - which takes a value of $x$ and converts it to a *z*-score. Use a little algebra to figure out how we might convert our *z*-score back to a value of $x$.
+
+9. Suppose we have calculated a *z*-score of 4 for a random variable $X \sim N(2,4)$. What value of $x$ resulted in this *z*-score? (You might want to do question 8 before this one if you haven't already)
+
+10. Suppose we have calculated a *z*-score of -2 for a random variable $X \sim N(0,25)$. What value of $x$ resulted in this *z*-score? 
+
+11. What *z*-value would we need to have $P(Z < z) = .5$? What about $P(Z < z) = .75$?
+
+For the next two questions, assume we are working with a normally distributed random variable - $X$ - with a mean of 2 and a standard deviation of 1.
+
+12. What value of $x$ would you need for $P(X < x) = .95$? Hint: Start with the *z*-table and work backwards.
+
+13. At what values are the inflection points of the distribution of $X$?
+
+14. Using the result of problem 5 above, suppose we did 5 random experiments with  $X ~ N(0,1)$, what is the probability of *at least one* such experiment resulting in a value less than -1.96 or greater than 1.96?
+
+15. Suppose $X \sim N(3,4)$. If we multiply $X$ by 3, what would be its new variance and expectation?
+
+16. This problem works with the pdf of a normally distributed random variable. Given $X \sim N(2,16)$, calculate the density of $x$ at the value 4. What other value of $X$ would result in the same density?
+
+17. This problem discusses a property of the normal pdf. Looking at this part of the equation for the pdf - $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$ - provide a reason why the maximum density is at $x = \mu$. Hint: Look at the sign of the exponent.
+
 ### Practice Problem Answers
+Note that I've used a computer program to determine some of these answers, so they may differ very slightly from *z* table provided in this book.
+
+1. 0.84134
+
+2. 0.06681
+
+3. 0.52050
+
+4. 0.81859
+
+5. 0.05000
+
+6. 0.28185
+
+7. 0.92135
+
+8. $x = z\sigma + \mu$
+
+9. 10
+
+10. -10
+
+11. 0 and 0.67449 (0.67 or 0.68 from the *z*-table)
+
+12. 3.645
+
+13. 1 and 3
+
+14. About 0.226
+
+15. 9 and 27, respectively.
+
+16. 0.088 and 0
+
+17. The sign of the exponent is negative which means $e^{-\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}$ can also be written as $\frac{1}{e^{\frac{1}{2}\left[\frac{x - \mu}{\sigma}\right]^2}}$. When $x$ is equal to $\mu$ the exponent is zero, resulting in $\frac{1}{e^{0}} = \frac{1}{1} = 1$. However, for values not equal to $\mu$ the exponent is greater than zero. This value gets larger for values further away from $\mu$ - resulting in a smaller and smaller fraction. This means the density gets smaller and smaller the further $x$ is from $\mu$.
+
