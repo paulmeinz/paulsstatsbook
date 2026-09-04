@@ -1,6 +1,6 @@
 # (APPENDIX) Appendix {-}
 
-# *Z*-Table
+# The *Z*-Table
 
 ```{r, echo = FALSE}
 
@@ -31,3 +31,76 @@ x <- flextable::bg(x, bg = 'gray', j = 1)
 x
 
 ```
+
+# Additional problem sets
+
+## Probability and Probability Distributions - Problem Set 1
+These questions pertain to the content of chapters 1 through 3 of the textbook. The questions are presented in no particular order. You may need information from any of the chapters to answer each. Some of the questions were written to be intentionally more difficult than average, so don't get discouraged!
+
+1. Assume two fair coins are flipped independently. What is the probability of flipping heads followed by tails?
+
+2. During normal operating hours, students approach the student services counter at an average rate of 5 students per hour. What is the probability of serving zero students in an hour? What is the probability of serving at least 1 student in an hour?
+
+3. Describe (in words) the difference between a probability density function and a cumulative distribution function.
+
+4. Assume two fair coins are flipped independently. What is the probability of flipping a heads on the first coin or a heads on the second coin?
+
+5. Take a look at the discrete probability distribution below (also known as a probability mass function). What is the expectation and variance of a random variable - $X$ - with this distribution?
+
+$$
+p(x) =
+\begin{cases}
+1/3 & x = 1 \\
+1/2 & x = 2 \\
+1/6 & x = 3 \\
+\end{cases}
+$$
+
+6. Suppose $X \sim N(7,8)$, what other value of $x$ would have the same density as $x = 9$.
+
+This scenario is used for the next two questions: Six people are participants on a reality show. They are participating in a fair lottery for two prizes. Consider the lottery selection methods in the next couple of questions and calculate the corresponding probability.
+
+7. Suppose all six participant names are put into a hat, and two names are drawn out of the hat. The two drawn participants win one of the two prizes. What is the probability that a participant wins a prize in this circumstance?
+
+8. Suppose all six participants names are put into a hat. The first name is drawn, and that participant wins the first prize. Then the *name is returned* to the hat and a second drawing occurs. What is different about the possible outcomes of this drawing? What is the probability of a participant winning a prize?
+
+9. Write this set as the union of two different sets {X < 8}.
+
+10. Suppose an individual has a 10% chance of landing a back flip. Assume that each of the back flips are independent and further suppose the individual attempts 10 back flips in a session. What is the expected number of landed back flips? Also describe how the number of back flips in a session may vary by calculating the variance of successful back flips.
+
+For questions 11 through 16, use the cumulative distribution function below.
+
+$$
+P(X < x) = F(x) =
+\begin{cases}
+0 & x < 0 \\
+x & 0 \leq x \leq 1 \\
+1 & x > 1 \\
+\end{cases}
+$$
+
+11. What is $P(X < 0)$
+
+12. What is $P(X < 50)$
+
+13. What is $P(X < 1/2)$
+
+14. What is $P(X > 3/4)$
+
+15. What is $P(1/4 < X < 3/4)$
+
+16. Suppose you conduct 4 random experiments with this random variable. What is the probability that exactly 2 of these experiments have $X < 1/8$?
+
+17. Suppose the random variable $Z$ has a binomial distribution with $p$ = 0.0001 and $n$ = 10000. What is $P(Z = 3)$? An approximation will suffice.
+
+18. Let $X \sim N(0,4)$, what is $P(X < 2)$? What is $P(-3 < X < 3)$? What is $P(X < -3 \cup X > 3)$?
+
+19. Suppose $X$ is $B(10,.30)$ and $Y$ is $N(10,12)$, and both are independent. What is the expectation of their sum (e.g., $E(X + Y)$)? What is the variance of their sum?
+
+20. What part of the equation for a normally distributed random variable make's it symmetric? It may be worth calculating a couple of densities to get a feel for this question.
+
+21. Given a normally distributed random variable with equation $f(x) = \frac{1}{\sqrt{2\pi}\sigma} exp \left [-\frac{1}{2}\left(\frac{x - \mu}{\sigma}\right)^2\right]$, what is its maximum density?
+
+22. Suppose two fair six-sided dice are rolled. What is the probability of getting a sum of 2 if the first rolled dice yields a value of 1? What is the probability of getting a sum of 2 if the first rolled dice yields a value of 4?
+
+23. Describe in words what it means for two random variables to be dependent?
