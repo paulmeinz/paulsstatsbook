@@ -165,6 +165,7 @@ some-other-cool-distributions
 practice-problems-4
 practice-problem-answers-4
 statistical-inference-inferring-the-expectation-and-variance-of-a-population
+describing-a-sample
 the-z-table
 additional-problem-sets
 probability-and-probability-distributions---problem-set-1
