@@ -122,6 +122,7 @@ fig:unnamed-chunk-32
 fig:unnamed-chunk-33
 fig:unnamed-chunk-34
 fig:pressure-plot
+eq:average
 you-can-learn-statistics
 why-i-wrote-this-book
 what-content-to-expect-in-this-book

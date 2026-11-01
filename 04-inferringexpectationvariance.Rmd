@@ -12,7 +12,7 @@ For the purposes of our discussion here, these random variables and their corres
 
 As we will learn later, we will be better able to describe the population we are interested in if we gather more than a single *observation* of our measure. Simply measuring one cat's height would be absolutely insufficient to learn about the population of interest, for example. Suppose we called our measure of cat height - $X$. To get a better sense of the distribution this variable, we would endeavor to randomly seek out multiple cats and measure their height. Throughout this difficult, adorable, and scratchy process, it would be our hope that the random process for selecting cats is truly random - e.g., every single cat or individual has equal likelihood to be selected for measurement. In the case of a *random sample* like this, we would now have several random variables $X_1$, $X_2$, $X_3$, ... , $X_n$ for the $n$ cats we hope to measure. These will each have the same probability distribution because they are each from the same population of cat heights. If we further believe/know that these random variables are independent, then we would call the set of random variables *independent and identically distributed* or i.i.d.
 
-Of course, these are random variables, because as we pondered way back in chapter 1, the actual realized value of each of the above random variables may change from sample to sample. Thus, to reduce some ambiguity, we will again refer to a particular realization of our sample in lower case letters. In this case, we would write $x_1$, $x_2$, $x_3$, ..., $x_n$ to refer to a single outcome of our sampling procedure. Next comes the fun part. In this section we are going to learn about how we might use this sample to make inferences about the population of interest. In particular, we will learn about how we might infer the expectation and variance of the population. As you will see, this starts with **describing** our sample.
+Of course, these are random variables, because as we pondered way back in chapter 1, the actual realized value of each of the above random variables may change from sample to sample. Thus, to reduce some ambiguity, we will again symbollically refer to a particular realization of our sample in lower case letters. In this case, we would write $x_1$, $x_2$, $x_3$, ..., $x_n$ to refer to a single outcome of our sampling procedure. Next comes the fun part. In this section we are going to learn about how we might use this sample to make inferences about the population of interest. In particular, we will learn about how we might infer the expectation and variance of the population. As you will see, this starts with **describing** our sample.
 
 ## Describing a sample
 Suppose we are happiness researchers, and we are interested in describing the average happiness level of folks in the Sacramento area. We gather data from a random sample of individuals living in this city on a well validated happiness inventory. The inventory yields a final happiness score of 0 to 100. We select 10 people at random to take the inventory. That is, we have 10 random variables - $X_1$, $X_2$, ... , $X_{10}$ - and after we conduct our random sample we shall get 10 realized values - $x_1$, $x_2$, ... , $x_{10}$. After an arduous research journey, although perhaps less scratchy than working with cats, we gather our 10 realized measurements or **observations**
@@ -27,7 +27,7 @@ Measures of the middle of a sample are frequently referred to as **measures of c
 $$
 p(x) =
 \begin{cases}
-1/10 & x_1 = 63.50 \\
+1/10 & x_1 = 63.5 \\
 1/10 & x_2 = 37.5 \\
 1/10 & x_3 = 59.3 \\
 1/10 & x_4 = 53.5 \\
@@ -39,3 +39,56 @@ p(x) =
 1/10 & x_{10} = 47.3
 \end{cases}
 $$
+Now we take the expectation of this of this distribution.
+
+$$
+\begin{align}
+E(X) &= \sum_{i = 1}^{10} p(x_i)x_i \\
+&= \frac{1}{10}(63.5 + 37.5 + 59.3 + 53.5 + 39.5 + 54.9 + 49.4 + 55.6 + 69.3 + 47.3) \\
+&= \frac{1}{10}529.8 \\
+&= 52.98
+\end{align}
+$$
+Thus, the balancing point for the distribution of our sampled values is 52.98. Notice how we divided the sum of all the values ($529.8$) by the number of values ($n = 10$). That is, if we had $x_1$,...,$x_n$ sampled values. Then we would have
+
+$$
+\begin{align}
+E(X) &= \sum_{i = 1}^{n} p(x_i)x_i \\
+&= \sum_{i = 1}^{n} \frac{1}{n}x_i \\
+&= \frac{1}{n} \sum_{i = 1}^{n} x_i \\
+&= \frac{\sum_{i = 1}^{n} x_i}{n} \\
+\end{align}
+$$
+
+The balancing point or center of mass, a.k.a. the mean, of our sample is therefore calculated with the equation
+
+$$
+\bar{x} = \frac{\sum_{i = 1}^{n} x_i}{n}
+(\#eq:average)
+$$
+
+where $n$ is the number of observations or sample size. As the equation implies, we refer to the mean of our sample as $\bar{x}$. Note that the mean is sometimes referred to colloquially as the average.
+
+The **median** of a sample refers to the "middle" value of a sample after all values have been sorted. Put another way, 50% of the values in the sample are equal to or below the median. Suppose we gather a gather a random sample of five families and a count of their respective family members. We get the values
+
+$$
+3,2,3,4,6
+$$
+To find the median value, we sort these numbers and find the middle value.
+
+$$
+2,3,\underline{3},4,6
+$$
+
+The value of 3 sits smack dab in the middle, and is the median of our sample. However, notice that I've contrived a sample that has an odd number of observations. This is quite convenient because there *is* a middle value after we sort. For example, if we had 9 values, the fifth value would be the middle value. And, in general, if we had an odd number of values - $n$ - the $(n+1)/2$th value would be the median. However, suppose $n$ were even! Let's add one more family to our sample. You'll note the new value of $7$ family members in the ordered list of numbers below.
+
+$$
+2,3,3,4,6,7
+$$
+
+We're in a bit of a conundrum because there is no true middle values. Our two candidates for median - 3 and 4 - have an uneven number of values above and below their respective position. The value of 3 has 3 values above it and 2 below, and the value of four has 2 above and 3 below. When we find ourselves in this uncomfortable position, it is conventional to take the mean or average of the two middle value candidates. That is, our median would be
+
+$$
+\frac{3 + 4}{2} = 3.5
+$$
+
