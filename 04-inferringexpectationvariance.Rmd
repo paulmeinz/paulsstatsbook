@@ -20,9 +20,9 @@ Suppose we are happiness researchers, and we are interested in describing the av
 $$
 63.50, 37.5, 59.3, 53.5, 39.5, 54.9, 49.4, 55.6, 69.3, 47.3
 $$
-The first thing we shall want to do with our sample is *describe* it. In practice, it is nice to have some summary numbers that take all the information in our sample and reduce it to something a little more ingestable. One thing we'd like to calculate is some measure of the *middle* of our sample of values, and another thing we'll be interested in is describing how much they *vary* from observation to observation. We will focus on the first and the move to variability later in the section. We'll close out with a couple of ways to visualize your data.
+The first thing we shall want to do with our sample is *describe* it. In practice, it is nice to have some summary numbers that take all the information in our sample and reduce it to something a little more ingestable. One thing we'd like to calculate is some measure of the *middle* of our sample of values, and another thing we'll be interested in is describing how much the observations in the sample *vary* from value to value. We'll focus on measures of the middle first and then move to variability later in this section. Finally, we'll close out with a couple of ways to visualize your data.
 
-Measures of the middle of a sample are frequently referred to as **measures of central tendency**. There are three such measures frequently taught in behavioral statistics books - the mean, median, and mode. Let's talk about the mean first. Suppose for a moment that we treated our sample as a uniform discrete distribution. That is, for each observation in our sample with size $n$, we assign a probability of $1/n$ to each value. So, for our current sample we would have a distribution like this:
+Measures of the middle of a sample are frequently referred to as **measures of central tendency**. There are three prolifically referenced values that help us measure the middle of our data. These are the mean, median, and mode. The mean is the most frequently reported value when describing a sample, so let's start with that first. Suppose for a moment that we treated our sample as a uniform discrete distribution. That is, for each observation in our sample with size $n$, we assign a probability of $1/n$ to each value. So, for our current sample we would have a distribution like this:
 
 $$
 p(x) =
@@ -39,7 +39,7 @@ p(x) =
 1/10 & x_{10} = 47.3
 \end{cases}
 $$
-Now we take the expectation of this of this distribution.
+Now let's take the expectation of this distribution.
 
 $$
 \begin{align}
@@ -49,7 +49,7 @@ E(X) &= \sum_{i = 1}^{10} p(x_i)x_i \\
 &= 52.98
 \end{align}
 $$
-Thus, the balancing point for the distribution of our sampled values is 52.98. Notice how we divided the sum of all the values ($529.8$) by the number of values ($n = 10$). That is, if we had $x_1$,...,$x_n$ sampled values. Then we would have
+The center of mass or balancing point for the distribution of our sampled values is 52.98. This balancing point is referred to as the *mean* of our sample. Indeed, notice how we divided the sum of all the values ($529.8$) by the number of values ($n = 10$). That is, if we had $x_1$,...,$x_n$ sampled values, then we would have
 
 $$
 \begin{align}
@@ -67,9 +67,9 @@ $$
 (\#eq:average)
 $$
 
-where $n$ is the number of observations or sample size. As the equation implies, we refer to the mean of our sample as $\bar{x}$. Note that the mean is sometimes referred to colloquially as the average.
+where $n$ is the number of observations or sample size. As the equation implies, we will refer to the mean of our sample as $\bar{x}$. Note that the mean is sometimes referred to colloquially as the average.
 
-The **median** of a sample refers to the "middle" value of a sample after all values have been sorted. Put another way, 50% of the values in the sample are equal to or below the median. Suppose we gather a gather a random sample of five families and a count of their respective family members. We get the values
+Another way to describe the "middle" of a sample is to simply take the middle value after ordering the observations from lowest to highest. In practice, we call this middle value the the **median**. In practice, there will be an equal number of values above or equal to the median as there are below or equal to the median. It's smack dab in the middle. To illustrate, suppose we gather a random sample of five families and a count of their respective family members. After our very short survey, we get the data
 
 $$
 3,2,3,4,6
@@ -80,15 +80,17 @@ $$
 2,3,\underline{3},4,6
 $$
 
-The value of 3 sits smack dab in the middle, and is the median of our sample. However, notice that I've contrived a sample that has an odd number of observations. This is quite convenient because there *is* a middle value after we sort. For example, if we had 9 values, the fifth value would be the middle value. And, in general, if we had an odd number of values - $n$ - the $(n+1)/2$th value would be the median. However, suppose $n$ were even! Let's add one more family to our sample. You'll note the new value of $7$ family members in the ordered list of numbers below.
+The value of 3 (underlined) sits in the middle and is the so-called median of our sample. With sample sizes that have an odd number of observations (like our sample above), it is quite easy to find a middle value. Odd sample sizes are guaranteed to contain a value exactly in the middle. For example, if we had 9 values, the fifth value would be the middle value. And, in general, if we had an odd number of values - $n$ - the $(n+1)/2$th value would be the median. However, suppose $n$ were even! Let's add one more family to our sample. You'll note the new value of $7$ family members in the ordered list of numbers below.
 
 $$
 2,3,3,4,6,7
 $$
 
-We're in a bit of a conundrum because there is no true middle values. Our two candidates for median - 3 and 4 - have an uneven number of values above and below their respective position. The value of 3 has 3 values above it and 2 below, and the value of four has 2 above and 3 below. When we find ourselves in this uncomfortable position, it is conventional to take the mean or average of the two middle value candidates. That is, our median would be
+We're in a bit of a conundrum because there is no true middle value. Our two candidates for median - 3 and 4 - have an uneven number of values above and below their respective position. The value of 3 has 3 numbers above it and 2 below (or equal), and the value of four has 2 above and 3 below. When we find ourselves in this uncomfortable position, it is conventional to take the mean or average of the two middle value candidates. That is, our median would be
 
 $$
 \frac{3 + 4}{2} = 3.5
 $$
+Finally, another way to describe the center or middle of a sample is simply finding the most common number. We call this most common number the **mode**. In the set we just referenced above, the value of 3 is the mode because it occurse twice. All of the other values occur once.
+
 
